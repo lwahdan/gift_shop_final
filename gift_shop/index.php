@@ -14,4 +14,3 @@ $dotenv->load();
 
 // Initialize Core to route the request
 $core = new Core();
-
