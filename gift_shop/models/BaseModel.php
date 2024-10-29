@@ -3,7 +3,6 @@
 class BaseModel
 {
     protected $pdo;
-
     protected $table;
 
     public function __construct($table)
