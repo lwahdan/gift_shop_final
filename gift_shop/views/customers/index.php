@@ -1,7 +1,7 @@
 
 <?php require 'views/partials/header.php'; ?>
 
-<!-- Start Hero Slider Section-->
+<!-- Start Hero Slider Section reem-->
 <div class="hero-slider-section">
     <!-- Slider main container -->
     <div class="hero-slider-active swiper-container">
