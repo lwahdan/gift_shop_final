@@ -22,60 +22,21 @@
             </div>
         </div>
     </div> <!-- ...:::: End Breadcrumb Section:::... -->
+<!-- reemlogin -->
 
-    <!-- ...:::: Start Customer Login Section :::... -->
-    <div class="customer-login">
-        <div class="container">
-            <div class="row">
-                <!--login area start-->
-                <div class="col-lg-6 col-md-6">
-                    <div class="account_form" data-aos="fade-up" data-aos-delay="0">
-                        <h3>login</h3>
-                        <form action="#" method="POST">
-                            <div class="default-form-box">
-                                <label>Username or email <span>*</span></label>
-                                <input type="text">
-                            </div>
-                            <div class="default-form-box">
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                            </div>
-                            <div class="login_submit">
-                                <button class="btn btn-md btn-black-default-hover mb-4" type="submit">login</button>
-                                <label class="checkbox-default mb-4" for="offer">
-                                    <input type="checkbox" id="offer">
-                                    <span>Remember me</span>
-                                </label>
-                                <a href="#">Lost your password?</a>
+   <section class="form-container-login">
+    <form action="" method="post">
+        <h3>Login Now</h3>
+        <!-- <p class="message" style=" <?php echo empty($message) ? 'display:none;' : ''; ?>">
+            <?php echo htmlspecialchars($message); ?>
+        </p> -->
+        <input class="input-log" type="email" name="email" placeholder="Enter your email" value="<?php echo htmlspecialchars($email); ?>" required>
+        <input class="input-log" type="password" name="password" placeholder="Enter your password" required>
+        <input type="submit" name="submit-btn" class="btn" value="Login Now">
+       
 
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!--login area start-->
-
-                <!--register area start-->
-                <div class="col-lg-6 col-md-6">
-                    <div class="account_form register" data-aos="fade-up" data-aos-delay="200">
-                        <h3>Register</h3>
-                        <form action="#">
-                            <div class="default-form-box">
-                                <label>Email address <span>*</span></label>
-                                <input type="text">
-                            </div>
-                            <div class="default-form-box">
-                                <label>Passwords <span>*</span></label>
-                                <input type="password">
-                            </div>
-                            <div class="login_submit">
-                                <button class="btn btn-md btn-black-default-hover" type="submit">Register</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!--register area end-->
-            </div>
-        </div>
-    </div> <!-- ...:::: End Customer Login Section :::... -->
+        <!-- <p class="log">Do not have an account? <a href="register.php">Register now</a></p> -->
+    </form>
+</section>
 
 <?php require 'views/partials/footer.php'; ?>

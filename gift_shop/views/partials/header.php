@@ -11,7 +11,7 @@
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
-
+<link rel="stylesheet" href="style.login.css">
     <link rel="stylesheet" href="../public/css/testimonial.css">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
