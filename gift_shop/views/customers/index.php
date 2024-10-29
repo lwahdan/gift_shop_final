@@ -175,7 +175,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -218,7 +218,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -261,7 +261,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -301,7 +301,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -341,7 +341,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="wishlist.html"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -381,7 +381,7 @@
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-<!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
+                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
@@ -1097,75 +1097,30 @@
 </div>
 <!-- End Banner Section -->
 
-<section>
-    <div class="row text-center">
-        <div class="col-md-12">
-            <!-- Carousel wrapper -->
-            <div id="carouselBasicExample" data-mdb-carousel-init class="carousel slide carousel-dark" data-mdb-ride="carousel">
-                <!-- Inner -->
-                <div class="carousel-inner">
-                    <!-- Single item -->
-                    <div class="carousel-item active">
-                        <p class="lead font-italic mx-4 mx-md-5">
-                            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet
-                            numquam iure provident voluptate esse quasi, voluptas nostrum quisquam!"
-                        </p>
-                        <div class="mt-5 mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
-                                 class="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                 height="100" />
-                        </div>
-                        <p class="text-muted mb-0">- Anna Morian</p>
-                    </div>
 
-                    <!-- Single item -->
-                    <div class="carousel-item">
-                        <p class="lead font-italic mx-4 mx-md-5">
-                            "Neque cupiditate assumenda in maiores repudiandae mollitia adipisci maiores
-                            repudiandae mollitia consectetur adipisicing architecto elit sed adipiscing
-                            elit."
-                        </p>
-                        <div class="mt-5 mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
-                                 class="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                 height="100" />
-                        </div>
-                        <p class="text-muted mb-0">- Teresa May</p>
-                    </div>
-
-                    <!-- Single item -->
-                    <div class="carousel-item">
-                        <p class="lead font-italic mx-4 mx-md-5">
-                            "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                            dolore eu fugiat nulla pariatur est laborum neque cupiditate assumenda in
-                            maiores."
-                        </p>
-                        <div class="mt-5 mb-4">
-                            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
-                                 class="rounded-circle img-fluid shadow-1-strong" alt="smaple image" width="100"
-                                 height="100" />
-                        </div>
-                        <p class="text-muted mb-0">- Kate Allise</p>
-                    </div>
-                </div>
-                <!-- Inner -->
-
-                <!-- Controls -->
-                <button data-mdb-button-init class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample"
-                        data-mdb-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button data-mdb-button-init class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample"
-                        data-mdb-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-            <!-- Carousel wrapper -->
+<!--testimonials start-->
+<div class="testimonial-section">
+    <h2>What Our Customers Say</h2>
+    <div class="testimonial-slider" id="testimonialSlider">
+        <div class="testimonial-slide active">
+            <p>"Beautiful flowers! They made my mom's birthday extra special. Excellent quality and delivery."</p>
+            <h4>– Sarah J.</h4>
+        </div>
+        <div class="testimonial-slide">
+            <p>"The chocolates were heavenly! Perfect for gifting and enjoying. Definitely coming back for more!"</p>
+            <h4>– Mike R.</h4>
+        </div>
+        <div class="testimonial-slide">
+            <p>"Loved the variety of plants. They’re thriving and bring such freshness to my home. Highly recommend!"</p>
+            <h4>– Lisa M.</h4>
         </div>
     </div>
-</section>
+
+    <!-- Arrow buttons for navigation -->
+    <button class="testimonial-arrow left" onclick="prevSlide()">&#10094;</button>
+    <button class="testimonial-arrow right" onclick="nextSlide()">&#10095;</button>
+</div>
+
 
 <?php require 'views/partials/footer.php'; ?>
 
