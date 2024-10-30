@@ -6,8 +6,17 @@ class Core {
         '' => 'CustomerController@index',  // This handles the root URL
 
         // Admin Routes
+
+        'admin/dashboard' => 'DashboardController@index',
+        'admin/users' => 'UserController@index',
+        'admin/users/create' => 'UserController@create',
+        'admin/users/status' => 'UserController@toggleStatus',
+
+        'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
+        'admin/coupons' => 'CouponController@index',
+        'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
-        'admin/dashboard' => 'AdminController@dashboard',
+
         'admin/manage_category' => 'AdminController@manageCategory',
         'admin/manage_products' => 'AdminController@manageProducts',
         'admin/manage_orders' => 'AdminController@manageOrders',
@@ -16,6 +25,17 @@ class Core {
         'admin/messages' => 'AdminController@messages',
         'admin/account_settings' => 'AdminController@accountSettings',
         'admin/logout' => 'AdminController@logout',
+
+
+        // Order Management Route
+        'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
+
+        // Cart Routes
+        'cart/show' => 'CartController@show',
+        'cart/add' => 'CartController@add',
+        'cart/remove' => 'CartController@remove',
+        'cart/update' => 'CartController@update',
+        'cart/clear' => 'CartController@clear',
 
         // Super Admin Routes
         'super-admin/login' => 'SuperAdminController@login',
@@ -43,6 +63,7 @@ class Core {
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+        'admin/product/create' => 'ProductController@create',
     ];
 
     public function __construct() {
@@ -52,14 +73,44 @@ class Core {
     private function dispatch() {
         $url = $this->getUrl();
 
-//        echo "DEBUG: Requested URL is '$url'<br>"; // Display parsed URL for debugging
+        // Check for dynamic routes
+        foreach ($this->routes as $route => $action) {
+            // Create a regex pattern from the route, replacing {param} with a regex capture group
+            $routePattern = preg_replace('/\{(\w+)\}/', '([^\/]+)', $route);
 
+            // Check if the current URL matches the route pattern
+            if (preg_match('#^' . $routePattern . '$#', $url, $matches)) {
+                // Remove the first element which is the full match
+                array_shift($matches);
+
+                $route = explode('@', $action);
+                $controllerName = $route[0];
+                $methodName = $route[1];
+
+                // Check if the controller file exists
+                if (file_exists('controllers/' . $controllerName . '.php')) {
+                    require_once 'controllers/' . $controllerName . '.php';
+                    $controller = new $controllerName;
+
+                    // Check if the method exists in the controller
+                    if (method_exists($controller, $methodName)) {
+                        // Call the method with the captured parameters
+                        call_user_func_array([$controller, $methodName], $matches);
+                        return;  // End function after successful dispatch
+                    } else {
+                        die("ERROR: Method $methodName not found in $controllerName.");
+                    }
+                } else {
+                    die("ERROR: Controller $controllerName not found.");
+                }
+            }
+        }
+
+        // Default route handling for non-dynamic routes
         if (isset($this->routes[$url])) {
             $route = explode('@', $this->routes[$url]);
             $controllerName = $route[0];
             $methodName = $route[1];
-
-//            echo "DEBUG: Dispatching to controller: $controllerName, method: $methodName<br>";
 
             if (file_exists('controllers/' . $controllerName . '.php')) {
                 require_once 'controllers/' . $controllerName . '.php';
@@ -78,7 +129,7 @@ class Core {
             die("ERROR: Route not found for URL '$url'.");
         }
     }
-//
+
     private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
         $url = trim($url, '/');  // Trim leading and trailing slashes
@@ -89,5 +140,5 @@ class Core {
 
         return $url;
     }
-    
+
 }
