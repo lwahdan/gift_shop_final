@@ -375,7 +375,7 @@
 <!-- Main JS -->
 <script src="../public/js/main.js"></script>
 
-
+<script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
 </body>

@@ -11,8 +11,9 @@
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
-<link rel="stylesheet" href="style.login.css">
+<link rel="stylesheet" href="../public/css/style.login.css">
     <link rel="stylesheet" href="../public/css/testimonial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->

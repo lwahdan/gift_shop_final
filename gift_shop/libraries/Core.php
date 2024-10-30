@@ -48,11 +48,13 @@ class Core {
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
         'customers/index' => 'CustomerController@index',
-        'customers/login' => 'CustomerController@login',
+        'customers/login' => 'AuthController@login',
+        'customers/register' => 'AuthController@register',
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+       
     ];
 
     public function __construct() {
