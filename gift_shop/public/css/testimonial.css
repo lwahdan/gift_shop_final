@@ -1,0 +1,75 @@
+body {
+    overflow-x: hidden;
+}
+
+.testimonial-section {
+    width: 100%; /* Full width without causing horizontal scroll */
+    margin: 0;
+    padding: 40px 20px;
+    background-color: #fef5ef;
+    text-align: center;
+    position: relative;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.testimonial-section h2 {
+    font-size: 24px;
+    color: #b19361;
+    margin-bottom: 20px;
+}
+
+/* Slider container styling */
+.testimonial-slider {
+    overflow: hidden;
+    position: relative;
+    height: 120px;
+}
+
+/* Individual slide styling */
+.testimonial-slide {
+    min-width: 100%;
+    color: #333;
+    opacity: 0;
+    position: absolute;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.testimonial-slide p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.testimonial-slide h4 {
+    font-size: 16px;
+    color: #b19361;
+}
+
+/* Active slide */
+.testimonial-slide.active {
+    opacity: 1;
+}
+
+/* Arrow styling */
+.testimonial-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #b19361;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1; /* Ensure arrows appear above slides */
+}
+
+.testimonial-arrow.left {
+    left: 20px; /* Positioned within the testimonial section */
+}
+
+.testimonial-arrow.right {
+    right: 20px; /* Positioned within the testimonial section */
+}

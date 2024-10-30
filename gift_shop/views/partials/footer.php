@@ -376,8 +376,8 @@
 <script src="../public/js/main.js"></script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gyb3S0jRHI7+7yVvS9Lh8XKOFOkYfj4hjD+9v5T1w2w5DvbZ6H" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-5sISRzgM9yyKqeS8d9EaUv3A3F+C+wx6Hr705U70NAg3pRxhIc2yrH0EeyH3Scvx" crossorigin="anonymous"></script>
+
+<script src="../public/js/testimonial.js"></script>
 </body>
 
 
