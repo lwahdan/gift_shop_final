@@ -5,7 +5,6 @@ class Core {
         // Default route to customer index
         '' => 'CustomerController@index',  // This handles the root URL
 
-
         // Admin Routes
 
         'admin/dashboard' => 'DashboardController@index',
@@ -26,8 +25,6 @@ class Core {
         'admin/account_settings' => 'AdminController@accountSettings',
         'admin/logout' => 'AdminController@logout',
 
-
-
         // Order Management Route
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
@@ -39,19 +36,20 @@ class Core {
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
         'customers/index' => 'CustomerController@index',
-        'customers/login' => 'CustomerController@login',
+        'customers/login' => 'AuthController@login',
+        'customers/register' => 'AuthController@register',
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+
+        //admin routes
         'admin/product/create' => 'ProductController@create',
     ];
 
     public function __construct() {
         $this->dispatch();
     }
-
-   
 
 private function dispatch() {
     $url = $this->getUrl();
@@ -71,7 +69,6 @@ private function dispatch() {
             $methodName = $route[1];
 
             // Check if the controller file exists
-
             if (file_exists('controllers/' . $controllerName . '.php')) {
                 require_once 'controllers/' . $controllerName . '.php';
                 $controller = new $controllerName;
@@ -112,6 +109,7 @@ private function dispatch() {
     } else {
         die("ERROR: Route not found for URL '$url'.");
     }
+}
 
     private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
@@ -123,5 +121,5 @@ private function dispatch() {
 
         return $url;
     }
-
+    
 }
