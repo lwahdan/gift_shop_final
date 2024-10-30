@@ -5,40 +5,8 @@ class Core {
         // Default route to customer index
         '' => 'CustomerController@index',  // This handles the root URL
 
-        // Admin Routes
-        'admin/login' => 'AdminController@login',
-        'admin/dashboard' => 'AdminController@dashboard',
-        'admin/manage_category' => 'AdminController@manageCategory',
-        'admin/manage_products' => 'AdminController@manageProducts',
-        'admin/manage_orders' => 'AdminController@manageOrders',
-        'admin/manage_customers' => 'AdminController@manageCustomers',
-        'admin/manage_coupon' => 'AdminController@manageCoupon',
-        'admin/messages' => 'AdminController@messages',
-        'admin/account_settings' => 'AdminController@accountSettings',
-        'admin/logout' => 'AdminController@logout',
-
         // Order Management Route
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
-
-        // Cart Routes
-        'cart/show' => 'CartController@show',
-        'cart/add' => 'CartController@add',
-        'cart/remove' => 'CartController@remove',
-        'cart/update' => 'CartController@update',
-        'cart/clear' => 'CartController@clear',
-
-        // Super Admin Routes
-        'super-admin/login' => 'SuperAdminController@login',
-        'super-admin/dashboard' => 'SuperAdminController@dashboard',
-        'super-admin/manage_category' => 'SuperAdminController@manageCategory',
-        'super-admin/manage_products' => 'SuperAdminController@manageProducts',
-        'super-admin/manage_orders' => 'SuperAdminController@manageOrders',
-        'super-admin/manage_customers' => 'SuperAdminController@manageCustomers',
-        'super-admin/manage_coupon' => 'SuperAdminController@manageCoupon',
-        'super-admin/messages' => 'SuperAdminController@messages',
-        'super-admin/account_settings' => 'SuperAdminController@accountSettings',
-        'super-admin/logout' => 'SuperAdminController@logout',
-        'super-admin/manage_admin' => 'SuperAdminController@manageAdmin',
 
         // customers Routes
         'customers/_404' => 'CustomerController@_404',
