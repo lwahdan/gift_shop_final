@@ -5,6 +5,29 @@ class Core {
         // Default route to customer index
         '' => 'CustomerController@index',  // This handles the root URL
 
+
+        // Admin Routes
+
+        'admin/dashboard' => 'DashboardController@index',
+        'admin/users' => 'UserController@index',
+        'admin/users/create' => 'UserController@create',
+        'admin/users/status' => 'UserController@toggleStatus',
+
+        'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
+        'admin/coupons' => 'CouponController@index',
+        'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
+        'admin/login' => 'AdminController@login',
+        'admin/manage_category' => 'AdminController@manageCategory',
+        'admin/manage_products' => 'AdminController@manageProducts',
+        'admin/manage_orders' => 'AdminController@manageOrders',
+        'admin/manage_customers' => 'AdminController@manageCustomers',
+        'admin/manage_coupon' => 'AdminController@manageCoupon',
+        'admin/messages' => 'AdminController@messages',
+        'admin/account_settings' => 'AdminController@accountSettings',
+        'admin/logout' => 'AdminController@logout',
+
+
+
         // Order Management Route
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
@@ -21,11 +44,14 @@ class Core {
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+        'admin/product/create' => 'ProductController@create',
     ];
 
     public function __construct() {
         $this->dispatch();
     }
+
+   
 
 private function dispatch() {
     $url = $this->getUrl();
@@ -45,6 +71,7 @@ private function dispatch() {
             $methodName = $route[1];
 
             // Check if the controller file exists
+
             if (file_exists('controllers/' . $controllerName . '.php')) {
                 require_once 'controllers/' . $controllerName . '.php';
                 $controller = new $controllerName;
@@ -85,7 +112,6 @@ private function dispatch() {
     } else {
         die("ERROR: Route not found for URL '$url'.");
     }
-}
 
     private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
@@ -97,5 +123,5 @@ private function dispatch() {
 
         return $url;
     }
-    
+
 }
