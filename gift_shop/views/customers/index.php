@@ -155,10 +155,10 @@
                         <div class="swiper-container product-default-slider-4grid-2row">
                             <!-- Additional required wrapper -->
                             <div class="swiper-wrapper">
-                                <!-- Start Product Default Single Item -->
+                                <!-- Start Product Default Single Item test-->
                                 <div class="product-default-single-item product-color--golden swiper-slide">
                                     <div class="image-box">
-                                        <a href="customers/product-details-default" class="image-link">
+                                        <a href="/customers/product-details-default" class="image-link">
                                             <img src="../public/images/product/default/home-1/default-1.jpg" alt="">
                                             <img src="../public/images/product/default/home-1/default-2.jpg" alt="">
                                         </a>
@@ -167,21 +167,23 @@
                                         </div>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
-                                                   data-bs-target="#modalAddcart">Add to Cart</a>
+                                                <!-- Add onclick to call addToCart JavaScript function -->
+<!--                                                <a href="javascript:void(0);" onclick="addToCart(<?php //= $product_id ?>////)">Add to Cart</a>-->
+                                                <a href="javascript:void(0);" onclick="addToCart(1)">Add to Cart</a>
                                             </div>
+
+
                                             <div class="action-link-right">
                                                 <a href="#" data-bs-toggle="modal"
                                                    data-bs-target="#modalQuickview"><i
                                                             class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
-                                                <!--                                                <a href="compare.html"><i class="icon-shuffle"></i></a>-->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="content">
                                         <div class="content-left">
-                                            <h6 class="title"><a href="product-details-default.html">Aliquam
+                                            <h6 class="title"><a href="/customers/product-details-default">Aliquam
                                                     lobortis</a></h6>
                                             <ul class="review-star">
                                                 <li class="fill"><i class="ion-android-star"></i></li>
@@ -197,11 +199,11 @@
 
                                     </div>
                                 </div>
-                                <!-- End Product Default Single Item -->
+                                <!-- End Product Default Single Item test-->
                                 <!-- Start Product Default Single Item -->
                                 <div class="product-default-single-item product-color--golden swiper-slide">
                                     <div class="image-box">
-                                        <a href="customers/product-details-default" class="image-link">
+                                        <a href="/customers/product-details-default" class="image-link">
                                             <img src="../public/images/product/default/home-1/default-3.jpg" alt="">
                                             <img src="../public/images/product/default/home-1/default-4.jpg" alt="">
                                         </a>
@@ -210,7 +212,7 @@
                                         </div>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -244,7 +246,7 @@
                                 <!-- Start Product Default Single Item -->
                                 <div class="product-default-single-item product-color--golden swiper-slide">
                                     <div class="image-box">
-                                        <a href="customers/product-details-default" class="image-link">
+                                        <a href="/customers/product-details-default" class="image-link">
                                             <img src="../public/images/product/default/home-1/default-5.jpg" alt="">
                                             <img src="../public/images/product/default/home-1/default-6.jpg" alt="">
                                         </a>
@@ -253,7 +255,7 @@
                                         </div>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -293,7 +295,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -333,7 +335,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -373,7 +375,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -413,7 +415,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -453,7 +455,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -493,7 +495,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -536,7 +538,7 @@
                                         </div>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -576,7 +578,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
@@ -616,7 +618,7 @@
                                         </a>
                                         <div class="action-link">
                                             <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal"
+                                                <a href="/customers/cart" data-bs-toggle="modal"
                                                    data-bs-target="#modalAddcart">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
