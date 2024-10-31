@@ -8,22 +8,22 @@ class Core {
         // Admin Routes
 
         'admin/dashboard' => 'DashboardController@index',
+        'admin' => 'DashboardController@index',
         'admin/users' => 'UserController@index',
         'admin/users/create' => 'UserController@create',
         'admin/users/status' => 'UserController@toggleStatus',
 
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
-        'admin/coupons' => 'CouponController@index',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
-        'admin/login' => 'AdminController@login',
-        'admin/manage_category' => 'AdminController@manageCategory',
-        'admin/manage_products' => 'AdminController@manageProducts',
-        'admin/manage_orders' => 'AdminController@manageOrders',
-        'admin/manage_customers' => 'AdminController@manageCustomers',
-        'admin/manage_coupon' => 'AdminController@manageCoupon',
-        'admin/messages' => 'AdminController@messages',
-        'admin/account_settings' => 'AdminController@accountSettings',
-        'admin/logout' => 'AdminController@logout',
+        'admin/login' => 'DashboardController@login',
+        'admin/manage_category' => 'DashboardController@manageCategory',
+        'admin/manage_products' => 'DashboardController@manageProducts',
+        'admin/manage_orders' => 'DashboardController@manageOrders',
+        'admin/manage_customers' => 'DashboardController@manageCustomers',
+        'admin/manage_coupon' => 'DashboardController@manageCoupon',
+        'admin/messages' => 'DashboardController@messages',
+        'admin/account_settings' => 'DashboardController@accountSettings',
+        'admin/logout' => 'DashboardController@logout',
 
         // Order Management Route
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
@@ -45,6 +45,11 @@ class Core {
 
         //admin routes
         'admin/product/create' => 'ProductController@create',
+
+        //wishlist routes
+        'wishlist' => 'WishlistController@index',
+        'wishlist/add/{product_id}' => 'WishlistController@add',
+        'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
     ];
 
     public function __construct() {

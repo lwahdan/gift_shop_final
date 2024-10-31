@@ -1,5 +1,3 @@
-
-<!--// views/admin/dashboard/index.php-->
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 ?>
