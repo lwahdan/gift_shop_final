@@ -35,13 +35,19 @@ class Core {
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
+
         'customers/index' => 'CustomerController@index',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
-        'customers/product-details-default' => 'CustomerController@product',
+        // 'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+
+        //product Routes
+        'product/details' => 'ProductController@details',
+        'products' => 'ProductController@index',
+        'home' => 'ProductController@home',
 
         //admin routes
         'admin/product/create' => 'ProductController@create',
@@ -50,6 +56,7 @@ class Core {
         'wishlist' => 'WishlistController@index',
         'wishlist/add/{product_id}' => 'WishlistController@add',
         'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
+
     ];
 
     public function __construct() {
