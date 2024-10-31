@@ -60,7 +60,7 @@
                             <nav>
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="/customers/index">Home</a>
+                                        <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
 
                                     <li class="has-dropdown has-megaitem">
