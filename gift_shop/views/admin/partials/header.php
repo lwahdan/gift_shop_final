@@ -17,6 +17,7 @@
             <li><a href="#"><span class="icon"><ion-icon name="gift-outline"></ion-icon></span><span class="title">Gift</span></a></li>
             <li><a href="/admin/dashboard"><span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span><span class="title">Dashboard</span></a></li>
             <li><a href="/admin/users"><span class="icon"><ion-icon name="people-outline"></ion-icon></span><span class="title">Users</span></a></li>
+            <li><a href="/admin/products"><span class="icon"><ion-icon name="people-outline"></ion-icon></span><span class="title">Products</span></a></li>
             <li><a href="/admin/category"><span class="icon"><ion-icon name="cube-outline"></ion-icon></span><span class="title">Category</span></a></li>
             <li><a href="/admin/comments"><span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span><span class="title">Comments</span></a></li>
             <li><a href="/admin/coupons"><span class="icon"><ion-icon name="pricetags-outline"></ion-icon></span><span class="title">Coupons</span></a></li>

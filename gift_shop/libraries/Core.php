@@ -3,7 +3,7 @@
 class Core {
     protected $routes = [
         // Default route to customer index
-        '' => 'CustomerController@index',  // This handles the root URL
+        '' => 'ProductController@home',  // This handles the root URL
 
         // Admin Routes
 
