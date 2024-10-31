@@ -2,11 +2,14 @@
 <?php require_once 'views/partials/header.php';
 //  require_once 'config/db.php'; 
 
+$dir = '../public/images/imgs/';
 
 require_once 'controllers/ProductController.php';
 
-$productController = new ProductController();
-$products = $productController->productModel->all();
+// $productController = new ProductController();
+// $products = $productController->productModel->all();
+
+
 ?>
 
 <!-- Start Hero Slider Section reem leen -->
@@ -174,7 +177,7 @@ $products = $productController->productModel->all();
                             <?php foreach ($products as $row): ?>
                                 <div class="product-default-single-item product-color--golden swiper-slide">
                                     <div class="image-box">
-                                        <a href="/customers/product-details-default" class="image-link">
+                                        <a href="/product/details?id=<?php echo $row['id']; ?>" class="image-link">
                                             <img src="<?php echo $dir . str_replace(' ', '%20', $row['image_url']); ?>" alt="Product Image">
                                         </a>
                                         <div class="tag">
@@ -192,7 +195,7 @@ $products = $productController->productModel->all();
                                     </div>
                                     <div class="content">
                                         <div class="content-left">
-                                            <h6 class="title"><a href="/customers/product-details-default"><?php echo htmlspecialchars($row['product_name']); ?></a></h6>
+                                            <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
                                             <ul class="review-star">
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="fill"><i class="ion-android-star"></i></li>
