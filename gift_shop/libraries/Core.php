@@ -6,8 +6,16 @@ class Core {
         '' => 'CustomerController@index',  // This handles the root URL
 
         // Admin Routes
+
+        'admin/dashboard' => 'DashboardController@index',
+        'admin/users' => 'UserController@index',
+        'admin/users/create' => 'UserController@create',
+        'admin/users/status' => 'UserController@toggleStatus',
+
+        'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
+        'admin/coupons' => 'CouponController@index',
+        'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
-        'admin/dashboard' => 'AdminController@dashboard',
         'admin/manage_category' => 'AdminController@manageCategory',
         'admin/manage_products' => 'AdminController@manageProducts',
         'admin/manage_orders' => 'AdminController@manageOrders',
@@ -20,26 +28,6 @@ class Core {
         // Order Management Route
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
-        // Cart Routes
-        'cart/show' => 'CartController@show',
-        'cart/add' => 'CartController@add',
-        'cart/remove' => 'CartController@remove',
-        'cart/update' => 'CartController@update',
-        'cart/clear' => 'CartController@clear',
-
-        // Super Admin Routes
-        'super-admin/login' => 'SuperAdminController@login',
-        'super-admin/dashboard' => 'SuperAdminController@dashboard',
-        'super-admin/manage_category' => 'SuperAdminController@manageCategory',
-        'super-admin/manage_products' => 'SuperAdminController@manageProducts',
-        'super-admin/manage_orders' => 'SuperAdminController@manageOrders',
-        'super-admin/manage_customers' => 'SuperAdminController@manageCustomers',
-        'super-admin/manage_coupon' => 'SuperAdminController@manageCoupon',
-        'super-admin/messages' => 'SuperAdminController@messages',
-        'super-admin/account_settings' => 'SuperAdminController@accountSettings',
-        'super-admin/logout' => 'SuperAdminController@logout',
-        'super-admin/manage_admin' => 'SuperAdminController@manageAdmin',
-
         // customers Routes
         'customers/_404' => 'CustomerController@_404',
         'customers/about-us' => 'CustomerController@about',
@@ -47,8 +35,10 @@ class Core {
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
-        // 'customers/index' => 'CustomerController@index',
-        'customers/login' => 'CustomerController@login',
+
+        'customers/index' => 'CustomerController@index',
+        'customers/login' => 'AuthController@login',
+        'customers/register' => 'AuthController@register',
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
         // 'customers/product-details-default' => 'CustomerController@product',
@@ -58,6 +48,9 @@ class Core {
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
         'home' => 'ProductController@home',
+
+        //admin routes
+        'admin/product/create' => 'ProductController@create',
 
     ];
 
