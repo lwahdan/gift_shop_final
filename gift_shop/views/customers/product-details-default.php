@@ -83,6 +83,7 @@
                             </div>
                             <!-- Add Arrows -->
                             <div class="gallery-thumb-arrow swiper-button-next"></div>
+
                             <div class="gallery-thumb-arrow swiper-button-prev"></div>
                         </div>
                         <!-- End Thumbnail Image -->
@@ -91,7 +92,9 @@
                 <div class="col-xl-7 col-lg-6">
                     <div class="product-details-content-area product-details--golden" data-aos="fade-up"
                         data-aos-delay="200">
+
                         <!-- Start  Product Details Text Area-->
+
                         <div class="product-details-text">
                             <h4 class="title">Ornare sed consequat</h4>
                             <div class="d-flex align-items-center">
@@ -109,7 +112,8 @@
                                 tristique auctor. Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
                                 justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus eu, suscipit id
                                 nulla.</p>
-                        </div> <!-- End  Product Details Text Area-->
+                        </div>
+                        <!-- End  Product Details Text Area-->
                         <!-- Start Product Variable Area -->
                         <div class="product-details-variable">
                             <h4 class="title">Available Options</h4>
@@ -148,7 +152,8 @@
                                 <li><a href="#">KITCHEN UTENSILS</a></li>
                                 <li><a href="#">TENNIS</a></li>
                             </ul>
-                        </div> <!-- End  Product Details Catagories Area-->
+                        </div> 
+                        <!-- End  Product Details Catagories Area-->
                         <!-- Start  Product Details Social Area-->
                         <div class="product-details-social">
                             <span class="title">SHARE THIS PRODUCT:</span>

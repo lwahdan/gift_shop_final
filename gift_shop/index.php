@@ -5,7 +5,7 @@ session_start();
 require 'libraries/Core.php';  // Core class that handles routing
 require 'controllers/BaseController.php';  // Base Controller class
 require 'vendor/autoload.php';
-require  'functions.php';
+require 'functions.php';
 
 
 
