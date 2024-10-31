@@ -87,5 +87,31 @@ class UserModel extends BaseModel {
     private function isValidPassword($password) {
         return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password);
     }
+    public function getUserByUsername($username) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt->bindParam(':username', $username);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function updateProfile($userId, $username, $email, $firstName, $lastName, $phoneNumber, $address) {
+        $query = "UPDATE users SET 
+                    username = :username, 
+                    email = :email, 
+                    first_name = :first_name, 
+                    last_name = :last_name, 
+                    phone_number = :phone_number, 
+                    address = :address 
+                  WHERE id = :user_id";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':first_name', $firstName);
+        $stmt->bindParam(':last_name', $lastName);
+        $stmt->bindParam(':phone_number', $phoneNumber);
+        $stmt->bindParam(':address', $address);
+    
+        $stmt->execute();
+    }
+    
 }
-?>

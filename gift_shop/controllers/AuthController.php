@@ -3,10 +3,13 @@ include_once './models/UserModel.php';
 
 class AuthController extends Controller {
     private $userModel;
+   
 
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+  
     }
+    
 
     public function login() {
         $data = [
@@ -26,7 +29,7 @@ class AuthController extends Controller {
                     foreach ($userData as $key => $value) {
                         $_SESSION[$key] = $value;
                     }
-                    header('Location:/customers/index');
+                    header('Location:/customers/profile');
                     exit();
                 }
             }
@@ -92,5 +95,16 @@ class AuthController extends Controller {
 
         $this->view('/customers/register', $data);  // Updated view path
     }
-}
-?>
+
+public function logout() {
+    session_start(); // Start the session
+    session_unset(); // Unset all session variables
+    session_destroy(); // Destroy the session
+
+    // Redirect to the login page
+    header('Location: /customers/login');
+    exit();
+}  }
+
+
+?>  
