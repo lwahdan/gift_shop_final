@@ -184,8 +184,8 @@ require_once 'controllers/ProductController.php';
                                             <span>sale</span>
                                         </div>
                                         <div class="action-link">
-                                            <div class="action-link-left">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalAddcart">Add to Cart</a>
+                                        <div class="action-link-left">
+                                                <a href="javascript:void(0);" onclick="addToCart(<?php echo $row['id']; ?>)">Add to Cart</a>
                                             </div>
                                             <div class="action-link-right">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
