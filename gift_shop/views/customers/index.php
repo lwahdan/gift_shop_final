@@ -51,7 +51,7 @@ require_once 'controllers/ProductController.php';
                 </div>
                 <!-- Hero Slider Content -->
                 <div class="hero-slider-wrapper">
-                    <div class="container">
+                    <div>
                         <div class="row">
                             <div class="col-auto">
                                 <div class="hero-slider-content">
@@ -606,7 +606,7 @@ require_once 'controllers/ProductController.php';
             </div>
             <a href="product-details-default.html" class="content">
                 <div class="inner">
-                    <h4 class="title">Bar Stool</h4>
+                    <h4 class="title">Flowers</h4>
                     <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
@@ -621,7 +621,7 @@ require_once 'controllers/ProductController.php';
             </div>
             <a href="product-details-default.html" class="content">
                 <div class="inner">
-                    <h4 class="title">Armchairs</h4>
+                    <h4 class="title">Plants</h4>
                     <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
@@ -636,7 +636,7 @@ require_once 'controllers/ProductController.php';
             </div>
             <a href="product-details-default.html" class="content">
                 <div class="inner">
-                    <h4 class="title">lighting</h4>
+                    <h4 class="title">Chocolates</h4>
                     <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
@@ -651,7 +651,7 @@ require_once 'controllers/ProductController.php';
             </div>
             <a href="product-details-default.html" class="content">
                 <div class="inner">
-                    <h4 class="title">Easy chairs</h4>
+                    <h4 class="title">Packages</h4>
                     <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
