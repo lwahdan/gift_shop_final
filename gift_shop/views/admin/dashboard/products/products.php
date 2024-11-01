@@ -6,7 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-<div class="container py-5">
+<div>
     <h1 class="mb-4 text-center">Manage Products</h1>
     <div class="text-center mb-3">
         <a href="/dashboard/createProduct" class="btn btn-primary">Add New Product</a>
