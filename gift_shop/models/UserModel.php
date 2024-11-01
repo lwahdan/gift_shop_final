@@ -1,5 +1,6 @@
 
 <?php
+<<<<<<< HEAD
 require_once 'BaseModel.php';
 
 class UserModel extends BaseModel {
@@ -21,12 +22,18 @@ class UserModel extends BaseModel {
 }
 
 
+=======
+>>>>>>> 52a34ce454066bee9627ba0bcacba62560b9b806
 include_once './config/db.php';
 require_once 'BaseModel.php';
 
 class UserModel extends BaseModel {
     public function __construct() {
         parent::__construct('users');
+    }
+
+    public function getTotalUsers(){
+        return $this->all();
     }
 
     // Method for user registration
