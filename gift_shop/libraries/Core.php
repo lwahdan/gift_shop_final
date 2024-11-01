@@ -37,12 +37,23 @@ class Core {
         'customers/faq' => 'CustomerController@faq',
 
         'customers/index' => 'CustomerController@index',
-        'customers/login' => 'AuthController@login',
-        'customers/register' => 'AuthController@register',
+        
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
+        'customers/login' => 'AuthController@login',
+        'customers/register' => 'AuthController@register',
+
+        'customers/logout' => 'AuthController@logout',
+        'customers/profile' => 'ProfileController@viewProfile',
+        'profile/update', 'ProfileController@update',
+
         // 'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+
+      
+        'customers/dashboard' => 'AdminController@dashboard',
+       
+
 
         //product Routes
         'product/details' => 'ProductController@details',
@@ -64,6 +75,7 @@ class Core {
         'dashboard/editProduct/{id}' => 'DashboardController@editProduct',
         'dashboard/updateProduct/{id}' => 'DashboardController@updateProduct',
         'dashboard/deleteProduct/{id}' => 'DashboardController@deleteProduct',
+
 
     ];
     

@@ -11,8 +11,9 @@
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
-
+<link rel="stylesheet" href="../public/css/style.login.css">
     <link rel="stylesheet" href="../public/css/testimonial.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
@@ -64,7 +65,7 @@
                                     </li>
 
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="customers/product-details-default">Shop
+                                        <a href="#">Shop
                                             <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
@@ -79,7 +80,7 @@
                                                         <li><a href="/wishlist">Wishlist</a></li>
                                                         <li><a href="/customers/checkout">Checkout</a></li>
                                                         <li><a href="/customers/login">Login</a></li>
-                                                        <li><a href="/customers/my-account">My Account</a></li>
+                                                        <li><a href="/customers/profile">My Account</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -214,7 +215,7 @@
                             <li><a href="/wishlist">Wishlist</a></li>
                             <li><a href="/customers/checkout">Checkout</a></li>
                             <li><a href="/customers/login">Login</a></li>
-                            <li><a href="/customers/my-account">My Account</a></li>
+                            <li><a href="/customers/profile">My Account</a></li>
                         </ul>
                         <!--                            </li>-->
                         <!--                        </ul>-->
