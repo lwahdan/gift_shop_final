@@ -1,4 +1,5 @@
 <!-- Start Footer Section -->
+<div id="myfooter">
 <footer class="footer-section footer-bg">
     <div class="footer-wrapper">
         <!-- Start Footer Top -->
@@ -128,6 +129,7 @@
 
     </div>
 </footer>
+</div>
 <!-- End Footer Section -->
 
 <!-- material-scrolltop button -->
@@ -160,8 +162,8 @@
                                     <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart
                                         successfully!</div>
                                     <div class="modal-add-cart-product-cart-buttons">
-                                        <a href="cart.html">View Cart</a>
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="/customers/cart">View Cart</a>
+                                        <a href="/customers/checkout">Checkout</a>
                                     </div>
                                 </div>
                             </div>
@@ -380,6 +382,12 @@
 <script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!--<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+
 </body>
 
 
