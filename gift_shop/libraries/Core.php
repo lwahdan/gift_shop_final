@@ -1,4 +1,5 @@
 <?php
+//update to our pages names
 class Core {
     protected $routes = [
         // Default route to customer index
@@ -83,54 +84,32 @@ class Core {
         $this->dispatch();
     }
 
-    private function dispatch() {
-        $url = $this->getUrl();
+private function dispatch() {
+    $url = $this->getUrl();
 
-        // Check for dynamic routes
-        foreach ($this->routes as $route => $action) {
-            // Create a regex pattern from the route, replacing {param} with a regex capture group
-            $routePattern = preg_replace('/\{(\w+)\}/', '([^\/]+)', $route);
-
-            // Check if the current URL matches the route pattern
-            if (preg_match('#^' . $routePattern . '$#', $url, $matches)) {
-                array_shift($matches);  // Remove the full match
-
-                $route = explode('@', $action);
-                $controllerName = $route[0];
-                $methodName = $route[1];
-
-                $controllerPath = 'controllers/' . $controllerName . '.php';
-
-                if (file_exists($controllerPath)) {
-                    require_once $controllerPath;
-                    $controller = new $controllerName;
-
-                    if (method_exists($controller, $methodName)) {
-                        call_user_func_array([$controller, $methodName], $matches);
-                        return;  // End function after successful dispatch
-                    } else {
-                        die("ERROR: Method $methodName not found in $controllerName.");
-                    }
-                } else {
-                    die("ERROR: Controller $controllerName not found.");
-                }
-            }
-        }
-
-        // Default route handling for non-dynamic routes
-        if (isset($this->routes[$url])) {
-            $route = explode('@', $this->routes[$url]);
+    // Check for dynamic routes
+    foreach ($this->routes as $route => $action) {
+        // Create a regex pattern from the route, replacing {param} with a regex capture group
+        $routePattern = preg_replace('/\{(\w+)\}/', '([^\/]+)', $route);
+        
+        // Check if the current URL matches the route pattern
+        if (preg_match('#^' . $routePattern . '$#', $url, $matches)) {
+            // Remove the first element which is the full match
+            array_shift($matches);
+            
+            $route = explode('@', $action);
             $controllerName = $route[0];
             $methodName = $route[1];
 
-            $controllerPath = 'controllers/' . $controllerName . '.php';
-
-            if (file_exists($controllerPath)) {
-                require_once $controllerPath;
+            // Check if the controller file exists
+            if (file_exists('controllers/' . $controllerName . '.php')) {
+                require_once 'controllers/' . $controllerName . '.php';
                 $controller = new $controllerName;
 
+                // Check if the method exists in the controller
                 if (method_exists($controller, $methodName)) {
-                    $controller->$methodName();
+                    // Call the method with the captured parameters
+                    call_user_func_array([$controller, $methodName], $matches);
                     return;  // End function after successful dispatch
                 } else {
                     die("ERROR: Method $methodName not found in $controllerName.");
@@ -138,12 +117,32 @@ class Core {
             } else {
                 die("ERROR: Controller $controllerName not found.");
             }
-        } else {
-            // Handle non-matching routes (404)
-            header("HTTP/1.0 404 Not Found");
-            echo "ERROR: Route not found for URL '$url'.";
         }
     }
+
+    // Default route handling for non-dynamic routes
+    if (isset($this->routes[$url])) {
+        $route = explode('@', $this->routes[$url]);
+        $controllerName = $route[0];
+        $methodName = $route[1];
+
+        if (file_exists('controllers/' . $controllerName . '.php')) {
+            require_once 'controllers/' . $controllerName . '.php';
+            $controller = new $controllerName;
+
+            if (method_exists($controller, $methodName)) {
+                $controller->$methodName();
+                return;  // End function after successful dispatch
+            } else {
+                die("ERROR: Method $methodName not found in $controllerName.");
+            }
+        } else {
+            die("ERROR: Controller $controllerName not found.");
+        }
+    } else {
+        die("ERROR: Route not found for URL '$url'.");
+    }
+}
 
     private function getUrl() {
         $url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
@@ -155,4 +154,5 @@ class Core {
 
         return $url;
     }
+    
 }

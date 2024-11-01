@@ -3,15 +3,14 @@ body {
 }
 
 .testimonial-section {
-    width: 90%; /* Full width without causing horizontal scroll */
-    margin: 100px 0px 0px 65px;
+    width: 100%; /* Full width without causing horizontal scroll */
+    margin: 0;
     padding: 40px 20px;
     background-color: #fef5ef;
     text-align: center;
     position: relative;
     height: 250px;
     box-sizing: border-box;
-    /*margin-top: 100px;*/
 }
 
 .testimonial-section h2 {
@@ -73,12 +72,4 @@ body {
 
 .testimonial-arrow.right {
     right: 20px; /* Positioned within the testimonial section */
-}
-
-#myfooter{
-    margin-top: 100px;
-}
-
-#mycheckout{
-    margin-left: 420px;
 }
