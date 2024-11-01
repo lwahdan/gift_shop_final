@@ -12,7 +12,7 @@
                              data-aos-delay="0">
                             <h5 class="title">INFORMATION</h5>
                             <ul class="footer-nav">
-                                <li><a href="contact-us.html">Contact</a></li>
+                                <li><a href="/customers/contact-us">Contact</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -23,9 +23,9 @@
                              data-aos-delay="200">
                             <h5 class="title">MY ACCOUNT</h5>
                             <ul class="footer-nav">
-                                <li><a href="my-account.html">My account</a></li>
+                                <li><a href="/customers/profile">My account</a></li>
                                 <li><a href="/customers/cart">Cart</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
+                                <li><a href="/customers/wishlist">Wishlist</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -54,8 +54,10 @@
                                     Prestashop, Opencart.</p>
 
                                 <address class="address">
-                                    <span>Address: Your address goes here.</span>
-                                    <span>Email: demo@example.com</span>
+                                    
+                                <span><a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">address:Ar-Razi St. 141, Amman</span>
+                                   <br>
+                                <span><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&emr=1&ltmpl=default&ltmplcache=2&osid=1&passive=true&rm=false&scc=1&service=mail&ss=1&ifkv=AcMMx-cTkZXyVV7fs5LlDBSvKl6Z4cIFYE7oQygdRhZf64lepVJDWIXyoNdqUXw8n849XMx19DWO&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank">Email:</span>
                                 </address>
                             </div>
                         </div>
@@ -74,10 +76,10 @@
                         <div class="footer-social" data-aos="fade-up" data-aos-delay="0">
                             <h4 class="title">FOLLOW US</h4>
                             <ul class="footer-social-link">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://x.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -376,6 +378,8 @@
 
 <!-- Main JS -->
 <script src="../public/js/main.js"></script>
+
+<script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

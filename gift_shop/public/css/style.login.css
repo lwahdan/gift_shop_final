@@ -1,0 +1,186 @@
+*{margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    :root{
+    --white-alpha-40: rgba(255,255,255,0.48);
+    --white-alpha-25: rgba(255,255,255,0.25);
+    --backdrope-filter-blur: blur(5px);
+    --pink: #e84393;
+    --box-shadow: 8.5rem 1rem rgba(0,0,0,0.1);
+    }
+    
+    .message {
+        text-align: center;
+        margin: 2rem auto;
+        font-size: 18px;
+        background: rgba(255, 0, 0, 0.7); /* Change to your preferred error background */
+        color: #fff;
+        width: 40vw;
+        padding: 1rem;
+        border-radius: 5px;
+    }
+    .message i{
+        cursor: pointer;
+        float:right;
+    }
+    a{
+        text-decoration: none;
+    }
+    
+    .form-container{
+        background-image: url("/public/images/login/back.jpg");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+        
+    }
+    .email-input{
+        width: 100%;
+    }
+    
+    .form-container-login{
+        background-image: url("/public/images/login/back.jpg");
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form-container form{
+        width: 50vw;
+        height: 550px;
+        margin: 0 auto;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        border: 1px solid var(--white-alpha-40);
+        background: var(--white-alpha-25);
+        backdrop-filter: var(--backdrope-filter-blur);
+    }
+    .form-container-login form{
+        width: 50vw;
+        height: auto;
+        margin: 0 auto;
+        padding: 2rem;
+        border: 1px solid var(--white-alpha-40);
+        background: var(--white-alpha-25);
+        backdrop-filter: var(--backdrope-filter-blur);
+    }
+    .input-log{
+        width :100%;
+        background: var(--white-alpha-25);
+        padding: .7rem 1.4rem;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin: .5rem 0;
+        padding-left: .5rem;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.40);
+        font-size: 14px;
+    
+    }
+    form input ,textarea{
+        width :50%;
+        background: var(--white-alpha-25);
+        padding: .7rem 1.4rem;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        margin: .5rem 0;
+        padding-left: .5rem;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.40);
+        font-size: 14px;
+    
+    }
+    
+    form .btn{
+        cursor: pointer;
+        background: #FEF5EF;
+        color: #000;
+        text-transform: uppercase;
+        margin-left: 150px;
+        margin-top: 20px;
+    }
+    
+    form .btn:hover{
+        background: transparent;
+        border: 2px solid var(--pink);
+        color: var(--pink);
+    }
+    .form-container h3{
+        
+        text-transform: uppercase;
+        color: #000;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .password-container {
+        position: relative;
+       
+    }
+    .password-checklist{
+    padding-left: 30px;
+    }
+     
+    .password-container input{
+       width: 100%;
+       margin-right: 200px;
+    
+       
+    }
+    
+    .password-container i {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+    
+    .checklist-list .valid {
+        color: green;
+    }
+    .checklist-list .invalid {
+        color: red;
+    }
+    .password-checklist {
+        display: none; /* Initially hidden */
+        margin-top: 10px;
+        border-radius: 5px;
+        
+      
+    }
+    
+    .es{
+        display: flex;
+        gap: 10px;
+       
+    
+    }
+    .log{
+        text-align: center;
+    }
+    .profile-table{
+        border: 1px solid;
+        padding: 20px;
+        width: 80%;
+    }
+    .profile-table td{
+        padding-bottom: 10px;
+    }
+    
+    .profile-table button{
+        border: 1px solid #B19361;
+        padding: 6px;
+        
+      
+
+    }
