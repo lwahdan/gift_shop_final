@@ -16,29 +16,40 @@ class AuthController extends Controller {
             'email' => '',
             'message' => ''
         ];
-
+    
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
-
+    
             $result = $this->userModel->login($email, $password);
-
+    
             if ($result['m'] === 'success') {
                 $userData = $this->userModel->getUserByEmail($email);
                 if ($userData) {
+                    // Store user data in session
                     foreach ($userData as $key => $value) {
                         $_SESSION[$key] = $value;
                     }
-                    header('Location:/customers/profile');
-                    exit();
+    
+                    // Check if the email contains '@admin'
+                    if (strpos($email, '@admin') !== false) {
+                        // Redirect to admin dashboard
+                        header('Location: /customers/dashboard');
+                        exit();
+                    } else {
+                        // Redirect to user profile
+                        header('Location: /customers/profile');
+                        exit();
+                    }
                 }
             }
             $data['message'] = $result['message'];
             $data['email'] = $email;
         }
-
+    
         $this->view('customers/login', $data);  // Updated view path
     }
+    
 
     public function register() {
         $data = [

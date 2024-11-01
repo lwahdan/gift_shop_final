@@ -65,7 +65,7 @@
                                     </li>
 
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="customers/product-details-default">Shop
+                                        <a href="#">Shop
                                             <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
@@ -80,7 +80,7 @@
                                                         <li><a href="/customers/wishlist">Wishlist</a></li>
                                                         <li><a href="/customers/checkout">Checkout</a></li>
                                                         <li><a href="/customers/login">Login</a></li>
-                                                        <li><a href="/customers/my-account">My Account</a></li>
+                                                        <li><a href="/customers/profile">My Account</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -215,7 +215,7 @@
                             <li><a href="/customers/wishlist">Wishlist</a></li>
                             <li><a href="/customers/checkout">Checkout</a></li>
                             <li><a href="/customers/login">Login</a></li>
-                            <li><a href="/customers/my-account">My Account</a></li>
+                            <li><a href="/customers/profile">My Account</a></li>
                         </ul>
                         <!--                            </li>-->
                         <!--                        </ul>-->

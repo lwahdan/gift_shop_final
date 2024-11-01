@@ -1,16 +1,15 @@
 <?php
 include_once './models/UserModel.php';
-class ProfileController extends Controller{
+
+class ProfileController extends Controller {
     private $userModel;
 
     public function __construct() {
-       
         $this->userModel = $this->model('UserModel');
     }
 
+    // Method to view the user profile
     public function viewProfile() {
-        
-
         // Check if user is logged in
         if (!isset($_SESSION['username'])) {
             header('Location: /customers/login');
@@ -23,38 +22,40 @@ class ProfileController extends Controller{
 
         // Pass data to the view
         $this->view('customers/profile', ['user' => $userData]);
-        $this->view('/customers/profile', $userData); 
-        
     }
 
-   public function saveProfile() {
-    if (!isset($_POST['username'], $_POST['email'], $_POST['first_name'], $_POST['last_name'], $_POST['phone_number'], $_POST['address'])) {
-        echo "Some fields are missing.";
-        exit();
+    // Method to save (update) the user profile
+    public function saveProfile() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $userId = $_SESSION['user_id'];
+            $data = [
+                'username' => htmlspecialchars(trim($_POST['username'])),
+                'email' => htmlspecialchars(trim($_POST['email'])),
+                'first_name' => htmlspecialchars(trim($_POST['first_name'])),
+                'last_name' => htmlspecialchars(trim($_POST['last_name'])),
+                'phone_number' => htmlspecialchars(trim($_POST['phone_number'])),
+                'address' => htmlspecialchars(trim($_POST['address'])),
+                'city' => htmlspecialchars(trim($_POST['city'])),
+                'postal_code' => htmlspecialchars(trim($_POST['postal_code'])),
+                'country' => htmlspecialchars(trim($_POST['country']))
+            ];
+    
+            // Update profile and get result
+            $result = $this->userModel->updateUser($userId, $data['username'], $data['email'], $data['first_name'], $data['last_name'], $data['phone_number'], $data['address']);
+    
+            // Show feedback
+            $_SESSION['message'] = $result ? "Profile updated successfully." : "Profile update failed. Please try again.";
+    
+            // Update session data if successful
+            if ($result) {
+                foreach ($data as $key => $value) {
+                    $_SESSION[$key] = $value;
+                }
+            }
+    
+            // Redirect back to profile page
+            header('Location: /customers/profile');
+            exit();
+        }
     }
-
-    // Get user ID from the session
-    $userId = $_SESSION['user_id'];
-
-    // Get form input
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $phoneNumber = $_POST['phone_number'];
-    $address = $_POST['address'];
-
-    // Update user profile in the database
-    $this->userModel->updateProfile($userId, $username, $email, $firstName, $lastName, $phoneNumber, $address);
-
-    // Redirect back to the profile page
-    header('Location: /customers/profile');
-    exit();
 }
-
-    
-    
-}
-  
-
-   

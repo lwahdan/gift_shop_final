@@ -10,8 +10,8 @@
                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                             <nav aria-label="breadcrumb">
                                 <ul>
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                    <li><a href="/customers/index">Home</a></li>
+                                    <li><a href="#">Shop</a></li>
                                     <li class="active" aria-current="page">Product Details Default</li>
                                 </ul>
                             </nav>

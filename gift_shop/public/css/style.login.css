@@ -168,3 +168,19 @@
     .log{
         text-align: center;
     }
+    .profile-table{
+        border: 1px solid;
+        padding: 20px;
+        width: 80%;
+    }
+    .profile-table td{
+        padding-bottom: 10px;
+    }
+    
+    .profile-table button{
+        border: 1px solid #B19361;
+        padding: 6px;
+        
+      
+
+    }

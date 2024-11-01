@@ -50,13 +50,15 @@ class Core {
         'customers/index' => 'CustomerController@index',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
+        'customers/logout' => 'AuthController@logout',
         'customers/profile' => 'ProfileController@viewProfile',
-        'customers/saveProfile' => 'ProfileController@saveProfile',
-        'customers/editProfile' => 'ProfileController@saveProfile',
+        'profile/update', 'ProfileController@update',
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
+       
+        'customers/dashboard' => 'AdminController@dashboard',
        
     ];
 
