@@ -1,5 +1,5 @@
 <?php require_once 'views/partials/header.php';
-$dir = '../public/images/imgs/';?>
+$dir = '../public/images/product/';?>
 
 <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
     <div class="container">
@@ -27,6 +27,8 @@ $dir = '../public/images/imgs/';?>
                                                     <a href="#" data-bs-toggle="modal"
                                                        data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
                                                     <a href="/wishlist"><i class="icon-heart"></i></a>
+                                                    <a href="/compare"><i class="icon-shuffle"></i></a>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -56,6 +58,9 @@ $dir = '../public/images/imgs/';?>
                             <?php endif; ?>
                         </div>
                     </div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </div>

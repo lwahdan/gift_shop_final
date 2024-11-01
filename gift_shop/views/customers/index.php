@@ -212,6 +212,9 @@ require_once 'controllers/ProductController.php';
                             <?php endforeach; ?>
                         </div>
                     </div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </div>

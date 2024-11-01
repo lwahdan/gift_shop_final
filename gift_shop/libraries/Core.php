@@ -57,7 +57,7 @@ class Core {
 
         //product Routes
         'product/details' => 'ProductController@details',
-        // 'products' => 'ProductController@index',
+        'products' => 'ProductController@index',
         'home' => 'ProductController@home',
 
         //admin routes
