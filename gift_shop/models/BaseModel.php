@@ -49,18 +49,30 @@ class BaseModel
         $statement->execute($data);
     }
 
-    public function update($id, $data)
-    {
-        $fields = '';
+    public function update($id, $data) {
+        // Build the SET part of the query dynamically based on the keys in $data
+        $fields = [];
         foreach ($data as $key => $value) {
-            $fields .= $key . '=:' . $key . ',';
+            $fields[] = "$key = :$key";
         }
-
-        $fields = rtrim($fields, ',');
-        $sql = "UPDATE $this->table SET $fields WHERE id = :id";
+        $fields = implode(", ", $fields);
+    
+        // Prepare the SQL statement
+        $sql = "UPDATE {$this->table} SET $fields WHERE id = :id";
         $statement = $this->pdo->prepare($sql);
-        $statement->execute($data);
+    
+        // Bind each parameter from the $data array
+        foreach ($data as $key => $value) {
+            $statement->bindValue(":$key", $value);
+        }
+    
+        // Bind the ID parameter
+        $statement->bindValue(":id", $id);
+    
+        // Execute the statement
+        return $statement->execute();
     }
+    
 
     public function delete($id)
     {

@@ -22,26 +22,33 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach ($orders as $order): ?>
-            <tr>
-                <td><?= htmlspecialchars($order['order_id']) ?></td>
-                <td><?= htmlspecialchars($order['status']) ?></td>
-                <td>
-                    <!-- Cancel Order -->
-                    <form action="" method="post" style="display:inline;">
-                        <input type="hidden" name="action" value="cancel">
-                        <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['order_id']) ?>">
-                        <button type="submit" onclick="return confirm('Are you sure you want to cancel this order?');">Cancel</button>
-                    </form>
-                    <!-- Update Status -->
-                    <form action="" method="post" style="display:inline;">
-                        <input type="hidden" name="action" value="update">
-                        <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['order_id']) ?>">
-                        <input type="text" name="status" placeholder="New Status" required>
-                        <button type="submit">Update Status</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
+    <?php if (!empty($orders)): ?>
+    <?php foreach ($orders as $order): ?>
+        <tr>
+            <td><?= htmlspecialchars($order['id']) ?></td>
+            <td><?= htmlspecialchars($order['status']) ?></td>
+            <td>
+                <!-- Cancel Order -->
+                <form action="" method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="cancel">
+                    <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['id']) ?>">
+                    <button type="submit" onclick="return confirm('Are you sure you want to cancel this order?');">Cancel</button>
+                </form>
+                <!-- Update Status -->
+                <form action="" method="post" style="display:inline;">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="order_id" value="<?= htmlspecialchars($order['id']) ?>">
+                    <input type="text" name="status" placeholder="New Status" required>
+                    <button type="submit">Update Status</button>
+                </form>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+<?php else: ?>
+    <tr>
+        <td colspan="3">No orders available.</td>
+    </tr>
+<?php endif; ?>
+
     </tbody>
 </table>

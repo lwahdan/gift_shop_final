@@ -61,7 +61,7 @@
                             <nav>
                                 <ul>
                                     <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="/customers/index">Home</a>
+                                        <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
 
                                     <li class="has-dropdown has-megaitem">
@@ -77,7 +77,7 @@
                                                     <ul class="mega-menu-sub">
                                                         <li><a href="/customers/cart">Cart</a></li>
                                                         <!--                                                            <li><a href="empty-cart.html">Empty Cart</a></li>-->
-                                                        <li><a href="/customers/wishlist">Wishlist</a></li>
+                                                        <li><a href="/wishlist">Wishlist</a></li>
                                                         <li><a href="/customers/checkout">Checkout</a></li>
                                                         <li><a href="/customers/login">Login</a></li>
                                                         <li><a href="/customers/profile">My Account</a></li>
@@ -212,7 +212,7 @@
                         <!--                                <a href="#">Shop Pages</a>-->
                         <ul class="mobile-sub-menu">
                             <li><a href="/customers/cart">Cart</a></li>
-                            <li><a href="/customers/wishlist">Wishlist</a></li>
+                            <li><a href="/wishlist">Wishlist</a></li>
                             <li><a href="/customers/checkout">Checkout</a></li>
                             <li><a href="/customers/login">Login</a></li>
                             <li><a href="/customers/profile">My Account</a></li>
@@ -247,7 +247,7 @@
             </ul>
 
             <ul class="user-link">
-                <li><a href="/customers/wishlist">Wishlist</a></li>
+                <li><a href="/wishlist">Wishlist</a></li>
                 <li><a href="/customers/cart">Cart</a></li>
                 <li><a href="/customers/checkout">Checkout</a></li>
             </ul>
@@ -284,7 +284,7 @@
         </ul>
 
         <ul class="user-link">
-            <li><a href="/customers/wishlist">Wishlist</a></li>
+            <li><a href="/wishlist">Wishlist</a></li>
             <li><a href="/customers/cart">Cart</a></li>
             <li><a href="/customers/checkout">Checkout</a></li>
         </ul>
