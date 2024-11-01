@@ -31,7 +31,7 @@ class Core {
         // customers Routes
         'customers/_404' => 'CustomerController@_404',
         'customers/about-us' => 'CustomerController@about',
-        'customers/cart' => 'CustomerController@cart',
+        // 'customers/cart' => 'CustomerController@cart',
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
@@ -75,6 +75,11 @@ class Core {
         'dashboard/editProduct/{id}' => 'DashboardController@editProduct',
         'dashboard/updateProduct/{id}' => 'DashboardController@updateProduct',
         'dashboard/deleteProduct/{id}' => 'DashboardController@deleteProduct',
+
+        // Cart routes
+        'cart/add' => 'CartController@add',
+        'customers/cart' => 'CartController@index',
+        'cart/remove' => 'CartController@remove',
 
 
     ];

@@ -184,9 +184,15 @@ require_once 'controllers/ProductController.php';
                                             <span>sale</span>
                                         </div>
                                         <div class="action-link">
+
                                         <div class="action-link-left">
-                                                <a href="javascript:void(0);" onclick="addToCart(<?php echo $row['id']; ?>)">Add to Cart</a>
-                                            </div>
+                                             <form action="/cart/add" method="POST">
+                                             <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                             <button type="submit" class="btn btn-link">Add to Cart</button>
+                                             </form>
+                                        </div>
+
+
                                             <div class="action-link-right">
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>

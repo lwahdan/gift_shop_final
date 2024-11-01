@@ -15,11 +15,6 @@ class ProductModel extends BaseModel {
         return $result['total'];
     }
 
-    public function getProductById($id)
-    {
-        $stmt = $this->pdo->prepare("SELECT id, product_name, price, image_url FROM products WHERE id = :id");
-        $stmt->execute(['id' => $id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+   
 }
 

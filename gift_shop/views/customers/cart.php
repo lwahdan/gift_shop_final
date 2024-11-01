@@ -45,14 +45,35 @@
                                     </tr>
                                     </thead>
                                     <!-- End Cart Table Head -->
-                                    <tbody id="cart-items">
-                                    <!-- Cart items will be dynamically loaded here by JavaScript -->
-                                    </tbody>
+    <tbody id="cart-items">
+    <?php foreach ($cartItems as $item): ?>
+        <tr>
+            <td class="product_remove">
+                <form action="/cart/remove" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+            
+              <td class="product_thumb">
+                 <img src="<?php echo $dir . urlencode($item['image_url']); ?>" alt="Product Image">
+              </td>
+
+
+            <td class="product_name"><?php echo htmlspecialchars($item['name']); ?></td>
+            <td class="product-price">$<?php echo number_format($item['price'], 2); ?></td>
+            <td class="product_quantity"><?php echo $item['quantity']; ?></td>
+            <td class="product_total">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+
                                 </table>
                             </div>
                             <div class="cart_submit">
-                                <a href="javascript:void(0);" class="btn btn-md btn-golden" onclick="proceedToCheckout()">Proceed to Checkout</a>
+                                <button class="btn btn-md btn-golden" type="submit">Checkout</button>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -73,9 +94,8 @@
                             <h3>Coupon</h3>
                             <div class="coupon_inner">
                                 <p>Enter your coupon code if you have one.</p>
-                                <!-- Input for Coupon Code -->
-                                <input id="coupon-code" class="mb-2" placeholder="Coupon code" type="text">
-                                <button type="button" class="btn btn-md btn-golden" onclick="applyCoupon()">Apply coupon</button>
+                                <input class="mb-2" placeholder="Coupon code" type="text">
+                                <button type="submit" class="btn btn-md btn-golden">Apply coupon</button>
 
                                 <!-- Placeholder for Messages -->
                                 <div id="coupon-message" class="mt-2"></div>
@@ -108,8 +128,9 @@
                                     <p id="total-amount" class="cart_amount">$0.00</p>
                                 </div>
 
+                                
                                 <div class="checkout_btn">
-                                    <a href="javascript:void(0);" class="btn btn-md btn-golden" onclick="redirectToCheckout()">Checkout</a>
+                                    <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
                                 </div>
 
                             </div>
