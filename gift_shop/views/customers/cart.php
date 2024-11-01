@@ -109,7 +109,7 @@
                                 </div>
 
                                 <div class="checkout_btn">
-                                    <a href="/customers/checkout" class="btn btn-md btn-golden">Checkout</a>
+                                    <a href="javascript:void(0);" class="btn btn-md btn-golden" onclick="redirectToCheckout()">Checkout</a>
                                 </div>
 
                             </div>

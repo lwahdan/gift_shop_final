@@ -23,6 +23,7 @@
     </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
     <!-- ...:::: Start Checkout Section:::... -->
+<div id="mycheckout">
     <div class="checkout-section">
         <div class="container">
             <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
@@ -65,7 +66,7 @@
                                     </label>
                                 </div>
                                 <div class="order_button pt-3">
-                                    <button class="btn btn-md btn-black-default-hover" type="submit">SUBMIT ORDER</button>
+                                    <button class="btn btn-md btn-black-default-hover" type="button" onclick="submitOrder()">SUBMIT ORDER</button>
                                 </div>
                             </div>
                         </form>
@@ -74,6 +75,7 @@
             </div>
         </div>
     </div>
+</div>
     <!-- ...:::: End Checkout Section:::... -->
 
 <?php require 'views/partials/footer.php'; ?>

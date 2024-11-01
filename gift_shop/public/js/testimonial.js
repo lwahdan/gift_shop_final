@@ -1,4 +1,4 @@
-// testimonial
+// testimonialll
 let currentIndex = 0;
 const slides = document.querySelectorAll('.testimonial-slide');
 let slideInterval;
@@ -160,46 +160,7 @@ function updateQuantity(productId, newQuantity) {
 
 
 // coupon
-// function applyCoupon() {
-//     const couponCode = document.getElementById('coupon-code').value;
-//     const originalTotal = calculateCartTotal();
-//
-//     if (!couponCode) {
-//         displayCouponMessage("Please enter a coupon code.", "error");
-//         return;
-//     }
-//
-//     fetch('/controllers/apply_coupon.php', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ code: couponCode })
-//     })
-//         .then(response => {
-//             if (!response.ok) {
-//                 throw new Error(`Network response was not ok. Status: ${response.status}`);
-//             }
-//             return response.json();
-//         })
-//         .then(data => {
-//             if (data.success) {
-//                 // const discountAmount = originalTotal * (data.discount_value / 100); // Assuming it's a percentage discount
-//                 const discountAmount = originalTotal * (parseFloat(data.discount_value) / 100);
-//                 const newTotal = originalTotal - discountAmount;
-//
-//                 document.getElementById('original-total').textContent = `$${originalTotal.toFixed(2)}`;
-//                 document.getElementById('discount-amount').textContent = `- $${discountAmount.toFixed(2)}`;
-//                 document.getElementById('new-total').textContent = `$${newTotal.toFixed(2)}`;
-//
-//                 displayCouponMessage("Coupon applied successfully!", "success");
-//             } else {
-//                 displayCouponMessage(data.message, "error");
-//             }
-//         })
-//         .catch(error => {
-//             console.error("Error applying coupon:", error);
-//             displayCouponMessage("Error applying coupon. Please try again later.", "error");
-//         });
-// }
+
 
 function updateCartTotals(discountedSubtotal) {
     const shippingCost = 50;
@@ -294,6 +255,74 @@ function proceedToCheckout() {
 }
 
 
+// checkout
+function redirectToCheckout() {
+    // First, store the cart data (if needed for session management or verification)
+    sessionStorage.setItem('cartData', JSON.stringify(getCartData())); // Optional step if needed
+
+    // Redirect to checkout page
+    window.location.href = "/customers/checkout";
+}
+
+// Utility function to fetch cart data (can use getCookie or your existing cart retrieval logic)
+function getCartData() {
+    return JSON.parse(getCookie('cart') || '[]');
+}
+
+function loadCheckoutItems() {
+    const cart = JSON.parse(getCookie('cart') || '[]');
+    const checkoutItemsContainer = document.getElementById('checkout-items');
+    let subtotal = 0;
+    const shippingCost = 50;
+
+    // Clear any existing rows
+    checkoutItemsContainer.innerHTML = '';
+
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.productName} <strong> × ${item.quantity}</strong></td>
+            <td>$${itemTotal.toFixed(2)}</td>
+        `;
+        checkoutItemsContainer.appendChild(row);
+    });
+
+    const total = subtotal + shippingCost;
+
+    document.getElementById('subtotal-amount').textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById('shipping-amount').textContent = `$${shippingCost.toFixed(2)}`;
+    document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+}
+
+function submitOrder() {
+    // Confirm submission with SweetAlert
+    Swal.fire({
+        icon: 'success',
+        title: 'Order Submitted Successfully',
+        text: 'Thank you for your order!',
+        confirmButtonText: 'OK',
+        confirmButtonColor: '#b19361',
+        footer: '<a href="/customers/index" style="color: #b19361; font-weight: bold;">Continue Shopping</a>'
+    }).then(() => {
+        // Optionally, you can redirect to a different page or reset the cart here
+        // window.location.href = '/order-confirmation';
+        clearCart(); // Example to clear cart cookies, optional
+    });
+}
+
+// Function to clear the cart after submission (optional)
+function clearCart() {
+    setCookie('cart', '', -1); // Set cart cookie to expire immediately
+    document.getElementById('checkout-items').innerHTML = ''; // Clear checkout table
+    document.getElementById('subtotal-amount').textContent = '$0.00';
+    document.getElementById('total-amount').textContent = '$0.00';
+}
+
+
+
 document.addEventListener("DOMContentLoaded", function() {
     // Start the auto-slide function for the other page
     startAutoSlide();
@@ -301,6 +330,10 @@ document.addEventListener("DOMContentLoaded", function() {
     // Load cart items if on the cart.php page
     if (document.getElementById('cart-items')) {
         loadCartItems();
+    }
+
+    if (document.getElementById('checkout-items')) {
+        loadCheckoutItems();
     }
 });
 
