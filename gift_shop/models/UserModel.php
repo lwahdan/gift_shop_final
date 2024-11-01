@@ -8,6 +8,10 @@ class UserModel extends BaseModel {
         parent::__construct('users');
     }
 
+    public function getTotalUsers(){
+        return $this->all();
+    }
+
     // Method for user registration
     public function register($username, $email, $password, $confirm_password, $first_name, $last_name, $phone_number, $address, $city, $postal_code, $country) {
         // Validate required fields
