@@ -2,7 +2,7 @@
 <?php require_once 'views/partials/header.php';
 //  require_once 'config/db.php'; 
 
-$dir = '../public/images/imgs/';
+$dir = '../public/images/product/';
 
 require_once 'controllers/ProductController.php';
 
@@ -146,7 +146,7 @@ require_once 'controllers/ProductController.php';
 <!-- Start Product Default Slider Section -->
      <!-- Start Section Content Text Area -->
 
-<div class="product-default-slider-section section-top-gap-100 section-fluid">
+<div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">
             <div class="row">
@@ -227,7 +227,7 @@ require_once 'controllers/ProductController.php';
 
 
 <!-- Start Product Default Slider Section -->
-<div class="product-default-slider-section section-top-gap-100 section-fluid section-inner-bg">
+<div class="product-default-slider-section section-top-gap-100 section-inner-bg">
     <!-- Start Section Content Text Area -->
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">

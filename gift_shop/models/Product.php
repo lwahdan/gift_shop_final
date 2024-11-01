@@ -11,6 +11,9 @@ class Product extends BaseModel
         parent::__construct("products");
     }
 
-    // Add any product-specific methods here if needed in the future
+    public function getTotalProducts() {
+        $statement = $this->pdo->query("SELECT COUNT(*) as total FROM products");
+        return $statement->fetch(PDO::FETCH_ASSOC)['total'];
+    }
 }
 ?>

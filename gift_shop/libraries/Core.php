@@ -17,7 +17,7 @@ class Core {
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'DashboardController@login',
         'admin/manage_category' => 'DashboardController@manageCategory',
-        'admin/manage_products' => 'DashboardController@manageProducts',
+        'admin/products' => 'DashboardController@manageProducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
         'admin/manage_customers' => 'DashboardController@manageCustomers',
         'admin/manage_coupon' => 'DashboardController@manageCoupon',
@@ -46,7 +46,7 @@ class Core {
 
         //product Routes
         'product/details' => 'ProductController@details',
-        'products' => 'ProductController@index',
+        // 'products' => 'ProductController@index',
         'home' => 'ProductController@home',
 
         //admin routes
@@ -57,7 +57,16 @@ class Core {
         'wishlist/add/{product_id}' => 'WishlistController@add',
         'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
 
+        // Routes for managing products
+        'dashboard/manageProducts' => 'DashboardController@manageProducts',
+        'dashboard/createProduct' => 'DashboardController@createProduct',
+        'dashboard/addProduct' => 'DashboardController@addProduct',
+        'dashboard/editProduct/{id}' => 'DashboardController@editProduct',
+        'dashboard/updateProduct/{id}' => 'DashboardController@updateProduct',
+        'dashboard/deleteProduct/{id}' => 'DashboardController@deleteProduct',
+
     ];
+    
 
     public function __construct() {
         $this->dispatch();
