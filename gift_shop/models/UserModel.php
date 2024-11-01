@@ -20,7 +20,7 @@ class UserModel extends BaseModel {
     }
 }
 
-<?php
+
 include_once './config/db.php';
 require_once 'BaseModel.php';
 

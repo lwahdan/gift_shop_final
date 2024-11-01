@@ -172,6 +172,7 @@
         border: 1px solid;
         padding: 20px;
         width: 80%;
+        margin-bottom: 10px 
     }
     .profile-table td{
         padding-bottom: 10px;
@@ -184,3 +185,14 @@
       
 
     }
+    #editProfileForm{
+        border: 1px solid;
+        padding: 20px;
+        width: 80%;
+        margin: 10px 0px;
+    }
+    #editProfileForm button{
+        border: 1px solid #B19361;
+        padding: 6px;
+    }
+

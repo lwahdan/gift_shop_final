@@ -50,7 +50,7 @@
                             <div class="account-dashboard">
                                 <div class="container">
                                     <div class="profile-form">
-                                        <h3>Profile Information</h3>
+                                        
                                         <div class="profile-table">
                                             <table>
                                                 <tr>
@@ -79,49 +79,89 @@
                                     </div>
 
                                     <div id="editProfileForm" style="display:none;">
-    <h3>Edit Profile</h3>
     <form action="/profile/saveProfile" method="POST">
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
-        </div>
-        <div>
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required>
-        </div>
-        <div>
-            <label for="last_name">Last Name:</label>
-            <input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
-        </div>
-        <div>
-            <label for="phone_number">Phone Number:</label>
-            <input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
-        </div>
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required>
-        </div>
-        <div>
-            <label for="city">City:</label>
-            <input type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required>
-        </div>
-        <div>
-            <label for="postal_code">Postal Code:</label>
-            <input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required>
-        </div>
-        <div>
-            <label for="country">Country:</label>
-            <input type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required>
-        </div>
-        <div>
-            <button type="submit">Save Changes</button>
-        </div>
+        <table>
+            <tr>
+                <td>
+                    <label for="username">Username:</label>
+                </td>
+                <td>
+                    <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="email">Email:</label>
+                </td>
+                <td>
+                    <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="first_name">First Name:</label>
+                </td>
+                <td>
+                    <input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="last_name">Last Name:</label>
+                </td>
+                <td>
+                    <input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="phone_number">Phone Number:</label>
+                </td>
+                <td>
+                    <input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="address">Address:</label>
+                </td>
+                <td>
+                    <input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="city">City:</label>
+                </td>
+                <td>
+                    <input type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="postal_code">Postal Code:</label>
+                </td>
+                <td>
+                    <input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="country">Country:</label>
+                </td>
+                <td>
+                    <input type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Save</button>
+                </td>
+            </tr>
+        </table>
     </form>
 </div>
+
 
                                 </div>
                             </div>
