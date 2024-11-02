@@ -34,11 +34,15 @@ require_once 'controllers/CategoryController.php';
                     <div class="container">
                         <div class="row">
                             <div class="col-auto">
+                            <div class="myhero1">
                                 <div class="hero-slider-content">
-                                    <h4 class="subtitle">New collection</h4>
-                                    <h2 class="title">Best Of NeoCon <br> Gold Award </h2>
-                                    <a href="/products"
-                                       class="btn btn-lg btn-outline-golden">shop now </a>
+                                    <h4 class="subtitle subtitle1">Flowers that Speak the Language of Joy</h4>
+                                    <h2 class="title title1">Beautiful blooms<br>to make your moments</h2>
+                                    <h2 id="unforgettable"> unforgettable </h2>
+                                    <!-- <a href="/customers/product-details-default"
+                                       class="hero_btn1">shop now </a> -->
+                                       <button class="hero_btn1" onclick="window.location.href='/products'" >shop now</button>
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -56,12 +60,14 @@ require_once 'controllers/CategoryController.php';
                     <div>
                         <div class="row">
                             <div class="col-auto">
+                            <div class="hero2">
                                 <div class="hero-slider-content">
-                                    <h4 class="subtitle">New collection</h4>
-                                    <h2 class="title">Luxy Chairs <br> Design Award </h2>
-                                    <a href="/customers/product-details-default"
-                                       class="btn btn-lg btn-outline-golden">shop now </a>
+                                <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
+<h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
+<h2 id="unforgettable2">Breathe Life Indoors</h2>
+<a href="/products" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
 
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +162,6 @@ require_once 'controllers/CategoryController.php';
                     <div class="section-content-gap">
                         <div class="secton-content">
                             <h3 class="section-title">THE NEW ARRIVALS</h3>
-                            <p>Preorder now to receive exclusive deals & gifts</p>
                         </div>
                     </div>
                 </div>
@@ -183,7 +188,6 @@ require_once 'controllers/CategoryController.php';
                                             <img src="<?php echo $dir . str_replace(' ', '%20', $row['image_url']); ?>" alt="Product Image">
                                         </a>
                                         <div class="tag">
-                                            <span>sale</span>
                                         </div>
                                         <div class="action-link">
 
@@ -196,7 +200,6 @@ require_once 'controllers/CategoryController.php';
 
 
                                             <div class="action-link-right">
-                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
                                                 <a href="/customers/wishlist"><i class="icon-heart"></i></a>
                                             </div>
                                         </div>
@@ -238,6 +241,7 @@ require_once 'controllers/CategoryController.php';
 
 
 <!-- Start Banner Section -->
+ <div class="mybanner">
 <div class="banner-section">
 <?php 
         $categoryController = new Category;
@@ -308,6 +312,7 @@ require_once 'controllers/CategoryController.php';
         </div>
         <!-- End Banner Single Item -->
     </div>
+</div>
 </div>
 <!-- End Banner Section -->
 

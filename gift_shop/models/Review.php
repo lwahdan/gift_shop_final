@@ -81,9 +81,4 @@ public function getUserById($userId) {
 
     return $stmt->fetch(PDO::FETCH_ASSOC); // Return user data or false if not found
 }
-
-    
-    
-    
-
 }

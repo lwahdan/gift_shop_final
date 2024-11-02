@@ -36,7 +36,7 @@ class Core {
         'customers/checkout' => 'CustomerController@checkout',
         'customers/faq' => 'CustomerController@faq',
 
-        'customers/index' => 'CustomerController@index',
+        // 'customers/index' => 'CustomerController@index',
         
         'customers/my-account' => 'CustomerController@account',
         'customers/privacy-policy' => 'CustomerController@privacy',

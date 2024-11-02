@@ -1,3 +1,16 @@
+<?php
+// Retrieve cart items from the cookie if it exists
+$cartItems = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
+
+// Initialize subtotal
+$subtotal = 0;
+
+// Calculate the subtotal based on cart items
+foreach ($cartItems as $item) {
+    $subtotal += $item['price'] * $item['quantity'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -11,7 +24,7 @@
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
-    <link rel="stylesheet" href="../public/css/style.login.css">
+<link rel="stylesheet" href="../public/css/style.login.css">
     <link rel="stylesheet" href="../public/css/testimonial.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -37,6 +50,8 @@
     <link rel="stylesheet" href="../public/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="../public/css/plugins/plugins.min.css">
     <link rel="stylesheet" href="../public/css/style.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -51,7 +66,7 @@
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="/customers/index"><img src="../public/images/logo/logo_black.png" alt=""></a>
+                                <a href="/home"><img src="../public/images/extra/logo.png" alt="" class="logo_img"></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
@@ -104,13 +119,13 @@
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                     <i class="icon-heart"></i>
-                                    <span class="item-count">3</span>
+                                    <!-- <span class="item-count">3</span> -->
                                 </a>
                             </li>
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-bag"></i>
-                                    <span class="item-count">3</span>
+                                    <!-- <span class="item-count">3</span> -->
                                 </a>
                             </li>
                             <li>
@@ -230,7 +245,7 @@
         <!-- Start Mobile contact Info -->
         <div class="mobile-contact-info">
             <div class="logo">
-                <a href="/customers/index"><img src="../public/images/logo/logo_white.png" alt=""></a>
+                <a href="/home"><img src="../public/images/extra/logo.png" alt=""></a>
             </div>
 
             <address class="address">
@@ -267,21 +282,24 @@
     <!-- Start Mobile contact Info -->
     <div class="mobile-contact-info">
         <div class="logo">
-            <a href="/customers/index"><img src="../public/images/logo/logo_white.png" alt=""></a>
+            <a href="/home"><img src="../public/images/extra/logo.png" alt=""></a>
         </div>
 
         <address class="address">
-            <span>Address: Your address goes here.</span>
-            <span>Call Us: 0123456789, 0123456789</span>
-            <span>Email: demo@example.com</span>
-        </address>
+           <span> <a href="mailto:moment@gmail.com">moment@gmail.com</a></span>
+           <span>  <a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ar-Razi St. 141, Amman</a></span>
 
-        <ul class="social-link">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-        </ul>
+<span><a href="tel:+0777891011">0777891011</a></span>
+            </address>
+
+            <ul class="social-link">
+
+                            <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://x.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+
+            </ul>
 
         <ul class="user-link">
             <li><a href="/wishlist">Wishlist</a></li>
@@ -303,68 +321,33 @@
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
         <ul class="offcanvas-cart">
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-1/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$49.00</span>
-                        </div>
+    <!-- Loop through cart items and display each one -->
+    <?php foreach ($cartItems as $item): ?>
+        <li class="offcanvas-cart-item-single">
+            <div class="offcanvas-cart-item-block">
+                <div class="offcanvas-cart-item-content">
+                    <a href="#" class="offcanvas-cart-item-link"><?php echo htmlspecialchars($item['name']); ?></a>
+                    <div class="offcanvas-cart-item-details">
+                        <span class="offcanvas-cart-item-details-quantity"><?php echo $item['quantity']; ?> x </span>
+                        <span class="offcanvas-cart-item-details-price">$<?php echo number_format($item['price'], 2); ?></span>
                     </div>
                 </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-2/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                            <span class="offcanvas-cart-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-3/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-        </ul>
-        <div class="offcanvas-cart-total-price">
-            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-            <span class="offcanvas-cart-total-price-value">$170.00</span>
-        </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<!-- Display the subtotal -->
+<div class="offcanvas-cart-total-price">
+    <span class="offcanvas-cart-total-price-text">Subtotal:</span>
+    <span class="offcanvas-cart-total-price-value">
+        $<?php echo number_format($subtotal, 2); ?>
+    </span>
+</div>
+
         <ul class="offcanvas-cart-action-button">
-            <li><a href="cart.html" class="btn btn-block btn-golden">View Cart</a></li>
-            <li><a href="compare.html" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
+            <li><a href="/customers/cart" class="btn btn-block btn-golden">View Cart</a></li>
+            <li><a href="/customers/checkout" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
         </ul>
     </div> <!-- End  Offcanvas Addcart Wrapper -->
 
@@ -446,12 +429,10 @@
 <!-- Start Offcanvas Search Bar Section -->
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
-
-    <form action="/search" method="get">
-        <input type="search" name="search" placeholder="type keyword(s) here" />
+    <form>
+        <input type="search" placeholder="type keyword(s) here" />
         <button type="submit" class="btn btn-lg btn-golden">Search</button>
     </form>
-    
 </div>
 <!-- End Offcanvas Search Bar Section -->
 
