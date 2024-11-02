@@ -1,5 +1,10 @@
 <?php require_once 'views/partials/header.php';?>
 
+
+
+
+
+
     <!-- ...:::: Start Breadcrumb Section:::... -->
     <div class="breadcrumb-section breadcrumb-bg-color--golden">
         <div class="breadcrumb-wrapper">
@@ -238,166 +243,77 @@
                                 </div> <!-- End Product Details Tab Content Singel -->
                                 <!-- Start Product Details Tab Content Singel -->
                                 <div class="tab-pane" id="review">
-                                    <div class="single-tab-content-item">
-                                        <!-- Start - Review Comment -->
-                                        <ul class="comment">
-                                            <!-- Start - Review Comment list-->
-                                            <li class="comment-list">
-                                                <div class="comment-wrapper">
-                                                    <div class="comment-img">
-                                                        <img src="../public/assets/images/user/image-1.png" alt="">
-                                                    </div>
-                                                    <div class="comment-content">
-                                                        <div class="comment-content-top">
-                                                            <div class="comment-content-left">
-                                                                <h6 class="comment-name">Kaedyn Fraser</h6>
-                                                                <ul class="review-star">
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="empty"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="comment-content-right">
-                                                                <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                            </div>
-                                                        </div>
+    <div class="single-tab-content-item">
+        <!-- Start - Review Comment -->
+        <ul class="comment">
+            <!-- Start - Review Comment list-->
+            <?php if (!empty($reviews)): ?>
+                <?php foreach ($reviews as $review): ?>
+                    <li>
+                        <div class="review-item">
+                            <p><strong>Rating:</strong> <?php echo htmlspecialchars($review['rating']); ?> Stars</p>
+                            <p><strong>Your Review:</strong> <?php echo htmlspecialchars($review['review_text']); ?></p>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <li>No reviews yet. Be the first to leave a review!</li>
+            <?php endif; ?>
+            <!-- End - Review Comment -->
+        </ul>
 
-                                                        <div class="para-content">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                Tempora inventore dolorem a unde modi iste odio amet,
-                                                                fugit fuga aliquam, voluptatem maiores animi dolor nulla
-                                                                magnam ea! Dignissimos aspernatur cumque nam quod sint
-                                                                provident modi alias culpa, inventore deserunt
-                                                                accusantium amet earum soluta consequatur quasi eum eius
-                                                                laboriosam, maiores praesentium explicabo enim dolores
-                                                                quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam
-                                                                officia, saepe repellat. </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- Start - Review Comment Reply-->
-                                                <ul class="comment-reply">
-                                                    <li class="comment-reply-list">
-                                                        <div class="comment-wrapper">
-                                                            <div class="comment-img">
-                                                                <img src="../public/assets/images/user/image-2.png" alt="">
-                                                            </div>
-                                                            <div class="comment-content">
-                                                                <div class="comment-content-top">
-                                                                    <div class="comment-content-left">
-                                                                        <h6 class="comment-name">Oaklee Odom</h6>
-                                                                    </div>
-                                                                    <div class="comment-content-right">
-                                                                        <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                                    </div>
-                                                                </div>
+        <!-- Display success or error messages -->
+        <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); ?></div>
+            <?php unset($_SESSION['success_message']); // Clear after displaying ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-error"><?php echo htmlspecialchars($_SESSION['error_message']); ?></div>
+            <?php unset($_SESSION['error_message']); // Clear after displaying ?>
+        <?php endif; ?>
 
-                                                                <div class="para-content">
-                                                                    <p>Lorem ipsum dolor sit amet, consectetur
-                                                                        adipisicing elit. Tempora inventore dolorem a
-                                                                        unde modi iste odio amet, fugit fuga aliquam,
-                                                                        voluptatem maiores animi dolor nulla magnam ea!
-                                                                        Dignissimos aspernatur cumque nam quod sint
-                                                                        provident modi alias culpa, inventore deserunt
-                                                                        accusantium amet earum soluta consequatur quasi
-                                                                        eum eius laboriosam, maiores praesentium
-                                                                        explicabo enim dolores quaerat! Voluptas ad
-                                                                        ullam quia odio sint sunt. Ipsam officia, saepe
-                                                                        repellat. </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                </ul> <!-- End - Review Comment Reply-->
-                                            </li> <!-- End - Review Comment list-->
-                                            <!-- Start - Review Comment list-->
-                                            <li class="comment-list">
-                                                <div class="comment-wrapper">
-                                                    <div class="comment-img">
-                                                        <img src="../public/assets/images/user/image-3.png" alt="">
-                                                    </div>
-                                                    <div class="comment-content">
-                                                        <div class="comment-content-top">
-                                                            <div class="comment-content-left">
-                                                                <h6 class="comment-name">Jaydin Jones</h6>
-                                                                <ul class="review-star">
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="fill"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                    <li class="empty"><i class="ion-android-star"></i>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="comment-content-right">
-                                                                <a href="#"><i class="fa fa-reply"></i>Reply</a>
-                                                            </div>
-                                                        </div>
+        <!-- Check and display the submitted review -->
+        <?php if (isset($_SESSION['submitted_review'])): ?>
+            <div class="submitted-review">
+                <h4>Your Submitted Review:</h4>
+                <p><strong>Rating:</strong> <?php echo htmlspecialchars($_SESSION['submitted_review']['rating']); ?> Stars</p>
+                <p><strong>Your Review:</strong> <?php echo htmlspecialchars($_SESSION['submitted_review']['review_text']); ?></p>
+            </div>
+            <?php unset($_SESSION['submitted_review']); // Clear after displaying ?>
+        <?php endif; ?>
 
-                                                        <div class="para-content">
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                                Tempora inventore dolorem a unde modi iste odio amet,
-                                                                fugit fuga aliquam, voluptatem maiores animi dolor nulla
-                                                                magnam ea! Dignissimos aspernatur cumque nam quod sint
-                                                                provident modi alias culpa, inventore deserunt
-                                                                accusantium amet earum soluta consequatur quasi eum eius
-                                                                laboriosam, maiores praesentium explicabo enim dolores
-                                                                quaerat! Voluptas ad ullam quia odio sint sunt. Ipsam
-                                                                officia, saepe repellat. </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li> <!-- End - Review Comment list-->
-                                        </ul> <!-- End - Review Comment -->
-                                        <div class="review-form">
-                                            <div class="review-form-text-top">
-                                                <h5>ADD A REVIEW</h5>
-                                                <p>Your email address will not be published. Required fields are marked
-                                                    *</p>
-                                            </div>
+        <table class="rev-form">
+            <tr>
+                <th colspan="2"><h3>Leave a Review</h3></th>
+            </tr>
+            <form action="/reviews/create" method="POST">
+                <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product['id']); ?>">
+                <tr>
+                    <td><label for="review_text">Your Review:</label></td>
+                    <td><textarea name="review_text" id="review_text" placeholder="Write your review..." required></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="rating">Rating:</label></td>
+                    <td>
+                        <select name="rating" id="rating" required>
+                            <option value="">Select a rating</option>
+                            <option value="1">1 Star</option>
+                            <option value="2">2 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="5">5 Stars</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="submit" class="rev-btn">Submit Review</button></td>
+                </tr>
+            </form>
+        </table>
+    </div>
+</div>
 
-                                            <form action="#" method="post">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="default-form-box">
-                                                            <label for="comment-name">Your name <span>*</span></label>
-                                                            <input id="comment-name" type="text"
-                                                                placeholder="Enter your name" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="default-form-box">
-                                                            <label for="comment-email">Your Email <span>*</span></label>
-                                                            <input id="comment-email" type="email"
-                                                                placeholder="Enter your email" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <div class="default-form-box">
-                                                            <label for="comment-review-text">Your review
-                                                                <span>*</span></label>
-                                                            <textarea id="comment-review-text"
-                                                                placeholder="Write a review" required></textarea>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12">
-                                                        <button class="btn btn-md btn-black-default-hover"
-                                                            type="submit">Submit</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
+
                                     </div>
                                 </div> <!-- End Product Details Tab Content Singel -->
                             </div>

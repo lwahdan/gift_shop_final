@@ -73,13 +73,50 @@
                                                     <td><strong>Address</strong></td>
                                                     <td><?php echo htmlspecialchars($user['address']); ?></td>
                                                 </tr>
+                                                <tr>
+                                              <td>  <button id="editProfileBtn">Edit</button></td>
+                                              <td> <button id="changePasswordBtn">Change Password</button></td>
+                                                </tr>
                                             </table>
-                                            <button id="editProfileBtn">Edit</button>
+                                                
+                                          
+                                                
+                                           
+                                          
+                                            
                                         </div>
                                     </div>
-
+                                    <div id="changePasswordForm" style="display:none;">
+    <form action="/auth/changePassword" method="POST">
+    <?php
+// Display message if it exists
+if (isset($_SESSION['message'])) {
+    echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
+    unset($_SESSION['message']); // Clear the message after displaying it
+}
+?>
+        <table>
+            <tr>
+                <td><label for="current_password">Current Password:</label></td>
+                <td><input type="password" name="current_password" id="current_password" required></td>
+            </tr>
+            <tr>
+                <td><label for="new_password">New Password:</label></td>
+                <td><input type="password" name="new_password" id="new_password" required></td>
+            </tr>
+            <tr>
+                <td><label for="confirm_new_password">Confirm New Password:</label></td>
+                <td><input type="password" name="confirm_new_password" id="confirm_new_password" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Change Password</button></td>
+                <td colspan="2"><button type="button" id="cancelEditBtn">Cancel</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
                                     <div id="editProfileForm" style="display:none;">
-    <form action="/profile/saveProfile" method="POST">
+    <form action="/profile/updateProfile" method="POST">
         <table>
             <tr>
                 <td>
@@ -157,6 +194,8 @@
                 <td colspan="2">
                     <button type="submit">Save</button>
                 </td>
+                <td colspan="2"> <button type="button" id="cancelEditBtn">Cancel</button></td>
+               
             </tr>
         </table>
     </form>
@@ -237,7 +276,8 @@
                         <a href="#" class="view">Edit</a>
                         <p><strong>Bobby Jackson</strong></p>
                         <address>
-                            Address: Your address goes here.
+                        <td><strong>Address</strong></td>
+                        <td><?php echo htmlspecialchars($user['address']); ?></td>
                         </address>
                     </div>
 
@@ -298,4 +338,17 @@
     document.getElementById('cancelEditBtn').addEventListener('click', function() {
         document.getElementById('editProfileForm').style.display = 'none';
     });
+    document.getElementById('changePasswordBtn').addEventListener('click', function() {
+    document.querySelector('.profile-table').style.display = 'none';
+    document.getElementById('changePasswordForm').style.display = 'block';
+});
+document.getElementById('cancelEditBtn').addEventListener('click', function() {
+    document.getElementById('editProfileForm').style.display = 'none';
+});
+
+document.getElementById('cancelPasswordChangeBtn').addEventListener('click', function() {
+    document.getElementById('changePasswordForm').style.display = 'none';
+    document.querySelector('.profile-table').style.display = 'block'; // Show the profile table again
+});
+
 </script>

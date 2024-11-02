@@ -1,26 +1,78 @@
-<section>
-    <div class="profile-form">
-        <h2>Edit Profile</h2>
-        <form action="/customers/saveProfile" method="POST">
-            <p><label for="username"><strong>Username:</strong></label>
-            <input type="text" id="username" name="username" value="<?php echo htmlspecialchars($user['username']); ?>" required></p>
+<?php if (isset($_SESSION['message'])): ?>
+            <div class="error-message" style="color:red;">
+                <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']); // Clear the message after displaying it
+                ?>
+            </div>
+        <?php endif; ?>
+<div class="profile-table">
+    <table>
+        <tr>
+            <td><strong>Username</strong></td>
+            <td><?php echo htmlspecialchars($user['username']); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Email</strong></td>
+            <td><?php echo htmlspecialchars($user['email']); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Full Name</strong></td>
+            <td><?php echo htmlspecialchars($user['first_name'] . ' ' . $user['last_name']); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Phone Number</strong></td>
+            <td><?php echo htmlspecialchars($user['phone_number']); ?></td>
+        </tr>
+        <tr>
+            <td><strong>Address</strong></td>
+            <td><?php echo htmlspecialchars($user['address']); ?></td>
+        </tr>
+    </table>
+    <tr>
+    <button id="editProfileBtn">Edit</button>
+    <button id="changePasswordBtn">Change Password</button>
+        </tr>
+</div>
 
-            <p><label for="email"><strong>Email:</strong></label>
-            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required></p>
+<div id="editProfileForm" style="display:none;">
+    <form action="/profile/updateProfile" method="POST">
+        <table>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required></td>
+            </tr>
+            <tr>
+                <td><label for="first_name">First Name:</label></td>
+                <td><input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></td>
+            </tr>
+            <tr>
+                <td><label for="last_name">Last Name:</label></td>
+                <td><input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></td>
+            </tr>
+            <tr>
+                <td><label for="phone_number">Phone Number:</label></td>
+                <td><input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required></td>
+            </tr>
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td><input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+                <td colspan="2"> <button type="button" id="cancelEditBtn">Cancel</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
 
-            <p><label for="first_name"><strong>First Name:</strong></label>
-            <input type="text" id="first_name" name="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></p>
-
-            <p><label for="last_name"><strong>Last Name:</strong></label>
-            <input type="text" id="last_name" name="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></p>
-
-            <p><label for="phone_number"><strong>Phone Number:</strong></label>
-            <input type="text" id="phone_number" name="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required></p>
-
-            <p><label for="address"><strong>Address:</strong></label>
-            <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($user['address']); ?>" required></p>
-
-            <button type="submit">Save Changes</button>
-        </form>
-    </div>
-</section>
+<script>
+    document.getElementById('editProfileBtn').addEventListener('click', function() {
+        document.querySelector('.profile-table').style.display = 'none';
+        document.getElementById('editProfileForm').style.display = 'block';
+    });
+</script>

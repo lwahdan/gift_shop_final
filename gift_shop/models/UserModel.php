@@ -1,29 +1,4 @@
-
 <?php
-<<<<<<< HEAD
-require_once 'BaseModel.php';
-
-class UserModel extends BaseModel {
-    public function __construct() {
-        parent::__construct('users');
-    }
-
-    public function getTotalUsers() {
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) AS total FROM users");
-        $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result['total'];
-    }
-
-    public function toggleStatus($id, $status) {
-        $stmt = $this->pdo->prepare("UPDATE users SET status = :status WHERE id = :id");
-        return $stmt->execute(['status' => $status, 'id' => $id]);
-    }
-}
-
-
-=======
->>>>>>> 52a34ce454066bee9627ba0bcacba62560b9b806
 include_once './config/db.php';
 require_once 'BaseModel.php';
 
@@ -32,7 +7,7 @@ class UserModel extends BaseModel {
         parent::__construct('users');
     }
 
-    public function getTotalUsers(){
+    public function getTotalUsers() {
         return $this->all();
     }
 
@@ -42,37 +17,39 @@ class UserModel extends BaseModel {
         if (empty($username) || empty($email) || empty($first_name) || empty($last_name) || 
             empty($phone_number) || empty($address) || empty($password) || empty($confirm_password) || 
             empty($country) || empty($city) || empty($postal_code)) {
-            return ['m' => 'error', 'message' => "All fields are required."];
+            return ['status' => 'error', 'message' => "All fields are required."];
         }
 
         // Check if passwords match
         if ($password !== $confirm_password) {
-            return ['m' => 'error', 'message' => "Passwords do not match."];
+            return ['status' => 'error', 'message' => "Passwords do not match."];
         }
 
         // Validate password strength
         if (!$this->isValidPassword($password)) {
-            return ['m' => 'error', 'message' => "Password must meet security requirements."];
+            return ['status' => 'error', 'message' => "Password must meet security requirements."];
         }
 
         // Check if email already exists
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute(['email' => $email]);
         if ($stmt->rowCount() > 0) {
-            return ['m' => 'error', 'message' => "Email already exists."];
+            return ['status' => 'error', 'message' => "Email already exists."];
         }
 
         // Check if username already exists
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
         $stmt->execute(['username' => $username]);
         if ($stmt->rowCount() > 0) {
-            return ['m' => 'error', 'message' => "Username already exists."];
+            return ['status' => 'error', 'message' => "Username already exists."];
         }
 
         // Hash the password
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
         
         try {
+            $this->pdo->beginTransaction();
+
             // Insert the new user into the database
             $this->create([
                 'username' => $username,
@@ -87,9 +64,12 @@ class UserModel extends BaseModel {
                 'password' => $hashedPassword,
                 'status' => 1 // Assuming status 1 means active
             ]);
-            return ['m' => 'success', 'message' => "Registration successful!"];
+            
+            $this->pdo->commit();
+            return ['status' => 'success', 'message' => "Registration successful!"];
         } catch (PDOException $e) {
-            return ['m' => 'error', 'message' => "Registration failed. Please try again."];
+            $this->pdo->rollBack();
+            return ['status' => 'error', 'message' => "Registration failed. Please try again."];
         }
     }
 
@@ -97,35 +77,36 @@ class UserModel extends BaseModel {
     public function login($email, $password) {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
         $stmt->execute(['email' => $email]);
-
+    
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            // Check if the account is disabled
             if ((int)$user['status'] !== 1) {
-                return ['m' => 'error', 'message' => "Your account is disabled."];
+                return ['status' => 'error', 'message' => "Your account is disabled."];
             }
-            // Verify the password
             if (password_verify($password, $user['password'])) {
-                return ['m' => 'success', 'message' => "Login successful!"];
+                // Set session variables
+                $_SESSION['user_id'] = $user['id']; // Ensure this line is executed
+                $_SESSION['username'] = $user['username']; // Set username or any other necessary info
+    
+                return [
+                    'status' => 'success', 
+                    'user_id' => $user['id'],  // Include user ID
+                    'username' => $user['username'] // Include username if needed
+                ];
             }
-            return ['m' => 'error', 'message' => "Incorrect password."];
+            return ['status' => 'error', 'message' => "Incorrect password."];
         }
-        return ['m' => 'error', 'message' => "Email not found."];
+        return ['status' => 'error', 'message' => "Email not found."];
     }
-
-    // Method to get user by email
-    public function getUserByEmail($email) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
-        $stmt->execute(['email' => $email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
+    
+    
 
     // Method to validate password strength
     private function isValidPassword($password) {
         return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password);
     }
 
-    // Method to get user by username
+    // Fetch user data by username
     public function getUserByUsername($username) {
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE username = :username");
         $stmt->bindParam(':username', $username);
@@ -133,20 +114,85 @@ class UserModel extends BaseModel {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-  
-    public function updateUser($userId, $username, $email, $firstName, $lastName, $phoneNumber, $address) {
-        // Prepare the SQL statement
-        $stmt = $this->pdo->prepare("UPDATE users SET username = ?, email = ?, first_name = ?, last_name = ?, phone_number = ?, address = ? WHERE id = ?");
-        
-        // Bind parameters to the statement
-        $stmt->bindParam("sssssii", $username, $email, $firstName, $lastName, $phoneNumber, $address, $userId);
-        
-        // Execute the statement and check for success
-        if ($stmt->execute()) {
-            return true; // Return true if the update was successful
-        } else {
-            return false; // Return false if there was an error
-        }
+    // Fetch user data by email
+    public function getUserByEmail($email) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = :email");
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
     
+    // Update user profile
+    public function updateUserProfile($username, $data) {
+        // Prepare the base SQL statement
+        $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, 
+                address = :address, city = :city, country = :country, postal_code = :postal_code";
+        
+        $params = [
+            ':first_name' => $data['first_name'],
+            ':last_name' => $data['last_name'],
+            ':phone_number' => $data['phone_number'],
+            ':address' => $data['address'],
+            ':city' => $data['city'],
+            ':country' => $data['country'],
+            ':postal_code' => $data['postal_code'],
+        ];
+        
+        // Include username and email in the update if they are set
+        if (isset($data['username'])) {
+            $sql .= ", username = :username";
+            $params[':username'] = $data['username'];
+        }
+        if (isset($data['email'])) {
+            $sql .= ", email = :email";
+            $params[':email'] = $data['email'];
+        }
+        
+        $sql .= " WHERE username = :current_username";
+        $params[':current_username'] = $username;
+        
+        // Prepare and execute the statement
+        $stmt = $this->pdo->prepare($sql);
+        
+        return $stmt->execute($params) ? ['status' => 'success', 'message' => "Profile updated successfully."] : ['status' => 'error', 'message' => "Profile update failed."];
+    }
+
+    // Fetch user data by ID
+    public function getUserById($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(PDO::FETCH_ASSOC); // Return user data or false if not found
+    }
+
+    // Method to change password
+    public function changePassword($userId, $currentPassword, $newPassword) {
+        // Get the current user by ID
+        $user = $this->getUserById($userId);
+
+        if (!$user) {
+            return ['status' => 'error', 'message' => "User not found."];
+        }
+
+        // Verify the current password
+        if (!password_verify($currentPassword, $user['password'])) {
+            return ['status' => 'error', 'message' => "Current password is incorrect."];
+        }
+
+        // Validate new password strength
+        if (!$this->isValidPassword($newPassword)) {
+            return ['status' => 'error', 'message' => "New password does not meet security requirements."];
+        }
+
+        // Hash the new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+        // Update password in the database
+        $stmt = $this->pdo->prepare("UPDATE users SET password = :password WHERE id = :id");
+        $stmt->bindParam(':password', $hashedPassword);
+        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
+
+        return $stmt->execute() ? ['status' => 'success', 'message' => "Password changed successfully."] : ['status' => 'error', 'message' => "Password change failed. Please try again."];
+    }
 }
