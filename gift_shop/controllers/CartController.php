@@ -38,7 +38,7 @@ class CartController extends Controller
     public function index()
     {
     $cartItems = $this->cartModel->getCartItems();
-    $dir = "/gift_shop/public/images/product/default/";
+    $dir = "../public/images/product/";
     $this->view('customers/cart', ['cartItems' => $cartItems, 'dir' => $dir]);
     }
 

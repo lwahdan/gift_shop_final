@@ -12,7 +12,6 @@ class Core {
         'admin/users' => 'UserController@index',
         'admin/users/create' => 'UserController@create',
         'admin/users/status' => 'UserController@toggleStatus',
-
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'DashboardController@login',
@@ -29,32 +28,18 @@ class Core {
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
         // customers Routes
-        'customers/_404' => 'CustomerController@_404',
         'customers/about-us' => 'CustomerController@about',
-        // 'customers/cart' => 'CustomerController@cart',
         'customers/contact-us' => 'CustomerController@contact',
-        'customers/checkout' => 'CustomerController@checkout',
-        'customers/faq' => 'CustomerController@faq',
-
-        // 'customers/index' => 'CustomerController@index',
-        
+        'customers/checkout' => 'CustomerController@checkout',        
         'customers/my-account' => 'CustomerController@account',
-        'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
-
         'customers/logout' => 'AuthController@logout',
         'customers/profile' => 'ProfileController@viewProfile',
-        'profile/update', 'ProfileController@update',
-
-        // 'customers/product-details-default' => 'CustomerController@product',
+        'profile/update', 'ProfileController@updateProfile',
         'customers/wishlist' => 'CustomerController@wishlist',
-
-      
         'customers/dashboard' => 'AdminController@dashboard',
        
-
-
         //product Routes
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
@@ -84,6 +69,18 @@ class Core {
         'cart/remove' => 'CartController@remove',
         'cart/calculateTotals' => 'CartController@calculateTotals',
         'cart/applyCoupon' => 'CartController@applyCoupon',
+
+        'customers/logout' => 'AuthController@logout',
+        'customers/edit' => 'UserController@editProfile',
+        'customers/updateProfile' => 'UserController@updateProfile',
+     'customers/profile' => 'ProfileController@viewProfile',
+'profile/updateProfile' => 'ProfileController@updateProfile',
+'customers/edit' => 'UserController@editProfile',
+'customers/updateProfile' => 'UserController@updateProfile',
+'customers/profile' => 'ProfileController@viewProfile',
+    'customers/profile/updateProfile' => 'ProfileController@updateProfile',
+    'customers/changePassword'=>'ProfileController@changePassword',
+    'auth/changePassword' => 'ProfileController@changePassword',
     ];
     
 

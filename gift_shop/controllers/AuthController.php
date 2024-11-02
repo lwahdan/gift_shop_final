@@ -3,13 +3,10 @@ include_once './models/UserModel.php';
 
 class AuthController extends Controller {
     private $userModel;
-   
 
     public function __construct() {
         $this->userModel = $this->model('UserModel');
-  
     }
-    
 
     public function login() {
         $data = [
@@ -26,8 +23,8 @@ class AuthController extends Controller {
             // Check the response from the login method
             if ($result['status'] === 'success') {
                 // Login was successful, set session variables
-                $_SESSION['user_id'] = $result['user_id']; // Ensure you retrieve the user ID from the model if needed
-                $_SESSION['username'] = $result['username']; // Ensure you retrieve the username or any necessary info
+                $_SESSION['user_id'] = $result['user_id']; 
+                $_SESSION['username'] = $result['username']; 
     
                 // Redirect to profile page
                 header('Location: /customers/profile');
@@ -38,9 +35,8 @@ class AuthController extends Controller {
             }
         }
     
-        $this->view('customers/login', $data); // Updated view path
+        $this->view('/customers/login', $data);  // Updated view path
     }
-    
 
     public function register() {
         $data = [
@@ -85,10 +81,8 @@ class AuthController extends Controller {
                 $data['country']
             );
 
-            if ($result['m'] === 'success') {
-                $_SESSION['username'] = $data['username'];
+            if ($result['status'] === 'success') {
                 header('Location:/customers/login');
-               
                 exit();
             }
             
@@ -98,66 +92,12 @@ class AuthController extends Controller {
         $this->view('/customers/register', $data);  // Updated view path
     }
 
-public function logout() {
-    session_start(); // Start the session
-    session_unset(); // Unset all session variables
-    session_destroy(); // Destroy the session
-
-    // Redirect to the login page
-    header('Location: /customers/login');
-    exit();
-}  
-public function changePassword() {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $currentPassword = $_POST['current_password'];
-        $newPassword = $_POST['new_password'];
-        $confirmNewPassword = $_POST['confirm_new_password'];
-
-        // Validate the new password
-        if (!$this->isValidPassword($newPassword)) {
-            $_SESSION['message'] = "New password must meet security requirements.";
-            header('Location: /customers/profile');
-            exit();
-        }
-
-        // Check if new passwords match
-        if ($newPassword !== $confirmNewPassword) {
-            $_SESSION['message'] = "New passwords do not match.";
-            header('Location: /customers/profile');
-            exit();
-        }
-
-        // Verify current password
-        $userId = $_SESSION['user_id'];
-        $userData = $this->userModel->getUserById($userId); // You need to create this method
-
-        if (!password_verify($currentPassword, $userData['password'])) {
-            $_SESSION['message'] = "Current password is incorrect.";
-            header('Location: /customers/profile');
-            exit();
-        }
-
-        // Hash new password and update the database
-        $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
-        $result = $this->userModel->updatePassword($userId, $hashedNewPassword); // You need to create this method
-
-        if ($result) {
-            $_SESSION['message'] = "Password changed successfully.";
-        } else {
-            $_SESSION['message'] = "Failed to change password. Please try again.";
-        }
-
-        // Redirect to profile page
-        header('Location: /customers/profile');
+    public function logout() {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['username']);
+        session_destroy();
+        header('Location: /customers/login');
         exit();
     }
-
 }
-// Method to validate password strength
-    private function isValidPassword($password) {
-        return preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/', $password);
-    }
-}
-
-
-?>  
+?>
