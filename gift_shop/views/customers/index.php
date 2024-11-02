@@ -5,6 +5,8 @@
 $dir = '../public/images/product/';
 
 require_once 'controllers/ProductController.php';
+require_once 'controllers/CategoryController.php';
+
 
 // $productController = new ProductController();
 // $products = $productController->productModel->all();
@@ -32,18 +34,12 @@ require_once 'controllers/ProductController.php';
                     <div class="container">
                         <div class="row">
                             <div class="col-auto">
-                                <div class="myhero1">
                                 <div class="hero-slider-content">
-                                    <h4 class="subtitle subtitle1">Flowers that Speak the Language of Joy</h4>
-                                    <h2 class="title title1">Beautiful blooms<br>to make your moments</h2>
-                                    <h2 id="unforgettable"> unforgettable </h2>
-                                    <!-- <a href="/customers/product-details-default"
-                                       class="hero_btn1">shop now </a> -->
-                                       <button class="hero_btn1" onclick="window.location.href='/customers/product-details-default'" >shop now</button>
-
+                                    <h4 class="subtitle">New collection</h4>
+                                    <h2 class="title">Best Of NeoCon <br> Gold Award </h2>
+                                    <a href="/products"
+                                       class="btn btn-lg btn-outline-golden">shop now </a>
                                 </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -60,16 +56,13 @@ require_once 'controllers/ProductController.php';
                     <div>
                         <div class="row">
                             <div class="col-auto">
-                                <div class="hero2">
                                 <div class="hero-slider-content">
-                                <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
-<h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
-<h2 id="unforgettable2">Breathe Life Indoors</h2>
-<a href="/customers/product-details-default" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
+                                    <h4 class="subtitle">New collection</h4>
+                                    <h2 class="title">Luxy Chairs <br> Design Award </h2>
+                                    <a href="/customers/product-details-default"
+                                       class="btn btn-lg btn-outline-golden">shop now </a>
 
                                 </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -100,7 +93,7 @@ require_once 'controllers/ProductController.php';
                         </div>
                         <div class="content">
                             <h6 class="title">FREE SHIPPING</h6>
-                            <p>Get 10% cash back, free shipping, free returns, for loyal customers!</p>
+                            <p>Get 10% cash back, free shipping, free returns, and more at 1000+ top retailers!</p>
                         </div>
                     </div>
                 </div>
@@ -126,7 +119,7 @@ require_once 'controllers/ProductController.php';
                         </div>
                         <div class="content">
                             <h6 class="title">SAFE PAYMENT</h6>
-                            <p>Make Your Payment in Cash When Your Order is Delivered to You</p>
+                            <p>Pay with the world’s most popular and secure payment methods.</p>
                         </div>
                     </div>
                 </div>
@@ -138,8 +131,8 @@ require_once 'controllers/ProductController.php';
                             <img src="../public/images/icons/service-promo-4.png" alt="">
                         </div>
                         <div class="content">
-                            <h6 class="title">HAPPY CUSTOMER</h6>
-                            <p>Apply Your Discount Code During Checkout to Enjoy Savings on Your Purchase</p>
+                            <h6 class="title">LOYALTY CUSTOMER</h6>
+                            <p>Card for the other 30% of their purchases at a rate of 1% cash back.</p>
                         </div>
                     </div>
                 </div>
@@ -163,6 +156,7 @@ require_once 'controllers/ProductController.php';
                     <div class="section-content-gap">
                         <div class="secton-content">
                             <h3 class="section-title">THE NEW ARRIVALS</h3>
+                            <p>Preorder now to receive exclusive deals & gifts</p>
                         </div>
                     </div>
                 </div>
@@ -179,8 +173,8 @@ require_once 'controllers/ProductController.php';
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <div class="product-slider-default-2rows default-slider-nav-arrow">
-                    <div class="swiper-container product-default-slider-4grid-2row">
+                <!--<div class="product-slider-default-2rows default-slider-nav-arrow">-->
+                   <div class="swiper-container product-default-slider-4grid-2row">
                         <div class="swiper-wrapper">
                             <?php foreach ($products as $row): ?>
                                 <div class="product-default-single-item product-color--golden swiper-slide">
@@ -189,7 +183,7 @@ require_once 'controllers/ProductController.php';
                                             <img src="<?php echo $dir . str_replace(' ', '%20', $row['image_url']); ?>" alt="Product Image">
                                         </a>
                                         <div class="tag">
-                                            <!-- <span>sale</span> -->
+                                            <span>sale</span>
                                         </div>
                                         <div class="action-link">
 
@@ -227,19 +221,29 @@ require_once 'controllers/ProductController.php';
                         </div>
                     </div>
                     <!-- Navigation buttons -->
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-                </div>
+                   <!-- <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div> -->
+                <!--</div>-->
             </div>
         </div>
     </div>
 </div>
+
+
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
+      
+    <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
                                 
 <!-- End Product Default Slider Section -->
 
+
 <!-- Start Banner Section -->
-<div id="mybanner">
 <div class="banner-section">
+<?php 
+        $categoryController = new Category;
+        $categories = $categoryController->all(); 
+        
+    ?>
     <div class="banner-wrapper clearfix">
         <!-- Start Banner Single Item -->
         <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
@@ -247,13 +251,16 @@ require_once 'controllers/ProductController.php';
             <div class="image">
                 <img class="img-fluid" src="../public/images/banner/banner-style-4-img-1.jpg" alt="">
             </div>
-            <a href="product-details-default.html" class="content">
+            <a href="/category/1" class="content">
                 <div class="inner">
-                    <h4 class="title">Flowers</h4>
+                    <h4 class="title">Bar Stool</h4>
+                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
         </div>
+	
+
         <!-- End Banner Single Item -->
         <!-- Start Banner Single Item -->
         <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
@@ -261,9 +268,10 @@ require_once 'controllers/ProductController.php';
             <div class="image">
                 <img class="img-fluid" src="../public/images/banner/banner-style-4-img-2.jpg" alt="">
             </div>
-            <a href="product-details-default.html" class="content">
+            <a href="/category/2" class="content">
                 <div class="inner">
-                    <h4 class="title">Plants</h4>
+                    <h4 class="title">Armchairs</h4>
+                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -275,9 +283,10 @@ require_once 'controllers/ProductController.php';
             <div class="image">
                 <img class="img-fluid" src="../public/images/banner/banner-style-4-img-3.jpg" alt="">
             </div>
-            <a href="product-details-default.html" class="content">
+            <a href="/category/3" class="content">
                 <div class="inner">
-                    <h4 class="title">Chocolates</h4>
+                    <h4 class="title">lighting</h4>
+                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -289,9 +298,10 @@ require_once 'controllers/ProductController.php';
             <div class="image">
                 <img class="img-fluid" src="../public/images/banner/banner-style-4-img-4.jpg" alt="">
             </div>
-            <a href="product-details-default.html" class="content">
+            <a href="/category/1" class="content">
                 <div class="inner">
-                    <h4 class="title">Packages</h4>
+                    <h4 class="title">Easy chairs</h4>
+                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -299,8 +309,8 @@ require_once 'controllers/ProductController.php';
         <!-- End Banner Single Item -->
     </div>
 </div>
-</div>
 <!-- End Banner Section -->
+
 
 
 <!--testimonials start-->
