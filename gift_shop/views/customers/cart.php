@@ -161,6 +161,7 @@
     </div> <!-- ...:::: End Cart Section:::... -->
 
 <?php require 'views/partials/footer.php'; ?>
+
 <script>
     document.getElementById('checkout-btn').addEventListener('click', function(e) {
         e.preventDefault();
@@ -214,18 +215,60 @@
 
 document.querySelectorAll('.quantity-input').forEach(input => {
     input.addEventListener('change', function() {
-        const quantity = parseInt(this.value); // Get the new quantity
-        const price = parseFloat(this.getAttribute('data-price')); // Get the price per item
-        const id = this.getAttribute('data-id'); // Get the item ID
+        const quantity = parseInt(this.value);
+        const price = parseFloat(this.getAttribute('data-price'));
+        const id = this.getAttribute('data-id'); 
         
-        // Calculate the new total for this row
         const newTotal = (quantity * price).toFixed(2);
-
-        // Update the total display in the row
+    
         document.getElementById(`total-${id}`).textContent = `$${newTotal}`;
 
+        updateCartCookie(id, quantity);
+        // updateCartTotals();
     });
 });
+
+function updateCartCookie(productId, quantity) {
+    // Retrieve and decode the cart data from the cookie
+    let cart = {};
+    const cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)cart\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+    if (cookieValue) {
+        try {
+            cart = JSON.parse(decodeURIComponent(cookieValue)); // Decode the cookie data
+        } catch (error) {
+            console.error("Error parsing cart cookie:", error);
+            return;
+        }
+    }
+
+    if (cart[productId]) {
+        cart[productId].quantity = quantity;
+    }
+
+    // Save the updated cart back to the cookie with encoding
+    document.cookie = "cart=" + encodeURIComponent(JSON.stringify(cart)) + "; path=/";
+
+    //console.log("Updated cart cookie:", cart);
+}
+
+
+function updateCartTotals() {
+    let subtotal = 0;
+
+    document.querySelectorAll('.quantity-input').forEach(input => {
+        const quantity = parseInt(input.value);
+        const price = parseFloat(input.getAttribute('data-price'));
+        subtotal += quantity * price;
+    });
+    
+    document.getElementById('subtotal-amount').textContent = `$${subtotal.toFixed(2)}`;
+
+    const shipping = 50.00;
+    const total = subtotal + shipping;
+    document.getElementById('total-amount').textContent = `$${total.toFixed(2)}`;
+}
+
 
 </script>
 

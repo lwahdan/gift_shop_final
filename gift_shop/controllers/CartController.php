@@ -84,7 +84,7 @@ class CartController extends Controller
         $discountPercentage = (float) rtrim($coupon['discount_value'], '%');
         $discountAmount = $subtotal * ($discountPercentage / 100);
 
-        setcookie('discount', $discountAmount, time() + (86400 * 30), "/"); 
+        setcookie('discount', $discountAmount, time() + 300, "/"); 
 
        
         $shipping = 50.00;
