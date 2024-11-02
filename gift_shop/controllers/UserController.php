@@ -91,5 +91,8 @@ class UserController extends Controller {
         header('Location: /admin/users');
         exit();
     }
-
+    public function editUser($id) {
+        $user = $this->userModel->find($id);
+        $this->view('/customers/profile', ['user' => $user]);
+    }
 }
