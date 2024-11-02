@@ -1,4 +1,5 @@
 <!-- Start Footer Section -->
+<div id="myfooter">
 <footer class="footer-section footer-bg">
     <div class="footer-wrapper">
         <!-- Start Footer Top -->
@@ -128,6 +129,7 @@
 
     </div>
 </footer>
+</div>
 <!-- End Footer Section -->
 
 <!-- material-scrolltop button -->

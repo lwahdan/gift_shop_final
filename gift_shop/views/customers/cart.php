@@ -51,10 +51,10 @@
             <td class="product_remove">
                 <form action="/cart/remove" method="POST">
                     <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="btn-delete">Delete</button>
                 </form>
             </td>
-            
+
               <td class="product_thumb">
                  <img src="<?php echo $dir . urlencode($item['image_url']); ?>" alt="Product Image">
               </td>
@@ -62,17 +62,24 @@
 
             <td class="product_name"><?php echo htmlspecialchars($item['name']); ?></td>
             <td class="product-price">$<?php echo number_format($item['price'], 2); ?></td>
-            <td class="product_quantity"><?php echo $item['quantity']; ?></td>
-            <td class="product_total">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+            <td class="product_quantity">
+    <input type="number" class="quantity-input" value="<?php echo $item['quantity']; ?>" min="1" data-price="<?php echo $item['price']; ?>" data-id="<?php echo $item['id']; ?>">
+</td>
+<td class="product_total" id="total-<?php echo $item['id']; ?>">$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+
         </tr>
     <?php endforeach; ?>
     </tbody>
 
                                 </table>
                             </div>
-                            <div class="cart_submit">
-                                <button class="btn btn-md btn-golden" type="submit">Checkout</button>
-                            </div>
+
+                                <div class="checkout_btn">
+                                <a href="#" id="checkout-btn" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                </div>
+                                <div class="continue_shopping">
+                                <a href="/home" class="btn btn-md btn-golden">Continue Shopping</a>
+                                </div>
                             
                         </div>
                     </div>
@@ -88,14 +95,17 @@
             <div class="container">
                 <div class="row">
 
-               <!--coupon start leen-->
+               <!--coupon table start leen-->
                     <div class="col-lg-6 col-md-6">
                         <div class="coupon_code left" data-aos="fade-up" data-aos-delay="200">
                             <h3>Coupon</h3>
                             <div class="coupon_inner">
                                 <p>Enter your coupon code if you have one.</p>
-                                <input class="mb-2" placeholder="Coupon code" type="text">
-                                <button type="submit" class="btn btn-md btn-golden">Apply coupon</button>
+                                <form id="apply-coupon-form" action="/cart/applyCoupon" method="POST">
+                                 <input class="mb-2" name="coupon_code" placeholder="Coupon code" type="text">
+                                 <button type="submit" class="btn btn-md btn-golden">Apply coupon</button>
+                                 </form>
+
 
                                 <!-- Placeholder for Messages -->
                                 <div id="coupon-message" class="mt-2"></div>
@@ -109,7 +119,8 @@
                             </div>
                         </div>
                     </div>
-                    <!--coupon end leen-->
+                    <!--coupon table end leen-->
+
                     <!--cart total start leen-->
                     <div class="col-lg-6 col-md-6">
                         <div class="coupon_code right" data-aos="fade-up" data-aos-delay="400">
@@ -129,9 +140,14 @@
                                 </div>
 
                                 
+                                <!-- <div class="checkout_btn">
+                                <a href="#" id="checkout-btn" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                </div> -->
                                 <div class="checkout_btn">
-                                    <a href="#" class="btn btn-md btn-golden">Proceed to Checkout</a>
+                                <a href="/customers/checkout" id="checkout-btn" class="btn btn-md btn-golden">Checkout</a>
                                 </div>
+
+
 
                             </div>
                         </div>
@@ -145,3 +161,71 @@
     </div> <!-- ...:::: End Cart Section:::... -->
 
 <?php require 'views/partials/footer.php'; ?>
+<script>
+    document.getElementById('checkout-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+
+        fetch('/cart/calculateTotals')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('subtotal-amount').textContent = `$${data.subtotal.toFixed(2)}`;
+                document.getElementById('total-amount').textContent = `$${data.total.toFixed(2)}`;
+            })
+            .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('apply-coupon-form').addEventListener('submit', function(e) {
+    e.preventDefault();  // Prevent default form submission
+
+    const couponCode = document.querySelector('input[name="coupon_code"]').value;
+    const messageElement = document.getElementById('coupon-message');
+
+    fetch('/cart/applyCoupon', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `coupon_code=${couponCode}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            messageElement.textContent = data.message;
+            messageElement.classList.remove('message-error');
+            messageElement.classList.add('message-success');
+            
+            // Update totals as before
+            document.getElementById('original-total').textContent = `$${data.subtotal.toFixed(2)}`;
+            document.getElementById('discount-amount').textContent = `-$${data.discount.toFixed(2)}`;
+            const newTotalAfterDiscount = data.subtotal - data.discount;
+            document.getElementById('new-total').textContent = `$${newTotalAfterDiscount.toFixed(2)}`;
+            const shipping = 50.00;
+            const finalTotal = newTotalAfterDiscount + shipping;
+            document.getElementById('subtotal-amount').textContent = `$${data.subtotal.toFixed(2)}`;
+            document.getElementById('total-amount').textContent = `$${finalTotal.toFixed(2)}`;
+        } else {
+            messageElement.textContent = data.message;
+            messageElement.classList.remove('message-success');
+            messageElement.classList.add('message-error');
+        }
+    })
+    .catch(error => console.error('Error:', error));
+});
+
+document.querySelectorAll('.quantity-input').forEach(input => {
+    input.addEventListener('change', function() {
+        const quantity = parseInt(this.value); // Get the new quantity
+        const price = parseFloat(this.getAttribute('data-price')); // Get the price per item
+        const id = this.getAttribute('data-id'); // Get the item ID
+        
+        // Calculate the new total for this row
+        const newTotal = (quantity * price).toFixed(2);
+
+        // Update the total display in the row
+        document.getElementById(`total-${id}`).textContent = `$${newTotal}`;
+
+    });
+});
+
+</script>
+

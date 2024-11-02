@@ -46,14 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // Start the auto-slide function for the other page
     startAutoSlide();
 
-    // Load cart items if on the cart.php page
-    if (document.getElementById('cart-items')) {
-        loadCartItems();
-    }
-
-    if (document.getElementById('checkout-items')) {
-        loadCheckoutItems();
-    }
 });
 
 

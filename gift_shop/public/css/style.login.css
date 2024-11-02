@@ -100,20 +100,21 @@
     
     }
     
-    form .btn{
+    /* form .btn{
         cursor: pointer;
         background: #FEF5EF;
         color: #000;
         text-transform: uppercase;
         margin-left: 150px;
         margin-top: 20px;
-    }
+    } */
     
-    form .btn:hover{
+    /* form .btn:hover{
         background: transparent;
         border: 2px solid var(--pink);
         color: var(--pink);
-    }
+    } */
+
     .form-container h3{
         
         text-transform: uppercase;

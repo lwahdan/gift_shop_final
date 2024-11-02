@@ -80,6 +80,8 @@ class Core {
         'cart/add' => 'CartController@add',
         'customers/cart' => 'CartController@index',
         'cart/remove' => 'CartController@remove',
+        'cart/calculateTotals' => 'CartController@calculateTotals',
+        'cart/applyCoupon' => 'CartController@applyCoupon',
 
 
     ];

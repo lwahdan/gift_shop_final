@@ -45,6 +45,19 @@ class CartModel extends BaseModel
         }
     }
 
+    public function calculateSubtotal()
+    {
+    $cartItems = $this->getCartItems();
+    $subtotal = 0.00;
+
+    foreach ($cartItems as $item) {
+        $subtotal += $item['price'] * $item['quantity'];
+    }
+
+    return $subtotal;
+    }
+
+
     public function clearCart()
     {
         setcookie($this->cookieName, "", time() - 3600, "/");
