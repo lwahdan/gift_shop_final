@@ -1,6 +1,22 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
 
+<div class="product-default-slider-section section-top-gap-100">
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <h3 class="section-title">ِAll products</h3>
+                            <p>Preorder now to receive exclusive deals & gifts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <div class="product-wrapper" data-aos="fade-up" data-aos-delay="200">
     <div class="container">
         <div class="row">

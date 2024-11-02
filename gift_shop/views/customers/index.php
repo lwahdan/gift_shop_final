@@ -35,7 +35,7 @@ require_once 'controllers/ProductController.php';
                                 <div class="hero-slider-content">
                                     <h4 class="subtitle">New collection</h4>
                                     <h2 class="title">Best Of NeoCon <br> Gold Award </h2>
-                                    <a href="/customers/product-details-default"
+                                    <a href="/products"
                                        class="btn btn-lg btn-outline-golden">shop now </a>
                                 </div>
                             </div>
