@@ -50,7 +50,6 @@
                             <div class="account-dashboard">
                                 <div class="container">
                                     <div class="profile-form">
-                                        
                                         <div class="profile-table">
                                             <table>
                                                 <tr>
@@ -74,134 +73,86 @@
                                                     <td><?php echo htmlspecialchars($user['address']); ?></td>
                                                 </tr>
                                                 <tr>
-                                              <td>  <button id="editProfileBtn">Edit</button></td>
-                                              <td> <button id="changePasswordBtn">Change Password</button></td>
+                                                    <td><button id="editProfileBtn">Edit</button></td>
+                                                    <td><button id="changePasswordBtn">Change Password</button></td>
                                                 </tr>
                                             </table>
-                                                
-                                          
-                                                
-                                           
-                                          
-                                            
                                         </div>
                                     </div>
+
                                     <div id="changePasswordForm" style="display:none;">
-    <form action="/auth/changePassword" method="POST">
-    <?php
-// Display message if it exists
-if (isset($_SESSION['message'])) {
-    echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
-    unset($_SESSION['message']); // Clear the message after displaying it
-}
-?>
-        <table>
-            <tr>
-                <td><label for="current_password">Current Password:</label></td>
-                <td><input type="password" name="current_password" id="current_password" required></td>
-            </tr>
-            <tr>
-                <td><label for="new_password">New Password:</label></td>
-                <td><input type="password" name="new_password" id="new_password" required></td>
-            </tr>
-            <tr>
-                <td><label for="confirm_new_password">Confirm New Password:</label></td>
-                <td><input type="password" name="confirm_new_password" id="confirm_new_password" required></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Change Password</button></td>
-                <td colspan="2"><button type="button" id="cancelEditBtn">Cancel</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+                                        <form action="/auth/changePassword" method="POST">
+                                            <?php
+                                            // Display message if it exists
+                                            if (isset($_SESSION['message'])) {
+                                                echo '<div class="alert alert-danger">' . $_SESSION['message'] . '</div>';
+                                                unset($_SESSION['message']); // Clear the message after displaying it
+                                            }
+                                            ?>
+                                            <label for="currentPassword">Current Password:</label>
+                                            <input type="password" name="currentPassword" required>
+                                            
+                                            <label for="newPassword">New Password:</label>
+                                            <input type="password" name="newPassword" required>
+                                            
+                                            <label for="confirmPassword">Confirm New Password:</label>
+                                            <input type="password" name="confirmPassword" required>
+
+                                            <button type="submit">Change Password</button>
+                                            <button type="button" id="cancelPasswordChangeBtn">Cancel</button>
+                                        </form>
+
+                                        <?php if (isset($errorMessage)) : ?>
+                                            <div class="error-message"><?= htmlspecialchars($errorMessage) ?></div>
+                                        <?php endif; ?>
+                                    </div>
+
                                     <div id="editProfileForm" style="display:none;">
-    <form action="/profile/updateProfile" method="POST">
-        <table>
-            <tr>
-                <td>
-                    <label for="username">Username:</label>
-                </td>
-                <td>
-                    <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="email">Email:</label>
-                </td>
-                <td>
-                    <input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="first_name">First Name:</label>
-                </td>
-                <td>
-                    <input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="last_name">Last Name:</label>
-                </td>
-                <td>
-                    <input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="phone_number">Phone Number:</label>
-                </td>
-                <td>
-                    <input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="address">Address:</label>
-                </td>
-                <td>
-                    <input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="city">City:</label>
-                </td>
-                <td>
-                    <input type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="postal_code">Postal Code:</label>
-                </td>
-                <td>
-                    <input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="country">Country:</label>
-                </td>
-                <td>
-                    <input type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button type="submit">Save</button>
-                </td>
-                <td colspan="2"> <button type="button" id="cancelEditBtn">Cancel</button></td>
-               
-            </tr>
-        </table>
-    </form>
-</div>
-
-
+                                        <form action="/profile/updateProfile" method="POST">
+                                            <table>
+                                                <tr>
+                                                    <td><label for="username">Username:</label></td>
+                                                    <td><input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="email">Email:</label></td>
+                                                    <td><input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="first_name">First Name:</label></td>
+                                                    <td><input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="last_name">Last Name:</label></td>
+                                                    <td><input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="phone_number">Phone Number:</label></td>
+                                                    <td><input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="address">Address:</label></td>
+                                                    <td><input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="city">City:</label></td>
+                                                    <td><input type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="postal_code">Postal Code:</label></td>
+                                                    <td><input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="country">Country:</label></td>
+                                                    <td><input type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2"><button type="submit">Save</button></td>
+                                                    <td colspan="2"><button type="button" id="cancelEditBtn">Cancel</button></td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </section>
@@ -225,14 +176,14 @@ if (isset($_SESSION['message'])) {
                                         <td>1</td>
                                         <td>May 10, 2018</td>
                                         <td><span class="success">Completed</span></td>
-                                        <td>$25.00 for 1 item </td>
+                                        <td>$25.00 for 1 item</td>
                                         <td><a href="cart.php" class="view">View</a></td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td>May 10, 2018</td>
                                         <td>Processing</td>
-                                        <td>$17.00 for 1 item </td>
+                                        <td>$17.00 for 1 item</td>
                                         <td><a href="cart.php" class="view">View</a></td>
                                     </tr>
                                 </tbody>
@@ -254,75 +205,30 @@ if (isset($_SESSION['message'])) {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Shopnovilla - Free Real Estate PSD Template</td>
+                                        <td>Product A</td>
                                         <td>May 10, 2018</td>
-                                        <td><span class="danger">Expired</span></td>
-                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                        <td>Never</td>
+                                        <td><a href="#">Download</a></td>
                                     </tr>
                                     <tr>
-                                        <td>Organic - eCommerce HTML Template</td>
-                                        <td>Sep 11, 2018</td>
+                                        <td>Product B</td>
+                                        <td>May 10, 2018</td>
                                         <td>Never</td>
-                                        <td><a href="#" class="view">Click Here To Download Your File</a></td>
+                                        <td><a href="#">Download</a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
 
-                    <div class="tab-pane" id="address">
-                        <p>The following addresses will be used on the checkout page by default.</p>
-                        <h5 class="billing-address">Billing address</h5>
-                        <a href="#" class="view">Edit</a>
-                        <p><strong>Bobby Jackson</strong></p>
-                        <address>
-                        <td><strong>Address</strong></td>
-                        <td><?php echo htmlspecialchars($user['address']); ?></td>
-                        </address>
-                    </div>
-
-                    <div class="tab-pane fade" id="account-details">
-                        <h3>Account Details</h3>
-                        <div class="login">
-                            <div class="login_form_container">
-                                <div class="account_login_form">
-                                    <form action="#">
-                                        <p>Already have an account? <a href="#">Log in instead!</a></p>
-                                        <div class="input-radio">
-                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mr.</span>
-                                            <span class="custom-radio"><input type="radio" value="1" name="id_gender"> Mrs.</span>
-                                        </div>
-                                        <br>
-                                        <div class="default-form-box mb-20">
-                                            <label>First Name</label>
-                                            <input type="text" name="first-name">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Last Name</label>
-                                            <input type="text" name="last-name">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Email</label>
-                                            <input type="text" name="email-name">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Password</label>
-                                            <input type="password" name="password">
-                                        </div>
-                                        <div class="default-form-box mb-20">
-                                            <label>Confirm Password</label>
-                                            <input type="password" name="confirm-password">
-                                        </div>
-                                        <div class="login_submit">
-                                            <button>Save Changes</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                    <div class="tab-pane fade" id="address">
+                        <h4>Address</h4>
+                        <div class="address-wrapper">
+                            <p class="address"><strong>Your current address:</strong> 123 Main Street, City, Country</p>
+                            <button type="button" class="btn btn-md btn-black-default-hover">Edit Address</button>
                         </div>
                     </div>
-
-                </div> <!-- end of tab content -->
+                </div>
             </div>
         </div>
     </div>
@@ -331,24 +237,24 @@ if (isset($_SESSION['message'])) {
 <?php require 'views/partials/footer.php'; ?>
 
 <script>
+    document.getElementById('changePasswordBtn').addEventListener('click', function() {
+        document.querySelector('.profile-table').style.display = 'none'; // Hide the profile table
+        document.getElementById('changePasswordForm').style.display = 'block'; // Show the change password form
+    });
+
+    document.getElementById('cancelPasswordChangeBtn').addEventListener('click', function() {
+        document.getElementById('changePasswordForm').style.display = 'none'; // Hide the change password form
+        document.querySelector('.profile-table').style.display = 'block'; // Show the profile table again
+    });
+
+    // Add event listener for edit button to toggle edit profile form
     document.getElementById('editProfileBtn').addEventListener('click', function() {
-        document.getElementById('editProfileForm').style.display = 'block';
+        document.querySelector('.profile-table').style.display = 'none'; // Hide the profile table
+        document.getElementById('editProfileForm').style.display = 'block'; // Show the edit profile form
     });
 
     document.getElementById('cancelEditBtn').addEventListener('click', function() {
-        document.getElementById('editProfileForm').style.display = 'none';
+        document.getElementById('editProfileForm').style.display = 'none'; // Hide the edit profile form
+        document.querySelector('.profile-table').style.display = 'block'; // Show the profile table again
     });
-    document.getElementById('changePasswordBtn').addEventListener('click', function() {
-    document.querySelector('.profile-table').style.display = 'none';
-    document.getElementById('changePasswordForm').style.display = 'block';
-});
-document.getElementById('cancelEditBtn').addEventListener('click', function() {
-    document.getElementById('editProfileForm').style.display = 'none';
-});
-
-document.getElementById('cancelPasswordChangeBtn').addEventListener('click', function() {
-    document.getElementById('changePasswordForm').style.display = 'none';
-    document.querySelector('.profile-table').style.display = 'block'; // Show the profile table again
-});
-
 </script>

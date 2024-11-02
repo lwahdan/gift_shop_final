@@ -189,7 +189,7 @@
                                     Specification
                                 </a></li>
                             <li><a class="nav-link" data-bs-toggle="tab" href="#review">
-                                    Reviews (1)
+                                    Reviews 
                                 </a></li>
                         </ul> <!-- End Product Details Tab Button -->
 
@@ -242,11 +242,11 @@
                                     </div>
                                 </div> <!-- End Product Details Tab Content Singel -->
                                 <!-- Start Product Details Tab Content Singel -->
-                                <div class="tab-pane" id="review">
+                              <div class="tab-pane" id="review">
     <div class="single-tab-content-item">
         <!-- Start - Review Comment -->
         <ul class="comment">
-            <!-- Start - Review Comment list-->
+            <!-- Display existing reviews -->
             <?php if (!empty($reviews)): ?>
                 <?php foreach ($reviews as $review): ?>
                     <li>
@@ -272,20 +272,8 @@
             <?php unset($_SESSION['error_message']); // Clear after displaying ?>
         <?php endif; ?>
 
-        <!-- Check and display the submitted review -->
-        <?php if (isset($_SESSION['submitted_review'])): ?>
-            <div class="submitted-review">
-                <h4>Your Submitted Review:</h4>
-                <p><strong>Rating:</strong> <?php echo htmlspecialchars($_SESSION['submitted_review']['rating']); ?> Stars</p>
-                <p><strong>Your Review:</strong> <?php echo htmlspecialchars($_SESSION['submitted_review']['review_text']); ?></p>
-            </div>
-            <?php unset($_SESSION['submitted_review']); // Clear after displaying ?>
-        <?php endif; ?>
-
+        <h3>Leave a Review</h3>
         <table class="rev-form">
-            <tr>
-                <th colspan="2"><h3>Leave a Review</h3></th>
-            </tr>
             <form action="/reviews/create" method="POST">
                 <input type="hidden" name="product_id" value="<?php echo htmlspecialchars($product['id']); ?>">
                 <tr>
@@ -312,6 +300,7 @@
         </table>
     </div>
 </div>
+
 
 
                                     </div>

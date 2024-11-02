@@ -158,12 +158,18 @@ class UserModel extends BaseModel {
     }
 
     // Fetch user data by ID
-    public function getUserById($userId) {
-        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id LIMIT 1");
-        $stmt->bindParam(':id', $userId, PDO::PARAM_INT);
-        $stmt->execute();
+    public function getUserById($id) {
+        // Assuming you have a method to fetch user details from the database
+        // Sample SQL query
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = :id");
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetch();
+    }
 
-        return $stmt->fetch(PDO::FETCH_ASSOC); // Return user data or false if not found
+    public function updatePassword($id, $hashed_password) {
+        // Sample SQL query to update the password
+        $stmt = $this->pdo->prepare("UPDATE users SET password = :password WHERE id = :id");
+        $stmt->execute(['password' => $hashed_password, 'id' => $id]);
     }
 
     // Method to change password
@@ -195,4 +201,5 @@ class UserModel extends BaseModel {
 
         return $stmt->execute() ? ['status' => 'success', 'message' => "Password changed successfully."] : ['status' => 'error', 'message' => "Password change failed. Please try again."];
     }
+  
 }

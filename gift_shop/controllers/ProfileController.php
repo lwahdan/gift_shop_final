@@ -110,40 +110,52 @@ class ProfileController extends Controller {
         }
     }
     public function changePassword() {
-        $userId = $_SESSION['user_id'];
-        $data = [
-            'current_password' => '',
-            'new_password' => '',
-            'confirm_password' => '',
-            'message' => ''
-        ];
-    
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $currentPassword = $_POST['current_password'] ?? '';
-            $newPassword = $_POST['new_password'] ?? '';
-            $confirmPassword = $_POST['confirm_password'] ?? '';
-    
-            // Check if new passwords match
-            if ($newPassword !== $confirmPassword) {
-                $data['message'] = "New passwords do not match.";
-            } else {
-                $userId = $_SESSION['user_id'] ?? null;
-                if ($userId) {
-                    // Attempt to change password
-                    $result = $this->userModel->changePassword($userId, $currentPassword, $newPassword);
-                    if ($result['status'] === 'success') {
-                        header('Location: /customers/profile'); // Redirect to profile
-                        exit();
-                    } else {
-                        $data['message'] = $result['message'];
-                    }
-                } else {
-                    $data['message'] = "User not found.";
-                }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Assuming user_id is stored in the session
+            $user_id = $_SESSION['user_id'];
+            $current_password = $_POST['current_password'] ?? '';
+            $new_password = $_POST['new_password'] ?? '';
+            $confirm_password = $_POST['confirm_password'] ?? '';
+
+            $errors = [];
+
+            // Validate current password
+            $user = (new UserModel())->getUserById($user_id); // Fetch user details
+            if (!password_verify($current_password, $user['password'])) {
+                $errors[] = 'Current password is incorrect.';
             }
+
+            // Validate new password
+            if (strlen($new_password) < 8 || 
+                !preg_match('/[A-Z]/', $new_password) || 
+                !preg_match('/[a-z]/', $new_password) || 
+                !preg_match('/[0-9]/', $new_password) || 
+                !preg_match('/[\W_]/', $new_password)) {
+                $errors[] = 'New password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.';
+            }
+
+            // Check if new passwords match
+            if ($new_password !== $confirm_password) {
+                $errors[] = 'New password and confirm password do not match.';
+            }
+
+            if (empty($errors)) {
+                // Update the password in the database
+                $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+                (new UserModel())->updatePassword($user_id, $hashed_password);
+                
+                // Redirect or show a success message
+                header('Location: /customers/profile?success=Password changed successfully.');
+                exit;
+            }
+
+            // Pass errors to the view
+            $this->view('customers/profile', ['errors' => $errors, 'user' => $user]);
+        } else {
+            // Redirect to the profile view
+            header('Location: /customers /profile');
+            exit;
         }
-    
-        $this->view('customers/changePassword', $data); // Update with actual view path
     }
 
 
