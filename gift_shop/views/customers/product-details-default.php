@@ -184,7 +184,7 @@
                                     Specification
                                 </a></li>
                             <li><a class="nav-link" data-bs-toggle="tab" href="#review">
-                                    Reviews (1)
+                                    Reviews 
                                 </a></li>
                         </ul> <!-- End Product Details Tab Button -->
 

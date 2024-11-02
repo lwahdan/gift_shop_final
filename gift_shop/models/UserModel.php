@@ -166,10 +166,12 @@ class UserModel extends BaseModel {
         return $stmt->fetch();
     }
 
-    public function updatePassword($id, $hashed_password) {
-        // Sample SQL query to update the password
+    public function updatePassword($userId, $newPassword)
+    {
         $stmt = $this->pdo->prepare("UPDATE users SET password = :password WHERE id = :id");
-        $stmt->execute(['password' => $hashed_password, 'id' => $id]);
+        $stmt->bindParam(':password', $newPassword);
+        $stmt->bindParam(':id', $userId);
+        return $stmt->execute();
     }
 
     // Method to change password
@@ -201,5 +203,12 @@ class UserModel extends BaseModel {
 
         return $stmt->execute() ? ['status' => 'success', 'message' => "Password changed successfully."] : ['status' => 'error', 'message' => "Password change failed. Please try again."];
     }
-  
+    // Fetch user address by ID
+public function getUserAddressById($userId) {
+    $stmt = $this->pdo->prepare("SELECT address, city, postal_code, country FROM users WHERE id = :id");
+    $stmt->execute(['id' => $userId]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+    
 }
