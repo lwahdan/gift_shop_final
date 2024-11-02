@@ -3,8 +3,7 @@ body {
 }
 
 .testimonial-section {
-    width: 100%; /* Full width without causing horizontal scroll */
-    /* margin: 0; */
+    width: 100%; 
     padding: 40px 20px;
     background-color: #fef5ef;
     text-align: center;
@@ -21,14 +20,12 @@ body {
     margin-bottom: 20px;
 }
 
-/* Slider container styling */
 .testimonial-slider {
     overflow: hidden;
     position: relative;
     height: 120px;
 }
 
-/* Individual slide styling */
 .testimonial-slide {
     min-width: 100%;
     color: #333;
@@ -49,12 +46,10 @@ body {
     color: #b19361;
 }
 
-/* Active slide */
 .testimonial-slide.active {
     opacity: 1;
 }
 
-/* Arrow styling */
 .testimonial-arrow {
     position: absolute;
     top: 50%;
@@ -65,15 +60,15 @@ body {
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1; /* Ensure arrows appear above slides */
+    z-index: 1;
 }
 
 .testimonial-arrow.left {
-    left: 20px; /* Positioned within the testimonial section */
+    left: 20px;
 }
 
 .testimonial-arrow.right {
-    right: 20px; /* Positioned within the testimonial section */
+    right: 20px; 
 }
  /* coupon */
 .message-success {
@@ -102,7 +97,8 @@ body {
 }
 
 #mycheckout{
-    margin-left: 415px;
+    margin-left: 290px;
+    margin-top: 50px;
 }
 
 #myfooter{
@@ -110,19 +106,19 @@ body {
 }
 
 .btn-delete {
-    background-color: transparent; /* No background */
-    color: black; /* Black text color */
-    border: 1px solid black; /* Fine black border */
+    background-color: transparent; 
+    color: black; 
+    border: 1px solid black;
     padding: 4px 8px;
     font-size: 12px;
     cursor: pointer;
-    border-radius: 4px; /* Rounded corners */
+    border-radius: 4px; 
     transition: background-color 0.3s ease;
 }
 
 .btn-delete:hover {
-    background-color: #f5c6c6; /* Light red background on hover */
-    color: #cc0000; /* Darker red text on hover */
+    background-color: #f5c6c6; 
+    color: #cc0000;
 }
 
 .btn-delete:focus {
@@ -137,7 +133,7 @@ body {
 /* Custom SweetAlert OK button styling */
 .custom-swal-button {
     background-color: #b19361 !important;
-    color: #fff !important; /* White text color */
+    color: #fff !important; 
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
@@ -146,8 +142,106 @@ body {
 }
 
 .custom-swal-button:hover {
-    background-color: #9f8353 !important; /* Slightly darker shade on hover */
+    background-color: #9f8353 !important;
 }
+
+#mybanner{
+    margin-top: 60px;
+}
+
+#SUBSCRIBE{
+    margin-top: 8px;
+}
+
+.myhero1{
+    margin-left: 50px;
+
+}
+
+/* Custom styling for the hero section */
+.myhero1 {
+    padding: 50px;
+    text-align: left;
+}
+
+.subtitle1 {
+    color: #a41920 !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333333;
+}
+
+#unforgettable {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #E28A74;
+    font-weight: bold;
+}
+.hero_btn1 {
+    font-size: 18px;
+    color: #333333;
+    border: 2px solid #a41920;
+    padding: 7px 30px;
+    transition: color 0.3s, border-color 0.3s;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+
+.hero_btn1:hover {
+    color: #a41920;
+    border-color: #a41920;
+    background-color: #E28A74;
+}
+
+.hero2{
+    margin-left: 160px;
+
+}
+
+
+
+.subtitle2 {
+    color: #2e7d32; 
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #1b5e20;
+}
+
+#unforgettable2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    color: #66bb6a; 
+    font-weight: bold;
+}
+.hero_btn2 {
+    font-size: 16px;
+    color: #1b5e20; 
+    border: 2px solid #1b5e20; 
+    padding: 10px 30px;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.hero_btn2:hover {
+    color: #ffffff; 
+    background-color: #388e3c; 
+    border-color: #388e3c;
+}
+
 
 
 

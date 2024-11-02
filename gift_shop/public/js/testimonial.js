@@ -53,9 +53,24 @@ function submitOrder() {
     });
 }
 
+// subscribe button
+document.getElementById("SUBSCRIBE").onclick = function(event) {
+    event.preventDefault(); // Prevents the default form submission
+    const emailInput = document.getElementById("emailInput").value;
+    const subscribeMessage = document.getElementById("subscribeMessage");
+    const errorMessage = document.getElementById("errorMessage");
 
-
-
+    if (emailInput === "") {
+        // Show error message if email input is empty
+        errorMessage.style.display = "block";
+        subscribeMessage.style.display = "none"; // Hide success message if shown before
+    } else {
+        // Show success message if email input is filled
+        errorMessage.style.display = "none";
+        subscribeMessage.style.display = "block";
+        document.getElementById("SUBSCRIBE").innerText = "Subscribed!"; // Optional: changes button text
+    }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
     // Start the auto-slide function for the other page

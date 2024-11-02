@@ -29,20 +29,16 @@ class Core {
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
         // customers Routes
-        'customers/_404' => 'CustomerController@_404',
         'customers/about-us' => 'CustomerController@about',
-        // 'customers/cart' => 'CustomerController@cart',
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
-        'customers/faq' => 'CustomerController@faq',
-
         'customers/index' => 'CustomerController@index',
-        
         'customers/my-account' => 'CustomerController@account',
-        'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
+
         'customers/edit' => 'UserController@editUser',
+
         'customers/logout' => 'AuthController@logout',
         'customers/edit' => 'UserController@editProfile',
         'customers/updateProfile' => 'UserController@updateProfile',
