@@ -267,8 +267,10 @@
             <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); ?></div>
             <?php unset($_SESSION['success_message']); // Clear after displaying ?>
         <?php endif; ?>
+
+        <!-- Error message alert -->
         <?php if (isset($_SESSION['error_message'])): ?>
-            <div class="alert alert-error"><?php echo htmlspecialchars($_SESSION['error_message']); ?></div>
+            <div class="alert alert-danger"><?php echo htmlspecialchars($_SESSION['error_message']); ?></div>
             <?php unset($_SESSION['error_message']); // Clear after displaying ?>
         <?php endif; ?>
 
