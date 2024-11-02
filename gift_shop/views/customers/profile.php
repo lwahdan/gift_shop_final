@@ -32,7 +32,7 @@
                     <ul role="tablist" class="nav flex-column dashboard-list">
                         <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover active">Dashboard</a></li>
                         <li><a href="#orders" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Orders</a></li>
-                        <li><a href="#address" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Addresses</a></li>
+                        <li><a href="#addresses" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Addresses</a></li>
                         <li><a href="/customers/logout" class="nav-link btn btn-block btn-md btn-black-default-hover">Logout</a></li>
                     </ul>
                 </div>
@@ -45,6 +45,12 @@
                             <div class="profile-form">
                                 <div class="profile-table">
                                     <table>
+                                    <?php if (isset($_SESSION['message'])): ?>
+                                            <div class="alert alert-danger"><?php echo $_SESSION['message']; unset($_SESSION['message']); ?></div>
+                                        <?php endif; ?>
+                                        <?php if (isset($_SESSION['success_message'])): ?>
+                                            <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); unset($_SESSION['success_message']); ?></div>
+                                        <?php endif; ?>
                                         <tr>
                                             <td><strong>Username</strong></td>
                                             <td><?php echo htmlspecialchars($user['username']); ?></td>
@@ -71,15 +77,11 @@
                                         </tr>
                                     </table>
                                 </div>
+
+                                <!-- Change Password Form -->
                                 <div id="changePasswordForm" style="display:none;">
                                     <form action="/auth/changePassword" method="POST">
-                                        <?php if (isset($_SESSION['message'])): ?>
-                                            <div class="alert alert-dange"><?php echo $_SESSION['message']; unset($_SESSION['message']); ?></div>
-                                        <?php endif; ?>
-                                        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); unset($_SESSION['success_message']); ?></div>
-        <?php endif; ?>
-        
+                                        
                                         <table class="profile-table">
                                             <tr>
                                                 <td><label for="current_password">Current Password:</label></td>
@@ -95,14 +97,16 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><button type="submit">Change Password</button></td>
-                                                <td colspan="2"><button type="button" id="cancelchangeBtn">Cancel</button></td>
+                                                <td colspan="2"><button type="button" id="cancelChangeBtn">Cancel</button></td>
                                             </tr>
                                         </table>
                                     </form>
                                 </div>
+
+                                <!-- Edit Profile Form -->
                                 <div id="editProfileForm" style="display:none;">
                                     <form action="/profile/updateProfile" method="POST">
-
+                                    
                                         <table>
                                             <tr>
                                                 <td><label for="username">Username:</label></td>
@@ -150,8 +154,22 @@
                             </div>
                         </section>
                     </div>
-                    <!-- Other tabs (orders, downloads, address, etc.) would go here -->
-                </div> <!-- end of tab content -->
+
+                    <div class="tab-pane fade" id="orders">
+                        <section>
+                            <h4>Your Orders</h4>
+                            <!-- Include orders data here -->
+                        </section>
+                    </div>
+
+                    <div class="tab-pane fade" id="addresses">
+                        <h3>Address Information</h3>
+                        <p>Address: <?php echo htmlspecialchars($address['address']); ?></p>
+                        <p>City: <?php echo htmlspecialchars($address['city']); ?></p>
+                        <p>Postal Code: <?php echo htmlspecialchars($address['postal_code']); ?></p>
+                        <p>Country: <?php echo htmlspecialchars($address['country']); ?></p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -159,24 +177,32 @@
 
 <?php require 'views/partials/footer.php'; ?>
 
-<script src="path/to/your/script.js"></script>
+<!-- JavaScript to handle tab visibility -->
 <script>
-    document.getElementById('editProfileBtn').addEventListener('click', function() {
-        document.getElementById('editProfileForm').style.display = 'block';
-        document.getElementById('changePasswordForm').style.display = 'none';
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const editProfileBtn = document.getElementById('editProfileBtn');
+        const changePasswordBtn = document.getElementById('changePasswordBtn');
+        const cancelChangeBtn = document.getElementById('cancelChangeBtn');
+        const cancelEditBtn = document.getElementById('cancelEditBtn');
+        const changePasswordForm = document.getElementById('changePasswordForm');
+        const editProfileForm = document.getElementById('editProfileForm');
 
-    document.getElementById('changePasswordBtn').addEventListener('click', function() {
-        document.getElementById('changePasswordForm').style.display = 'block';
-        document.getElementById('editProfileForm').style.display = 'none';
-    });
+        editProfileBtn.addEventListener('click', function () {
+            editProfileForm.style.display = 'block';
+            changePasswordForm.style.display = 'none';
+        });
 
-    document.getElementById('cancelEditBtn').addEventListener('click', function() {
-        document.getElementById('editProfileForm').style.display = 'none';
+        changePasswordBtn.addEventListener('click', function () {
+            changePasswordForm.style.display = 'block';
+            editProfileForm.style.display = 'none';
+        });
 
-    });
-    document.getElementById('cancelchangeBtn').addEventListener('click', function() {
-        document.getElementById('editProfileForm').style.display = 'none';
-        document.getElementById('changePasswordForm').style.display = 'none';
+        cancelChangeBtn.addEventListener('click', function () {
+            changePasswordForm.style.display = 'none';
+        });
+
+        cancelEditBtn.addEventListener('click', function () {
+            editProfileForm.style.display = 'none';
+        });
     });
 </script>

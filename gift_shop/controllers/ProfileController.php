@@ -10,24 +10,27 @@ class ProfileController extends Controller {
 
     // Method to view the user profile
     public function viewProfile() {
-
         // Check if the user is logged in
         if (!isset($_SESSION['username'])) {
             header('Location: /customers/login');
             exit();
         }
-
+    
         // Get user data by username
         $username = $_SESSION['username'];
         
         $userData = $this->userModel->getUserByUsername($username);
-
-        // Load the profile view with user data
-        $this->view('customers/profile', ['user' => $userData]);
+    
+        // Fetch address details
+        $addressData = $this->userModel->getUserAddressById($_SESSION['user_id']);
+    
+        // Load the profile view with user data and address
+        $this->view('customers/profile', [
+            'user' => $userData,
+            'address' => $addressData // Pass address data to the view
+        ]);
     }
-
-    // Method to save (update) the user profile
-   // Method to save (update) the user profile
+    
 public function saveProfile() {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Assuming the user ID is stored in the session

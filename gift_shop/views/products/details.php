@@ -99,7 +99,16 @@
                         data-aos-delay="200">
 
                         <!-- Start  Product Details Text Area-->
+                        <?php if (isset($_SESSION['success_message'])): ?>
+            <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); ?></div>
+            <?php unset($_SESSION['success_message']); // Clear after displaying ?>
+        <?php endif; ?>
 
+        <!-- Error message alert -->
+        <?php if (isset($_SESSION['error_message'])): ?>
+            <div class="alert alert-danger"><?php echo htmlspecialchars($_SESSION['error_message']); ?></div>
+            <?php unset($_SESSION['error_message']); // Clear after displaying ?>
+        <?php endif; ?>
                         <div class="product-details-text">
                             <h4 class="title"><?php echo htmlspecialchars($product['product_name']); ?></h4>
                             <div class="d-flex align-items-center">
@@ -263,16 +272,7 @@
         </ul>
 
         <!-- Display success or error messages -->
-        <?php if (isset($_SESSION['success_message'])): ?>
-            <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); ?></div>
-            <?php unset($_SESSION['success_message']); // Clear after displaying ?>
-        <?php endif; ?>
-
-        <!-- Error message alert -->
-        <?php if (isset($_SESSION['error_message'])): ?>
-            <div class="alert alert-danger"><?php echo htmlspecialchars($_SESSION['error_message']); ?></div>
-            <?php unset($_SESSION['error_message']); // Clear after displaying ?>
-        <?php endif; ?>
+        
 
         <h3>Leave a Review</h3>
         <table class="rev-form">
