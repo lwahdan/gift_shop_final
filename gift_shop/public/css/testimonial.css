@@ -149,5 +149,69 @@ body {
     background-color: #9f8353 !important; /* Slightly darker shade on hover */
 }
 
+#mybanner{
+    margin-top: 60px;
+}
+
+#SUBSCRIBE{
+    margin-top: 8px;
+}
+
+.myhero1{
+    margin-left: 50px;
+
+}
+
+/* Custom styling for the hero section */
+.myhero1 {
+    padding: 50px;
+    text-align: left;
+}
+
+/* Styling for subtitle */
+.subtitle1 {
+    color: #a41920 !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for main title */
+.title1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333333;
+}
+
+/* Styling for unforgettable text */
+#unforgettable {
+    font-family: 'Dancing Script', cursive; /* A softer, elegant font style */
+    font-size: 48px;
+    color: #E28A74;
+    font-weight: bold;
+}
+
+/* Styling for the 'shop now' button */
+.hero_btn1 {
+    font-size: 18px;
+    color: #333333;
+    border: 2px solid #a41920;
+    padding: 7px 30px;
+    transition: color 0.3s, border-color 0.3s;
+    border-radius: 10px;
+    margin-top: 10px;
+
+}
+
+.hero_btn1:hover {
+    color: #a41920;
+    border-color: #a41920;
+}
+
+.logo_img{
+    
+}
+
 
 

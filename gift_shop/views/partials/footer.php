@@ -50,14 +50,13 @@
                              data-aos-delay="600">
                             <h5 class="title">ABOUT US</h5>
                             <div class="footer-about">
-                                <p>We are a team of designers and developers that create high quality Magento,
-                                    Prestashop, Opencart.</p>
+                                <p>Celebrating your happy moments with carefully curated flowers, plants, and gifts, delivered with love to your doorstep</p>
 
                                 <address class="address">
                                  <!-- ii    -->
-                                <span><a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">address:Ar-Razi St. 141, Amman</span>
+                                <span><a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Address: Jordan - Amman </span>
                                    <br>
-                                <span><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&emr=1&ltmpl=default&ltmplcache=2&osid=1&passive=true&rm=false&scc=1&service=mail&ss=1&ifkv=AcMMx-cTkZXyVV7fs5LlDBSvKl6Z4cIFYE7oQygdRhZf64lepVJDWIXyoNdqUXw8n849XMx19DWO&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank">Email:</span>
+                                <span><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&emr=1&ltmpl=default&ltmplcache=2&osid=1&passive=true&rm=false&scc=1&service=mail&ss=1&ifkv=AcMMx-cTkZXyVV7fs5LlDBSvKl6Z4cIFYE7oQygdRhZf64lepVJDWIXyoNdqUXw8n849XMx19DWO&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank">Email:moment@gmail.com</span>
                                 </address>
                             </div>
                         </div>
@@ -89,8 +88,11 @@
                             <div class="form-newsletter">
                                 <form action="#" method="post">
                                     <div class="form-fild-newsletter-single-item input-color--golden">
-                                        <input type="email" placeholder="Your email address..." required>
-                                        <button type="submit">SUBSCRIBE!</button>
+                                    <input type="email" id="emailInput" placeholder="Your email address..." required>
+<button type="submit" id="SUBSCRIBE">SUBSCRIBE!</button>
+<p id="subscribeMessage" style="display: none; color: green; font-weight: bold;">Subscribed Successfully!</p>
+<p id="errorMessage" style="display: none; color: red; font-weight: bold;">Enter email first</p>
+
                                     </div>
                                 </form>
                             </div>
@@ -109,9 +111,9 @@
                     class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                     <div class="col-auto mb-6">
                         <div class="footer-copyright">
-                            <p class="copyright-text">&copy; 2021 <a href="index.html">therankme</a>. Made with <i
+                            <p class="copyright-text">&copy; 2024 <a href="index.html">moment</a>. Made with <i
                                     class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
-                                                                               target="_blank">therankme</a> </p>
+                                                                               target="_blank">moment</a> </p>
 
                         </div>
                     </div>

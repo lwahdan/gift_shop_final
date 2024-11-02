@@ -37,6 +37,8 @@
     <link rel="stylesheet" href="../public/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="../public/css/plugins/plugins.min.css">
     <link rel="stylesheet" href="../public/css/style.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
 
 </head>
 
@@ -51,7 +53,7 @@
                         <!-- Start Header Logo -->
                         <div class="header-logo">
                             <div class="logo">
-                                <a href="/customers/index"><img src="../public/images/logo/logo_black.png" alt=""></a>
+                                <a href="/customers/index"><img src="../public/images/extra/logo.png" alt="" class="logo_img"></a>
                             </div>
                         </div>
                         <!-- End Header Logo -->
