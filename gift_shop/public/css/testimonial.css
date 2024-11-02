@@ -134,4 +134,20 @@ body {
     margin-top: -36px;
 }
 
+/* Custom SweetAlert OK button styling */
+.custom-swal-button {
+    background-color: #b19361 !important;
+    color: #fff !important; /* White text color */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-swal-button:hover {
+    background-color: #9f8353 !important; /* Slightly darker shade on hover */
+}
+
+
 

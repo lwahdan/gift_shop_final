@@ -40,6 +40,21 @@ function nextSlide() {
 }
 
 // cart
+function submitOrder() {
+    Swal.fire({
+        title: 'Order Submitted!',
+        text: 'Your order has been submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        customClass: {
+            confirmButton: 'custom-swal-button'
+        },
+        html: '<p style="font-size: 14px; margin-top: 10px;"><a href="/home" style="color: #b19361; text-decoration: none;">Continue Shopping</a></p>'
+    });
+}
+
+
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
