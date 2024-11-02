@@ -40,6 +40,7 @@ require_once 'controllers/ProductController.php';
                                     <!-- <a href="/customers/product-details-default"
                                        class="hero_btn1">shop now </a> -->
                                        <button class="hero_btn1" onclick="window.location.href='/customers/product-details-default'" >shop now</button>
+
                                 </div>
                                 </div>
 
@@ -225,6 +226,9 @@ require_once 'controllers/ProductController.php';
                             <?php endforeach; ?>
                         </div>
                     </div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
                 </div>
             </div>
         </div>
