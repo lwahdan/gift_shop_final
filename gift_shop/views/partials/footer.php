@@ -1,4 +1,5 @@
 <!-- Start Footer Section -->
+<div id="myfooter">
 <footer class="footer-section footer-bg">
     <div class="footer-wrapper">
         <!-- Start Footer Top -->
@@ -53,7 +54,7 @@
                                     Prestashop, Opencart.</p>
 
                                 <address class="address">
-                                    
+                                 <!-- ii    -->
                                 <span><a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">address:Ar-Razi St. 141, Amman</span>
                                    <br>
                                 <span><a href="https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fmail.google.com%2Fmail%2F&emr=1&ltmpl=default&ltmplcache=2&osid=1&passive=true&rm=false&scc=1&service=mail&ss=1&ifkv=AcMMx-cTkZXyVV7fs5LlDBSvKl6Z4cIFYE7oQygdRhZf64lepVJDWIXyoNdqUXw8n849XMx19DWO&ddm=1&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank">Email:</span>
@@ -128,6 +129,7 @@
 
     </div>
 </footer>
+</div>
 <!-- End Footer Section -->
 
 <!-- material-scrolltop button -->
@@ -160,8 +162,8 @@
                                     <div class="modal-add-cart-info"><i class="fa fa-check-square"></i>Added to cart
                                         successfully!</div>
                                     <div class="modal-add-cart-product-cart-buttons">
-                                        <a href="cart.html">View Cart</a>
-                                        <a href="checkout.html">Checkout</a>
+                                        <a href="/customers/cart">View Cart</a>
+                                        <a href="/customers/checkout">Checkout</a>
                                     </div>
                                 </div>
                             </div>
@@ -380,6 +382,9 @@
 <script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
+<!-- SweetAlert CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 

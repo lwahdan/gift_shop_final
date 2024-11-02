@@ -1,5 +1,3 @@
-
-<!--// models/ProductModel.php-->
 <?php
 require_once 'BaseModel.php';
 
@@ -14,5 +12,7 @@ class ProductModel extends BaseModel {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return $result['total'];
     }
-}
 
+   
+}
+?>
