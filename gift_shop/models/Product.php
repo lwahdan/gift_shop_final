@@ -15,5 +15,23 @@ class Product extends BaseModel
         $statement = $this->pdo->query("SELECT COUNT(*) as total FROM products");
         return $statement->fetch(PDO::FETCH_ASSOC)['total'];
     }
+
+   
+    public function getProductsByCategory($categoryId) {
+        $statement = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE category_id = :categoryId");
+        $statement->bindParam(':categoryId', $categoryId, PDO::PARAM_INT);
+        $statement->execute();
+        return $statement->fetchAll(\pdo::FETCH_ASSOC);
+    }
+
+    public function searchProductsByName($search) {
+        $statement = $this->pdo->prepare("SELECT * FROM {$this->table} WHERE product_name like '%$search%'");
+        $statement->execute();
+        return $statement->fetchAll(\pdo::FETCH_ASSOC);
+    }
+
+    
+
+
 }
 ?>

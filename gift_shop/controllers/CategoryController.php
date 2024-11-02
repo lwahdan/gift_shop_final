@@ -1,7 +1,6 @@
 <?php
-
-require_once 'Controller.php';
 require_once __DIR__ . '/../models/Category.php';
+require_once __DIR__ . '/../models/Product.php';
 
 class CategoryController extends Controller
 {
@@ -49,5 +48,17 @@ class CategoryController extends Controller
         $categoryModel = new Category();
         $categoryModel->delete($id);
         header("Location: /categories");
+    }
+
+    public function getProductsByCategory($categoryId) {
+        $productModel = new Product();
+        $products = $productModel->getProductsByCategory($categoryId);
+        $this->view('products/index', ['products' => $products]); 
+    }
+    public function show($id)
+    {
+    $categoryModel = new Category();
+    $category = $categoryModel->find($id);
+    $this->view('categories/show', ['category' => $category]);
     }
 }

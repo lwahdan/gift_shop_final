@@ -29,43 +29,23 @@ class Core {
         'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
 
         // customers Routes
+        'customers/_404' => 'CustomerController@_404',
         'customers/about-us' => 'CustomerController@about',
+        // 'customers/cart' => 'CustomerController@cart',
         'customers/contact-us' => 'CustomerController@contact',
         'customers/checkout' => 'CustomerController@checkout',
+        'customers/faq' => 'CustomerController@faq',
+
         'customers/index' => 'CustomerController@index',
+        
         'customers/my-account' => 'CustomerController@account',
+        'customers/privacy-policy' => 'CustomerController@privacy',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
 
-        'customers/edit' => 'UserController@editUser',
-
         'customers/logout' => 'AuthController@logout',
-        'customers/edit' => 'UserController@editProfile',
-        'customers/updateProfile' => 'UserController@updateProfile',
-     'customers/profile' => 'ProfileController@viewProfile',
-'profile/updateProfile' => 'ProfileController@updateProfile',
-'customers/edit' => 'UserController@editProfile',
-'customers/updateProfile' => 'UserController@updateProfile',
-'customers/profile' => 'ProfileController@viewProfile',
-    'customers/profile/updateProfile' => 'ProfileController@updateProfile',
-    'customers/changePassword'=>'ProfileController@changePassword',
-    'auth/changePassword' => 'ProfileController@changePassword',
-   
-
-
-        '/userProfile', 'UserController@index',
-        'customers/edit', 'UserController@editProfile',
-        'customers/updateProfile', 'UserController@updateProfile',
-'customers/product/details' => 'ProductController@details',
-'reviews/create' => 'ReviewController@create',
-'products' => 'ProductController@index',
-
-'products/details/{id}' => 'ProductController@details',
-'userProfile' => 'UserController@index',
-'customers/edit' => 'UserController@editProfile',
-'products/details' => 'ProductController@details',
-
-
+        'customers/profile' => 'ProfileController@viewProfile',
+        'profile/update', 'ProfileController@update',
 
         // 'customers/product-details-default' => 'CustomerController@product',
         'customers/wishlist' => 'CustomerController@wishlist',
@@ -74,25 +54,13 @@ class Core {
         'customers/dashboard' => 'AdminController@dashboard',
        
 
-        // Add these routes to your Core class
-'customers/reviews/create' => 'ReviewController@create', // Route to show the create review form
-'customers/reviews/store' => 'ReviewController@store',   // Route to handle form submission
-
-'customers/reviews/{product_id}' => 'ReviewController@index',
-
-// Create a new review
-'customers/reviews/create' => 'ReviewController@create',
-
-// Update an existing review (assuming it includes a review ID)
-'customers/reviews/update/{review_id}' => 'ReviewController@update',
-
-// Delete a review (admin or user permission-based)
-'customers/reviews/delete/{review_id}' => 'ReviewController@delete',
 
         //product Routes
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
         'home' => 'ProductController@home',
+        'category/{id}' => 'ProductController@getProductsByCategory',
+        'search' => 'ProductController@search',
 
         //admin routes
         'admin/product/create' => 'ProductController@create',
@@ -116,8 +84,6 @@ class Core {
         'cart/remove' => 'CartController@remove',
         'cart/calculateTotals' => 'CartController@calculateTotals',
         'cart/applyCoupon' => 'CartController@applyCoupon',
-
-
     ];
     
 

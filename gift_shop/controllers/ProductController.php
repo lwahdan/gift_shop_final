@@ -21,6 +21,16 @@ class ProductController extends Controller
         // Load the index view and pass products as data
         $this->view('products/index', ['products' => $products]);
     }
+
+    public function getProductsByCategory($categoryId) {
+        $products = $this->productModel->getProductsByCategory($categoryId);
+        $this->view('products/index', ['products' => $products]); 
+    }
+    public function search() {
+        $products = $this->productModel->searchProductsByName($_GET['search']);
+        $this->view('products/index', ['products' => $products]); 
+    }
+
     public function home()
     {
         // Retrieve all products from the model
