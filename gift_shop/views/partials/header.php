@@ -1,3 +1,16 @@
+<?php
+// Retrieve cart items from the cookie if it exists
+$cartItems = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
+
+// Initialize subtotal
+$subtotal = 0;
+
+// Calculate the subtotal based on cart items
+foreach ($cartItems as $item) {
+    $subtotal += $item['price'] * $item['quantity'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -106,13 +119,13 @@
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                     <i class="icon-heart"></i>
-                                    <span class="item-count">3</span>
+                                    <!-- <span class="item-count">3</span> -->
                                 </a>
                             </li>
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-bag"></i>
-                                    <span class="item-count">3</span>
+                                    <!-- <span class="item-count">3</span> -->
                                 </a>
                             </li>
                             <li>
@@ -305,68 +318,33 @@
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
         <ul class="offcanvas-cart">
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-1/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Wheel</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$49.00</span>
-                        </div>
+    <!-- Loop through cart items and display each one -->
+    <?php foreach ($cartItems as $item): ?>
+        <li class="offcanvas-cart-item-single">
+            <div class="offcanvas-cart-item-block">
+                <div class="offcanvas-cart-item-content">
+                    <a href="#" class="offcanvas-cart-item-link"><?php echo htmlspecialchars($item['name']); ?></a>
+                    <div class="offcanvas-cart-item-details">
+                        <span class="offcanvas-cart-item-details-quantity"><?php echo $item['quantity']; ?> x </span>
+                        <span class="offcanvas-cart-item-details-price">$<?php echo number_format($item['price'], 2); ?></span>
                     </div>
                 </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-2/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Car Vails</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">3 x </span>
-                            <span class="offcanvas-cart-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-cart-item-single">
-                <div class="offcanvas-cart-item-block">
-                    <a href="#" class="offcanvas-cart-item-image-link">
-                        <img src="../public/images/product/default/home-3/default-1.jpg" alt=""
-                             class="offcanvas-cart-image">
-                    </a>
-                    <div class="offcanvas-cart-item-content">
-                        <a href="#" class="offcanvas-cart-item-link">Shock Absorber</a>
-                        <div class="offcanvas-cart-item-details">
-                            <span class="offcanvas-cart-item-details-quantity">1 x </span>
-                            <span class="offcanvas-cart-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-cart-item-delete text-right">
-                    <a href="#" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-        </ul>
-        <div class="offcanvas-cart-total-price">
-            <span class="offcanvas-cart-total-price-text">Subtotal:</span>
-            <span class="offcanvas-cart-total-price-value">$170.00</span>
-        </div>
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
+<!-- Display the subtotal -->
+<div class="offcanvas-cart-total-price">
+    <span class="offcanvas-cart-total-price-text">Subtotal:</span>
+    <span class="offcanvas-cart-total-price-value">
+        $<?php echo number_format($subtotal, 2); ?>
+    </span>
+</div>
+
         <ul class="offcanvas-cart-action-button">
-            <li><a href="cart.html" class="btn btn-block btn-golden">View Cart</a></li>
-            <li><a href="compare.html" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
+            <li><a href="/customers/cart" class="btn btn-block btn-golden">View Cart</a></li>
+            <li><a href="/customers/checkout" class=" btn btn-block btn-golden mt-5">Checkout</a></li>
         </ul>
     </div> <!-- End  Offcanvas Addcart Wrapper -->
 

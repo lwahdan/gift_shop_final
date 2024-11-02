@@ -59,12 +59,16 @@ require_once 'controllers/ProductController.php';
                     <div>
                         <div class="row">
                             <div class="col-auto">
+                                <div class="hero2">
                                 <div class="hero-slider-content">
-                                    <h4 class="subtitle">New collection</h4>
-                                    <h2 class="title">Luxy Chairs <br> Design Award </h2>
-                                    <a href="/customers/product-details-default"
-                                       class="btn btn-lg btn-outline-golden">shop now </a>
+                                <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
+<h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
+<h2 id="unforgettable2">Breathe Life Indoors</h2>
+<a href="/customers/product-details-default" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
+
                                 </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -226,11 +230,6 @@ require_once 'controllers/ProductController.php';
         </div>
     </div>
 </div>
-
-
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
-      
-    <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
                                 
 <!-- End Product Default Slider Section -->
 

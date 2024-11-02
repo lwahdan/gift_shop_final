@@ -23,6 +23,7 @@ $orderTotal = $subtotal - $discount + $shipping;
     <div class="container">
         <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
             <div class="row">
+                <div id="mycheckout">
                 <div class="col-lg-6 col-md-6">
                     <form action="#">
                         <h3>Your order</h3>
@@ -69,6 +70,7 @@ $orderTotal = $subtotal - $discount + $shipping;
                         </div>
                     </form>
                 </div>
+                                    </div>
             </div>
         </div>
     </div>
