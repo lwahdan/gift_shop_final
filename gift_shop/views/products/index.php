@@ -43,6 +43,7 @@ $dir = '../public/images/product/';?>
                                                     <a href="#" data-bs-toggle="modal"
                                                        data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
                                                     <a href="/wishlist"><i class="icon-heart"></i></a>
+                                                    <img src="<?php echo $dir . urlencode($product['image_url']); ?>" alt="Product Image">
                                                     <a href="/compare"><i class="icon-shuffle"></i></a>
 
                                                 </div>

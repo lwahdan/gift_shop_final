@@ -30,8 +30,5 @@ class Product extends BaseModel
         return $statement->fetchAll(\pdo::FETCH_ASSOC);
     }
 
-    
-
-
 }
 ?>

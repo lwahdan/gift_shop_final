@@ -191,12 +191,7 @@
 
                         <!-- Start Product Details Tab Button -->
                         <ul class="nav tablist product-details-content-tab-btn d-flex justify-content-center">
-                            <li><a class="nav-link active" data-bs-toggle="tab" href="#description">
-                                    Description
-                                </a></li>
-                            <li><a class="nav-link" data-bs-toggle="tab" href="#specification">
-                                    Specification
-                                </a></li>
+                            
                             <li><a class="nav-link" data-bs-toggle="tab" href="#review">
                                     Reviews 
                                 </a></li>

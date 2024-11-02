@@ -11,7 +11,7 @@
        
         <input class="input-log" type="password" name="password" placeholder="Enter your password" required>
         
-        <input type="submit" name="submit-btn" class="btn" value="Login">
+        <input type="submit" name="submit-btn" class="btn1" value="Login">
         <p class="log">Don't have an account? <a href="/customers/register">Register now</a></p>
     </form>
 </section>

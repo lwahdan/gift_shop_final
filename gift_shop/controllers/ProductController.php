@@ -26,7 +26,8 @@ class ProductController extends Controller
         $products = $this->productModel->getProductsByCategory($categoryId);
         $this->view('products/index', ['products' => $products]); 
     }
-    public function search() {
+
+        public function search() {
         $products = $this->productModel->searchProductsByName($_GET['search']);
         $this->view('products/index', ['products' => $products]); 
     }
@@ -66,5 +67,9 @@ class ProductController extends Controller
             exit();
         }
     }
+
+    
+
+    
 }
 ?>

@@ -51,7 +51,7 @@
 </div>
         
 
-        <input type="submit" name="submit-btn" class="btn reg" value="Register Now">
+        <input type="submit" name="submit-btn" class="btn1 reg" value="Register Now">
         <p class="log">Already have an account? <a href="/customers/login">Login now</a></p>
     </form>
 </section>

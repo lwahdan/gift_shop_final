@@ -38,6 +38,7 @@
         display: flex;
         justify-content: center;
         padding-top: 30px;
+        margin-top: 50px;
         
     }
     .email-input{
@@ -53,6 +54,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-top: 50px;
     }
     .form-container form{
         width: 50vw;
@@ -100,20 +102,20 @@
     
     }
     
-    /* form .btn{
+ form .btn1{
         cursor: pointer;
         background: #FEF5EF;
         color: #000;
         text-transform: uppercase;
         margin-left: 150px;
         margin-top: 20px;
-    } */
+    } 
     
-    /* form .btn:hover{
+ form .btn1:hover{
         background: transparent;
         border: 2px solid var(--pink);
         color: var(--pink);
-    } */
+    } 
 
     .form-container h3{
         

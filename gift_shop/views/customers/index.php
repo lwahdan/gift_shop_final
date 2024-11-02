@@ -258,7 +258,6 @@ require_once 'controllers/CategoryController.php';
             <a href="/category/1" class="content">
                 <div class="inner">
                     <h4 class="title">Bar Stool</h4>
-                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -275,7 +274,6 @@ require_once 'controllers/CategoryController.php';
             <a href="/category/2" class="content">
                 <div class="inner">
                     <h4 class="title">Armchairs</h4>
-                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -290,7 +288,6 @@ require_once 'controllers/CategoryController.php';
             <a href="/category/3" class="content">
                 <div class="inner">
                     <h4 class="title">lighting</h4>
-                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
@@ -305,7 +302,6 @@ require_once 'controllers/CategoryController.php';
             <a href="/category/1" class="content">
                 <div class="inner">
                     <h4 class="title">Easy chairs</h4>
-                    <h6 class="sub-title">20 products</h6>
                 </div>
                 <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
             </a>
