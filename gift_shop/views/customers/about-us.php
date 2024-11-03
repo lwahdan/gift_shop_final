@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <div class="content" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="title">ABOUT MOMENT</h3>
-                        <h5 class="semi-title">Every gift begins with a heartfelt intention and tells a story. At Moments, we bring those stories to life with thoughtful gifts for life’s cherished moments</h5>
+                        <p class="semi-title">Every gift begins with a heartfelt intention and tells a story</p>
                         <p>Welcome to moment, where every gift is chosen with love and crafted to make your moments memorable. We believe in celebrating life’s simple joys, and our curated selection of flowers, plants, chocolates, and gift packages is designed to add a special touch to your happiest occasions. Whether it’s a small act of kindness, a big celebration, or anything in between, our mission is to help you share love and joy, one delivery at a time. Every order is prepared with care and delivered straight to your door, ensuring that each gift arrives fresh, beautiful, and ready to delight</p>
                     </div>
                 </div>
@@ -45,8 +45,7 @@
     </div>
     <!-- End About Top -->
 
-    <div class="team-section section-top-gap-100 secton-fluid section-inner-bg">
-        <!-- Start Section Content Text Area -->
+    <!-- <div class="team-section section-top-gap-100 secton-fluid section-inner-bg">
         <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
             <div class="container">
                 <div class="row">
@@ -60,7 +59,6 @@
                 </div>
             </div>
         </div>
-        <!-- End Section Content Text Area -->
         <div class="team-wrapper myteam">
             <div class="container">
                 <div class="row mb-n6">
@@ -128,8 +126,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!--   End  Team Section   -->
+    </div> -->
 
 
 <?php require 'views/partials/footer.php'; ?>

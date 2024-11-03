@@ -78,9 +78,12 @@ foreach ($cartItems as $item) {
                                     <li class="has-dropdown">
                                         <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
+                                    <li class="has-dropdown">
+                                        <a class="active main-menu-link" href="/products">Shop</a>
+                                    </li>
 
                                     <li class="has-dropdown has-megaitem">
-                                        <a href="#">Shop
+                                        <a href="#">Other Pages
                                             <i class="fa fa-angle-down"></i></a>
                                         <!-- Mega Menu -->
                                         <div class="mega-menu">
@@ -88,7 +91,6 @@ foreach ($cartItems as $item) {
 
                                                 <!-- Mega Menu Sub Link -->
                                                 <li class="mega-menu-item">
-                                                    <a href="#" class="mega-menu-item-title">Other Pages</a>
                                                     <ul class="mega-menu-sub">
                                                         <li><a href="/customers/cart">Cart</a></li>
                                                         <!--                                                            <li><a href="empty-cart.html">Empty Cart</a></li>-->
