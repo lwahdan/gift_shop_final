@@ -18,13 +18,20 @@ class WishlistController extends Controller
     // Show all items in the user's wishlist
     public function index()
     {
-        $userId = $_SESSION['user_id']; // Ensure user is authenticated and session is set
-        $wishlistItems = $this->wishlistModel->getWishlistByUser($userId);
-        $this->view('customers/wishlist', [
+        if (isset($_SESSION['user_id'])) {
+            $userId = $_SESSION['user_id']; // Ensure user is authenticated and session is set
+            $wishlistItems = $this->wishlistModel->getWishlistByUser($userId);
+            $this->view('customers/wishlist', [
             'wishlistItems' => $wishlistItems,
             'productModel' => $this->productModel,
             'dir' => "../public/images/product/"
         ]);
+            
+        }else{
+            header("Location: /customers/login");  // Redirect if not logged in
+            exit();
+        }
+        
     }
 
     // Add an item to the wishlist
