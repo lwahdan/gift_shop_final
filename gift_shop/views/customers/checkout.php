@@ -4,6 +4,7 @@
 // Retrieve updated cart items from the cookie
 $cartItems = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
+
 // Initialize subtotal, shipping, and discount
 $subtotal = 0.00;
 $shipping = 50.00;
@@ -19,31 +20,31 @@ $orderTotal = $subtotal - $discount + $shipping;
 ?>
 
 <!-- HTML for checkout page -->
+
 <div class="checkout-section">
     <div class="container">
         <div class="checkout_form" data-aos="fade-up" data-aos-delay="400">
+            
             <div class="row">
-                <div id="mycheckout">
-                <div class="col-lg-6 col-md-6">
-                    <form action="#">
-                        <h3>Your order</h3>
-                        <div class="order_table table-responsive">
-                            <table>
-                                <thead>
+                <div class="col-lg-6 col-md-6 orderall">
+                    <h3>Your order</h3>
+                    <div class="order_table table-responsive">
+                        <table>
+                            <thead>
                                 <tr>
                                     <th>Product</th>
                                     <th>Total</th>
                                 </tr>
-                                </thead>
-                                <tbody id="checkout-items">
-                                    <?php foreach ($cartItems as $item): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($item['name']); ?> x <?php echo $item['quantity']; ?></td>
-                                            <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                                <tfoot>
+                            </thead>
+                            <tbody id="checkout-items">
+                                <?php foreach ($cartItems as $item): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($item['name']); ?> x <?php echo $item['quantity']; ?></td>
+                                        <td>$<?php echo number_format($item['price'] * $item['quantity'], 2); ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                            <tfoot>
                                 <tr class="order_total">
                                     <th>Subtotal</th>
                                     <td>$<?php echo number_format($subtotal, 2); ?></td>
@@ -60,20 +61,64 @@ $orderTotal = $subtotal - $discount + $shipping;
                                     <th>Order Total</th>
                                     <td id="total-amount">$<?php echo number_format($orderTotal, 2); ?></td>
                                 </tr>
-                                </tfoot>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <div id="myorder">
+                    <div class="payment_method">
+                        <h3>Shipping Information</h3>
+                        <form action="/order/submit" method="GET" onsubmit="handleSubmit()">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <label for="shipping_address">Shipping Address:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="shipping_address" name="shipping_address" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="city">City:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="city" name="city" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="postal_code">Postal Code:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="postal_code" name="postal_code" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label for="country">Country:</label>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="country" name="country" required>
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </table>
-                        </div>
-                        <div class="payment_method">
+                            <!-- Submit button -->
                             <div class="order_button pt-3">
-                                <button class="btn btn-md btn-black-default-hover" type="button" onclick="submitOrder()">SUBMIT ORDER</button>
+                                <input type="submit" value="Submit Order" class="btn btn-md btn-black-default-hover">
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    </div>
+
                 </div>
-                                    </div>
             </div>
+            
+
         </div>
     </div>
 </div>
+
 
 <?php require 'views/partials/footer.php'; ?>

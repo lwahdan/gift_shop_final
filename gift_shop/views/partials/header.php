@@ -118,7 +118,7 @@ foreach ($cartItems as $item) {
                         <ul class="header-action-link action-color--black action-hover-color--golden">
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
-                                    <i class="icon-heart"></i>
+                                    <!-- <i class="icon-heart"></i> -->
                                     <!-- <span class="item-count">3</span> -->
                                 </a>
                             </li>

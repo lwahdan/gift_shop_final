@@ -47,6 +47,7 @@ class BaseModel
         $sql = "INSERT INTO $this->table ($keys) VALUES ($tags)";
         $statement = $this->pdo->prepare($sql);
         $statement->execute($data);
+        return $this->pdo->lastInsertId();
     }
 
     public function update($id, $data) {

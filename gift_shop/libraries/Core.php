@@ -87,6 +87,8 @@ class Core {
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
 
+    'order/submit' => 'OrderController@submitOrder', 
+
     ];
     
 

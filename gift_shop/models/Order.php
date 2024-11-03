@@ -39,5 +39,10 @@ class Order extends BaseModel {
         $stmt->bindParam(':id', $orderId, PDO::PARAM_INT);
         return $stmt->execute();
     }
+    public function addOrderItem($data)
+    {
+        $orderItemModel = new BaseModel('order_items');
+        $orderItemModel->create($data);
+    }
 }
 ?>

@@ -1,11 +1,13 @@
 <?php
 include_once './models/UserModel.php';
+include_once './models/Order.php';
 
 class ProfileController extends Controller {
     private $userModel;
 
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+        $this->orderModel = new Order('orders');
     }
 
     // Method to view the user profile
@@ -18,8 +20,10 @@ class ProfileController extends Controller {
     
         // Get user data by username
         $username = $_SESSION['username'];
+        $userId = $_SESSION['user_id'];
         
         $userData = $this->userModel->getUserByUsername($username);
+        $orders = $this->orderModel->getOrdersByUser($userId);
     
         // Fetch address details
         $addressData = $this->userModel->getUserAddressById($_SESSION['user_id']);
@@ -27,6 +31,7 @@ class ProfileController extends Controller {
         // Load the profile view with user data and address
         $this->view('customers/profile', [
             'user' => $userData,
+            'orders' => $orders,
             'address' => $addressData // Pass address data to the view
         ]);
     }

@@ -1,5 +1,4 @@
 <?php require 'views/partials/header.php'; ?>
-
 <!-- ...:::: Start Breadcrumb Section:::... -->
 <div class="breadcrumb-section breadcrumb-bg-color--golden">
     <div class="breadcrumb-wrapper">
@@ -10,8 +9,7 @@
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
-                                <li><a href="/customers/index">Home</a></li>
-                                <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
+                                <li><a href="/home">Home</a></li>
                                 <li class="active" aria-current="page">My Account</li>
                             </ul>
                         </nav>
@@ -156,11 +154,34 @@
                     </div>
 
                     <div class="tab-pane fade" id="orders">
-                        <section>
-                            <h4>Your Orders</h4>
-                            <!-- Include orders data here -->
-                        </section>
-                    </div>
+            <section>
+                <h4>Your Orders</h4>
+                <?php if (!empty($orders)): ?>
+                    <table class="order-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Total Price</th>
+                                <th>Status</th>
+                                <th>Order Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($orders as $order): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($order['id']); ?></td>
+                                    <td><?php echo htmlspecialchars($order['total_price']); ?></td>
+                                    <td><?php echo htmlspecialchars($order['status']); ?></td>
+                                    <td><?php echo htmlspecialchars($order['order_date']); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p>You have no orders yet.</p>
+                <?php endif; ?>
+            </section>
+        </div>
 
                     <div class="tab-pane fade" id="addresses">
                         <h3>Address Information</h3>

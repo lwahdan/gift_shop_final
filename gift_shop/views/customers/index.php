@@ -200,7 +200,7 @@ require_once 'controllers/CategoryController.php';
 
 
                                             <div class="action-link-right">
-                                                <a href="/customers/wishlist"><i class="icon-heart"></i></a>
+                                                <a href="wishlist/add/<?= $row['id']?>"><i class="icon-heart"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -224,13 +224,14 @@ require_once 'controllers/CategoryController.php';
                         </div>
                     </div>
                     <!-- Navigation buttons -->
-                   <!-- <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div> -->
-                <!--</div>-->
+                   <!-- <div class="swiper-button-prev"></div> -->
+                    <!-- <div class="swiper-button-next"></div> -->
+                </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
     <!--/////////////////////////////////////////////////////////////////////////////////////////////////-->
