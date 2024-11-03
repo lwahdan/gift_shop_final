@@ -50,8 +50,15 @@ function submitOrder() {
             confirmButton: 'custom-swal-button'
         },
         html: '<p style="font-size: 14px; margin-top: 10px;"><a href="/home" style="color: #b19361; text-decoration: none;">Continue Shopping</a></p>'
+    }).then(() => {
+        // Clear the cart cookie
+        document.cookie = "cart=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+
+        // Clear other related cookies (like discount if applicable)
+        document.cookie = "discount=; path=/; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
     });
 }
+
 
 // subscribe button
 document.getElementById("SUBSCRIBE").onclick = function(event) {

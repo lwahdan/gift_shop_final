@@ -11,7 +11,6 @@
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="/home">Home</a></li>
-                                <li><a href="shop-grid-sidebar-left.html">Shop</a></li>
                                 <li class="active" aria-current="page">Product Details Default</li>
                             </ul>
                         </nav>
@@ -88,7 +87,7 @@
                         <div class="d-flex align-items-center">
                           
                             <!-- Add to Cart Form start-->
-    <form action="/cart/add" method="POST">
+    <form action="/cart/add" method="POST" class="my_cart_details_form">
         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
         <div class="product-add-to-cart-btn">
             <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
