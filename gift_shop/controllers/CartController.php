@@ -43,7 +43,7 @@ class CartController extends Controller
         setcookie('cart', json_encode($cart), time() + 86400, "/"); // 1 day expiration
 
         // Return JSON response for AJAX
-        echo json_encode(['success' => true, 'cartCount' => count($cart)]);
+        echo json_encode(['success' => true, 'cartCount' => array_sum(array_column($cart, 'quantity'))]);
     } else {
         echo json_encode(['success' => false, 'message' => 'Product not found']);
     }

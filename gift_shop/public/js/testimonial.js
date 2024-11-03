@@ -170,5 +170,25 @@ document.querySelectorAll('.add-to-cart-form').forEach(form => {
     });
 });
 
+// Function to get the cart count from the cookie
+function getCartCountFromCookie() {
+    const cartCookie = document.cookie.replace(/(?:(?:^|.*;\s*)cart\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    if (!cartCookie) return 0;
+
+    try {
+        const cart = JSON.parse(decodeURIComponent(cartCookie));
+        return Object.values(cart).reduce((count, item) => count + item.quantity, 0);
+    } catch (error) {
+        console.error('Error parsing cart cookie:', error);
+        return 0;
+    }
+}
+
+// Update the cart count on page load
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('cart-count').textContent = getCartCountFromCookie();
+});
+
+
 
 
