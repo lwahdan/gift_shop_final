@@ -8,8 +8,7 @@ $dir = '../public/images/product/';?>
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3 class="section-title">ِAll products</h3>
-                            <p>Preorder now to receive exclusive deals & gifts</p>
+                            <h3 class="section-title">Products</h3>
                         </div>
                     </div>
                 </div>

@@ -85,7 +85,8 @@ public function submitOrder()
 
 
     // Redirect to confirmation page
-    $this->view('customers/index');
+    header("Location: /home");
+            exit();
 }
 
 }

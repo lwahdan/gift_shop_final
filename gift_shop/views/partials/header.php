@@ -20,7 +20,7 @@ foreach ($cartItems as $item) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>HONO - Multi Purpose HTML Template</title>
+    <title>MOMENTS</title>
 
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
@@ -82,18 +82,16 @@ foreach ($cartItems as $item) {
                                         <a class="active main-menu-link" href="/products">Shop</a>
                                     </li>
 
-                                    <li class="has-dropdown has-megaitem">
+                                    <!-- <li class="has-dropdown has-megaitem">
                                         <a href="#">Other Pages
                                             <i class="fa fa-angle-down"></i></a>
-                                        <!-- Mega Menu -->
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
 
-                                                <!-- Mega Menu Sub Link -->
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
                                                         <li><a href="/customers/cart">Cart</a></li>
-                                                        <!--                                                            <li><a href="empty-cart.html">Empty Cart</a></li>-->
+                    
                                                         <li><a href="/wishlist">Wishlist</a></li>
                                                         <li><a href="/customers/checkout">Checkout</a></li>
                                                         <li><a href="/customers/login">Login</a></li>
@@ -102,7 +100,7 @@ foreach ($cartItems as $item) {
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li>
+                                    </li> -->
 
                                     <li>
                                         <a href="/customers/about-us">About Us</a>
@@ -118,18 +116,27 @@ foreach ($cartItems as $item) {
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">
+                        <li>
+    <a href="#offcanvas-profile" class="offcanvas-toggle">
+        <i class="icon-user"></i>
+        <!-- <span class="notification-badge">1</span> -->
+    </a>
+</li>
+
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
-                                    <!-- <i class="icon-heart"></i> -->
-                                    <!-- <span class="item-count">3</span> -->
+                                    <i class="icon-heart"></i>
+                                    <span class="item-count">3</span>
                                 </a>
                             </li>
+                            
                             <li>
                                 <a href="#offcanvas-add-cart" class="offcanvas-toggle">
                                     <i class="icon-bag"></i>
-                                    <!-- <span class="item-count">3</span> -->
+                                    <span id="cart-count">0</span>
                                 </a>
                             </li>
+
                             <li>
                                 <a href="#search">
                                     <i class="icon-magnifier"></i>

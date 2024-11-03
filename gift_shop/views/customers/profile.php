@@ -30,7 +30,7 @@
                     <ul role="tablist" class="nav flex-column dashboard-list">
                         <li><a href="#dashboard" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover active">Dashboard</a></li>
                         <li><a href="#orders" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Orders</a></li>
-                        <li><a href="#addresses" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Addresses</a></li>
+                        <li><a href="#addresses" data-bs-toggle="tab" class="nav-link btn btn-block btn-md btn-black-default-hover">Address</a></li>
                         <li><a href="/customers/logout" class="nav-link btn btn-block btn-md btn-black-default-hover">Logout</a></li>
                     </ul>
                 </div>

@@ -18,22 +18,64 @@ class CartController extends Controller
     }
 
     public function add()
-    {
-        $productId = $_POST['product_id'] ?? null;
+{
+    $productId = $_POST['product_id'] ?? null;
+    $quantity = $_POST['quantity'] ?? 1; // Default quantity to 1 if not specified
 
-        if ($productId) {
-            $product = $this->productModel->find($productId);
+    $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
+    $productModel = new ProductModel();
+    $product = $productModel->find($productId);
 
-            if ($product) {
-                $this->cartModel->addToCart($product);
-                header("Location: /customers/cart");
-                exit();
-            }
+    if ($product) {
+        if (isset($cart[$productId])) {
+            $cart[$productId]['quantity'] += $quantity;
+        } else {
+            $cart[$productId] = [
+                'id' => $productId,
+                'name' => $product['product_name'],
+                'price' => $product['price'],
+                'quantity' => $quantity,
+                'image_url' => $product['image_url']
+            ];
         }
 
-        header("Location: /customers/index");
-        exit();
+        // Update the cart cookie
+        setcookie('cart', json_encode($cart), time() + 86400, "/"); // 1 day expiration
+
+        // Return JSON response for AJAX
+        echo json_encode(['success' => true, 'cartCount' => count($cart)]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Product not found']);
     }
+
+    exit(); // Ensure no further output is sent
+    }
+
+    public function update()
+{
+    $data = json_decode(file_get_contents("php://input"), true);
+    $productId = $data['product_id'] ?? null;
+    $quantity = $data['quantity'] ?? 1;
+
+    // Get the current cart from the cookie
+    $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
+
+    // Update quantity if the item is in the cart
+    if (isset($cart[$productId])) {
+        $cart[$productId]['quantity'] = $quantity;
+
+        // Save the updated cart back to the cookie
+        setcookie('cart', json_encode($cart), time() + 86400, "/");
+
+        echo json_encode(['success' => true]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Product not found in cart']);
+    }
+
+    exit();
+}
+
+
 
     public function index()
     {

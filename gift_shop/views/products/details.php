@@ -97,7 +97,7 @@
                         </div>
                         <!-- Start Product Details Meta Area -->
                         <div class="product-details-meta mb-20">
-                            <a href="wishlist.php" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
+                            <a href="/wishlist/add/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
                         </div> <!-- End Product Details Meta Area -->
                     </div> <!-- End Product Variable Area -->
                 </div>
