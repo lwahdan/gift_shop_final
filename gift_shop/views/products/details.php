@@ -32,7 +32,7 @@
                     <div class="product-large-image product-large-image-horizontal swiper-container">
                         <div class="swiper-wrapper">
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-1.jpg" alt="">
+                                <img src="<?php echo $dir . $product['image_url'];?>" alt="">
                             </div>
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                 <img src="../public/assets/images/product/default/home-1/default-2.jpg" alt="">
@@ -52,33 +52,6 @@
                         </div>
                     </div>
                     <!-- End Large Image -->
-                    <!-- Start Thumbnail Image -->
-                    <div class="product-image-thumb product-image-thumb-horizontal swiper-container pos-relative mt-5">
-                        <div class="swiper-wrapper">
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-1.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-2.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-3.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-4.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-5.jpg" alt="">
-                            </div>
-                            <div class="product-image-thumb-single swiper-slide">
-                                <img class="img-fluid" src="../public/assets/images/product/default/home-1/default-6.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- Add Arrows -->
-                        <div class="gallery-thumb-arrow swiper-button-next"></div>
-                        <div class="gallery-thumb-arrow swiper-button-prev"></div>
-                    </div>
-                    <!-- End Thumbnail Image -->
                 </div>
             </div>
             <div class="col-xl-7 col-lg-6">
@@ -113,16 +86,15 @@
                         </div>
                         <!-- Product Variable Single Item -->
                         <div class="d-flex align-items-center">
-                            <div class="variable-single-item">
-                                <span>Quantity</span>
-                                <div class="product-variable-quantity">
-                                    <input min="1" max="100" value="1" type="number">
-                                </div>
-                            </div>
-
-                            <div class="product-add-to-cart-btn">
-                                <a href="#" class="btn btn-block btn-lg btn-black-default-hover" data-bs-toggle="modal" data-bs-target="#modalAddcart">+ Add To Cart</a>
-                            </div>
+                          
+                            <!-- Add to Cart Form start-->
+    <form action="/cart/add" method="POST">
+        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+        <div class="product-add-to-cart-btn">
+            <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
+        </div>
+    </form>
+    <!-- Add to Cart end -->
                         </div>
                         <!-- Start Product Details Meta Area -->
                         <div class="product-details-meta mb-20">
@@ -165,7 +137,7 @@
                                 
                                 <?php endif; ?>
                             </ul> <!-- End - Review Comment -->
-                            <?php if (isset($_SESSION['success_message'])): ?>
+<?php if (isset($_SESSION['success_message'])): ?>
                         <div class="alert alert-success"><?php echo htmlspecialchars($_SESSION['success_message']); ?></div>
                         <?php unset($_SESSION['success_message']); // Clear after displaying ?>
                     <?php endif; ?>

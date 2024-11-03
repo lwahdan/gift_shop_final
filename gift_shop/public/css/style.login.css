@@ -261,6 +261,51 @@
         border-color: #f5c6cb;
     }
 
+    .rev-form {
+        background-color: #fef5ef; /* Light background for the form */
+        border: 1px solid #b19361; /* Border color */
+        border-radius: 8px; /* Rounded corners */
+        padding: 20px; /* Spacing inside the form */
+        margin-top: 20px; /* Space above the form */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+    
+    .rev-form label {
+        font-weight: bold; /* Bold labels for better visibility */
+        color: #b19361; /* Label color */
+    }
+    
+    .rev-form textarea {
+        width: 100%; /* Full-width text area */
+        height: 100px; /* Fixed height for the text area */
+        padding: 10px; /* Spacing inside the text area */
+        border: 1px solid #b19361; /* Border color */
+        border-radius: 4px; /* Rounded corners */
+        resize: vertical; /* Allow vertical resizing */
+    }
+    
+    .rev-form select {
+        width: 100%; /* Full-width select input */
+        padding: 10px; /* Spacing inside the select */
+        border: 1px solid #b19361; /* Border color */
+        border-radius: 4px; /* Rounded corners */
+        background-color: #fef5ef; /* Match background */
+    }
+    
+    .rev-form button.rev-btn {
+        background-color: #b19361; /* Button background color */
+        color: white; /* Text color */
+        padding: 10px 15px; /* Button padding */
+        border: none; /* No border */
+        border-radius: 4px; /* Rounded corners */
+        cursor: pointer; /* Pointer on hover */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+    
+    .rev-form button.rev-btn:hover {
+        background-color: #9a7a53; /* Darker shade on hover */
+    }
+
     
     
    

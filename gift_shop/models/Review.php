@@ -40,12 +40,7 @@ class Review extends BaseModel
         return $stmt->fetch(PDO::FETCH_ASSOC); // Return the user data
     }
    
-    public function getReviewsByProductId($productId) {
-        $stmt = $this->pdo->prepare("SELECT * FROM reviews WHERE product_id = :product_id AND status = 'approved'");
-        $stmt->bindParam(':product_id', $productId, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+    
     public function changePassword($userId, $currentPassword, $newPassword) {
         // Get the current user by ID
         $user = $this->getUserById($userId);
@@ -81,4 +76,15 @@ public function getUserById($userId) {
 
     return $stmt->fetch(PDO::FETCH_ASSOC); // Return user data or false if not found
 }
+
+    
+public function getReviewsByProductId($productId) {
+    $stmt = $this->pdo->prepare("SELECT * FROM reviews WHERE product_id = :product_id");
+    $stmt->execute(['product_id' => $productId]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+    
+
 }

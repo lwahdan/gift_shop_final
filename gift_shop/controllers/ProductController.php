@@ -52,7 +52,7 @@ class ProductController extends Controller
 
             if ($product) {
                 // Define the image directory path
-                $dir = "/path/to/your/image/directory/";
+                $dir = "../public/images/product/";
 
                 // Load the product details view, passing product and directory as data
                 $this->view('products/details', ['product' => $product, 'dir' => $dir]);

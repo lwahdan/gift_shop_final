@@ -41,6 +41,7 @@ class Core {
         'customers/dashboard' => 'AdminController@dashboard',
        
         //product Routes
+        'product/details/{id}' => 'ProductController@details',
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
         'home' => 'ProductController@home',
@@ -81,6 +82,7 @@ class Core {
     'customers/profile/updateProfile' => 'ProfileController@updateProfile',
     'customers/changePassword'=>'ProfileController@changePassword',
     'auth/changePassword' => 'ProfileController@changePassword',
+    'reviews/create' => 'ReviewController@create',
     ];
     
 
