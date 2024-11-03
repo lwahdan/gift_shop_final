@@ -83,6 +83,10 @@ class Core {
     'customers/changePassword'=>'ProfileController@changePassword',
     'auth/changePassword' => 'ProfileController@changePassword',
     'reviews/create' => 'ReviewController@create',
+
+    // contact
+    'contact/submit' => 'ContactController@submitContactForm',
+
     ];
     
 

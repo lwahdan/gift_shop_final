@@ -61,84 +61,70 @@
             </div>
         </div>
         <!-- End Section Content Text Area -->
-        <div class="team-wrapper">
+        <div class="team-wrapper myteam">
             <div class="container">
                 <div class="row mb-n6">
-                    <div class="col-xl-3 mb-5">
+
+                    <div class="col-xl-2 mb-5">
                         <div class="team-single" data-aos="fade-up" data-aos-delay="0">
                             <div class="team-img">
-                                <img class="img-fluid" src="../public/images/team/leader1.png" alt="">
+                                <img class="img-fluid" src="../public/images/team/team1.jpeg" alt="">
                             </div>
                             <div class="team-content">
                                 <h6 class="team-name font--bold mt-5">Ms. Veronica</h6>
                                 <span class="team-title">Web Designer</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <!-- <li><a href="#"><i class="ion-social-rss"></i></a></li> -->
-                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 mb-5">
+                    <div class="col-xl-2 mb-5">
                         <div class="team-single" data-aos="fade-up" data-aos-delay="200">
                             <div class="team-img">
-                                <img class="img-fluid" src="../public/images/team/leader2.png" alt="">
+                                <img class="img-fluid" src="../public/images/team/team2.jpeg" alt="">
                             </div>
                             <div class="team-content">
                                 <h6 class="team-name font--bold mt-5">Missa Santos</h6>
                                 <span class="team-title">CEO Founder</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <!-- <li><a href="#"><i class="ion-social-rss"></i></a></li> -->
-                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 mb-5">
+                    <div class="col-xl-2 mb-5">
                         <div class="team-single" data-aos="fade-up" data-aos-delay="400">
                             <div class="team-img">
-                                <img class="img-fluid" src="../public/images/team/leader3.png" alt="">
+                                <img class="img-fluid" src="../public/images/team/team3.jpeg" alt="">
                             </div>
                             <div class="team-content">
                                 <h6 class="team-name font--bold mt-5">Missa Santos</h6>
                                 <span class="team-title">Chief Officer</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <!-- <li><a href="#"><i class="ion-social-rss"></i></a></li> -->
-                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 mb-5">
-                        <div class="team-single" data-aos="fade-up" data-aos-delay="600">
+                    <div class="col-xl-2 mb-5">
+                        <div class="team-single" data-aos="fade-up" data-aos-delay="400">
                             <div class="team-img">
-                                <img class="img-fluid" src="../public/images/team/leader4.png" alt="">
+                                <img class="img-fluid" src="../public/images/team/team4.jpeg" alt="">
                             </div>
                             <div class="team-content">
-                                <h6 class="team-name font--bold mt-5">Lisa Antonia</h6>
-                                <span class="team-title">CTO</span>
-                                <ul class="team-social pos-absolute">
-                                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-instagram"></i></a></li>
-                                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                                    <!-- <li><a href="#"><i class="ion-social-rss"></i></a></li> -->
-                                </ul>
+                                <h6 class="team-name font--bold mt-5">Missa Santos</h6>
+                                <span class="team-title">Chief Officer</span>
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-xl-2 mb-5">
+                        <div class="team-single" data-aos="fade-up" data-aos-delay="400">
+                            <div class="team-img">
+                                <img class="img-fluid" src="../public/images/team/team5.jpeg" alt="">
+                            </div>
+                            <div class="team-content">
+                                <h6 class="team-name font--bold mt-5">Missa Santos</h6>
+                                <span class="team-title">Chief Officer</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
