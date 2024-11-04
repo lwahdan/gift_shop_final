@@ -116,12 +116,21 @@ foreach ($cartItems as $item) {
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">
-                        <li>
-    <a href="#offcanvas-profile" class="offcanvas-toggle">
-        <i class="icon-user"></i>
-        <!-- <span class="notification-badge">1</span> -->
-    </a>
-</li>
+                        <li>    
+                       
+                        <div class="profile-container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- User is logged in: show profile icon with dropdown -->
+        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
+        <div class="dropdown-men" id="profileDropdown">
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
+        </div>
+    <?php else: ?>
+        <!-- User is not logged in: show login link -->
+        <button class="logbtn"><a id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;">Login</a></button>
+    <?php endif; ?>
+</div>
 
                             <li>
                                 <a href="#offcanvas-wishlish" class="offcanvas-toggle">
@@ -184,6 +193,19 @@ foreach ($cartItems as $item) {
                                 <i class="icon-magnifier"></i>
                             </a>
                         </li>
+                        <li>    <div class="profile-container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- User is logged in: show profile icon with dropdown -->
+        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
+        <div class="dropdown-men" id="profileDropdown">
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
+        </div>
+    <?php else: ?>
+        <!-- User is not logged in: show login link -->
+        <button class="logbtn"><a id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;">Login</a></button>
+    <?php endif; ?>
+</div>  </li>
                         <li>
                             <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                 <i class="icon-heart"></i>
@@ -446,4 +468,26 @@ foreach ($cartItems as $item) {
 <!-- End Offcanvas Search Bar Section -->
 
 <!-- Offcanvas Overlay -->
-<div class="offcanvas-overlay"></div>
+
+
+<script>
+    function toggleDropdown() {
+        // Only toggle dropdown if user is logged in
+        const profileDropdown = document.getElementById("profileDropdown");
+        const isLoggedIn = <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>;
+
+        if (isLoggedIn && profileDropdown) {
+            profileDropdown.classList.toggle("show"); // Toggle dropdown visibility
+        }
+    }
+
+    // Close dropdown if clicking outside of it
+    document.addEventListener("click", function(event) {
+        const profileDropdown = document.getElementById("profileDropdown");
+        const profileIcon = document.getElementById("profileIcon");
+
+        if (profileDropdown && !profileDropdown.contains(event.target) && event.target !== profileIcon) {
+            profileDropdown.classList.remove("show");
+        }
+    });
+</script>

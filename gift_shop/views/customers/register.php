@@ -7,6 +7,7 @@
             <?php echo htmlspecialchars($message); ?>
         </p>
         
+        
         <div class="es">
         <input type="text" name="username" placeholder="Enter your username" value="<?php echo htmlspecialchars($data['username']); ?>" required>
         <input type="number" name="phone_number" placeholder="Enter your phone number" value="<?php echo htmlspecialchars($data['phone_number']); ?>" required>

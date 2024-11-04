@@ -27,7 +27,7 @@ class AuthController extends Controller {
                 $_SESSION['username'] = $result['username']; 
     
                 // Redirect to profile page
-                header('Location: /customers/profile');
+                header('Location: /home');
                 exit();
             } else {
                 // Login failed, set the message

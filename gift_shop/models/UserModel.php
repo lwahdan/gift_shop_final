@@ -45,7 +45,7 @@ class UserModel extends BaseModel {
         try {
             $this->pdo->beginTransaction();
 
-            // Insert the new user into the database
+           
             $this->create([
                 'username' => $username,
                 'email' => $email,
@@ -57,11 +57,11 @@ class UserModel extends BaseModel {
                 'postal_code' => $postal_code,
                 'country' => $country,
                 'password' => $hashedPassword,
-                'status' => 1 // Assuming status 1 means active
+                'status' => 1 
             ]);
             
             $this->pdo->commit();
-            return ['status' => 'success', 'message' => ""]; // No message on success
+            return ['status' => 'success', 'message' => ""]; 
         } catch (PDOException $e) {
             $this->pdo->rollBack();
             return ['status' => 'error', 'message' => "Registration failed. Please try again."];

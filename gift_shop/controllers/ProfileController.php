@@ -4,6 +4,7 @@ include_once './models/Order.php';
 
 class ProfileController extends Controller {
     private $userModel;
+    private $orderModel;
 
     public function __construct() {
         $this->userModel = $this->model('UserModel');

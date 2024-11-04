@@ -85,7 +85,17 @@ document.addEventListener("click", function(event) {
     }
 });
 
+function toggleDropdown() {
+    const dropdown = document.getElementById("profileDropdown");
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+}
 
+// Close dropdown if clicking outside
+window.onclick = function(event) {
+    if (!event.target.closest(".profile-container")) {
+        document.getElementById("profileDropdown").style.display = "none";
+    }
+};
 
 
 
