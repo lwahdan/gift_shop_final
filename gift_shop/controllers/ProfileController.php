@@ -73,8 +73,7 @@ public function saveProfile() {
             $_SESSION['message'] = "Profile update failed. Please try again.";
         }
 
-        // Redirect back to profile page
-        header('Location: /customers/profile');
+        header('Location: /home');
         exit();
     }
 }
@@ -93,17 +92,7 @@ public function updateProfile() {
             'postal_code' => htmlspecialchars(trim($_POST['postal_code'])),
         ];
 
-        // Check for optional profile image upload
-        if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
-            $targetDir = __DIR__ . '/../public/images/profile/';
-            $fileName = time() . '_' . basename($_FILES['profile_image']['name']);
-            $targetFilePath = $targetDir . $fileName;
-
-            // Move uploaded file to target directory
-            if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $targetFilePath)) {
-                $data['profile_image'] = $fileName; // Save image name for the database update
-            }
-        }
+      
 
         // Attempt to update user profile in the database
         $result = $this->userModel->updateUserProfile($_SESSION['username'], $data);

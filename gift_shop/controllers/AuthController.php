@@ -82,7 +82,7 @@ class AuthController extends Controller {
             );
 
             if ($result['status'] === 'success') {
-                header('Location:/customers/login');
+                header('Location:/home');
                 exit();
             }
             

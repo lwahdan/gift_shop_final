@@ -310,6 +310,7 @@
         position: relative;
         display: inline-block;
         cursor: pointer;
+       
     }
 
     .icon-user {
@@ -351,7 +352,10 @@
     .logbtn{
         background-color: #9a7a53;
         color: #fff;
-        border-radius: 5px;
-        padding: 4px;
+        border-radius: 4em;
+        padding:0px 20px;
+        font-size: 12px;
+        
     }
-  
+ 
+
