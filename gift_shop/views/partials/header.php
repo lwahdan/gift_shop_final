@@ -9,6 +9,9 @@ $subtotal = 0;
 foreach ($cartItems as $item) {
     $subtotal += $item['price'] * $item['quantity'];
 }
+
+$dir = $dir ?? "../public/images/product/";
+
 ?>
 
 <!DOCTYPE html>
@@ -339,10 +342,15 @@ foreach ($cartItems as $item) {
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
         <ul class="offcanvas-cart">
-    <!-- Loop through cart items and display each one -->
     <?php foreach ($cartItems as $item): ?>
         <li class="offcanvas-cart-item-single">
             <div class="offcanvas-cart-item-block">
+                <!-- Image -->
+                <a href="#" class="offcanvas-cart-item-image-link">
+                    <img src="<?php echo $dir . '/' . urlencode($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="offcanvas-cart-image">
+                </a>
+
+                <!-- Item Content -->
                 <div class="offcanvas-cart-item-content">
                     <a href="#" class="offcanvas-cart-item-link"><?php echo htmlspecialchars($item['name']); ?></a>
                     <div class="offcanvas-cart-item-details">
@@ -351,9 +359,20 @@ foreach ($cartItems as $item) {
                     </div>
                 </div>
             </div>
+
+            <!-- Delete Button -->
+            <div class="offcanvas-cart-item-delete text-right">
+                <form class="delete-item-form" action="/cart/remove" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
+                    <button type="submit" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></button>
+                </form>
+            </div>
+
+            
         </li>
     <?php endforeach; ?>
 </ul>
+
 
 <!-- Display the subtotal -->
 <div class="offcanvas-cart-total-price">

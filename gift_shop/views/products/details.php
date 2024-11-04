@@ -33,21 +33,6 @@
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
                                 <img src="<?php echo $dir . $product['image_url'];?>" alt="">
                             </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-2.jpg" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-3.jpg" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-4.jpg" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-5.jpg" alt="">
-                            </div>
-                            <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="../public/assets/images/product/default/home-1/default-6.jpg" alt="">
-                            </div>
                         </div>
                     </div>
                     <!-- End Large Image -->
@@ -87,12 +72,12 @@
                         <div class="d-flex align-items-center">
                           
                             <!-- Add to Cart Form start-->
-    <form action="/cart/add" method="POST" class="my_cart_details_form">
+    <form action="/cart/add" method="POST" class="add-to-cart-form">
         <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
         <div class="product-add-to-cart-btn">
             <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
         </div>
-    </form>
+    </form>    
     <!-- Add to Cart end -->
                         </div>
                         <!-- Start Product Details Meta Area -->

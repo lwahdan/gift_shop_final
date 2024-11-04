@@ -196,9 +196,8 @@ require_once 'controllers/CategoryController.php';
                                         <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
                                         <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
                                         </form>
+                                        <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
-
-
 
                                             <div class="action-link-right">
                                                 <a href="wishlist/add/<?= $row['id']?>"><i class="icon-heart"></i></a>

@@ -70,6 +70,7 @@ class Core {
         'cart/remove' => 'CartController@remove',
         'cart/calculateTotals' => 'CartController@calculateTotals',
         'cart/applyCoupon' => 'CartController@applyCoupon',
+        'cart/view' => 'CartController@viewCart',
 
         'customers/logout' => 'AuthController@logout',
         'customers/edit' => 'UserController@editProfile',
@@ -86,8 +87,8 @@ class Core {
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
-
     'order/submit' => 'OrderController@submitOrder', 
+    
 
     ];
     
