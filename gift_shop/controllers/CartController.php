@@ -20,7 +20,7 @@ class CartController extends Controller
     public function add()
 {
     $productId = $_POST['product_id'] ?? null;
-    $quantity = $_POST['quantity'] ?? 1; // Default quantity to 1 if not specified
+    $quantity = $_POST['quantity'] ?? 1; 
 
     $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
     $productModel = new ProductModel();
