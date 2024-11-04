@@ -33,7 +33,7 @@ class BaseModel
 
     public function find($id)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = $id");
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE id = :id");
         $statement -> bindValue(':id', $id);
         $statement->execute();
         return $statement->fetch(\pdo::FETCH_ASSOC);
