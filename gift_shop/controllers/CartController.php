@@ -40,7 +40,7 @@ class CartController extends Controller
         }
 
         // Update the cart cookie
-        setcookie('cart', json_encode($cart), time() + 86400, "/"); // 1 day expiration
+        setcookie('cart', json_encode($cart), time() + 86400, "/");
 
         // Return JSON response for AJAX
         echo json_encode(['success' => true, 'cartCount' => array_sum(array_column($cart, 'quantity'))]);
@@ -48,7 +48,7 @@ class CartController extends Controller
         echo json_encode(['success' => false, 'message' => 'Product not found']);
     }
 
-    exit(); // Ensure no further output is sent
+    exit(); 
     }
 
     public function update()

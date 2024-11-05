@@ -213,9 +213,8 @@ function updateCartView() {
         .then(data => {
             console.log("Cart data received:", data);
             const cartList = document.querySelector('.offcanvas-cart');
-            if (!cartList) return; // Ensure cartList exists
+            if (!cartList) return;
 
-            // Clear current items in the header cart
             cartList.innerHTML = '';
 
             // Use Object.values() to convert data.cartItems to an array
@@ -243,13 +242,10 @@ function updateCartView() {
                         </div>
                     </li>
                 `;
-                cartList.insertAdjacentHTML('beforeend', cartItemHTML); // Add item to cart view
+                cartList.insertAdjacentHTML('beforeend', cartItemHTML);
             });
 
-            // Reapply delete event handlers to the newly added delete buttons in the header
             attachDeleteEventHandlers();
-
-            // Update subtotal separately
             updateSubtotal();
         })
         .catch(error => console.error('Error updating cart view:', error));
@@ -274,16 +270,16 @@ function updateSubtotal() {
         .catch(error => console.error('Error updating subtotal:', error));
 }
 
-// Attach delete event handlers for header and main cart view
+//delete event handlers for header and main cart view
 function attachDeleteEventHandlers() {
     document.querySelectorAll('.delete-item-form').forEach(form => {
         form.addEventListener('submit', function(event) {
             event.preventDefault();
 
             const formData = new FormData(this);
-            const productId = this.dataset.productId; // Target specific product ID in header view
-            const headerCartItem = this.closest('.offcanvas-cart-item-single'); // Find the header cart item element
-            const mainCartRow = document.querySelector(`tr[data-product-id="${productId}"]`); // Target main cart row
+            const productId = this.dataset.productId; 
+            const headerCartItem = this.closest('.offcanvas-cart-item-single');
+            const mainCartRow = document.querySelector(`tr[data-product-id="${productId}"]`);
 
             fetch('/cart/remove', {
                 method: 'POST',
@@ -292,15 +288,11 @@ function attachDeleteEventHandlers() {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    // Update the header cart view
                     updateCartView();
 
-                    // Remove the specific row in the main cart view (if it exists)
                     if (mainCartRow) {
                         mainCartRow.remove();
                     }
-
-                    // Remove the specific header cart item (to avoid duplicate update)
                     if (headerCartItem) {
                         headerCartItem.remove();
                     }
@@ -314,10 +306,8 @@ function attachDeleteEventHandlers() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Start the auto-slide function for the other page
     startAutoSlide();
     attachDeleteEventHandlers();
-
 });
 
 
