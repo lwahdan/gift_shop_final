@@ -4,7 +4,6 @@ class Core {
     protected $routes = [
         // Default route to customer index
         '' => 'ProductController@home',  // This handles the root URL
-
         // Admin Routes
 
         'admin/dashboard' => 'DashboardController@index',
@@ -82,7 +81,12 @@ class Core {
     'customers/profile/updateProfile' => 'ProfileController@updateProfile',
     'customers/changePassword'=>'ProfileController@changePassword',
     'auth/changePassword' => 'ProfileController@changePassword',
-    'reviews/create' => 'ReviewController@create',
+   'reviews/create' => 'ReviewController@create',              
+'reviews/view' => 'ReviewController@viewReview',            
+'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+'reviews/index' => 'ReviewController@index',  
+
+
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',

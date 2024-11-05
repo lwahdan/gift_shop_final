@@ -25,12 +25,16 @@ foreach ($cartItems as $item) {
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
 <link rel="stylesheet" href="../public/css/style.login.css">
+
     <link rel="stylesheet" href="../public/css/testimonial.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
+<!-- In your views/customers/login.php and views/customers/register.php -->
+
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css"> -->
@@ -192,6 +196,7 @@ foreach ($cartItems as $item) {
                                 <i class="icon-magnifier"></i>
                             </a>
                         </li>
+                        
                            
                         <li>
                             <a href="#offcanvas-wishlish" class="offcanvas-toggle">
@@ -205,6 +210,19 @@ foreach ($cartItems as $item) {
                                 <span class="item-count">3</span>
                             </a>
                         </li>
+                        <li>   <div class="profile-container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- User is logged in: show profile icon with dropdown -->
+        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
+        <div class="dropdown-men" id="profileDropdown">
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
+        </div>
+    <?php else: ?>
+        <!-- User is not logged in: show login link -->
+        <button class="logbtn" ><a class="loga" id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;font-size:15px !important;">Login</a></button>
+    <?php endif; ?>
+</div>  </li>
                         <li>
                             <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
                                 <i class="icon-menu"></i>
@@ -228,30 +246,24 @@ foreach ($cartItems as $item) {
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-mobile-menu-wrapper">
         <!-- Start Mobile Menu  -->
-        <div class="mobile-menu-bottom">
+       <!-- Start Mobile Menu  -->
+       <div class="mobile-menu-bottom">
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
                 <ul>
                     <li>
-                        <a href="/customers/index"><span>Home</span></a>
+                        <a href="/home"><span>Home</span></a>
 
                     </li>
-
+                    <li><a href="/customers/login">Login</a></li>
                     <li>
                         <a href=""><span>Shop</span></a>
-
-                        <!--                        <ul class="mobile-sub-menu">-->
-                        <!--                            <li>-->
-                        <!--                                <a href="#">Shop Pages</a>-->
                         <ul class="mobile-sub-menu">
-                            <li><a href="/customers/cart">Cart</a></li>
-                            <li><a href="/wishlist">Wishlist</a></li>
-                            <li><a href="/customers/checkout">Checkout</a></li>
-                            <li><a href="/customers/login">Login</a></li>
-                            <li><a href="/customers/profile">My Account</a></li>
+                            <li><a href="/category/1">Flowers</a></li>
+                            <li><a href="/wishlist">Plants</a></li>
+                            <li><a href="/customers/checkout">Chocolates</a></li>
+                            <li><a href="/customers/login">Packages</a></li>
                         </ul>
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
                     </li>
 
                     <li><a href="/customers/about-us">About Us</a></li>

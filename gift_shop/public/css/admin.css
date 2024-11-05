@@ -1,6 +1,104 @@
 /* =========== Google Fonts ============ */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
+
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+/* Centering and card styling */
+.container3 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.user-card3, .order-card3, .review-card3 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.user-card3 h2, .order-card3 h2, .review-card3 h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.user-info3 p {
+    margin: 8px 0;
+    color: #555;
+}
+
+.cardBox3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card3 {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-card3 h4 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.rating-stars3 {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.review-date3 {
+    font-size: 12px;
+    color: #888;
+}
+
+.review-status3 {
+    margin-top: 10px;
+}
+
+.card2 {
+    width: 90%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 10px 10px 12px black;
+    text-align: left;
+}
+
+.card-title2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.card2 p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.btn-back2 {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.btn-back2:hover {
+    background-color: #0056b3;
+}
 /* =============== Globals ============== */
 * {
     font-family: "Ubuntu", sans-serif;
@@ -128,7 +226,10 @@ body {
     box-shadow: 35px -35px 0 10px var(--white);
     pointer-events: none;
 }
-
+.iconBx{
+    font-size: 30px;
+    align-items: end;
+}
 /* ===================== Main ===================== */
 .main {
     position: absolute;
@@ -438,27 +539,36 @@ h1, h3{
     background-color: #bfa17c; /* Lighter shade on hover */
 }
 
+.footer-table{
+    background-color: #9d8757;
 
-table {
-
-    width: 100%;
-
+}
+.table {
+margin-left: 2.5%;
+    width: 95%;
+border-radius: 40px;
     overflow-x: auto;
+    border-collapse:collapse;
 }
 
 thead {
     background-color: #9d8757;
     color: white;
 }
+.table th{
 
-.table th, .table td {
-
-    border-radius: 10px;
-    text-align: left;
+    text-align: center;
     padding: 10px;
-    box-shadow: 1px 2px 12px black;
+}
+.table td {
 
-    white-space: nowrap; /* Prevent text from wrapping */
+
+    text-align: center;
+    padding: 10px;
+
+
+
+  /* Prevent text from wrapping */
 }
 
 tbody tr {
@@ -474,49 +584,208 @@ tbody tr:hover {
 }
 
 /* Button Styling */
+/* Green Button */
 a.btn-Green {
-    background-color: #28a745;
+    background-color: #4CAF50; /* Fresh green color */
     color: white;
-    padding: 5px 10px;
+    padding: 5px 5px;
+    font-size: small;
     text-decoration: none;
-
-    border-radius: 40px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
 a.btn-Green:hover {
-    background-color: #13d33c;
+    background-color: #fff;
+    color: #4CAF50;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* Slight lift on hover */
 }
+
+/* Blue Button */
 .btn-blue {
-    background-color: #283da7;
+    background-color: #007BFF; /* Modern blue */
     color: white;
-    padding: 5px 10px;
-    border: 0px solid white;
-    box-shadow: 3px 3px 12px black;
-    border-radius: 40px;
+    padding: 5px 5px;
+    font-size: small;
+    text-decoration: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #007BFF;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn-blue:hover {
-    background-color: #0126f6;
-
+    background-color: white;
+    color: #007BFF;
+    border: 2px solid #007BFF;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
+
+/* Red Danger Button */
 .btn-danger {
-    background-color: #dc3545;
+    background-color: #FF4136; /* Bright red */
     color: white;
-    padding: 5px 10px;
+    padding: 5px 5px;
+    font-size: small;
     text-decoration: none;
-    box-shadow: 3px 3px 12px black;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #FF4136;
+    border-radius: 8px;
 
-    border-radius: 40px;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
-a.btn-danger:hover {
-    background-color: #ff0017;
+.btn-danger:hover {
+
+    background-color: #fff;
+    color: #FF4136;
+    border: 2px solid #FF4136;
+    transform: translateY(-2px);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* On click confirmation */
-a.btn-danger[onclick] {
+/* Button Active State */
+.btn-Green:active, .btn-blue:active, .btn-danger:active {
+    transform: translateY(1px); /* Subtle press-down effect */
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+/*==============================coupons========================*/
+.coupon-link {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+    display: inline-block;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styling for each link type */
+.coupon-link.edit {
+    color: #ffffff;
+    background-color: #3498db;
+}
+
+.coupon-link.delete {
+    color: #ffffff;
+    background-color: #e74c3c;
+}
+
+.coupon-link.toggle-status {
+    color: #ffffff;
+    background-color: #2ecc71;
+}
+
+/* Hover effects for each link */
+.coupon-link:hover {
+    opacity: 0.8;
+}
+
+.coupon-button.add-new {
+
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.coupon-button.add-new:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+.cont{
+    width: 100%;
+    padding: 5px;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+/*============form coupons=============*/
+/* Container for the form */
+.coupon-form {
+    max-width: 400px;
+    box-shadow: 10px 10px 13px black;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+
+}
+
+/* Form Group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+.form-group2  {
+    display: flex;
+
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+/* Input and Select styling */
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/* Checkbox styling */
+.form-checkbox {
+    width: auto;
+
+}
+
+/* Style for focus state on input fields */
+.form-control:focus {
+    border-color: #9d8757;
+    outline: none;
+}
+
+/* Button styling */
+.form-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #9d8757;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+.form-button:hover {
+    background-color: #2980b9;
+}
+
 
 /* ====================== Responsive Design ========================== */
 
@@ -576,95 +845,91 @@ a.btn-danger[onclick] {
 }
 /*add user form*/
 /* Add User Form Container */
+#addForm{
+    background-color: white;
+    padding: 10px;
+position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
 #addUserForm {
-    display: none;
-    justify-content: center;
-    justify-items: center;
-    position: absolute;
-    z-index: 5;
-    max-width: 400px;
-    min-width: 200px;
-    padding: 20px;
-    margin: 20px auto;
+
     background-color: #f9f9f9;
-    border: 1px solid #ddd;
+    padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    margin: auto;
 }
 
 #addUserForm h2 {
     text-align: center;
-    margin-bottom: 2px;
     color: #333;
     font-size: 24px;
+    margin-bottom: 20px;
 }
 
-#addUserForm form {
+.input-group {
     display: flex;
-    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
-#addUserForm input[type="text"],
-#addUserForm input[type="email"],
-#addUserForm input[type="password"] {
+.input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button[type="submit"],
+button[type="button"] {
     width: 100%;
     padding: 10px;
-    border: 0.5px solid #000000;
-    border-radius: 4px;
-    box-sizing: border-box;
+    margin-top: 10px;
     font-size: 16px;
-}
-
-#addUserForm input[type="text"]:focus,
-#addUserForm input[type="email"]:focus,
-#addUserForm input[type="password"]:focus {
-    border: 2px solid var(--blue);
-
-    outline: none;
-}
-
-#addUserForm button[type="submit"],
-#addUserForm button[type="button"] {
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #5b9bd5;
-    box-shadow: 3px 3px 12px black;
-
     border: none;
     border-radius: 4px;
-    margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-#addUserForm button[type="submit"]:hover,
-#addUserForm button[type="button"]:hover {
-    background-color: #4a8bb1;
-}
 
-#addUserForm button[type="button"] {
-    background-color: #a81818;
-    margin-top: 5px;
-    box-shadow: 3px 3px 12px black;
-
-}
-
-#addUserForm button[type="button"]:hover {
-    background-color: #7a0606;
+@media (max-width: 600px) {
+    .input-group {
+        flex-direction: column;
+    }
 }
 
 /*========================product========================*/
+h2{
+    text-align: center;
+    margin: 30px;
+}
+
 .product-container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 .product-header { display: flex; justify-content: space-between; margin-bottom: 20px; }
 .product-btn { padding: 10px 20px; border: none; cursor: pointer; color: #fff; font-size: 1rem; }
 .product-btn-blue { background-color: #007bff; }
 .product-btn-green { background-color: #28a745; }
-.product-cards { display: flex; flex-wrap: wrap; gap: 5px; width: 100%}
+.product-cards { display: flex; flex-wrap: wrap; gap: 5px; width: 100% ; height: 200px;}
 .product-card {width: 22%; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;margin-left: 2% ;cursor: pointer;box-shadow: 5px 5px 12px black;}
-.product-card img { width: 100%; height: 85%; object-fit: cover; }
+.product-card:hover { background-color: #9d8757;color: white; border: 1px solid #9d8757; border-radius: 8px; overflow: hidden;margin-left: 2% ;cursor: pointer;box-shadow: 5px 5px 12px black;}
+.product-card img { width: 100%; height: 80%; object-fit: cover; }
+.product-card a{height: 330px ; width: 21%; position: absolute;z-index: 1;margin-top: -310px; opacity: 0; }
 .product-card-title { padding: 5%; font-size: 1.2rem; text-align: center; }
+.product-card a{height: 330px ; width: 21%; position: absolute;z-index: 1;margin-top: -310px; opacity: 0; }
+
+
+.product-cards2 { display: flex; flex-wrap: wrap; gap: 5px; width: 100% ; height: 300px;}
+.product-card2 {width: 22%; border: 1px solid #ddd; border-radius: 8px; overflow: hidden;margin-left: 2% ;cursor: pointer;box-shadow: 5px 5px 12px black;height: 100%;}
+.product-card2:hover { background-color: #9d8757;color: white; border: 1px solid #9d8757; border-radius: 8px; overflow: hidden;margin-left: 2% ;cursor: pointer;box-shadow: 5px 5px 12px black;}
+.product-card2 img { width: 100%; height: 50%; object-fit: cover; }
+.product-card2 a{height: 20px ; width: 20px; position: relative;z-index: 0;margin-top: 0; opacity: 1; }
+
 .product-form-container { display: none; margin-top: 20px; }
 .product-form-group { margin-bottom: 10px; }
 .product-form-group label { display: block; font-size: 0.9rem; margin-bottom: 5px; }
@@ -672,6 +937,7 @@ a.btn-danger[onclick] {
 .product-form-group button { margin-top: 10px; width: 100%; }
 
 /* ====================== Responsive Design ========================== */
+
 @media (max-width: 991px) {
     .navigation {
         left: -300px;
