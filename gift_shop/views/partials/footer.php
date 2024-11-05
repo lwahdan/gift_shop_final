@@ -105,9 +105,9 @@
                     class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                     <div class="col-auto mb-6">
                         <div class="footer-copyright">
-                            <p class="copyright-text">&copy; 2024 <a href="index.html">moment</a>. Made with <i
-                                    class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
-                                                                               target="_blank">moment</a> </p>
+                            <p class="copyright-text">&copy; 2024 <a href="/home">moments</a>. Made with <i
+                                    class="fa fa-heart text-danger"></i> by <a href="/home"
+                                                                               target="_blank">moments</a> </p>
 
                         </div>
                     </div>

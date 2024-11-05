@@ -501,3 +501,24 @@
         color: white;
         border: none;
     }
+
+    .star {
+        color: gray; 
+    }
+    .star.selected,
+    .star:hover,
+    .star:hover ~ .star {
+        color: gold; 
+    }
+    .login-prompt {
+        
+        color: red; 
+        padding: 10px; 
+        margin-left: 10px;
+        font-size: 20px;
+        border-radius: 5px; 
+        margin-top: 15px; 
+        width: 40%;
+       
+    }
+    
