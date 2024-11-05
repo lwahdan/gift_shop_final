@@ -45,15 +45,15 @@
                                         ?>
                                         <tr>
                                             <td class="product_remove">
-                                                <a href="/wishlist/remove/<?= $item['id'] ?>"><i class="fa fa-trash-o"></i></a>
+                                                <a href="/wishlist/remove/<?= $item['id'] ?>"><i class="fa fa-trash-o" ></i></a>
                                             </td>
                                             <td class="product_thumb">
-                                                <a href="product-details.php?id=<?= $product['id'] ?>">
+                                                <a href="product/details?id=<?= $product['id'] ?>">
                                                     <img src="<?= $dir.$product['image_url'] ?>" alt="">
                                                 </a>
                                             </td>
                                             <td class="product_name">
-                                                <a href="product-details.php?id=<?= $product['id'] ?>"><?= $product['product_name'] ?></a>
+                                                <a href="product/details/<?= $product['id'] ?>"><?= $product['product_name'] ?></a>
                                             </td>
                                             <td class="product-price">$<?= number_format($product['price'], 2) ?></td>
                                             <td class="product_stock"><?= $product['stock_quantity'] > 0 ? 'In Stock' : 'Out of Stock' ?></td>

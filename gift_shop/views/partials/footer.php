@@ -378,6 +378,8 @@
 <script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
+
+<script src="../public/js/wishlist.js"></script>
 <!-- SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

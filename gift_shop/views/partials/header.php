@@ -133,9 +133,9 @@ foreach ($cartItems as $item) {
 </div>
 
                             <li>
-                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <a href="/wishlist">
                                     <i class="icon-heart"></i>
-                                    <span class="item-count">3</span>
+                                    <span id="wishlist-count">0</span>
                                 </a>
                             </li>
                             
@@ -209,7 +209,7 @@ foreach ($cartItems as $item) {
                         <li>
                             <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                 <i class="icon-heart"></i>
-                                <span class="item-count">3</span>
+                                <span class="xxx">0</span>
                             </a>
                         </li>
                         <li>
@@ -392,20 +392,25 @@ foreach ($cartItems as $item) {
     </div> <!-- ENd Offcanvas Header -->
 
     <!-- Start Offcanvas Mobile Menu Wrapper -->
-    <div class="offcanvas-wishlist-wrapper">
+    <!-- <div class="offcanvas-wishlist-wrapper">
         <h4 class="offcanvas-title">Wishlist</h4>
         <ul class="offcanvas-wishlist">
-            <li class="offcanvas-wishlist-item-single">
+        <?php foreach ($wishlistItems as $item): ?>
+                <?php
+                    // Fetch product details from a hypothetical Product model
+                    $product = $productModel->find($item['product_id']);
+                ?>
+                <li class="offcanvas-wishlist-item-single">
                 <div class="offcanvas-wishlist-item-block">
                     <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="/gift_shop/public/images/product/default/home-1/default-1.jpg" alt=""
+                        <img src="/gift_shop/public/images/product/<?=$item['image_url']?>" alt="<?=$item['product_name']?>"
                              class="offcanvas-wishlist-image">
                     </a>
                     <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Car Wheel</a>
+                        <a href="#" class="offcanvas-wishlist-item-link"><?=$item['product_name']?></a>
                         <div class="offcanvas-wishlist-item-details">
                             <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$49.00</span>
+                            <span class="offcanvas-wishlist-item-details-price">$<?= number_format($product['price'], 2) ?></span>
                         </div>
                     </div>
                 </div>
@@ -413,47 +418,14 @@ foreach ($cartItems as $item) {
                     <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
-            <li class="offcanvas-wishlist-item-single">
-                <div class="offcanvas-wishlist-item-block">
-                    <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="/gift_shop/public/images/product/default/home-2/default-1.jpg" alt=""
-                             class="offcanvas-wishlist-image">
-                    </a>
-                    <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Car Vails</a>
-                        <div class="offcanvas-wishlist-item-details">
-                            <span class="offcanvas-wishlist-item-details-quantity">3 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-wishlist-item-delete text-right">
-                    <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-wishlist-item-single">
-                <div class="offcanvas-wishlist-item-block">
-                    <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="../public/images/product/default/home-3/default-1.jpg" alt=""
-                             class="offcanvas-wishlist-image">
-                    </a>
-                    <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Shock Absorber</a>
-                        <div class="offcanvas-wishlist-item-details">
-                            <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-wishlist-item-delete text-right">
-                    <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
+            <?php endforeach; ?>
+            
         </ul>
         <ul class="offcanvas-wishlist-action-button">
-            <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+            <li><a href="/wishlist" class="btn btn-block btn-golden">View wishlist</a></li>
         </ul>
-    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+    </div> -->
+     <!-- End Offcanvas Mobile Menu Wrapper -->
 
 </div> <!-- End Offcanvas Mobile Menu Section -->
 
