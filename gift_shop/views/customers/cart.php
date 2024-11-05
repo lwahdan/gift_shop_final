@@ -48,12 +48,13 @@
     <tbody id="cart-items">
     <?php foreach ($cartItems as $item): ?>
         <tr>
-            <td class="product_remove">
-                <form action="/cart/remove" method="POST">
-                    <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
-                    <button type="submit" class="btn-delete">Delete</button>
-                </form>
-            </td>
+        <td class="product_remove">
+    <form class="delete-item-form" action="/cart/remove" method="POST">
+        <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
+        <button type="submit" class="btn-delete"><i class="fa fa-trash-o"></i></button>
+    </form>
+</td>
+
 
               <td class="product_thumb">
                  <img src="<?php echo $dir . urlencode($item['image_url']); ?>" alt="Product Image">
@@ -139,10 +140,6 @@
                                     <p id="total-amount" class="cart_amount">$0.00</p>
                                 </div>
 
-                                
-                                <!-- <div class="checkout_btn">
-                                <a href="#" id="checkout-btn" class="btn btn-md btn-golden">Proceed to Checkout</a>
-                                </div> -->
                                 <div class="checkout_btn">
                                 <a href="/customers/checkout" id="checkout-btn" class="btn btn-md btn-golden">Checkout</a>
                                 </div>

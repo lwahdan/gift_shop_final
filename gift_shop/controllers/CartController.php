@@ -40,7 +40,7 @@ class CartController extends Controller
         }
 
         // Update the cart cookie
-        setcookie('cart', json_encode($cart), time() + 86400, "/"); // 1 day expiration
+        setcookie('cart', json_encode($cart), time() + 86400, "/");
 
         // Return JSON response for AJAX
         echo json_encode(['success' => true, 'cartCount' => array_sum(array_column($cart, 'quantity'))]);
@@ -48,7 +48,7 @@ class CartController extends Controller
         echo json_encode(['success' => false, 'message' => 'Product not found']);
     }
 
-    exit(); // Ensure no further output is sent
+    exit(); 
     }
 
     public function update()
@@ -88,12 +88,17 @@ class CartController extends Controller
     public function remove()
     {
         $productId = $_POST['product_id'] ?? null;
+        $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
-        if ($productId) {
-            $this->cartModel->removeFromCart($productId);
+        if (isset($cart[$productId])) {
+            unset($cart[$productId]);
+            setcookie('cart', json_encode($cart), time() + 86400, "/");
+    
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Item not found in cart']);
         }
-
-        header("Location: /customers/cart");
+    
         exit();
     }
 
@@ -156,5 +161,17 @@ class CartController extends Controller
     echo json_encode($response);
     exit();
 }
+
+public function viewCart()
+{
+    $cartItems = $this->cartModel->getCartItems();
+    $subtotal = $this->cartModel->calculateSubtotal();
+    $dir = "../public/images/product/";
+    header('Content-Type: application/json');
+
+    echo json_encode(['cartItems' => $cartItems, 'dir' => $dir]);
+    exit();
+}
+
 
 }

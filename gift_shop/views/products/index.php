@@ -34,10 +34,10 @@ $dir = '../public/images/product/';?>
                                         <div class="action-link">
 
                                         <div class="action-link-left">
-                                             <form action="/cart/add" method="POST">
-                                             <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
-                                             <button type="submit" class="btn btn-link btn-md btn-golden" >Add to Cart</button>
-                                             </form>
+                                        <form class="add-to-cart-form" action="/cart/add" method="POST">
+                                        <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                        <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
+                                        </form>
                                         </div>
 
 

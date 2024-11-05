@@ -265,4 +265,23 @@ body {
 
 }
 
+.success-message {
+    margin-top: 5px;
+    color: green !important;
+    font-size: 14px !important;
+    display: none !important; 
+    opacity: 0 !important; 
+}
+
+.btn-delete {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+.btn-delete i {
+    font-size: 1.5em; 
+}
+
+
 

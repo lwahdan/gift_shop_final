@@ -1,11 +1,12 @@
-<?php require 'views/partials/header.php'; ?>
-
 <?php
+if (!isset($_SESSION['user_id'])) {
+    header("Location: /customers/login");
+    exit();
+}
+
 // Retrieve updated cart items from the cookie
 $cartItems = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
-
-// Initialize subtotal, shipping, and discount
 $subtotal = 0.00;
 $shipping = 50.00;
 $discount = isset($_COOKIE['discount']) ? (float)$_COOKIE['discount'] : 0.00;
@@ -15,9 +16,9 @@ foreach ($cartItems as $item) {
     $subtotal += $item['price'] * $item['quantity'];
 }
 
-// Calculate the final order total
 $orderTotal = $subtotal - $discount + $shipping;
 ?>
+<?php require 'views/partials/header.php'; ?>
 
 <!-- HTML for checkout page -->
 

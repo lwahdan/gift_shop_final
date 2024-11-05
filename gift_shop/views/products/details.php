@@ -31,7 +31,7 @@
                     <div class="product-large-image product-large-image-horizontal swiper-container">
                         <div class="swiper-wrapper">
                             <div class="product-image-large-image swiper-slide zoom-image-hover img-responsive">
-                                <img src="<?php echo $dir . $product['image_url']; ?>" alt="">
+                                <img src="<?php echo $dir . $product['image_url'];?>" alt="">
                             </div>
                         </div>
                     </div>
@@ -50,14 +50,27 @@
 
                     <!-- Start Product Variable Area -->
                     <div class="product-details-variable">
-                        <!-- Add to Cart Form -->
-                        <form action="/cart/add" method="POST" class="my_cart_details_form">
-                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                            <div class="product-add-to-cart-btn">
-                                <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
-                            </div>
-                        </form>
-                        <!-- Add to Cart End -->
+
+                        <!-- Product Variable Single Item -->
+                        <div class="variable-single-item">
+                            <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> <?php echo ($product['stock_quantity']); ?> IN STOCK</div>
+                        </div>
+                        <!-- Product Variable Single Item -->
+                        <div class="d-flex align-items-center">
+                          
+                            <!-- Add to Cart Form start-->
+    <form action="/cart/add" method="POST" class="add-to-cart-form">
+        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+        <div class="product-add-to-cart-btn">
+            <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
+        </div>
+    </form>    
+    <!-- Add to Cart end -->
+                        </div>
+                        <!-- Start Product Details Meta Area -->
+                        <div class="product-details-meta mb-20">
+                            <a href="/wishlist/add/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
+                        </div> <!-- End Product Details Meta Area -->
                     </div> <!-- End Product Variable Area -->
                 </div>
             </div>

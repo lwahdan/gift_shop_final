@@ -9,6 +9,9 @@ $subtotal = 0;
 foreach ($cartItems as $item) {
     $subtotal += $item['price'] * $item['quantity'];
 }
+
+$dir = $dir ?? "../public/images/product/";
+
 ?>
 
 <!DOCTYPE html>
@@ -82,29 +85,24 @@ foreach ($cartItems as $item) {
                                     <li class="has-dropdown">
                                         <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="/products">Shop</a>
-                                    </li>
-
-                                    <!-- <li class="has-dropdown has-megaitem">
-                                        <a href="#">Other Pages
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="#">Shop
                                             <i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
 
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
-                                                        <li><a href="/customers/cart">Cart</a></li>
+                                                        <li><a href="/category/1">Flowers</a></li>
                     
-                                                        <li><a href="/wishlist">Wishlist</a></li>
-                                                        <li><a href="/customers/checkout">Checkout</a></li>
-                                                        <li><a href="/customers/login">Login</a></li>
-                                                        <li><a href="/customers/profile">My Account</a></li>
+                                                        <li><a href="/wishlist">Plants</a></li>
+                                                        <li><a href="/customers/checkout">Chocolates</a></li>
+                                                        <li><a href="/customers/login">Packages</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li> -->
+                                    </li>
 
                                     <li>
                                         <a href="/customers/about-us">About Us</a>
@@ -245,9 +243,9 @@ foreach ($cartItems as $item) {
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-mobile-menu-wrapper">
+        
         <!-- Start Mobile Menu  -->
-       <!-- Start Mobile Menu  -->
-       <div class="mobile-menu-bottom">
+        <div class="mobile-menu-bottom">
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
                 <ul>
@@ -351,10 +349,15 @@ foreach ($cartItems as $item) {
     <div class="offcanvas-add-cart-wrapper">
         <h4 class="offcanvas-title">Shopping Cart</h4>
         <ul class="offcanvas-cart">
-    <!-- Loop through cart items and display each one -->
     <?php foreach ($cartItems as $item): ?>
         <li class="offcanvas-cart-item-single">
             <div class="offcanvas-cart-item-block">
+                <!-- Image -->
+                <a href="#" class="offcanvas-cart-item-image-link">
+                    <img src="<?php echo $dir . '/' . urlencode($item['image_url']); ?>" alt="<?php echo htmlspecialchars($item['name']); ?>" class="offcanvas-cart-image">
+                </a>
+
+                <!-- Item Content -->
                 <div class="offcanvas-cart-item-content">
                     <a href="#" class="offcanvas-cart-item-link"><?php echo htmlspecialchars($item['name']); ?></a>
                     <div class="offcanvas-cart-item-details">
@@ -363,9 +366,20 @@ foreach ($cartItems as $item) {
                     </div>
                 </div>
             </div>
+
+            <!-- Delete Button -->
+            <div class="offcanvas-cart-item-delete text-right">
+                <form class="delete-item-form" action="/cart/remove" method="POST">
+                    <input type="hidden" name="product_id" value="<?php echo $item['id']; ?>">
+                    <button type="submit" class="offcanvas-cart-item-delete"><i class="fa fa-trash-o"></i></button>
+                </form>
+            </div>
+
+            
         </li>
     <?php endforeach; ?>
 </ul>
+
 
 <!-- Display the subtotal -->
 <div class="offcanvas-cart-total-price">
