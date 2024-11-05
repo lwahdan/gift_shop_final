@@ -176,20 +176,20 @@ require_once 'controllers/ProductController.php';
                                         <a href="/product/details?id=<?php echo $row['id']; ?>" class="image-link">
                                             <img src="<?php echo $dir . str_replace(' ', '%20', $row['image_url']); ?>" alt="Product Image">
                                         </a>
-                                        <div class="tag">
-                                        </div>
                                         <div class="action-link">
 
                                         <div class="action-link-left">
                                         <form class="add-to-cart-form" action="/cart/add" method="POST">
-                                        <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
                                         <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
                                         </form>
                                         <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
+                                            <div class="action-link-right" onclick="addOrRemoveFromWishlist(<?= $row['id']?>)">
+                                                <a>
+                                                <i id="wishlist-icon-<?= $row['id']?>" class="icon-heart"></i>
+                                                </a>    
 
-                                            <div class="action-link-right">
-                                                <a href="wishlist/add/<?= $row['id']?>"><i class="icon-heart"></i></a>
                                             </div>
                                         </div>
                                     </div>
