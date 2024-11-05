@@ -12,6 +12,7 @@ class ReviewController extends Controller
         $this->reviewModel = $this->model('Review');
     }
 
+
     public function index($productId) {
         // Retrieve reviews for the specified product
         $reviews = $this->reviewModel->getReviewsByProductId($productId);

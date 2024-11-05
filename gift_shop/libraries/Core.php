@@ -7,15 +7,38 @@ class Core {
         '' => 'ProductController@home',  // This handles the root URL
 
         // Admin Routes
+        'SuperAdmin/admin' => 'AdminController@index',                  // List all admins
+        'SuperAdmin/admin/create' => 'AdminController@create',          // Form to create a new admin
+        'SuperAdmin/admin/store' => 'AdminController@store',            // Store a new admin
+        'SuperAdmin/admin/edit/{id}' => 'AdminController@edit',         // Edit a specific admin
+        'SuperAdmin/admin/update/{id}' => 'AdminController@update',     // Update a specific admin
+        'SuperAdmin/admin/delete/{id}' => 'AdminController@delete',     // Delete a specific admin
+        'SuperAdmin/admin/toggleStatus/{id}/{status}' => 'AdminController@toggleStatus',
 
+        // Admin Routes
         'admin/dashboard' => 'DashboardController@index',
-        'admin' => 'DashboardController@index',
         'admin/users' => 'UserController@index',
+        'admin/reviews' => 'ReviewController2@index',
         'admin/users/create' => 'UserController@create',
         'admin/users/status' => 'UserController@toggleStatus',
+        'admin/coupons' => 'CouponController@index',
+        'admin/coupons/create' => 'CouponController@create',
+        'admin/coupons/edit/{id}' => 'CouponController@edit',
+        'admin/coupons/delete/{id}' => 'CouponController@delete',
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
+        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
-        'admin/login' => 'DashboardController@login',
+        'admin/login' => 'AdminController@login',
+
+        'admin/category' => 'CategoryController2@index',                 // List categories
+        'admin/category/create' => 'CategoryController2@create',           // Create category form
+        'admin/category/store' => 'CategoryController2@store',             // Store new category
+        'admin/category/edit/{id}' => 'CategoryController2@edit',
+
+        'admin/categories/show/{id}' => 'ProductController@show',
+
+        'admin' => 'DashboardController@index',
+
         'admin/manage_category' => 'DashboardController@manageCategory',
         'admin/products' => 'DashboardController@manageProducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
