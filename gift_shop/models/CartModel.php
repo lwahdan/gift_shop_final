@@ -7,7 +7,7 @@ class CartModel extends BaseModel
 
     public function __construct()
     {
-        parent::__construct(null); // No specific table needed
+        parent::__construct(null);
     }
 
     public function getCartItems()

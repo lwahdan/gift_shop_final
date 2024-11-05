@@ -112,10 +112,12 @@ class UserModel extends BaseModel {
     }
     
     public function updateUserProfile($username, $data) {
-        $sql = "UPDATE users SET first_name = :first_name, last_name = :last_name, phone_number = :phone_number, 
+        $sql = "UPDATE users SET username= :username, email=:email, first_name = :first_name, last_name = :last_name, phone_number = :phone_number, 
                 address = :address, city = :city, country = :country, postal_code = :postal_code";
         
         $params = [
+            ':username' => $data['username'],
+            ':email' => $data['email'],
             ':first_name' => $data['first_name'],
             ':last_name' => $data['last_name'],
             ':phone_number' => $data['phone_number'],

@@ -33,7 +33,8 @@ document.getElementById('password').addEventListener('input', function() {
     const form = document.querySelector('.form-container form');
     
     checklist.style.display = 'block'; // Show checklist on input
-    form.style.height = '600px'; // Increase form height when checklist is visible
+    form.style.height = '700px'; 
+    form.style.height = '700px';
 
     const lengthCheck = document.getElementById('length-check');
     const numberCheck = document.getElementById('number-check');
@@ -67,9 +68,11 @@ document.getElementById('password').addEventListener('blur', function() {
     const checklist = document.querySelector('.password-checklist');
     const form = document.querySelector('.form-container form');
     
+    
     setTimeout(() => {
         checklist.style.display = 'none'; // Hide checklist after a small delay
         form.style.height = '600px'; // Reset form height when checklist is hidden
+       
     }, 100);
 });
 
@@ -78,10 +81,12 @@ document.addEventListener("click", function(event) {
     const passwordInput = document.getElementById("password");
     const checklist = document.querySelector('.password-checklist');
     const form = document.querySelector('.form-container form');
+   
     
     if (!passwordInput.contains(event.target) && !checklist.contains(event.target)) {
         checklist.style.display = 'none'; // Hide checklist if click is outside
         form.style.height = '600px'; // Reset form height when checklist is hidden
+       
     }
 });
 
@@ -98,4 +103,16 @@ window.onclick = function(event) {
 };
 
 
+
+    function setRating(value) {
+        // Set the hidden input value to the selected rating
+        document.getElementById('rating').value = value;
+        
+        // Change the star icon colors based on selected rating
+        const stars = document.querySelectorAll('.star-icon');
+        stars.forEach((star, index) => {
+            star.name = index < value ? 'star-sharp' : 'star-outline';
+            star.style.color = index < value ? 'gold' : 'gray';
+        });
+    }
 

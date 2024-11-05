@@ -20,22 +20,18 @@ class AuthController extends Controller {
     
             $result = $this->userModel->login($email, $password);
     
-            // Check the response from the login method
             if ($result['status'] === 'success') {
-                // Login was successful, set session variables
                 $_SESSION['user_id'] = $result['user_id']; 
                 $_SESSION['username'] = $result['username']; 
     
-                // Redirect to profile page
-                header('Location: /home');
+                header('Location: /home?login=success');
                 exit();
             } else {
-                // Login failed, set the message
                 $data['message'] = $result['message'];
             }
         }
     
-        $this->view('/customers/login', $data);  // Updated view path
+        $this->view('/customers/login', $data);
     }
 
     public function register() {
@@ -49,7 +45,8 @@ class AuthController extends Controller {
             'city' => '',
             'country' => '',
             'postal_code' => '',
-            'message' => ''
+            'message' => '',
+            'registration_success' => false
         ];
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -64,7 +61,8 @@ class AuthController extends Controller {
                 'country' => $_POST['country'] ?? '',
                 'postal_code' => $_POST['postal_code'] ?? '',
                 'password' => $_POST['password'] ?? '',
-                'confirm_password' => $_POST['confirm_password'] ?? ''
+                'confirm_password' => $_POST['confirm_password'] ?? '',
+                'message' => ''
             ];
 
             $result = $this->userModel->register(
@@ -82,14 +80,13 @@ class AuthController extends Controller {
             );
 
             if ($result['status'] === 'success') {
-                header('Location:/customers/login');
-                exit();
+                $data['registration_success'] = true; // Set flag for SweetAlert
+            } else {
+                $data['message'] = $result['message'];
             }
-            
-            $data['message'] = $result['message'];
         }
 
-        $this->view('/customers/register', $data);  // Updated view path
+        $this->view('/customers/register', $data);
     }
 
     public function logout() {

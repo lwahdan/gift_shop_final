@@ -14,26 +14,26 @@ class ProfileController extends Controller {
     // Method to view the user profile
     public function viewProfile() {
         // Check if the user is logged in
-        if (!isset($_SESSION['username'])) {
+        if (!isset($_SESSION['user_id'])) {
             header('Location: /customers/login');
             exit();
         }
     
-        // Get user data by username
-        $username = $_SESSION['username'];
+        // Get user ID from session
         $userId = $_SESSION['user_id'];
         
-        $userData = $this->userModel->getUserByUsername($username);
+        // Fetch user data
+        $userData = $this->userModel->getUserById($userId); // Assuming you have this method to fetch user data by ID
         $orders = $this->orderModel->getOrdersByUser($userId);
-    
+        
         // Fetch address details
-        $addressData = $this->userModel->getUserAddressById($_SESSION['user_id']);
+        $addressData = $this->userModel->getUserAddressById($userId);
     
-        // Load the profile view with user data and address
+        // Load the profile view with user data, including the username
         $this->view('customers/profile', [
-            'user' => $userData,
+            'user' => $userData, // Now contains the username
             'orders' => $orders,
-            'address' => $addressData // Pass address data to the view
+            'address' => $addressData
         ]);
     }
     
@@ -73,8 +73,7 @@ public function saveProfile() {
             $_SESSION['message'] = "Profile update failed. Please try again.";
         }
 
-        // Redirect back to profile page
-        header('Location: /customers/profile');
+        header('Location: /home');
         exit();
     }
 }
@@ -84,6 +83,9 @@ public function updateProfile() {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Prepare data for update
         $data = [
+            'email' => htmlspecialchars(trim($_POST['email'])),
+            'username' => htmlspecialchars(trim($_POST['username'])),
+           
             'first_name' => htmlspecialchars(trim($_POST['first_name'])),
             'last_name' => htmlspecialchars(trim($_POST['last_name'])),
             'phone_number' => htmlspecialchars(trim($_POST['phone_number'])),
@@ -93,17 +95,7 @@ public function updateProfile() {
             'postal_code' => htmlspecialchars(trim($_POST['postal_code'])),
         ];
 
-        // Check for optional profile image upload
-        if (isset($_FILES['profile_image']) && $_FILES['profile_image']['error'] === UPLOAD_ERR_OK) {
-            $targetDir = __DIR__ . '/../public/images/profile/';
-            $fileName = time() . '_' . basename($_FILES['profile_image']['name']);
-            $targetFilePath = $targetDir . $fileName;
-
-            // Move uploaded file to target directory
-            if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $targetFilePath)) {
-                $data['profile_image'] = $fileName; // Save image name for the database update
-            }
-        }
+      
 
         // Attempt to update user profile in the database
         $result = $this->userModel->updateUserProfile($_SESSION['username'], $data);
