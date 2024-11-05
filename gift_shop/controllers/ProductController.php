@@ -82,5 +82,13 @@ class ProductController extends Controller
             exit();
         }
     }
+    public function show($categoryId) {
+        // Retrieve products by category ID
+        $products = $this->productModel->getProductsByCategory($categoryId);
+
+        // Load the view for showing products in a category
+        $this->view('admin/categories/show', ['products' => $products]);
+    }
+
 }
 ?>

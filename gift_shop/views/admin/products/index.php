@@ -1,4 +1,8 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
+<?php
+$Product_active = "active";
+
+
+require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
 
 <h2>Products</h2>
 <a href="/admin/products/addProduct/<?php echo $categoryId; ?>" class="btn-blue">+ Add New Product</a>

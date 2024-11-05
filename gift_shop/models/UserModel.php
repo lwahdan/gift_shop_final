@@ -186,5 +186,9 @@ class UserModel extends BaseModel {
         $stmt->execute(['id' => $userId]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function toggleStatus($id, $status) {
+        $stmt = $this->pdo->prepare("UPDATE users SET status = :status WHERE id = :id");
+        return $stmt->execute(['status' => $status, 'id' => $id]);
+    }
 }
 ?>

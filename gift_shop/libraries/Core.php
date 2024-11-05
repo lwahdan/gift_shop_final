@@ -29,7 +29,7 @@ class Core {
         'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
-
+        'admin/users/show/{id}' => 'UserController@show',
         'admin/category' => 'CategoryController2@index',                 // List categories
         'admin/category/create' => 'CategoryController2@create',           // Create category form
         'admin/category/store' => 'CategoryController2@store',             // Store new category
@@ -39,6 +39,7 @@ class Core {
 
         'admin' => 'DashboardController@index',
 
+        'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
         'admin/products' => 'DashboardController@manageProducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
@@ -58,8 +59,7 @@ class Core {
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
-        'customers/logout' => 'AuthController@logout',
-        'customers/profile' => 'ProfileController@viewProfile',
+
         'profile/update', 'ProfileController@updateProfile',
         'customers/dashboard' => 'AdminController@dashboard',
        

@@ -82,5 +82,10 @@ class BaseModel
         $statement->execute();
 
     }
+    public function getAllByUserId($userId) {
+        $stmt = $this->pdo->prepare("SELECT * FROM $this->table WHERE user_id = :user_id");
+        $stmt->execute(['user_id' => $userId]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Use fetchAll to get multiple records
+    }
 
 }

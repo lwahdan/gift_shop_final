@@ -1,4 +1,6 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
+<?php
+$category_active = "active";
+require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
 
 <div class="container py-5">
 <a href="/categories/create">Add New Category</a>
