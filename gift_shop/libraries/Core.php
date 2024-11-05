@@ -99,6 +99,8 @@ class Core {
     'order/submit' => 'OrderController@submitOrder', 
 
     'customers/leen'=>'leenController@index',
+
+    'reverse' => 'ReverseController@getReversedArray'
     ];
     
 

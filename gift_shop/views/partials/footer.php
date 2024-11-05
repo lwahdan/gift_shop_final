@@ -25,7 +25,7 @@
                             <ul class="footer-nav">
                                 <li><a href="/customers/profile">My account</a></li>
                                 <li><a href="/customers/cart">Cart</a></li>
-                                <li><a href="/customers/wishlist">Wishlist</a></li>
+                                <li><a href="/wishlist">Wishlist</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->

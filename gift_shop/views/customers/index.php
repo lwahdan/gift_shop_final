@@ -181,7 +181,11 @@ require_once 'controllers/ProductController.php';
                                         <div class="action-link-left">
                                         <form class="add-to-cart-form" action="/cart/add" method="POST">
                                         <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
-                                        <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
+                                        <?php if ($row['stock_quantity'] > 0): ?>
+                                            <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
+                                            <?php else: ?>
+                                                <div class="btn">Out of stock</div>
+                                        <?php endif; ?>
                                         </form>
                                         <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
