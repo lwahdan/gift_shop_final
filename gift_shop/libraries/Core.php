@@ -3,7 +3,7 @@
 class Core {
     protected $routes = [
         // Default route to customer index
-        '' => 'ProductController@home',  // This handles the root URL
+        '' => 'ProductController@home',  
 
         // Admin Routes
 
@@ -88,6 +88,8 @@ class Core {
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
     'order/submit' => 'OrderController@submitOrder', 
+
+    'customers/leen'=>'leenController@index',
     ];
     
 

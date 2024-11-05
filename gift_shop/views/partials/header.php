@@ -81,29 +81,24 @@ $dir = $dir ?? "../public/images/product/";
                                     <li class="has-dropdown">
                                         <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="/products">Shop</a>
-                                    </li>
-
-                                    <!-- <li class="has-dropdown has-megaitem">
-                                        <a href="#">Other Pages
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="#">Shop
                                             <i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
 
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
-                                                        <li><a href="/customers/cart">Cart</a></li>
+                                                        <li><a href="/category/1">Flowers</a></li>
                     
-                                                        <li><a href="/wishlist">Wishlist</a></li>
-                                                        <li><a href="/customers/checkout">Checkout</a></li>
-                                                        <li><a href="/customers/login">Login</a></li>
-                                                        <li><a href="/customers/profile">My Account</a></li>
+                                                        <li><a href="/wishlist">Plants</a></li>
+                                                        <li><a href="/customers/checkout">Chocolates</a></li>
+                                                        <li><a href="/customers/login">Packages</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li> -->
+                                    </li>
 
                                     <li>
                                         <a href="/customers/about-us">About Us</a>
@@ -230,31 +225,25 @@ $dir = $dir ?? "../public/images/product/";
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-mobile-menu-wrapper">
+        
         <!-- Start Mobile Menu  -->
         <div class="mobile-menu-bottom">
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
                 <ul>
                     <li>
-                        <a href="/customers/index"><span>Home</span></a>
+                        <a href="/home"><span>Home</span></a>
 
                     </li>
-
+                    <li><a href="/customers/contact-us">Login</a></li>
                     <li>
                         <a href=""><span>Shop</span></a>
-
-                        <!--                        <ul class="mobile-sub-menu">-->
-                        <!--                            <li>-->
-                        <!--                                <a href="#">Shop Pages</a>-->
                         <ul class="mobile-sub-menu">
-                            <li><a href="/customers/cart">Cart</a></li>
-                            <li><a href="/wishlist">Wishlist</a></li>
-                            <li><a href="/customers/checkout">Checkout</a></li>
-                            <li><a href="/customers/login">Login</a></li>
-                            <li><a href="/customers/profile">My Account</a></li>
+                            <li><a href="/category/1">Flowers</a></li>
+                            <li><a href="/wishlist">Plants</a></li>
+                            <li><a href="/customers/checkout">Chocolates</a></li>
+                            <li><a href="/customers/login">Packages</a></li>
                         </ul>
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
                     </li>
 
                     <li><a href="/customers/about-us">About Us</a></li>

@@ -1,5 +1,3 @@
-
-<!--// models/CategoryModel.php-->
 <?php
 require_once 'BaseModel.php';
 

@@ -2,6 +2,8 @@
 // File: controllers/ProductController.php
 
 require_once 'BaseController.php';
+require_once __DIR__ . '/../models/Category.php';
+require_once __DIR__ . '/../controllers/CategoryController.php';
 
 class ProductController extends Controller
 {
@@ -34,12 +36,20 @@ class ProductController extends Controller
 
     public function home()
     {
-        // Retrieve all products from the model
+        // Retrieve all products
         $products = $this->productModel->all();
-        
-        // Load the index view and pass products as data
-        $this->view('customers/index', ['products' => $products]);
+    
+        // Retrieve all categories via CategoryController
+        $categoryController = new CategoryController();
+        $categories = $categoryController->getCategories();
+    
+        // Load the main index view with both products and categories
+        $this->view('customers/index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
+
 
     public function details()
     {
