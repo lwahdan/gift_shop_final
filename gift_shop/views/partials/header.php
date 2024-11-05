@@ -28,16 +28,12 @@ $dir = $dir ?? "../public/images/product/";
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
 <link rel="stylesheet" href="../public/css/style.login.css">
-
     <link rel="stylesheet" href="../public/css/testimonial.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
-<!-- In your views/customers/login.php and views/customers/register.php -->
-
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <!--<link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css"> -->
@@ -95,9 +91,9 @@ $dir = $dir ?? "../public/images/product/";
                                                     <ul class="mega-menu-sub">
                                                         <li><a href="/category/1">Flowers</a></li>
                     
-                                                        <li><a href="/wishlist">Plants</a></li>
-                                                        <li><a href="/customers/checkout">Chocolates</a></li>
-                                                        <li><a href="/customers/login">Packages</a></li>
+                                                        <li><a href="/category/2">Plants</a></li>
+                                                        <li><a href="/category/3">Chocolates</a></li>
+                                                        <li><a href="/category/4">Packages</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -194,7 +190,6 @@ $dir = $dir ?? "../public/images/product/";
                                 <i class="icon-magnifier"></i>
                             </a>
                         </li>
-                        
                            
                         <li>
                             <a href="#offcanvas-wishlish" class="offcanvas-toggle">
@@ -208,19 +203,6 @@ $dir = $dir ?? "../public/images/product/";
                                 <span class="item-count">3</span>
                             </a>
                         </li>
-                        <li>   <div class="profile-container">
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <!-- User is logged in: show profile icon with dropdown -->
-        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
-        <div class="dropdown-men" id="profileDropdown">
-            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
-            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
-        </div>
-    <?php else: ?>
-        <!-- User is not logged in: show login link -->
-        <button class="logbtn" ><a class="loga" id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;font-size:15px !important;">Login</a></button>
-    <?php endif; ?>
-</div>  </li>
                         <li>
                             <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
                                 <i class="icon-menu"></i>
@@ -243,29 +225,31 @@ $dir = $dir ?? "../public/images/product/";
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-mobile-menu-wrapper">
-        
         <!-- Start Mobile Menu  -->
         <div class="mobile-menu-bottom">
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
                 <ul>
                     <li>
-                        <a href="/home"><span>Home</span></a>
+                        <a href="/customers/index"><span>Home</span></a>
 
                     </li>
-                    <li><a href="/customers/login">Login</a></li>
+
                     <li>
                         <a href=""><span>Shop</span></a>
                         <ul class="mobile-sub-menu">
                             <li><a href="/category/1">Flowers</a></li>
-                            <li><a href="/wishlist">Plants</a></li>
-                            <li><a href="/customers/checkout">Chocolates</a></li>
-                            <li><a href="/customers/login">Packages</a></li>
+                            <li><a href="/category/2">Plants</a></li>
+                            <li><a href="/category/3">Chocolates</a></li>
+                            <li><a href="/category/4">Packages</a></li>
                         </ul>
+                        <!--                            </li>-->
+                        <!--                        </ul>-->
                     </li>
 
                     <li><a href="/customers/about-us">About Us</a></li>
                     <li><a href="/customers/contact-us">Contact Us</a></li>
+                    <li><a href="/customers/contact-us">Login</a></li>
                 </ul>
             </div> <!-- End Mobile Menu Nav -->
         </div> <!-- End Mobile Menu -->
@@ -277,9 +261,9 @@ $dir = $dir ?? "../public/images/product/";
             </div>
 
             <address class="address">
-                <span>Address: Your address goes here.</span>
+                <span>Address: Jordan - Amman</span>
                 <span>Call Us: 0123456789, 0123456789</span>
-                <span>Email: demo@example.com</span>
+                <span>Email: moments@example.com</span>
             </address>
 
             <ul class="social-link">
@@ -314,7 +298,7 @@ $dir = $dir ?? "../public/images/product/";
         </div>
 
         <address class="address">
-           <span> <a href="mailto:moment@gmail.com">moment@gmail.com</a></span>
+           <span> <a href="mailto:moment@gmail.com">moments@gmail.com</a></span>
            <span>  <a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ar-Razi St. 141, Amman</a></span>
 
 <span><a href="tel:+0777891011">0777891011</a></span>
