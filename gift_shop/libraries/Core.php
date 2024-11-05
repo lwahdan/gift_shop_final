@@ -3,6 +3,7 @@
 class Core {
     protected $routes = [
         // Default route to customer index
+
         '' => 'ProductController@home',  // This handles the root URL
 
         // Admin Routes
@@ -17,7 +18,7 @@ class Core {
         // Admin Routes
         'admin/dashboard' => 'DashboardController@index',
         'admin/users' => 'UserController@index',
-        'admin/comments' => 'ReviewController@index',
+        'admin/reviews' => 'ReviewController2@index',
         'admin/users/create' => 'UserController@create',
         'admin/users/status' => 'UserController@toggleStatus',
         'admin/coupons' => 'CouponController@index',
@@ -29,10 +30,10 @@ class Core {
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
 
-        'admin/category' => 'CategoryController@index',                 // List categories
-        'admin/category/create' => 'CategoryController@create',           // Create category form
-        'admin/category/store' => 'CategoryController@store',             // Store new category
-        'admin/category/edit/{id}' => 'CategoryController@edit',
+        'admin/category' => 'CategoryController2@index',                 // List categories
+        'admin/category/create' => 'CategoryController2@create',           // Create category form
+        'admin/category/store' => 'CategoryController2@store',             // Store new category
+        'admin/category/edit/{id}' => 'CategoryController2@edit',
 
         'admin/categories/show/{id}' => 'ProductController@show',
 
@@ -60,11 +61,9 @@ class Core {
         'customers/logout' => 'AuthController@logout',
         'customers/profile' => 'ProfileController@viewProfile',
         'profile/update', 'ProfileController@updateProfile',
-        'customers/wishlist' => 'CustomerController@wishlist',
         'customers/dashboard' => 'AdminController@dashboard',
        
         //product Routes
-        'product/details/{id}' => 'ProductController@details',
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
         'home' => 'ProductController@home',
@@ -77,7 +76,12 @@ class Core {
         //wishlist routes
         'wishlist' => 'WishlistController@index',
         'wishlist/add/{product_id}' => 'WishlistController@add',
-        'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
+        'wishlist/addProduct/{product_id}' => 'WishlistController@addProduct',
+        'wishlist/remove/{product_id}' => 'WishlistController@delete',
+        'wishlist/addOrRemove/{product_id}' => 'WishlistController@addOrRemove',
+        'customers/wishlist/count' => 'WishlistController@count',
+        'wishlist/isIn/{product_id}' => 'WishlistController@isInWishlist',
+        'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
         // Routes for managing products
         'dashboard/manageProducts' => 'DashboardController@manageProducts',
@@ -106,11 +110,18 @@ class Core {
     'customers/profile/updateProfile' => 'ProfileController@updateProfile',
     'customers/changePassword'=>'ProfileController@changePassword',
     'auth/changePassword' => 'ProfileController@changePassword',
-    'reviews/create' => 'ReviewController@create',
+   'reviews/create' => 'ReviewController@create',              
+'reviews/view' => 'ReviewController@viewReview',            
+'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+'reviews/index' => 'ReviewController@index',  
+
+
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
     'order/submit' => 'OrderController@submitOrder', 
+
+    'customers/leen'=>'leenController@index',
     ];
     
 

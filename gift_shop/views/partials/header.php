@@ -28,12 +28,16 @@ $dir = $dir ?? "../public/images/product/";
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
     <link rel="shortcut icon" href="../public/images/favicon.ico" type="image/png">
 <link rel="stylesheet" href="../public/css/style.login.css">
+
     <link rel="stylesheet" href="../public/css/testimonial.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@5.5.2/dist/css/ionicons.min.css">
+<!-- In your views/customers/login.php and views/customers/register.php -->
+
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
-    <!-- <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/vendor/ionicons.css">
     <link rel="stylesheet" href="assets/css/vendor/simple-line-icons.css">
     <link rel="stylesheet" href="assets/css/vendor/jquery-ui.min.css"> -->
@@ -81,29 +85,24 @@ $dir = $dir ?? "../public/images/product/";
                                     <li class="has-dropdown">
                                         <a class="active main-menu-link" href="/home">Home</a>
                                     </li>
-                                    <li class="has-dropdown">
-                                        <a class="active main-menu-link" href="/products">Shop</a>
-                                    </li>
-
-                                    <!-- <li class="has-dropdown has-megaitem">
-                                        <a href="#">Other Pages
+                                    <li class="has-dropdown has-megaitem">
+                                        <a href="#">Shop
                                             <i class="fa fa-angle-down"></i></a>
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
 
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
-                                                        <li><a href="/customers/cart">Cart</a></li>
+                                                        <li><a href="/category/1">Flowers</a></li>
                     
-                                                        <li><a href="/wishlist">Wishlist</a></li>
-                                                        <li><a href="/customers/checkout">Checkout</a></li>
-                                                        <li><a href="/customers/login">Login</a></li>
-                                                        <li><a href="/customers/profile">My Account</a></li>
+                                                        <li><a href="/wishlist">Plants</a></li>
+                                                        <li><a href="/customers/checkout">Chocolates</a></li>
+                                                        <li><a href="/customers/login">Packages</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li> -->
+                                    </li>
 
                                     <li>
                                         <a href="/customers/about-us">About Us</a>
@@ -122,9 +121,9 @@ $dir = $dir ?? "../public/images/product/";
                       
 
                             <li>
-                                <a href="#offcanvas-wishlish" class="offcanvas-toggle">
+                                <a href="/wishlist">
                                     <i class="icon-heart"></i>
-                                    <span class="item-count">3</span>
+                                    <span id="wishlist-count">0</span>
                                 </a>
                             </li>
                             
@@ -195,11 +194,12 @@ $dir = $dir ?? "../public/images/product/";
                                 <i class="icon-magnifier"></i>
                             </a>
                         </li>
+                        
                            
                         <li>
                             <a href="#offcanvas-wishlish" class="offcanvas-toggle">
                                 <i class="icon-heart"></i>
-                                <span class="item-count">3</span>
+                                <span class="xxx">0</span>
                             </a>
                         </li>
                         <li>
@@ -208,6 +208,19 @@ $dir = $dir ?? "../public/images/product/";
                                 <span class="item-count">3</span>
                             </a>
                         </li>
+                        <li>   <div class="profile-container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- User is logged in: show profile icon with dropdown -->
+        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
+        <div class="dropdown-men" id="profileDropdown">
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
+        </div>
+    <?php else: ?>
+        <!-- User is not logged in: show login link -->
+        <button class="logbtn" ><a class="loga" id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;font-size:15px !important;">Login</a></button>
+    <?php endif; ?>
+</div>  </li>
                         <li>
                             <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
                                 <i class="icon-menu"></i>
@@ -230,31 +243,25 @@ $dir = $dir ?? "../public/images/product/";
     </div> <!-- End Offcanvas Header -->
     <!-- Start Offcanvas Mobile Menu Wrapper -->
     <div class="offcanvas-mobile-menu-wrapper">
+        
         <!-- Start Mobile Menu  -->
         <div class="mobile-menu-bottom">
             <!-- Start Mobile Menu Nav -->
             <div class="offcanvas-menu">
                 <ul>
                     <li>
-                        <a href="/customers/index"><span>Home</span></a>
+                        <a href="/home"><span>Home</span></a>
 
                     </li>
-
+                    <li><a href="/customers/login">Login</a></li>
                     <li>
                         <a href=""><span>Shop</span></a>
-
-                        <!--                        <ul class="mobile-sub-menu">-->
-                        <!--                            <li>-->
-                        <!--                                <a href="#">Shop Pages</a>-->
                         <ul class="mobile-sub-menu">
-                            <li><a href="/customers/cart">Cart</a></li>
-                            <li><a href="/wishlist">Wishlist</a></li>
-                            <li><a href="/customers/checkout">Checkout</a></li>
-                            <li><a href="/customers/login">Login</a></li>
-                            <li><a href="/customers/profile">My Account</a></li>
+                            <li><a href="/category/1">Flowers</a></li>
+                            <li><a href="/wishlist">Plants</a></li>
+                            <li><a href="/customers/checkout">Chocolates</a></li>
+                            <li><a href="/customers/login">Packages</a></li>
                         </ul>
-                        <!--                            </li>-->
-                        <!--                        </ul>-->
                     </li>
 
                     <li><a href="/customers/about-us">About Us</a></li>
@@ -307,7 +314,8 @@ $dir = $dir ?? "../public/images/product/";
         </div>
 
         <address class="address">
-           <span> <a href="mailto:moment@gmail.com">moment@gmail.com</a></span>
+
+           <span> <a href="mailto:moments@gmail.com">moments@gmail.com</a></span>
            <span>  <a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ar-Razi St. 141, Amman</a></span>
 
 <span><a href="tel:+0777891011">0777891011</a></span>
@@ -398,20 +406,25 @@ $dir = $dir ?? "../public/images/product/";
     </div> <!-- ENd Offcanvas Header -->
 
     <!-- Start Offcanvas Mobile Menu Wrapper -->
-    <div class="offcanvas-wishlist-wrapper">
+    <!-- <div class="offcanvas-wishlist-wrapper">
         <h4 class="offcanvas-title">Wishlist</h4>
         <ul class="offcanvas-wishlist">
-            <li class="offcanvas-wishlist-item-single">
+        <?php foreach ($wishlistItems as $item): ?>
+                <?php
+                    // Fetch product details from a hypothetical Product model
+                    $product = $productModel->find($item['product_id']);
+                ?>
+                <li class="offcanvas-wishlist-item-single">
                 <div class="offcanvas-wishlist-item-block">
                     <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="/gift_shop/public/images/product/default/home-1/default-1.jpg" alt=""
+                        <img src="/gift_shop/public/images/product/<?=$item['image_url']?>" alt="<?=$item['product_name']?>"
                              class="offcanvas-wishlist-image">
                     </a>
                     <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Car Wheel</a>
+                        <a href="#" class="offcanvas-wishlist-item-link"><?=$item['product_name']?></a>
                         <div class="offcanvas-wishlist-item-details">
                             <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$49.00</span>
+                            <span class="offcanvas-wishlist-item-details-price">$<?= number_format($product['price'], 2) ?></span>
                         </div>
                     </div>
                 </div>
@@ -419,47 +432,14 @@ $dir = $dir ?? "../public/images/product/";
                     <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
                 </div>
             </li>
-            <li class="offcanvas-wishlist-item-single">
-                <div class="offcanvas-wishlist-item-block">
-                    <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="/gift_shop/public/images/product/default/home-2/default-1.jpg" alt=""
-                             class="offcanvas-wishlist-image">
-                    </a>
-                    <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Car Vails</a>
-                        <div class="offcanvas-wishlist-item-details">
-                            <span class="offcanvas-wishlist-item-details-quantity">3 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$500.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-wishlist-item-delete text-right">
-                    <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
-            <li class="offcanvas-wishlist-item-single">
-                <div class="offcanvas-wishlist-item-block">
-                    <a href="#" class="offcanvas-wishlist-item-image-link">
-                        <img src="../public/images/product/default/home-3/default-1.jpg" alt=""
-                             class="offcanvas-wishlist-image">
-                    </a>
-                    <div class="offcanvas-wishlist-item-content">
-                        <a href="#" class="offcanvas-wishlist-item-link">Shock Absorber</a>
-                        <div class="offcanvas-wishlist-item-details">
-                            <span class="offcanvas-wishlist-item-details-quantity">1 x </span>
-                            <span class="offcanvas-wishlist-item-details-price">$350.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="offcanvas-wishlist-item-delete text-right">
-                    <a href="#" class="offcanvas-wishlist-item-delete"><i class="fa fa-trash-o"></i></a>
-                </div>
-            </li>
+            <?php endforeach; ?>
+            
         </ul>
         <ul class="offcanvas-wishlist-action-button">
-            <li><a href="#" class="btn btn-block btn-golden">View wishlist</a></li>
+            <li><a href="/wishlist" class="btn btn-block btn-golden">View wishlist</a></li>
         </ul>
-    </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+    </div> -->
+     <!-- End Offcanvas Mobile Menu Wrapper -->
 
 </div> <!-- End Offcanvas Mobile Menu Section -->
 

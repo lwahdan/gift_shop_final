@@ -2,13 +2,18 @@
 require_once __DIR__ . '/../models/Category.php';
 require_once __DIR__ . '/../models/Product.php';
 
-class CategoryController extends Controller
-{
-    public function index()
-    {
-        $categoryModel = new Category();
-        $categories = $categoryModel->all();
-        $this->view('categories/index', ['categories' => $categories]);
+class CategoryController2 extends Controller {
+    private $categoryModel;
+
+    public function __construct() {
+        $this->categoryModel = $this->model('CategoryModel');
+    }
+
+    // Show main categories page
+    public function index() {
+        $categories = $this->categoryModel->all();
+
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
     public function create()
@@ -53,18 +58,14 @@ class CategoryController extends Controller
     public function getProductsByCategory($categoryId) {
         $productModel = new Product();
         $products = $productModel->getProductsByCategory($categoryId);
-        $this->view('products/index', ['products' => $products]); 
+        $this->view('products/index', ['products' => $products]);
     }
     public function show($id)
     {
-    $categoryModel = new Category();
-    $category = $categoryModel->find($id);
-    $this->view('categories/show', ['category' => $category]);
+        $categoryModel = new Category();
+        $category = $categoryModel->find($id);
+        $this->view('categories/show', ['category' => $category]);
     }
 
-    public function getCategories()
-    {
-        $categoryModel = new Category();
-        return $categoryModel->all();
-    }
+
 }

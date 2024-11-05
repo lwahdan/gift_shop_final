@@ -1,17 +1,6 @@
-
 <?php require_once 'views/partials/header.php';
-//  require_once 'config/db.php'; 
-
 $dir = '../public/images/product/';
-
 require_once 'controllers/ProductController.php';
-require_once 'controllers/CategoryController.php';
-
-
-// $productController = new ProductController();
-// $products = $productController->productModel->all();
-
-
 ?>
 
 <!-- Start Hero Slider Section reem leen -->
@@ -178,7 +167,7 @@ require_once 'controllers/CategoryController.php';
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <!--<div class="product-slider-default-2rows default-slider-nav-arrow">-->
+                <div class="product-slider-default-2rows default-slider-nav-arrow">
                    <div class="swiper-container product-default-slider-4grid-2row">
                         <div class="swiper-wrapper">
                             <?php foreach ($products as $row): ?>
@@ -187,20 +176,20 @@ require_once 'controllers/CategoryController.php';
                                         <a href="/product/details?id=<?php echo $row['id']; ?>" class="image-link">
                                             <img src="<?php echo $dir . str_replace(' ', '%20', $row['image_url']); ?>" alt="Product Image">
                                         </a>
-                                        <div class="tag">
-                                        </div>
                                         <div class="action-link">
 
                                         <div class="action-link-left">
                                         <form class="add-to-cart-form" action="/cart/add" method="POST">
-                                        <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                        <input type="hidden" name="product_id" value="<?= $row['id']; ?>">
                                         <button type="submit" class="btn btn-link btn-md btn-golden">Add to Cart</button>
                                         </form>
                                         <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
+                                            <div class="action-link-right" onclick="addOrRemoveFromWishlist(<?= $row['id']?>)">
+                                                <a>
+                                                <i id="wishlist-icon-<?= $row['id']?>" class="icon-heart"></i>
+                                                </a>    
 
-                                            <div class="action-link-right">
-                                                <a href="wishlist/add/<?= $row['id']?>"><i class="icon-heart"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -224,8 +213,8 @@ require_once 'controllers/CategoryController.php';
                         </div>
                     </div>
                     <!-- Navigation buttons -->
-                   <!-- <div class="swiper-button-prev"></div> -->
-                    <!-- <div class="swiper-button-next"></div> -->
+                   <div class="swiper-button-prev"></div>
+                   <div class="swiper-button-next"></div>
                 </div>
             </div>
         </div>
@@ -235,76 +224,30 @@ require_once 'controllers/CategoryController.php';
 
 
 <!-- Start Banner Section -->
- <div class="mybanner">
-<div class="banner-section">
-<?php 
-        $categoryController = new Category;
-        $categories = $categoryController->all(); 
-        
-    ?>
-    <div class="banner-wrapper clearfix">
-        <!-- Start Banner Single Item -->
-        <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
-             data-aos="fade-up" data-aos-delay="0">
-            <div class="image">
-                <img class="img-fluid" src="../public/images/banner/banner-style-4-img-1.jpg" alt="">
-            </div>
-            <a href="/category/1" class="content">
-                <div class="inner">
-                    <h4 class="title">Flowers</h4>
+<div class="mybanner">
+    <div class="banner-section">
+        <div class="banner-wrapper clearfix">
+            <?php foreach ($categories as $index => $category): ?>
+                <!-- Start Banner Single Item -->
+                <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
+                     data-aos="fade-up" data-aos-delay="<?= $index * 200 ?>">
+                    <div class="image">
+                        <img class="img-fluid" src="../public/images/banner/<?php echo htmlspecialchars($category['image_url']); ?>" alt="">
+                    </div>
+                    <a href="/category/<?php echo htmlspecialchars($category['id']); ?>" class="content">
+                        <div class="inner">
+                            <h4 class="title"><?php echo htmlspecialchars($category['category_name']); ?></h4>
+                        </div>
+                        <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
+                    </a>
                 </div>
-                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-            </a>
+                <!-- End Banner Single Item -->
+            <?php endforeach; ?>
         </div>
-	
-
-        <!-- End Banner Single Item -->
-        <!-- Start Banner Single Item -->
-        <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
-             data-aos="fade-up" data-aos-delay="200">
-            <div class="image">
-                <img class="img-fluid" src="../public/images/banner/banner-style-4-img-2.jpg" alt="">
-            </div>
-            <a href="/category/2" class="content">
-                <div class="inner">
-                    <h4 class="title">Plants</h4>
-                </div>
-                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-            </a>
-        </div>
-        <!-- End Banner Single Item -->
-        <!-- Start Banner Single Item -->
-        <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
-             data-aos="fade-up" data-aos-delay="400">
-            <div class="image">
-                <img class="img-fluid" src="../public/images/banner/banner-style-4-img-3.jpg" alt="">
-            </div>
-            <a href="/category/3" class="content">
-                <div class="inner">
-                    <h4 class="title">Chocolates</h4>
-                </div>
-                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-            </a>
-        </div>
-        <!-- End Banner Single Item -->
-        <!-- Start Banner Single Item -->
-        <div class="banner-single-item banner-style-4 banner-animation banner-color--golden float-left img-responsive"
-             data-aos="fade-up" data-aos-delay="600">
-            <div class="image">
-                <img class="img-fluid" src="../public/images/banner/banner-style-4-img-4.jpg" alt="">
-            </div>
-            <a href="/category/1" class="content">
-                <div class="inner">
-                    <h4 class="title">Packages</h4>
-                </div>
-                <span class="round-btn"><i class="ion-ios-arrow-thin-right"></i></span>
-            </a>
-        </div>
-        <!-- End Banner Single Item -->
     </div>
 </div>
-</div>
 <!-- End Banner Section -->
+
 
 
 
