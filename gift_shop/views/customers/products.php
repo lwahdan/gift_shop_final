@@ -43,8 +43,6 @@ $dir = '../public/images/product/';?>
                                                     <a href="#" data-bs-toggle="modal"
                                                        data-bs-target="#modalQuickview"><i class="icon-magnifier"></i></a>
                                                     <a href="/wishlist"><i class="icon-heart"></i></a>
-                                                    <a href="/compare"><i class="icon-shuffle"></i></a>
-
                                                 </div>
                                             </div>
                                         </div>

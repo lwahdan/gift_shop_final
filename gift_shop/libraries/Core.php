@@ -41,11 +41,9 @@ class Core {
         'customers/logout' => 'AuthController@logout',
         'customers/profile' => 'ProfileController@viewProfile',
         'profile/update', 'ProfileController@updateProfile',
-        'customers/wishlist' => 'CustomerController@wishlist',
         'customers/dashboard' => 'AdminController@dashboard',
        
         //product Routes
-        'product/details/{id}' => 'ProductController@details',
         'product/details' => 'ProductController@details',
         'products' => 'ProductController@index',
         'home' => 'ProductController@home',
@@ -58,7 +56,12 @@ class Core {
         //wishlist routes
         'wishlist' => 'WishlistController@index',
         'wishlist/add/{product_id}' => 'WishlistController@add',
-        'wishlist/remove/{wishlist_id}' => 'WishlistController@remove',
+        'wishlist/addProduct/{product_id}' => 'WishlistController@addProduct',
+        'wishlist/remove/{product_id}' => 'WishlistController@delete',
+        'wishlist/addOrRemove/{product_id}' => 'WishlistController@addOrRemove',
+        'customers/wishlist/count' => 'WishlistController@count',
+        'wishlist/isIn/{product_id}' => 'WishlistController@isInWishlist',
+        'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
         // Routes for managing products
         'dashboard/manageProducts' => 'DashboardController@manageProducts',

@@ -6,12 +6,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Product Details - Default</h3>
+                    <h3 class="breadcrumb-title">Product Details</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="/home">Home</a></li>
-                                <li class="active" aria-current="page">Product Details Default</li>
+                                <li class="active" aria-current="page">Product Details</li>
                             </ul>
                         </nav>
                     </div>
@@ -69,7 +69,7 @@
                         </div>
                         <!-- Start Product Details Meta Area -->
                         <div class="product-details-meta mb-20">
-                            <a href="/wishlist/add/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
+                            <a href="/wishlist/addProduct/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
                         </div> <!-- End Product Details Meta Area -->
                     </div> <!-- End Product Variable Area -->
                 </div>
