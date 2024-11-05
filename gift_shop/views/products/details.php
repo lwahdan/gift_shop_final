@@ -6,12 +6,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="breadcrumb-title">Product Details - Default</h3>
+                    <h3 class="breadcrumb-title">Product Details</h3>
                     <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
                         <nav aria-label="breadcrumb">
                             <ul>
                                 <li><a href="/home">Home</a></li>
-                                <li class="active" aria-current="page">Product Details Default</li>
+                                <li class="active" aria-current="page">Product Details</li>
                             </ul>
                         </nav>
                     </div>
@@ -50,26 +50,24 @@
 
                     <!-- Start Product Variable Area -->
                     <div class="product-details-variable">
-
                         <!-- Product Variable Single Item -->
                         <div class="variable-single-item">
                             <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> <?php echo ($product['stock_quantity']); ?> IN STOCK</div>
                         </div>
                         <!-- Product Variable Single Item -->
                         <div class="d-flex align-items-center">
-                          
                             <!-- Add to Cart Form start-->
-    <form action="/cart/add" method="POST" class="add-to-cart-form">
-        <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-        <div class="product-add-to-cart-btn">
-            <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
-        </div>
-    </form>    
-    <!-- Add to Cart end -->
+                            <form action="/cart/add" method="POST" class="add-to-cart-form">
+                                <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+                                <div class="product-add-to-cart-btn">
+                                    <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
+                                </div>
+                            </form>    
+                            <!-- Add to Cart end -->
                         </div>
                         <!-- Start Product Details Meta Area -->
                         <div class="product-details-meta mb-20">
-                            <a href="/wishlist/add/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
+                            <a href="/wishlist/addProduct/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
                         </div> <!-- End Product Details Meta Area -->
                     </div> <!-- End Product Variable Area -->
                 </div>
@@ -161,7 +159,9 @@
                                     </table>
                                 </form>
                             <?php else: ?>
-                                <p><a href="/customers/login">Log in</a> to leave a review.</p>
+                                <div class="login-prompt">
+                                    <p><a href="/customers/login" style="color: red;"><strong>Log in</strong></a> to leave a review.</p>
+                                </div>
                             <?php endif; ?>
                         </div> <!-- End Product Details Tab Content Single -->
                     </div> <!-- End Product Details Tab Content Single -->
@@ -174,58 +174,29 @@
 <?php require_once 'views/partials/footer.php'; ?>
 
 <!-- CSS Styles -->
-<style>
-    .star {
-        color: gray; /* Default color for unselected stars */
-    }
-    .star.selected,
-    .star:hover,
-    .star:hover ~ .star {
-        color: gold; /* Color for selected and hovered stars */
-    }
-</style>
 
 <!-- JavaScript for Star Rating -->
 <script>
-   document.querySelectorAll('.star').forEach(star => {
-    star.addEventListener('click', function() {
-        const ratingValue = this.getAttribute('data-value');
-        const ratingInput = document.getElementById('rating');
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+            const ratingValue = this.getAttribute('data-value');
+            const ratingInput = document.getElementById('rating');
 
-        // Set the hidden input value
-        ratingInput.value = ratingValue;
+            // Set the hidden input value
+            ratingInput.value = ratingValue;
 
-        // Remove 'selected' class from all stars
-        document.querySelectorAll('.star').forEach(s => {
-            s.classList.remove('selected');
-        });
+            // Remove 'selected' class from all stars
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.remove('selected');
+            });
 
-        // Add 'selected' class to the clicked star and all previous stars
-        for (let i = 0; i < ratingValue; i++) {
-            document.querySelectorAll('.star')[i].classList.add('selected');
-        }
-    });
-
-    // Optional: Add hover effect
-    star.addEventListener('mouseover', function() {
-        const hoverValue = this.getAttribute('data-value');
-        document.querySelectorAll('.star').forEach(s => {
-            s.classList.remove('selected');
-            if (s.getAttribute('data-value') <= hoverValue) {
-                s.classList.add('selected');
+            // Add 'selected' class to the clicked star and all previous stars
+            this.classList.add('selected');
+            let previousStar = this.previousElementSibling;
+            while (previousStar) {
+                previousStar.classList.add('selected');
+                previousStar = previousStar.previousElementSibling;
             }
         });
     });
-
-    star.addEventListener('mouseout', function() {
-        const ratingValue = document.getElementById('rating').value;
-        document.querySelectorAll('.star').forEach(s => {
-            s.classList.remove('selected');
-            if (s.getAttribute('data-value') <= ratingValue) {
-                s.classList.add('selected');
-            }
-        });
-    });
-});
-
 </script>

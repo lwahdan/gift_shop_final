@@ -25,7 +25,7 @@
                             <ul class="footer-nav">
                                 <li><a href="/customers/profile">My account</a></li>
                                 <li><a href="/customers/cart">Cart</a></li>
-                                <li><a href="/customers/wishlist">Wishlist</a></li>
+                                <li><a href="/wishlist">Wishlist</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
@@ -105,9 +105,9 @@
                     class="row justify-content-between align-items-center align-items-center flex-column flex-md-row mb-n6">
                     <div class="col-auto mb-6">
                         <div class="footer-copyright">
-                            <p class="copyright-text">&copy; 2024 <a href="index.html">moment</a>. Made with <i
-                                    class="fa fa-heart text-danger"></i> by <a href="https://therankme.com/"
-                                                                               target="_blank">moment</a> </p>
+                            <p class="copyright-text">&copy; 2024 <a href="/home">moments</a>. Made with <i
+                                    class="fa fa-heart text-danger"></i> by <a href="/home"
+                                                                               target="_blank">moments</a> </p>
 
                         </div>
                     </div>
@@ -378,6 +378,8 @@
 <script src="../public/js/user.js"></script>
 
 <script src="../public/js/testimonial.js"></script>
+
+<script src="../public/js/wishlist.js"></script>
 <!-- SweetAlert CDN -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
