@@ -107,7 +107,7 @@ class OrderController extends Controller{
             exit();
         }
         // Retrieve products by category ID
-        $orders = $this->orderModel->getOrderDetails($orderId);
+        $orders = $this->orderModel->find($orderId);
 
         // Load the view for showing products in a category
         $this->view('admin/orders/show', ['orders' => $orders]);
