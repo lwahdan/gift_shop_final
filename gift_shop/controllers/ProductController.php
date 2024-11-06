@@ -9,41 +9,55 @@ class ProductController extends Controller
 {
     private $productModel;
     private $reviewModel;
+    private $categoryModel;
 
     public function __construct()
     {
         // Load the Product model and Review model
         $this->productModel = $this->model('Product');
         $this->reviewModel = $this->model('Review');
+        $this->categoryModel = $this->model('Category');
     }
 
-    public function index()
+
+
+
+
+    public function home()
     {
+        // Get all products
         $products = $this->productModel->all();
-        $this->view('products/index', ['products' => $products]);
+
+        // Get all categories
+        $categories = $this->categoryModel->all();
+
+        // Load the view with both products and categories
+        $this->view('customers/index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 
-    // public function getProductsByCategory($categoryId) 
-    // {
-    //     $products = $this->productModel->getProductsByCategory($categoryId);
-    //     $this->view('products/index', ['products' => $products]); 
-    // }
-
-    public function getProductsByCategory($categoryId) {
-        // Retrieve products by category ID
+    public function getProductsByCategory($categoryId)
+    {
+        // Get the products for this category
         $products = $this->productModel->getProductsByCategory($categoryId);
-    
-        // Retrieve category name
-        $categoryModel = new Category();
-        $category = $categoryModel->find($categoryId);
-        $categoryName = $category ? $category['category_name'] : 'Products';
-    
-        // Pass both products and category name to the view
+
+        // Get all categories for the navigation menu
+        $categories = $this->categoryModel->all();
+
+        // Get the current category name
+        $currentCategory = $this->categoryModel->find($categoryId);
+        $categoryName = $currentCategory ? $currentCategory['category_name'] : 'Products';
+
+        // Pass everything to the view
         $this->view('products/index', [
             'products' => $products,
+            'categories' => $categories,
             'categoryName' => $categoryName
         ]);
     }
+
     
 
     public function search() 
@@ -52,22 +66,7 @@ class ProductController extends Controller
         $this->view('products/index', ['products' => $products]); 
     }
 
-    public function home()
-    {
-        // Retrieve all products
-        $products = $this->productModel->all();
-    
-        // Retrieve all categories via CategoryController
-        $categoryController = new CategoryController();
-        $categories = $categoryController->getCategories();
-    
-        // Load the main index view with both products and categories
-        $this->view('customers/index', [
-            'products' => $products,
-            'categories' => $categories
-        ]);
-    
-    }
+
 
 
     public function details()

@@ -73,8 +73,8 @@ class Core {
         'admin/logout' => 'DashboardController@logout',
 
         // customers Routes
-        'customers/about-us' => 'CustomerController@about',
-        'customers/contact-us' => 'CustomerController@contact',
+        'customers/about-us' => 'CustomerController@home',
+        'customers/contact-us' => 'CustomerController@home2',
         'customers/checkout' => 'CustomerController@checkout',        
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',
