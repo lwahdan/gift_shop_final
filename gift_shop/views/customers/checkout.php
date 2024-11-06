@@ -88,7 +88,7 @@ $orderTotal = $subtotal - $discount + $shipping;
                             <input type="text" id="country" name="country" class="form-control" required>
                         </div>
                         <div class="order_button pt-3">
-                            <input type="submit" value="Submit Order" class="btn btn-md btn-black-default-hover w-100">
+                            <input type="submit" value="Submit Order" id="submitOrder" class="btn btn-md btn-black-default-hover w-100">
                         </div>
                     </form>
                 </div>

@@ -23,3 +23,5 @@ function toggleForm(formId) {
     document.getElementById(formId).style.display =
         document.getElementById(formId).style.display === 'none' ? 'block' : 'none';
 }
+
+

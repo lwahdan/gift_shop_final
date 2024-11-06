@@ -312,4 +312,10 @@ body {
 .about_txt{
     font-size: 1.2rem !important;
 }
+.continue-shopping-btn {
+    background-color: #B19361 !important;
+    color: #ffffff !important;
+    border: none;
+}
+
 

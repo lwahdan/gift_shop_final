@@ -72,6 +72,37 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
             }
         });
     }
+    document.addEventListener('DOMContentLoaded', () => {
+    const deleteLinks = document.querySelectorAll('.status-badge.status-disabled');
+
+    deleteLinks.forEach(deleteLink => {
+        deleteLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure you want to delete this category?',
+                text: "This action cannot be undone.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Category has been deleted successfully!',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    }).then(() => {
+                        // Redirect to the delete URL after showing success message
+                        window.location.href = deleteLink.href;
+                    });
+                }
+            });
+        });
+    });
+});
+
 </script>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php"; ?>
