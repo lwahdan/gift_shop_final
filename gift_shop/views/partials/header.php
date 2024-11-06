@@ -89,17 +89,22 @@ $dir = $dir ?? "../public/images/product/";
                                     </li>
                                     <li class="has-dropdown has-megaitem">
                                         <a href="#">Shop
-                                            <i class="fa fa-angle-down"></i></a>
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
-
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
-                                                        <li><a href="/category/1">Flowers</a></li>
-                    
-                                                        <li><a href="/category/2">Plants</a></li>
-                                                        <li><a href="/category/3">Chocolates</a></li>
-                                                        <li><a href="/category/4">Packages</a></li>
+
+                                                        <?php if (isset($categories)) {
+                                                            foreach ($categories as $category): ?>
+                                                                <li>
+                                                                    <a href="/category/<?php echo htmlspecialchars($category['id']); ?>">
+                                                                        <?php echo htmlspecialchars($category['category_name']); ?>
+                                                                    </a>
+                                                                </li>
+                                                            <?php endforeach;
+                                                        } ?>
                                                     </ul>
                                                 </li>
                                             </ul>
