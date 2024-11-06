@@ -37,6 +37,15 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories
         ]);
+        $products = $this->productModel->getAllProducts(); // or your specific query to fetch products
+
+        // For each product, fetch the average rating
+        foreach ($products as &$product) {
+            $product['average_rating'] = $this->productModel->getProductAverageRating($product['id']);
+        }
+    
+        // Pass products to the view
+        $this->view('home/index', ['products' => $products]);
     }
 
 
@@ -82,40 +91,35 @@ class ProductController extends Controller
     }
 
 
-    public function details()
-{
-    $productId = $_GET['id'] ?? null;
-
-    if ($productId) {
-        $product = $this->productModel->find($productId);
-
-        if ($product) {
-            // Fetch reviews associated with this product
-            $reviews = $this->reviewModel->getReviewsByProductId($productId);
-
-            // Get the average rating for this product
-            $averageRating = $this->reviewModel->getAverageRating($productId);
-
-            // Define the image directory path
-            $dir = "../public/images/product/";
-
-            // Load the product details view, passing product, reviews, average rating, and directory as data
-            $this->view('products/details', [
-                'product' => $product,
-                'reviews' => $reviews,
-                'product_id' => $productId, // Ensure product ID is passed
-                'dir' => $dir,
-                'averageRating' => $averageRating // Pass average rating to the view
-            ]);
+    public function details() {
+        $productId = $_GET['id'] ?? null;
+    
+        if ($productId) {
+            // Fetch product details
+            $product = $this->productModel->find($productId);
+    
+            if ($product) {
+                // Fetch reviews for this product
+                $reviews = $this->reviewModel->getReviewsByProductId($productId);
+    
+                // Get average rating
+                $averageRating = $this->reviewModel->getAverageRating($productId);
+    
+                // Pass to view
+                $this->view('products/details', [
+                    'product' => $product,
+                    'reviews' => $reviews,
+                    'averageRating' => $averageRating
+                ]);
+            } else {
+                header("Location: /products");
+                exit();
+            }
         } else {
-            header("Location: /products"); // Redirect if product not found
+            header("Location: /products");
             exit();
-        }
-    } else {
-        header("Location: /products"); // Redirect if no product ID is provided
-        exit();
-    }
-}
+        }}
+    
 
     public function show($categoryId) {
         if (!isset($_SESSION["admin_id"])) {
@@ -129,6 +133,18 @@ class ProductController extends Controller
         $this->view('admin/categories/show', ['products' => $products]);
     }
     
-
+    public function category($category_id) {
+        // Fetch products for the given category
+        $products = $this->productModel->getProductsByCategory($category_id); // Adjust to fetch products for category
+    
+        // For each product, fetch the average rating
+        foreach ($products as &$product) {
+            $product['average_rating'] = $this->productModel->getProductAverageRating($product['id']);
+        }
+    
+        // Pass products and category to the view
+        $this->view('category/index', ['products' => $products, 'category_id' => $category_id]);
+    }
+    
 }
 ?>
