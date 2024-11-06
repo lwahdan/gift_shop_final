@@ -28,7 +28,7 @@ class ReviewController2 extends Controller {
         } catch (Exception $e) {
             $_SESSION['error'] = 'Error updating review status: ' . $e->getMessage();
         }
-        header('Location: /admin/comments');
+        header('Location: /admin/reviews');
         exit();
     }
 
