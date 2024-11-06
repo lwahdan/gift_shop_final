@@ -140,8 +140,8 @@ $dir = $dir ?? "../public/images/product/";
         <!-- User is logged in: show profile icon with dropdown -->
         <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
         <div class="dropdown-men" id="profileDropdown">
-            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;">My Account</a>
-            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;">Logout</a>
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important;font-size:15px !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important;font-size:15px !important;">Logout</a>
         </div>
     <?php else: ?>
         <!-- User is not logged in: show login link -->
@@ -203,6 +203,19 @@ $dir = $dir ?? "../public/images/product/";
                                 <span class="item-count">3</span>
                             </a>
                         </li>
+                        <li>   <div class="profile-container">
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <!-- User is logged in: show profile icon with dropdown -->
+        <i class="icon-user" onclick="toggleDropdown()" id="profileIcon"></i>
+        <div class="dropdown-men" id="profileDropdown">
+            <a class="normal-spacing" href="/customers/profile" style="letter-spacing: normal !important; font-size:15px !important;">My Account</a>
+            <a class="normal-spacing" href="/customers/logout" style="letter-spacing: normal !important; font-size:15px !important;">Logout</a>
+        </div>
+    <?php else: ?>
+        <!-- User is not logged in: show login link -->
+        <button class="logbtn" ><a class="loga" id="profileText" href="/customers/login" style="letter-spacing: normal !important; color: #fff;font-size:15px !important; ">Login</a></button>
+    <?php endif; ?>
+</div>  </li>
                         <li>
                             <a href="#mobile-menu-offcanvas" class="offcanvas-toggle offside-menu">
                                 <i class="icon-menu"></i>
