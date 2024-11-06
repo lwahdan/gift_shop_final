@@ -1,6 +1,7 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';
 require_once 'controllers/ProductController.php';
+
 ?>
 
 <!-- Start Hero Slider Section reem leen -->

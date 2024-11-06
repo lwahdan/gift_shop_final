@@ -1,5 +1,6 @@
 <?php require_once 'views/partials/header.php';
-$dir = '../public/images/product/';?>
+$dir = '../public/images/product/';
+?>
 
 <div class="container">
     <div class="filter-section">
