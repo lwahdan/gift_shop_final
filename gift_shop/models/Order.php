@@ -44,5 +44,42 @@ class Order extends BaseModel {
         $orderItemModel = new BaseModel('order_items');
         $orderItemModel->create($data);
     }
+
+    public function getOrderDetails($orderId) {
+        $sql = "SELECT 
+                    orders.id AS order_id,
+                    orders.order_date,
+                    orders.status,
+                    orders.total_price AS order_total_price,
+                    users.username AS customer_name,
+                    users.email AS customer_email,
+                    users.address AS customer_address,
+                    products.id AS product_id,
+                    products.product_name,
+                    products.description,
+                    products.price AS product_price,
+                    products.image_url,
+                    order_items.quantity,
+                    order_items.price AS item_price
+                FROM 
+                    order_items
+                JOIN 
+                    products ON order_items.product_id = products.id
+                JOIN 
+                    orders ON order_items.order_id = orders.id
+                JOIN 
+                    users ON orders.user_id = users.id
+                WHERE 
+                    order_items.order_id = :orderId";
+                    
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':orderId', $orderId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+       
+    
 }
 ?>

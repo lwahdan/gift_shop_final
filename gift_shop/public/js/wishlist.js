@@ -33,8 +33,6 @@ function count() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/wishlist/count/', true);
     xhr.onload = function() { 
-        console.log(xhr.responseText);
-        console.log(JSON.parse(xhr.responseText));
         if (xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
             let counter = response.count;
