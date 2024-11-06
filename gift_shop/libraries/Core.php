@@ -43,10 +43,10 @@ class Core {
       'categories/edit/{id}'=> 'CategoryController2@edit',
 
 // Route to handle update form submission
-          'categories/update/{id}'=> 'CategoryController2@update',
+    'categories/update/{id}'=> 'CategoryController2@update',
 
 // Route to delete a category
-          'categories/delete/{id}'=> 'CategoryController2@delete',
+    'categories/delete/{id}'=> 'CategoryController2@delete',
 
         'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
@@ -81,6 +81,10 @@ class Core {
 
         //admin routes
         'admin/product/create' => 'ProductController@create',
+
+        'admin/login' => 'AdminController@showSignInForm',
+        'admin/login/submit' => 'AdminController@signIn',
+        'admin/logout' => 'AdminController@logout',
 
         //wishlist routes
         'wishlist' => 'WishlistController@index',
