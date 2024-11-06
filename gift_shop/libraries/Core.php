@@ -28,7 +28,7 @@ class Core {
         'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
-
+        'admin/users/show/{id}' => 'UserController@show',
         'admin/category' => 'CategoryController2@index',                 // List categories
         'admin/category/create' => 'CategoryController2@create',           // Create category form
         'admin/category/store' => 'CategoryController2@store',             // Store new category
@@ -37,7 +37,18 @@ class Core {
         'admin/categories/show/{id}' => 'ProductController@show',
 
         'admin' => 'DashboardController@index',
+        'categories/create' => 'CategoryController2@create',
+        'categories/store' => 'CategoryController2@store',
+// Route to show edit form
+      'categories/edit/{id}'=> 'CategoryController2@edit',
 
+// Route to handle update form submission
+          'categories/update/{id}'=> 'CategoryController2@update',
+
+// Route to delete a category
+          'categories/delete/{id}'=> 'CategoryController2@delete',
+
+        'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
         'admin/products' => 'DashboardController@manageProducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
@@ -57,8 +68,7 @@ class Core {
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
-        'customers/logout' => 'AuthController@logout',
-        'customers/profile' => 'ProfileController@viewProfile',
+
         'profile/update', 'ProfileController@updateProfile',
         'customers/dashboard' => 'AdminController@dashboard',
        
@@ -78,7 +88,7 @@ class Core {
         'wishlist/addProduct/{product_id}' => 'WishlistController@addProduct',
         'wishlist/remove/{product_id}' => 'WishlistController@delete',
         'wishlist/addOrRemove/{product_id}' => 'WishlistController@addOrRemove',
-        'customers/wishlist/count' => 'WishlistController@count',
+        'wishlist/count' => 'WishlistController@count',
         'wishlist/isIn/{product_id}' => 'WishlistController@isInWishlist',
         'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
@@ -101,18 +111,18 @@ class Core {
         'customers/logout' => 'AuthController@logout',
         'customers/edit' => 'UserController@editProfile',
         'customers/updateProfile' => 'UserController@updateProfile',
-     'customers/profile' => 'ProfileController@viewProfile',
-'profile/updateProfile' => 'ProfileController@updateProfile',
-'customers/edit' => 'UserController@editProfile',
-'customers/updateProfile' => 'UserController@updateProfile',
-'customers/profile' => 'ProfileController@viewProfile',
-    'customers/profile/updateProfile' => 'ProfileController@updateProfile',
-    'customers/changePassword'=>'ProfileController@changePassword',
-    'auth/changePassword' => 'ProfileController@changePassword',
-   'reviews/create' => 'ReviewController@create',              
-'reviews/view' => 'ReviewController@viewReview',            
-'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
-'reviews/index' => 'ReviewController@index',  
+        'customers/profile' => 'ProfileController@viewProfile',
+        'profile/updateProfile' => 'ProfileController@updateProfile',
+        'customers/edit' => 'UserController@editProfile',
+        'customers/updateProfile' => 'UserController@updateProfile',
+        'customers/profile' => 'ProfileController@viewProfile',
+        'customers/profile/updateProfile' => 'ProfileController@updateProfile',
+        'customers/changePassword'=>'ProfileController@changePassword',
+        'auth/changePassword' => 'ProfileController@changePassword',
+        'reviews/create' => 'ReviewController@create',              
+        'reviews/view' => 'ReviewController@viewReview',            
+        'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+        'reviews/index' => 'ReviewController@index',  
 
 
 

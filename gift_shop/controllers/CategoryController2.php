@@ -3,57 +3,57 @@ require_once __DIR__ . '/../models/Category.php';
 require_once __DIR__ . '/../models/Product.php';
 
 class CategoryController2 extends Controller {
-    private $categoryModel;
+    public $categoryModel;
 
     public function __construct() {
-        $this->categoryModel = $this->model('CategoryModel');
+        $this->categoryModel = $this->model('Category');
     }
 
     // Show main categories page
     public function index() {
         $categories = $this->categoryModel->all();
-
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function create()
-    {
-        $this->view('categories/create');
+    public function create() {
+        $this->view('admin/Categories/create');
     }
 
-    public function store()
-    {
+    public function store() {
         $data = [
-            'name' => $_POST['name']
+            'category_name' => $_POST['name'],
+            'description' => $_POST['description'],
+            'image_url' => $_POST['image_url']
         ];
-        $categoryModel = new Category();
-        $categoryModel->create($data);
-        header("Location: /categories"); // Redirect to categories index
+        $this->categoryModel->create($data);
+
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
+    }
+    public function edit($id) {
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function edit($id)
-    {
-        $categoryModel = new Category();
-        $category = $categoryModel->find($id);
-        $this->view('categories/edit', ['category' => $category]);
-    }
-
-    public function update($id)
-    {
+    // Handle update form submission
+    public function update($id) {
         $data = [
-            'name' => $_POST['name']
+            'category_name' => $_POST['name'],
+            'description' => $_POST['description'],
+            'image_url' => $_POST['image_url']
         ];
-        $categoryModel = new Category();
-        $categoryModel->update($id, $data);
-        header("Location: /categories");
+        $this->categoryModel->update($id, $data);
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function delete($id)
-    {
-        $categoryModel = new Category();
-        $categoryModel->delete($id);
-        header("Location: /categories");
+    // Delete a category
+    public function delete($id) {
+        $this->categoryModel->delete($id);
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
+
 
     public function getProductsByCategory($categoryId) {
         $productModel = new Product();

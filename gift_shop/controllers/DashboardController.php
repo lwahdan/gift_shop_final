@@ -28,12 +28,12 @@ class DashboardController extends Controller {
 
     public function manageProducts() {
         $data = $this->data;
-        $this->view('admin/dashboard/products/products', $data);
+        $this->view('admin/Categories/show', $data);
     }
 
     // Handle new product creation form
     public function createProduct() {
-        $this->view('admin/dashboard/products/create_product');
+        $this->view('admin/Categories/create_product');
     }
 
 

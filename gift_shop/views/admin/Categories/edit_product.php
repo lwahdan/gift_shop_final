@@ -1,4 +1,8 @@
 <?php
+
+$Product_active = "active";
+
+
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 ?>
 

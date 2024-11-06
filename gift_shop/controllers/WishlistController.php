@@ -89,6 +89,11 @@ class WishlistController extends Controller
     }
 
     public function addOrRemove($productId) {
+        if (!isset($_SESSION['user_id'])) {
+            http_response_code(401); // Unauthorized
+            echo json_encode(['error' => 'Unauthorized']);
+            exit();
+        }    
         $inWishlist = !$this->isInWishlist($productId);
         if ($inWishlist) {
             $this->add($productId);

@@ -5,8 +5,13 @@ require_once 'BaseController.php';
 class UserController extends Controller {
     private $userModel;
 
+    private $orderModel;
+    private $reviewModel;
+
     public function __construct() {
         $this->userModel = $this->model('UserModel');
+        $this->orderModel = $this->model('OrderModel');
+        $this->reviewModel = $this->model('ReviewModel');
     }
 
     public function index() {
@@ -94,5 +99,26 @@ class UserController extends Controller {
     public function editUser($id) {
         $user = $this->userModel->find($id);
         $this->view('/customers/profile', ['user' => $user]);
+    }
+    public function show($id) {
+        // Get the user details from the model
+        $user = $this->userModel->find($id);
+
+        // Get orders and reviews for the user
+        $orders = $this->orderModel->getAllByUserId($id);
+        $reviews = $this->reviewModel->getAllByUserId($id);
+
+        if ($user) {
+            // Pass the data to the view
+            $this->view('admin/users/show', [
+                'user' => $user,
+                'orders' => $orders,
+                'reviews' => $reviews
+            ]);
+        } else {
+            $_SESSION['error'] = 'User not found';
+            header('Location: /admin/users');
+            exit();
+        }
     }
 }
