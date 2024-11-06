@@ -70,8 +70,8 @@
                                             <td><?php echo htmlspecialchars($user['address']); ?></td>
                                         </tr>
                                         <tr>
-                                            <td><button id="editProfileBtn">Edit</button></td>
-                                            <td><button id="changePasswordBtn">Change Password</button></td>
+                                            <td><button class="buttonn" id="editProfileBtn">Edit</button></td>
+                                            <td><button class="buttonn" id="changePasswordBtn">Change Password</button></td>
                                         </tr>
                                     </table>
                                 </div>
@@ -83,15 +83,15 @@
                                         <table class="profile-table">
                                             <tr>
                                                 <td><label for="current_password">Current Password:</label></td>
-                                                <td><input type="password" name="current_password" id="current_password" required></td>
+                                                <td><input class="inprofile" type="password" name="current_password" id="current_password" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="new_password">New Password:</label></td>
-                                                <td><input type="password" name="new_password" id="new_password" required></td>
+                                                <td><input class="inprofile" type="password" name="new_password" id="new_password" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="confirm_new_password">Confirm New Password:</label></td>
-                                                <td><input type="password" name="confirm_new_password" id="confirm_new_password" required></td>
+                                                <td><input class="inprofile" type="password" name="confirm_new_password" id="confirm_new_password" required></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><button type="submit">Change Password</button></td>
@@ -108,39 +108,39 @@
                                         <table>
                                             <tr>
                                                 <td><label for="username">Username:</label></td>
-                                                <td><input type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="username" id="username" value="<?php echo htmlspecialchars($user['username']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="email">Email:</label></td>
-                                                <td><input type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required></td>
+                                                <td><input class="inprofile" type="email" name="email" id="email" value="<?php echo htmlspecialchars($user['email']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="first_name">First Name:</label></td>
-                                                <td><input type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="first_name" id="first_name" value="<?php echo htmlspecialchars($user['first_name']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="last_name">Last Name:</label></td>
-                                                <td><input type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="last_name" id="last_name" value="<?php echo htmlspecialchars($user['last_name']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="phone_number">Phone Number:</label></td>
-                                                <td><input type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required></td>
+                                                <td><input class="inprofile" type="tel" name="phone_number" id="phone_number" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="address">Address:</label></td>
-                                                <td><input type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="address" id="address" value="<?php echo htmlspecialchars($user['address']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="city">City:</label></td>
-                                                <td><input type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="city" id="city" value="<?php echo htmlspecialchars($user['city']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="postal_code">Postal Code:</label></td>
-                                                <td><input type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="postal_code" id="postal_code" value="<?php echo htmlspecialchars($user['postal_code']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td><label for="country">Country:</label></td>
-                                                <td><input type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required></td>
+                                                <td><input class="inprofile" type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><button type="submit">Save</button></td>
@@ -183,14 +183,36 @@
             </section>
         </div>
 
-                    <div class="tab-pane fade" id="addresses">
-                        <h3>Address Information</h3>
-                        <p>Address: <?php echo htmlspecialchars($address['address']); ?></p>
-                        <p>City: <?php echo htmlspecialchars($address['city']); ?></p>
-                        <p>Postal Code: <?php echo htmlspecialchars($address['postal_code']); ?></p>
-                        <p>Country: <?php echo htmlspecialchars($address['country']); ?></p>
-                    </div>
-                </div>
+                    
+                    <div class="tab-pane fade" id="addresses" class="address-container">
+                    <h3>Address Information</h3>
+<?php if (!empty($address)): ?>
+    <table class="address-table">
+        <tbody>
+            <tr>
+                <th>Address</th>
+                <td><?php echo htmlspecialchars($address['address']); ?></td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td><?php echo htmlspecialchars($address['city']); ?></td>
+            </tr>
+            <tr>
+                <th>Postal Code</th>
+                <td><?php echo htmlspecialchars($address['postal_code']); ?></td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td><?php echo htmlspecialchars($address['country']); ?></td>
+            </tr>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>No address information available.</p>
+<?php endif; ?>
+
+</div>
+                
             </div>
         </div>
     </div>

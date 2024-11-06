@@ -4,9 +4,12 @@ class BaseModel
 {
     protected $pdo;
     protected $table;
+    protected $timestampColumn;
 
-    public function __construct($table)
+
+    public function __construct($table, $timestampColumn = 'created_at')
     {
+        $this->timestampColumn = $timestampColumn;
         $this->table = $table;
         $server_name = $_ENV['DB_SERVER'];
         $database_name = $_ENV['DB_DATABASE'];
@@ -24,11 +27,22 @@ class BaseModel
         }
     }
 
-    public function all ()
+    public function all($limit = null)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table");
+        $sql = "SELECT * FROM $this->table ORDER BY $this->timestampColumn DESC";
+
+        if ($limit) {
+            $sql .= " LIMIT :limit";
+        }
+
+        $statement = $this->pdo->prepare($sql);
+
+        if ($limit) {
+            $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
+        }
+
         $statement->execute();
-        return $statement->fetchAll(\pdo::FETCH_ASSOC);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function find($id)

@@ -327,7 +327,7 @@
     .dropdown-men {
         position: absolute;
         top: 40px;
-        background-color: #fef5ef;;
+        background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 5px;
         min-width: 150px;
@@ -350,7 +350,7 @@
     }
 
     .dropdown-men normal-spacing:hover {
-        background-color: #f0f0f0;
+        background-color: #FEF5EF;
     }
     
    
@@ -522,3 +522,149 @@
        
     }
     
+
+
+    .profile-form {
+        max-width: 800px;
+        margin: auto;
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Profile Table Styling */
+    .profile-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+    
+    .profile-table td {
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .profile-table tr:last-child td {
+        border-bottom: none;
+    }
+    
+    .profile-table strong {
+        color: #9a7a53;
+    }
+    
+    /* Button Styling */
+    .buttonn {
+        padding: 12px 20px;
+        font-size: 14px;
+        background-color: #9a7a53;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .buttonn:hover {
+        background-color: #7b5d3e;
+    }
+    
+    #editProfileBtn, #changePasswordBtn {
+        width: 100%;
+        max-width: 200px;
+        margin-right: 10px;
+    }
+    
+    
+    
+    #cancelChangeBtn:hover, #cancelEditBtn:hover {
+        background-color: #c76042;
+    }
+    
+    /* Alert Messages */
+    .alert {
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        font-size: 14px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    
+    .alert-danger {
+        background-color: #fce4e1;
+        color: #c6473b;
+        border: 1px solid #e3ada5;
+    }
+    
+    .alert-success {
+        background-color: #edf9f2;
+        color: #4caf50;
+        border: 1px solid #a3e6b1;
+    }
+    
+    /* Form Styling */
+    .inprofile {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #9a7a53;
+        border-radius: 6px;
+        background-color: #fef5ef;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-sizing: border-box;
+    }
+    
+    .inprofile:focus {
+        border-color: #9a7a53;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        outline: none;
+    }
+    
+    /* Order Table Styling */
+    .order-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    
+    .order-table th, .order-table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .order-table th {
+        background-color: #9a7a53;
+        color: white;
+        font-weight: normal;
+    }
+    
+    .order-table tbody tr:hover {
+        background-color: #fef5ef;
+    }
+    
+   
+    
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+        .profile-table, .order-table {
+            font-size: 14px;
+        }
+    
+        button {
+            font-size: 12px;
+            padding: 10px 15px;
+        }
+    
+        .profile-form {
+            padding: 15px;
+        }
+    }
+    
+        
+        
+        

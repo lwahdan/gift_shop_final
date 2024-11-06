@@ -3,7 +3,6 @@
 class Core {
     protected $routes = [
         // Default route to customer index
-
         '' => 'ProductController@home',  // This handles the root URL
 
         // Admin Routes
@@ -89,7 +88,7 @@ class Core {
         'wishlist/addProduct/{product_id}' => 'WishlistController@addProduct',
         'wishlist/remove/{product_id}' => 'WishlistController@delete',
         'wishlist/addOrRemove/{product_id}' => 'WishlistController@addOrRemove',
-        'customers/wishlist/count' => 'WishlistController@count',
+        'wishlist/count' => 'WishlistController@count',
         'wishlist/isIn/{product_id}' => 'WishlistController@isInWishlist',
         'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
@@ -112,26 +111,24 @@ class Core {
         'customers/logout' => 'AuthController@logout',
         'customers/edit' => 'UserController@editProfile',
         'customers/updateProfile' => 'UserController@updateProfile',
-     'customers/profile' => 'ProfileController@viewProfile',
-'profile/updateProfile' => 'ProfileController@updateProfile',
-'customers/edit' => 'UserController@editProfile',
-'customers/updateProfile' => 'UserController@updateProfile',
-'customers/profile' => 'ProfileController@viewProfile',
-    'customers/profile/updateProfile' => 'ProfileController@updateProfile',
-    'customers/changePassword'=>'ProfileController@changePassword',
-    'auth/changePassword' => 'ProfileController@changePassword',
-   'reviews/create' => 'ReviewController@create',              
-'reviews/view' => 'ReviewController@viewReview',            
-'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
-'reviews/index' => 'ReviewController@index',  
+        'customers/profile' => 'ProfileController@viewProfile',
+        'profile/updateProfile' => 'ProfileController@updateProfile',
+        'customers/edit' => 'UserController@editProfile',
+        'customers/updateProfile' => 'UserController@updateProfile',
+        'customers/profile' => 'ProfileController@viewProfile',
+        'customers/profile/updateProfile' => 'ProfileController@updateProfile',
+        'customers/changePassword'=>'ProfileController@changePassword',
+        'auth/changePassword' => 'ProfileController@changePassword',
+        'reviews/create' => 'ReviewController@create',              
+        'reviews/view' => 'ReviewController@viewReview',            
+        'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+        'reviews/index' => 'ReviewController@index',  
 
 
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
-    'order/submit' => 'OrderController@submitOrder', 
-
-    'customers/leen'=>'leenController@index',
+    'order/submit' => 'OrderController@submitOrder',
     ];
     
 

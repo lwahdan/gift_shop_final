@@ -9,6 +9,7 @@ class AuthController extends Controller {
     }
 
     public function login() {
+        if(!isset($_SESSION['user_id'])){
         $data = [
             'email' => '',
             'message' => ''
@@ -32,6 +33,10 @@ class AuthController extends Controller {
         }
     
         $this->view('/customers/login', $data);
+        }else{
+            header('Location: /home');
+            exit();
+        }
     }
 
     public function register() {
