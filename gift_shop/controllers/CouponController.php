@@ -13,14 +13,28 @@ class CouponController extends Controller
         $this->model = $this->model('CouponModel');
     }
 
-    public function index()
-    {
+    public function index() {
         if (!isset($_SESSION["admin_id"])) {
             header('Location: /admin/login');
             exit();
         }
-        $coupons = $this->model->all();
-        include 'views/admin/coupons/index.php';
+        // Get filters from the GET request
+        $filters = [];
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['status'] = $_GET['status'];
+        }
+        if (isset($_GET['discount']) && $_GET['discount'] !== '') {
+            $filters['discount'] = $_GET['discount'];
+        }
+        if (isset($_GET['date']) && $_GET['date'] !== '') {
+            $filters['date'] = $_GET['date'];
+        }
+
+        // Fetch coupons with the filters
+        $coupons = $this->model->getCoupons($filters);
+
+        // Include the view and pass the coupons data
+        $this->view('admin/coupons/index', ['coupons' => $coupons]);
     }
 
     public function create()
