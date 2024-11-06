@@ -445,7 +445,7 @@ $dir = $dir ?? "../public/images/product/";
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
     <form action="/search" method="get">
-        <input type="search" name="search" placeholder="type keyword(s) here" />
+        <input type="search" name="search" placeholder="type keyword(s) here"/>
         <button type="submit" class="btn btn-lg btn-golden">Search</button>
     </form>
 </div>
