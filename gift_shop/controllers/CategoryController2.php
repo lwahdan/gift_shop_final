@@ -11,15 +11,27 @@ class CategoryController2 extends Controller {
 
     // Show main categories page
     public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $categories = $this->categoryModel->all();
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
     public function create() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->view('admin/Categories/create');
     }
 
     public function store() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = [
             'category_name' => $_POST['name'],
             'description' => $_POST['description'],
@@ -31,12 +43,20 @@ class CategoryController2 extends Controller {
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
     public function edit($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $categories = $this->categoryModel->all();
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
     // Handle update form submission
     public function update($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = [
             'category_name' => $_POST['name'],
             'description' => $_POST['description'],
@@ -49,6 +69,10 @@ class CategoryController2 extends Controller {
 
     // Delete a category
     public function delete($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->categoryModel->delete($id);
         $categories = $this->categoryModel->all();
         $this->view('admin/Categories/index', ['categories' => $categories]);
@@ -56,12 +80,20 @@ class CategoryController2 extends Controller {
 
 
     public function getProductsByCategory($categoryId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $productModel = new Product();
         $products = $productModel->getProductsByCategory($categoryId);
         $this->view('products/index', ['products' => $products]);
     }
     public function show($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $categoryModel = new Category();
         $category = $categoryModel->find($id);
         $this->view('categories/show', ['category' => $category]);
