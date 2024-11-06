@@ -101,10 +101,6 @@ class ProductController extends Controller
         }
     }
     public function show($categoryId) {
-        if (!isset($_SESSION["admin_id"])) {
-            header('Location: /admin/login');
-            exit();
-        }
         // Retrieve products by category ID
         $products = $this->productModel->getProductsByCategory($categoryId);
 

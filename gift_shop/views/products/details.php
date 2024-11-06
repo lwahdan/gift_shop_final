@@ -1,7 +1,7 @@
 <?php require_once 'views/partials/header.php'; ?>
 
 <!-- ...:::: Start Breadcrumb Section :::... -->
-<div class="breadcrumb-section breadcrumb-bg-color--golden">
+<div class="breadcrumb-section breadcrumb-bg-color--golden details_breadcrum">
     <div class="breadcrumb-wrapper">
         <div class="container">
             <div class="row">

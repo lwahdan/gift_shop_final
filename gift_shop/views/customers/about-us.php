@@ -1,7 +1,7 @@
 <?php require 'views/partials/header.php'; ?>
 
     <!-- ...:::: Start Breadcrumb Section:::... -->
-    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-section breadcrumb-bg-color--golden about-breadcrum">
         <div class="breadcrumb-wrapper">
             <div class="container">
                 <div class="row">
@@ -37,7 +37,7 @@
                     <div class="content" data-aos="fade-up" data-aos-delay="200">
                         <h3 class="title">ABOUT MOMENT</h3>
                         <p class="semi-title">Every gift begins with a heartfelt intention and tells a story</p>
-                        <p>Welcome to moment, where every gift is chosen with love and crafted to make your moments memorable. We believe in celebrating life’s simple joys, and our curated selection of flowers, plants, chocolates, and gift packages is designed to add a special touch to your happiest occasions. Whether it’s a small act of kindness, a big celebration, or anything in between, our mission is to help you share love and joy, one delivery at a time. Every order is prepared with care and delivered straight to your door, ensuring that each gift arrives fresh, beautiful, and ready to delight</p>
+                        <p class="about_txt">Welcome to moment, where every gift is chosen with love and crafted to make your moments memorable. We believe in celebrating life’s simple joys, and our curated selection of flowers, plants, chocolates, and gift packages is designed to add a special touch to your happiest occasions. Whether it’s a small act of kindness, a big celebration, or anything in between, our mission is to help you share love and joy, one delivery at a time. Every order is prepared with care and delivered straight to your door, ensuring that each gift arrives fresh, beautiful, and ready to delight</p>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ function addOrRemoveFromWishlist(id) {
     xhr.open('GET', '/wishlist/addOrRemove/' + id, true);
     xhr.onload = function() {
         console.log(xhr.responseText);
-        if (xhr.status === 200) {
+        if (xhr.status === 200) {           
             let response = JSON.parse(xhr.responseText);
             let counter = response.count;
             document.getElementById('wishlist-count').innerText = counter;
@@ -12,6 +12,7 @@ function addOrRemoveFromWishlist(id) {
             let wishlistIcon = document.getElementById('wishlist-icon-' + id); // Make sure each icon has a unique ID
             if (wishlistIcon) {
                 if (response.isInWishlist) {
+                    showFlashMessage("Added successfully");
                     wishlistIcon.classList.remove('icon-heart');
                     wishlistIcon.classList.add('fa-solid', 'fa-heart');
                 } else {
