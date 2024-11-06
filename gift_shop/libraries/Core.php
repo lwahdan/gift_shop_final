@@ -38,6 +38,18 @@ class Core {
 
         'admin/categories/show/{id}' => 'ProductController@show',
 
+
+        'admin/orders' => 'OrderController@index',              // List all orders
+        'admin/orders/show/{id}' => 'OrderController@show',     // Show a specific order
+        'admin/orders/create' => 'OrderController@create',      // Create a new order
+        'admin/orders/store' => 'OrderController@store',        // Store new order data
+        'admin/orders/edit/{id}' => 'OrderController@edit',     // Edit a specific order
+        'admin/orders/update/{id}' => 'OrderController@update', // Update a specific order
+        'admin/orders/delete/{id}' => 'OrderController@delete',
+
+
+
+
         'admin' => 'DashboardController@index',
         'categories/create' => 'CategoryController2@create',
         'categories/store' => 'CategoryController2@store',
@@ -52,7 +64,7 @@ class Core {
 
         'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
-        'admin/products' => 'DashboardController@manageProducts',
+        'admin/products' => 'DashboardController@Allproducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
         'admin/manage_customers' => 'DashboardController@manageCustomers',
         'admin/manage_coupon' => 'DashboardController@manageCoupon',
@@ -99,7 +111,7 @@ class Core {
         'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
         // Routes for managing products
-        'dashboard/manageProducts' => 'DashboardController@manageProducts',
+        'dashboard/manageProducts' => 'DashboardController@Allproducts',
         'dashboard/createProduct' => 'DashboardController@createProduct',
         'dashboard/addProduct' => 'DashboardController@addProduct',
         'dashboard/editProduct/{id}' => 'DashboardController@editProduct',

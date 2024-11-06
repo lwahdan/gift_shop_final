@@ -20,6 +20,15 @@ class OrderController extends Controller{
 
     }
     // Display orders and handle actions
+    public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $orders = $this->orderModel->all();
+        $this->view('admin/orders/index', ['orders' => $orders]);
+    }
+
 
     public function submitOrder()
     {
