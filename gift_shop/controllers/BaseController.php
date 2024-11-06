@@ -2,6 +2,8 @@
 
 class Controller
 {
+
+  
     // Load a model
     public function model($model)
     {
@@ -15,6 +17,7 @@ class Controller
 
     // Load a view
     protected function view($view, $data = []) {
+  
         $file = __DIR__ . '/../views/' . $view . '.php'; // Adjust this line if needed
 
         if (file_exists($file)) {

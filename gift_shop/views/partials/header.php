@@ -11,7 +11,8 @@ foreach ($cartItems as $item) {
 }
 
 $dir = $dir ?? "../public/images/product/";
-
+// var_dump($categories);
+// exit;
 ?>
 
 <!DOCTYPE html>
@@ -59,9 +60,12 @@ $dir = $dir ?? "../public/images/product/";
 </head>
 
 <body>
+<div id="flash-message" class="flash-message" style="display: none;">Added successfully</div>
+
 <!-- Start Header Area -->
 <header class="header-section d-none d-xl-block">
     <div class="header-wrapper">
+
         <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
             <div class="container-fluid">
                 <div class="row">
@@ -74,7 +78,9 @@ $dir = $dir ?? "../public/images/product/";
                         </div>
                         <!-- End Header Logo -->
 
-                        <!-- Start Header Main Menu -->
+                       
+
+                        <!-- Start Header Main Menu original -->
                         <div class="main-menu menu-color--black menu-hover-color--golden">
                             <nav>
                                 <ul>
@@ -83,17 +89,22 @@ $dir = $dir ?? "../public/images/product/";
                                     </li>
                                     <li class="has-dropdown has-megaitem">
                                         <a href="#">Shop
-                                            <i class="fa fa-angle-down"></i></a>
+                                            <i class="fa fa-angle-down"></i>
+                                        </a>
                                         <div class="mega-menu">
                                             <ul class="mega-menu-inner">
-
                                                 <li class="mega-menu-item">
                                                     <ul class="mega-menu-sub">
-                                                        <li><a href="/category/1">Flowers</a></li>
-                    
-                                                        <li><a href="/category/2">Plants</a></li>
-                                                        <li><a href="/category/3">Chocolates</a></li>
-                                                        <li><a href="/category/4">Packages</a></li>
+
+                                                        <?php if (isset($categories)) {
+                                                            foreach ($categories as $category): ?>
+                                                                <li>
+                                                                    <a href="/category/<?php echo htmlspecialchars($category['id']); ?>">
+                                                                        <?php echo htmlspecialchars($category['category_name']); ?>
+                                                                    </a>
+                                                                </li>
+                                                            <?php endforeach;
+                                                        } ?>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -110,7 +121,7 @@ $dir = $dir ?? "../public/images/product/";
                                 </ul>
                             </nav>
                         </div>
-                        <!-- End Header Main Menu Start -->
+                        <!-- End Header Main Menu Start original-->
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">

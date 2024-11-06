@@ -25,7 +25,7 @@ class Core {
         'admin/coupons/edit/{id}' => 'CouponController@edit',
         'admin/coupons/delete/{id}' => 'CouponController@delete',
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
-        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
+        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController2@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
         'admin/Allproducts' => 'DashboardController@Allproducts',
@@ -73,8 +73,8 @@ class Core {
         'admin/logout' => 'DashboardController@logout',
 
         // customers Routes
-        'customers/about-us' => 'CustomerController@about',
-        'customers/contact-us' => 'CustomerController@contact',
+        'customers/about-us' => 'CustomerController@home',
+        'customers/contact-us' => 'CustomerController@home2',
         'customers/checkout' => 'CustomerController@checkout',        
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',

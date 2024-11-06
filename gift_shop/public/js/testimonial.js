@@ -151,8 +151,9 @@ document.querySelectorAll('.add-to-cart-form').forEach(form => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("AJAX response:", data);
+            // console.log("AJAX response:", data);
             if (data.success) {
+                showFlashMessage("Added successfully");
                 document.getElementById('cart-count').textContent = data.cartCount;
                 updateCartView(); // Refresh header cart view
             } else {
@@ -176,11 +177,6 @@ function getCartCountFromCookie() {
         return 0;
     }
 }
-
-// Update the cart count on page load
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('cart-count').textContent = getCartCountFromCookie();
-});
 
 document.querySelectorAll('.delete-item-form').forEach(form => {
     form.addEventListener('submit', function(event) {
@@ -305,9 +301,24 @@ function attachDeleteEventHandlers() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+function showFlashMessage(message) {
+    const flashMessage = document.getElementById('flash-message');
+    flashMessage.textContent = message;
+    flashMessage.style.display = 'block';
+    flashMessage.style.opacity = '1';
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+        flashMessage.style.opacity = '0';
+        setTimeout(() => flashMessage.style.display = 'none', 300); // Hide completely after fade-out
+    }, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('cart-count').textContent = getCartCountFromCookie();
     startAutoSlide();
     attachDeleteEventHandlers();
 });
+
 
 
