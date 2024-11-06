@@ -38,15 +38,17 @@ class Core {
 
         'admin/categories/show/{id}' => 'ProductController@show',
 
-
-        'admin/orders' => 'OrderController@index',              // List all orders
-        'admin/orders/show/{id}' => 'OrderController@show',     // Show a specific order
+            // List all orders
+        // Show a specific order
         'admin/orders/create' => 'OrderController@create',      // Create a new order
         'admin/orders/store' => 'OrderController@store',        // Store new order data
-        'admin/orders/edit/{id}' => 'OrderController@edit',     // Edit a specific order
-        'admin/orders/update/{id}' => 'OrderController@update', // Update a specific order
-        'admin/orders/delete/{id}' => 'OrderController@delete',
 
+
+    'admin/orders' => 'OrderController2@index',           // Display all orders
+    'admin/orders/show/{id}' => 'OrderController2@show',  // Show a specific order
+    'admin/orders/edit/{id}' => 'OrderController@2edit',  // Display edit form
+    'admin/orders/update/{id}' => 'OrderController2@update', // Process order update
+    'admin/orders/delete/{id}' => 'OrderController@2delete', // Delete an order
 
 
 
