@@ -15,6 +15,10 @@ class UserController extends Controller {
     }
 
     public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $users = $this->userModel->all();
         $this->view('admin/users/index', ['users' => $users]);
     }
@@ -22,6 +26,10 @@ class UserController extends Controller {
 
 
     public function create() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->userModel->create($_POST);
             header('Location: /admin/users');
@@ -86,6 +94,10 @@ class UserController extends Controller {
     }
 
     public function toggleStatus($id, $status) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         try {
             $this->userModel->toggleStatus($id, $status);
             $_SESSION['success'] = 'User status updated successfully';
@@ -101,6 +113,10 @@ class UserController extends Controller {
         $this->view('/customers/profile', ['user' => $user]);
     }
     public function show($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         // Get the user details from the model
         $user = $this->userModel->find($id);
 
