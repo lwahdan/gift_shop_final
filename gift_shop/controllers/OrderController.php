@@ -13,7 +13,22 @@ class OrderController extends Controller{
         $this->productModel = new Product('products');
     }
 
+    public function getOrderProducts($orderId){
+        $order = $this->orderModel->getOrderDetails($orderId);
+        echo json_encode(['order' => $order]);
+        // $this->view('customers/order-details', ['order' => $order]);
+
+    }
     // Display orders and handle actions
+    public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $orders = $this->orderModel->all();
+        $this->view('admin/orders/index', ['orders' => $orders]);
+    }
+
 
     public function submitOrder()
     {
@@ -22,8 +37,8 @@ class OrderController extends Controller{
         $couponDiscount = isset($_COOKIE['discount']) ? $_COOKIE['discount'] : 0;
     
         if (empty($cartData)) {
-            echo "Cart is empty.";
-            return;
+            header('Location: /customers/cart');
+            exit();
         }
     
         // Calculate the total price

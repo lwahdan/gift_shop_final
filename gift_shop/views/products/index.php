@@ -1,6 +1,7 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
 
+<?php if (count($products) > 0): ?>
 <div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">
@@ -8,7 +9,12 @@ $dir = '../public/images/product/';?>
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3 class="section-title"><?php echo htmlspecialchars($categoryName); ?></h3>
+                            <?php if (isset($categoryName)): ?>
+                                <h3 class="section-title"><?php echo htmlspecialchars($categoryName); ?></h3>
+                                <?php else: ?>
+                                    <h3 class="section-title">All Products</h3>
+                            <?php endif; ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -77,4 +83,25 @@ $dir = '../public/images/product/';?>
         </div>
     </div>
 </div>
+<?php else: ?>
+    <div class="product-default-slider-section section-top-gap-100">
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <?php if (isset($categoryName)): ?>
+                                <h3 class="section-title"><?php echo htmlspecialchars($categoryName); ?></h3>
+                                <?php else: ?>
+                                    <h1>No result.. try another keyword</h1>
+                            <?php endif; ?>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <?php require_once 'views/partials/footer.php';?>

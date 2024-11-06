@@ -320,7 +320,7 @@ $dir = $dir ?? "../public/images/product/";
         <address class="address">
 
            <span> <a href="mailto:moments@gmail.com">moments@gmail.com</a></span>
-           <span>  <a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ar-Razi St. 141, Amman</a></span>
+           <span>  <a href="https://www.google.com/maps/place/Orange+Digital+Village/@31.9701689,35.8729409,14z/data=!3m1!4b1!4m6!3m5!1s0x151ca1dd7bca79dd:0x9b0416f056ff0786!8m2!3d31.9701742!4d35.9098069!16s%2Fg%2F11lt2s9hb3?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank">Jordan - Amman</a></span>
 
 <span><a href="tel:+0777891011">0777891011</a></span>
             </address>
@@ -451,7 +451,7 @@ $dir = $dir ?? "../public/images/product/";
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
     <form action="/search" method="get">
-        <input type="search" name="search" placeholder="type keyword(s) here" />
+        <input type="search" name="search" placeholder="type keyword(s) here"/>
         <button type="submit" class="btn btn-lg btn-golden">Search</button>
     </form>
 </div>
