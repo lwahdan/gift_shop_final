@@ -423,7 +423,7 @@ $dir = $dir ?? "../public/images/product/";
         }
     });
 </script><!-- ...:::: Start Breadcrumb Section:::... -->
-<div class="breadcrumb-section breadcrumb-bg-color--golden">
+<div class="breadcrumb-section breadcrumb-bg-color--golden bread">
     <div class="breadcrumb-wrapper">
         <div class="container">
             <div class="row">

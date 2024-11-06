@@ -83,35 +83,40 @@ class ProductController extends Controller
 
 
     public function details()
-    {
-        $productId = $_GET['id'] ?? null;
+{
+    $productId = $_GET['id'] ?? null;
 
-        if ($productId) {
-            $product = $this->productModel->find($productId);
+    if ($productId) {
+        $product = $this->productModel->find($productId);
 
-            if ($product) {
-                // Fetch reviews associated with this product
-                $reviews = $this->reviewModel->getReviewsByProductId($productId);
+        if ($product) {
+            // Fetch reviews associated with this product
+            $reviews = $this->reviewModel->getReviewsByProductId($productId);
 
-                // Define the image directory path
-                $dir = "../public/images/product/";
+            // Get the average rating for this product
+            $averageRating = $this->reviewModel->getAverageRating($productId);
 
-                // Load the product details view, passing product, reviews, and directory as data
-                $this->view('products/details', [
-                    'product' => $product,
-                    'reviews' => $reviews,
-                    'product_id' => $productId, // Ensure product ID is passed
-                    'dir' => $dir
-                ]);
-            } else {
-                header("Location: /products"); // Redirect if product not found
-                exit();
-            }
+            // Define the image directory path
+            $dir = "../public/images/product/";
+
+            // Load the product details view, passing product, reviews, average rating, and directory as data
+            $this->view('products/details', [
+                'product' => $product,
+                'reviews' => $reviews,
+                'product_id' => $productId, // Ensure product ID is passed
+                'dir' => $dir,
+                'averageRating' => $averageRating // Pass average rating to the view
+            ]);
         } else {
-            header("Location: /products"); // Redirect if no product ID is provided
+            header("Location: /products"); // Redirect if product not found
             exit();
         }
+    } else {
+        header("Location: /products"); // Redirect if no product ID is provided
+        exit();
     }
+}
+
     public function show($categoryId) {
         if (!isset($_SESSION["admin_id"])) {
             header('Location: /admin/login');
@@ -123,6 +128,7 @@ class ProductController extends Controller
         // Load the view for showing products in a category
         $this->view('admin/categories/show', ['products' => $products]);
     }
+    
 
 }
 ?>

@@ -144,6 +144,7 @@ class Core {
         'reviews/delete/{id}' => 'ReviewController@delete',
         'reviews/edit/{id}' => 'ReviewController@edit',
         
+        
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
