@@ -19,45 +19,43 @@ class ProductController extends Controller
         $this->categoryModel = $this->model('Category');
     }
 
+    public function index() {
+        // Retrieve filter parameters from the GET request
+        $category = isset($_GET['category']) ? $_GET['category'] : null;
+        $price_min = isset($_GET['price_min']) ? $_GET['price_min'] : null;
+        $price_max = isset($_GET['price_max']) ? $_GET['price_max'] : null;
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
 
-
-
-
-    public function home()
-    {
-        // Get all products
-        $products = $this->productModel->all();
-
-        // Get all categories
+        // Fetch products based on the filters using the model
+        $products = $this->productModel->getFilteredProducts($category, $price_min, $price_max, $sort);
+        
+        // Fetch categories for the filter dropdown (assuming a `getCategories` method exists in the model)
         $categories = $this->categoryModel->all();
 
-        // Load the view with both products and categories
-        $this->view('customers/index', [
+        // Pass products and categories to the view
+        $this->view('products/index', [
             'products' => $products,
             'categories' => $categories
         ]);
     }
 
-    public function getProductsByCategory($categoryId)
-    {
-        // Get the products for this category
+
+
+    public function getProductsByCategory($categoryId) {
+        // Retrieve products by category ID
         $products = $this->productModel->getProductsByCategory($categoryId);
-
-        // Get all categories for the navigation menu
-        $categories = $this->categoryModel->all();
-
-        // Get the current category name
-        $currentCategory = $this->categoryModel->find($categoryId);
-        $categoryName = $currentCategory ? $currentCategory['category_name'] : 'Products';
-
-        // Pass everything to the view
+    
+        // Retrieve category name
+        $categoryModel = new Category();
+        $category = $categoryModel->find($categoryId);
+        $categoryName = $category ? $category['category_name'] : 'Products';
+    
+        // Pass both products and category name to the view
         $this->view('products/index', [
             'products' => $products,
-            'categories' => $categories,
             'categoryName' => $categoryName
         ]);
     }
-
     
 
     public function search() 
@@ -66,7 +64,22 @@ class ProductController extends Controller
         $this->view('products/index', ['products' => $products]); 
     }
 
-
+    public function home()
+    {
+        // Retrieve all products
+        $products = $this->productModel->all();
+    
+        // Retrieve all categories via CategoryController
+        $categoryController = new CategoryController();
+        $categories = $categoryController->getCategories();
+    
+        // Load the main index view with both products and categories
+        $this->view('customers/index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
+    
+    }
 
 
     public function details()
@@ -100,8 +113,12 @@ class ProductController extends Controller
         }
     }
     public function show($categoryId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         // Retrieve products by category ID
-        $products = $this->productModel->find($categoryId);
+        $products = $this->productModel->getProductsByCategory($categoryId);
 
         // Load the view for showing products in a category
         $this->view('admin/categories/show', ['products' => $products]);
