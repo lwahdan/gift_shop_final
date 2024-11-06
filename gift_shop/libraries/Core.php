@@ -25,7 +25,7 @@ class Core {
         'admin/coupons/edit/{id}' => 'CouponController@edit',
         'admin/coupons/delete/{id}' => 'CouponController@delete',
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
-        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
+        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController2@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
         'admin/Allproducts' => 'DashboardController@Allproducts',
@@ -37,6 +37,18 @@ class Core {
         'admin/category/edit/{id}' => 'CategoryController2@edit',
 
         'admin/categories/show/{id}' => 'ProductController@show',
+
+
+        'admin/orders' => 'OrderController@index',              // List all orders
+        'admin/orders/show/{id}' => 'OrderController@show',     // Show a specific order
+        'admin/orders/create' => 'OrderController@create',      // Create a new order
+        'admin/orders/store' => 'OrderController@store',        // Store new order data
+        'admin/orders/edit/{id}' => 'OrderController@edit',     // Edit a specific order
+        'admin/orders/update/{id}' => 'OrderController@update', // Update a specific order
+        'admin/orders/delete/{id}' => 'OrderController@delete',
+
+
+
 
         'admin' => 'DashboardController@index',
         'categories/create' => 'CategoryController2@create',
@@ -52,7 +64,7 @@ class Core {
 
         'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
-        'admin/products' => 'DashboardController@manageProducts',
+        'admin/products' => 'DashboardController@Allproducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
         'admin/manage_customers' => 'DashboardController@manageCustomers',
         'admin/manage_coupon' => 'DashboardController@manageCoupon',
@@ -61,8 +73,8 @@ class Core {
         'admin/logout' => 'DashboardController@logout',
 
         // customers Routes
-        'customers/about-us' => 'CustomerController@about',
-        'customers/contact-us' => 'CustomerController@contact',
+        'customers/about-us' => 'CustomerController@home',
+        'customers/contact-us' => 'CustomerController@home2',
         'customers/checkout' => 'CustomerController@checkout',        
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',
@@ -99,7 +111,7 @@ class Core {
         'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
         // Routes for managing products
-        'dashboard/manageProducts' => 'DashboardController@manageProducts',
+        'dashboard/manageProducts' => 'DashboardController@Allproducts',
         'dashboard/createProduct' => 'DashboardController@createProduct',
         'dashboard/addProduct' => 'DashboardController@addProduct',
         'dashboard/editProduct/{id}' => 'DashboardController@editProduct',

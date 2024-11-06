@@ -23,6 +23,7 @@
         </div>
     </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
+    <?php if (count($cartItems) > 0): ?>
     <!-- ...:::: Start Cart Section:::... -->
     <div class="cart-section">
         <!-- Start Cart Table -->
@@ -90,7 +91,6 @@
     </div>
     <!-- ...:::: End Cart Section:::... -->
 
-
     <!-- Start Coupon Start -->
         <div class="coupon_area">
             <div class="container">
@@ -156,7 +156,26 @@
         </div> <!-- End Coupon Start -->
 
     </div> <!-- ...:::: End Cart Section:::... -->
-
+    <?php else: ?>
+        <div class="empty-cart-section section-fluid">
+        <div class="emptycart-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-10 offset-md-1 col-xl-6 offset-xl-3">
+                        <div class="emptycart-content text-center">
+                            <div class="image">
+                                <img class="img-fluid" src="/public/images/empty-cart/empty-cart.png" alt="">
+                            </div>
+                            <h4 class="title">Your Cart is Empty</h4>
+                            <h6 class="sub-title">Sorry.. No item Found inside your cart!</h6>
+                            <a href="/home" class="btn btn-lg btn-golden">Continue Shopping</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 <?php require 'views/partials/footer.php'; ?>
 
 <script>

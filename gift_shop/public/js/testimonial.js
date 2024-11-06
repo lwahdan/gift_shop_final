@@ -151,8 +151,9 @@ document.querySelectorAll('.add-to-cart-form').forEach(form => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("AJAX response:", data);
+            // console.log("AJAX response:", data);
             if (data.success) {
+                showFlashMessage("Added successfully");
                 document.getElementById('cart-count').textContent = data.cartCount;
                 updateCartView(); // Refresh header cart view
             } else {
@@ -176,11 +177,6 @@ function getCartCountFromCookie() {
         return 0;
     }
 }
-
-// Update the cart count on page load
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('cart-count').textContent = getCartCountFromCookie();
-});
 
 document.querySelectorAll('.delete-item-form').forEach(form => {
     form.addEventListener('submit', function(event) {
@@ -305,9 +301,68 @@ function attachDeleteEventHandlers() {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+function showFlashMessage(message) {
+    const flashMessage = document.getElementById('flash-message');
+    flashMessage.textContent = message;
+    flashMessage.style.display = 'block';
+    flashMessage.style.opacity = '1';
+
+    // Hide after 3 seconds
+    setTimeout(() => {
+        flashMessage.style.opacity = '0';
+        setTimeout(() => flashMessage.style.display = 'none', 300); // Hide completely after fade-out
+    }, 3000);
+}
+
+document.getElementById("submitOrder").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevents form submission
+
+    Swal.fire({
+        title: 'Your order has been submitted successfully!',
+        icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Continue Shopping',
+        cancelButtonText: 'OK'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = '/'; // Redirect to homepage or shopping page
+        } else {
+            // Optional: Do something else if "OK" is clicked
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('cart-count').textContent = getCartCountFromCookie();
     startAutoSlide();
     attachDeleteEventHandlers();
+
+    const submitOrderButton = document.getElementById('submitOrder');
+    if (submitOrderButton) {
+        submitOrderButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            // Display SweetAlert confirmation
+            Swal.fire({
+                title: 'Your order has been submitted successfully!',
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonText: 'Continue Shopping',
+                cancelButtonText: 'OK',
+                customClass: {
+                    confirmButton: 'continue-shopping-btn'
+                }
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/home'; 
+                } else {
+                    
+                }
+            });
+        });
+    }
+
 });
+
 
 

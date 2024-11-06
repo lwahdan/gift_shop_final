@@ -47,8 +47,8 @@ class CategoryController2 extends Controller {
             header('Location: /admin/login');
             exit();
         }
-        $categories = $this->categoryModel->all();
-        $this->view('admin/Categories/index', ['categories' => $categories]);
+        $category = $this->categoryModel->find($id);
+        $this->view('admin/Categories/edit', ['category' => $category]);
     }
 
 

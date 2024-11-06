@@ -1,6 +1,40 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
 
+<div class="container">
+    <div class="filter-section">
+        <form method="GET" action="">
+            <!-- Category Filter -->
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="">All</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category['id']; ?>" <?= isset($_GET['category']) && $_GET['category'] == $category['id'] ? 'selected' : '' ?>><?= htmlspecialchars($category['category_name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <!-- Price Filter -->
+            <label for="price_min">Min Price:</label>
+            <input type="number" name="price_min" id="price_min" value="<?= isset($_GET['price_min']) ? htmlspecialchars($_GET['price_min']) : '' ?>">
+
+            <label for="price_max">Max Price:</label>
+            <input type="number" name="price_max" id="price_max" value="<?= isset($_GET['price_max']) ? htmlspecialchars($_GET['price_max']) : '' ?>">
+
+            <!-- Sorting Filter -->
+            <label for="sort">Sort By:</label>
+            <select name="sort" id="sort">
+                <option value="">Default</option>
+                <option value="price_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_asc' ? 'selected' : '' ?>>Price (Low to High)</option>
+                <option value="price_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_desc' ? 'selected' : '' ?>>Price (High to Low)</option>
+                <option value="rating" <?= isset($_GET['sort']) && $_GET['sort'] == 'rating' ? 'selected' : '' ?>>Rating</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+</div>
+
+<?php if (count($products) > 0): ?>
 <div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">
@@ -97,4 +131,25 @@ $dir = '../public/images/product/';?>
         </div>
     </div>
 </div>
+<?php else: ?>
+    <div class="product-default-slider-section section-top-gap-100">
+    <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-content-gap">
+                        <div class="secton-content">
+                            <?php if (isset($categoryName)): ?>
+                                <h3 class="section-title"><?php echo htmlspecialchars($categoryName); ?></h3>
+                                <?php else: ?>
+                                    <h1>No result.. try another keyword</h1>
+                            <?php endif; ?>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 <?php require_once 'views/partials/footer.php';?>

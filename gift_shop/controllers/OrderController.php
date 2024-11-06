@@ -20,6 +20,15 @@ class OrderController extends Controller{
 
     }
     // Display orders and handle actions
+    public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $orders = $this->orderModel->all();
+        $this->view('admin/orders/index', ['orders' => $orders]);
+    }
+
 
     public function submitOrder()
     {
@@ -28,8 +37,8 @@ class OrderController extends Controller{
         $couponDiscount = isset($_COOKIE['discount']) ? $_COOKIE['discount'] : 0;
     
         if (empty($cartData)) {
-            echo "Cart is empty.";
-            return;
+            header('Location: /customers/cart');
+            exit();
         }
     
         // Calculate the total price
@@ -91,7 +100,18 @@ class OrderController extends Controller{
         header("Location: /home");
         exit();
     }
-    
+
+    public function show($orderId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        // Retrieve products by category ID
+        $orders = $this->orderModel->find($orderId);
+
+        // Load the view for showing products in a category
+        $this->view('admin/orders/show', ['orders' => $orders]);
+    }
 
 }
 ?>

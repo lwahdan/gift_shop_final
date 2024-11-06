@@ -22,10 +22,30 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 <input type="text" class="form-control" id="image_url" name="image_url" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Create Category</button>
+            <button type="submit" class="btn btn-primary create-category-btn">Create Category</button>
         </form>
     </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const createCategoryButton = document.querySelector('.create-category-btn');
+
+    if (createCategoryButton) {
+        createCategoryButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: 'Category has been created successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                createCategoryButton.closest('form').submit();
+            });
+        });
+    }
+});
+
+</script>
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php";
 ?>

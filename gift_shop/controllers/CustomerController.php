@@ -4,6 +4,43 @@
 class CustomerController extends Controller
 {
 
+    private $categoryModel;
+
+    public function __construct()
+    {
+
+        $this->categoryModel = $this->model('Category');
+    }
+
+
+
+
+
+    public function home()
+    {
+
+
+        // Get all categories
+        $categories = $this->categoryModel->all();
+
+        // Load the view with both products and categories
+        $this->view('customers/about-us', [
+
+            'categories' => $categories
+        ]);
+    } public function home2()
+    {
+
+
+        // Get all categories
+        $categories = $this->categoryModel->all();
+
+        // Load the view with both products and categories
+        $this->view('customers/contact-us', [
+
+            'categories' => $categories
+        ]);
+    }
  public function _404(){
    $this->view('customers/_404');
  }
@@ -17,7 +54,12 @@ public function cart(){
  }
 
 
-public function checkout(){
+ public function checkout(){
+    // Check if the 'cart' cookie is set and contains items
+    if (!isset($_COOKIE['cart']) || empty(json_decode($_COOKIE['cart'], true))) {
+        header('Location: /customers/cart');
+        exit();
+    }
     $this->view('customers/checkout');
 }
 

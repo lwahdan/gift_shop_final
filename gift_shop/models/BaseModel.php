@@ -29,7 +29,7 @@ class BaseModel
 
     public function all()
     {
-        $sql = "SELECT * FROM $this->table ORDER BY $this->timestampColumn DESC";
+        $sql = "SELECT * FROM $this->table ORDER BY id  DESC";
         $statement = $this->pdo->prepare($sql);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
