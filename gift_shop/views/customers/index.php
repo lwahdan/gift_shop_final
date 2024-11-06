@@ -199,17 +199,34 @@ require_once 'controllers/ProductController.php';
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
+                                            <div class="rating-stars">
+    <?php 
+            // Check if the average rating exists
+            if (isset($row['average_rating']) && $row['average_rating'] > 0): 
+                $averageRating = round($row['average_rating']); // Round the rating to the nearest whole number
+        ?>
+            <!-- Display filled stars based on the rounded average rating -->
+            <?php for ($i = 0; $i < $averageRating; $i++): ?>
+                <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+            <?php endfor; ?>
+            
+            <!-- Display empty stars for the remaining slots -->
+            <?php for ($i = $averageRating; $i < 5; $i++): ?>
+                <ion-icon name="star-outline" style="color: gold"></ion-icon>
+            <?php endfor; ?>
+
+        <?php else: ?>
+            <!-- Display empty stars if no rating is available -->
+            <?php for ($i = 0; $i < 5; $i++): ?>
+                <ion-icon name="star-outline" style="color: grey"></ion-icon>
+            <?php endfor; ?>
+        <?php endif; ?>
+</div>
                                         </div>
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             <?php endforeach; ?>

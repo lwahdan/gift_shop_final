@@ -43,11 +43,43 @@
                     <div class="product-details-text">
                         <h4 class="title"><?php echo htmlspecialchars($product['product_name']); ?></h4>
                         <div class="price">$<?php echo number_format($product['price'], 2); ?></div>
+
+                        <!-- Display Average Rating -->
+                 <!-- Display Average Rating -->
+<div class="rating-stars">
+    <?php if (isset($averageRating) && $averageRating > 0): ?>
+        <?php 
+            // Render the stars based on the average rating
+            for ($i = 0; $i < round($averageRating); $i++): 
+        ?>
+            <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+        
+        <?php 
+            // Render empty stars for the remaining
+            for ($i = round($averageRating); $i < 5; $i++): 
+        ?>
+            <ion-icon name="star-outline" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+
+       
+        <?php else: ?>
+        <!-- Display empty stars if no rating is available -->
+        <?php for ($i = 0; $i < 5; $i++): ?>
+            <ion-icon name="star-outline" style="color: grey"></ion-icon>
+        <?php endfor; ?>
+    <?php endif; ?>
+</div>
+
+
                         <p><?php echo htmlspecialchars($product['description']); ?></p>
                     </div>
                     <div class="product-details-variable">
                         <div class="variable-single-item">
-                            <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> <?php echo ($product['stock_quantity']); ?> IN STOCK</div>
+                            <div class="product-stock"> 
+                                <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> 
+                                <?php echo ($product['stock_quantity']); ?> IN STOCK
+                            </div>
                         </div>
                         <div class="d-flex align-items-center">
                             <form action="/cart/add" method="POST" class="add-to-cart-form">
@@ -58,7 +90,9 @@
                             </form>    
                         </div>
                         <div class="product-details-meta mb-20">
-                            <a href="/wishlist/addProduct/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
+                            <a href="/wishlist/addProduct/<?= $product['id']; ?>" class="icon-space-right">
+                                <i class="icon-heart"></i>Add to wishlist
+                            </a>
                         </div> 
                     </div>
                 </div>
@@ -102,11 +136,14 @@
                                                 </h5>
                                                 <h4><?php echo htmlspecialchars($review['review_text']); ?></h4>
                                                 <div class="rating-stars">
-                                                    <?php for ($i = 0; $i < $review['rating']; $i++): ?>
-                                                        <ion-icon name="star-sharp" style="color: gold"></ion-icon>
-                                                    <?php endfor; ?>
-                                                </div>
-
+    <?php for ($i = 0; $i < $review['rating']; $i++): ?>
+        <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+    <?php endfor; ?>
+    
+    <?php for ($i = $review['rating']; $i < 5; $i++): ?>
+        <ion-icon name="star-outline" style="color: gold"></ion-icon>
+    <?php endfor; ?>
+</div>
                                                 <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
                                                     <!-- Delete Review Button -->
                                                     <a href="#" data-review-id="<?= $review['id']; ?>" class="btnd btn-danger delete-review">Delete</a>
@@ -157,9 +194,13 @@
             </div>
         </div>
     </div>
+   
+
 </div> <!-- End Product Content Tab Section -->
 
 <?php require_once 'views/partials/footer.php'; ?>
+
+
 
 <!-- Include SweetAlert Script -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -1,6 +1,39 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
 
+<div class="container">
+    <div class="filter-section">
+        <form method="GET" action="">
+            <!-- Category Filter -->
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="">All</option>
+                <?php foreach ($categories as $category): ?>
+                    <option value="<?= $category['id']; ?>" <?= isset($_GET['category']) && $_GET['category'] == $category['id'] ? 'selected' : '' ?>><?= htmlspecialchars($category['category_name']); ?></option>
+                <?php endforeach; ?>
+            </select>
+
+            <!-- Price Filter -->
+            <label for="price_min">Min Price:</label>
+            <input type="number" name="price_min" id="price_min" value="<?= isset($_GET['price_min']) ? htmlspecialchars($_GET['price_min']) : '' ?>">
+
+            <label for="price_max">Max Price:</label>
+            <input type="number" name="price_max" id="price_max" value="<?= isset($_GET['price_max']) ? htmlspecialchars($_GET['price_max']) : '' ?>">
+
+            <!-- Sorting Filter -->
+            <label for="sort">Sort By:</label>
+            <select name="sort" id="sort">
+                <option value="">Default</option>
+                <option value="price_asc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_asc' ? 'selected' : '' ?>>Price (Low to High)</option>
+                <option value="price_desc" <?= isset($_GET['sort']) && $_GET['sort'] == 'price_desc' ? 'selected' : '' ?>>Price (High to Low)</option>
+                <option value="rating" <?= isset($_GET['sort']) && $_GET['sort'] == 'rating' ? 'selected' : '' ?>>Rating</option>
+            </select>
+
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+</div>
+
 <?php if (count($products) > 0): ?>
 <div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
@@ -57,16 +90,31 @@ $dir = '../public/images/product/';?>
                                         </div>
                                     </div>
                                     <div class="content">
-                                        <div class="content-left">
-                                            <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
-                                        </div>
+                                       <div class="rating-stars">
+    <?php if (isset($averageRating) && $averageRating > 0): ?>
+        <?php 
+            // Render the stars based on the average rating
+            for ($i = 0; $i < round($averageRating); $i++): 
+        ?>
+            <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+        
+        <?php 
+            // Render empty stars for the remaining
+            for ($i = round($averageRating); $i < 5; $i++): 
+        ?>
+            <ion-icon name="star-outline" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+
+       
+        <?php else: ?>
+        <!-- Display empty stars if no rating is available -->
+        <?php for ($i = 0; $i < 5; $i++): ?>
+            <ion-icon name="star-outline" style="color: grey"></ion-icon>
+        <?php endfor; ?>
+    <?php endif; ?>
+</div>
+
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
                                         </div>

@@ -9,7 +9,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
             <h4>Add New Product</h4>
         </div>
         <div class="card-body">
-            <form action="/dashboard/addProduct" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+            <form id="addProductForm" action="/dashboard/addProduct" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
                 <div class="mb-3">
                     <label for="product_name" class="form-label">Product Name:</label>
                     <input type="text" class="form-control" id="product_name" name="product_name" required>
@@ -46,7 +46,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                     <div class="invalid-feedback">Please upload an image for the product.</div>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Add Product</button>
+                <button type="submit" class="btn btn-primary add-product-btn">Add Product</button>
             </form>
         </div>
     </div>
@@ -67,6 +67,27 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
             }, false);
         });
     })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const addProductButton = document.querySelector('.add-product-btn');
+    const addProductForm = document.getElementById('addProductForm');
+
+    if (addProductButton && addProductForm) {
+        addProductButton.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            Swal.fire({
+                title: 'Product added successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    addProductForm.submit();
+                }
+            });
+        });
+    }
+});
+
 </script>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php"; ?>
