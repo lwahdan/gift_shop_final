@@ -13,7 +13,7 @@ class Wishlist extends BaseModel
     // Get all wishlist items for a specific user
     public function getWishlistByUser($userId)
     {
-        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE user_id = :user_id");
+        $statement = $this->pdo->prepare("SELECT * FROM $this->table WHERE user_id = :user_id ORDER BY added_at DESC");
         $statement->bindValue(':user_id', $userId);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);

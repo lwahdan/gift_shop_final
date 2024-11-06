@@ -7,7 +7,7 @@ class Order extends BaseModel {
 
     // Retrieve all orders placed by a specific user
     public function getOrdersByUser($userId) {
-        $sql = "SELECT * FROM {$this->table} WHERE user_id = :user_id";
+        $sql = "SELECT * FROM {$this->table} WHERE user_id = :user_id ORDER BY order_date DESC";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
         $stmt->execute();
