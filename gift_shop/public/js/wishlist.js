@@ -1,11 +1,11 @@
 function addOrRemoveFromWishlist(id) {
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'wishlist/addOrRemove/' + id, true);
+    xhr.open('GET', '/wishlist/addOrRemove/' + id, true);
     xhr.onload = function() {
-        if (xhr.status == 200) {
+        console.log(xhr.responseText);
+        if (xhr.status === 200) {
             let response = JSON.parse(xhr.responseText);
             let counter = response.count;
-            console.log(counter);
             document.getElementById('wishlist-count').innerText = counter;
 
             // Toggle the icon based on the wishlist status
@@ -19,21 +19,22 @@ function addOrRemoveFromWishlist(id) {
                     wishlistIcon.classList.add('icon-heart');
                 }
             }
+        } else if (xhr.status === 401) {
+            // Redirect to login page if not authorized
+            window.location.href = '/customers/login';
         } else {
             document.getElementById('wishlist-count').innerText = '!';
         }
     };
     xhr.send();
 }
+
 function count() {
-    if(location.href.includes('customers')){
-        route = 'wishlist/count/';
-    }else{
-        route = 'customers/wishlist/count/';
-    }
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', route, true);
-    xhr.onload = function() {   
+    xhr.open('GET', '/wishlist/count/', true);
+    xhr.onload = function() { 
+        console.log(xhr.responseText);
+        console.log(JSON.parse(xhr.responseText));
         if (xhr.status == 200) {
                 let response = JSON.parse(xhr.responseText);
             let counter = response.count;
@@ -45,9 +46,6 @@ function count() {
     xhr.send();
 }
 
-Window.onload = function(){
-    count();
-}
   window.onload = function() {
     // Fetch wishlist items for the user
     let xhr = new XMLHttpRequest();

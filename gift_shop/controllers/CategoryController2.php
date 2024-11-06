@@ -3,65 +3,97 @@ require_once __DIR__ . '/../models/Category.php';
 require_once __DIR__ . '/../models/Product.php';
 
 class CategoryController2 extends Controller {
-    private $categoryModel;
+    public $categoryModel;
 
     public function __construct() {
-        $this->categoryModel = $this->model('CategoryModel');
+        $this->categoryModel = $this->model('Category');
     }
 
     // Show main categories page
     public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $categories = $this->categoryModel->all();
-
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function create()
-    {
-        $this->view('categories/create');
+    public function create() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $this->view('admin/Categories/create');
     }
 
-    public function store()
-    {
+    public function store() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = [
-            'name' => $_POST['name']
+            'category_name' => $_POST['name'],
+            'description' => $_POST['description'],
+            'image_url' => $_POST['image_url']
         ];
-        $categoryModel = new Category();
-        $categoryModel->create($data);
-        header("Location: /categories"); // Redirect to categories index
+        $this->categoryModel->create($data);
+
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
+    }
+    public function edit($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function edit($id)
-    {
-        $categoryModel = new Category();
-        $category = $categoryModel->find($id);
-        $this->view('categories/edit', ['category' => $category]);
-    }
-
-    public function update($id)
-    {
+    // Handle update form submission
+    public function update($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = [
-            'name' => $_POST['name']
+            'category_name' => $_POST['name'],
+            'description' => $_POST['description'],
+            'image_url' => $_POST['image_url']
         ];
-        $categoryModel = new Category();
-        $categoryModel->update($id, $data);
-        header("Location: /categories");
+        $this->categoryModel->update($id, $data);
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
-    public function delete($id)
-    {
-        $categoryModel = new Category();
-        $categoryModel->delete($id);
-        header("Location: /categories");
+    // Delete a category
+    public function delete($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $this->categoryModel->delete($id);
+        $categories = $this->categoryModel->all();
+        $this->view('admin/Categories/index', ['categories' => $categories]);
     }
+
 
     public function getProductsByCategory($categoryId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $productModel = new Product();
         $products = $productModel->getProductsByCategory($categoryId);
         $this->view('products/index', ['products' => $products]);
     }
     public function show($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $categoryModel = new Category();
         $category = $categoryModel->find($id);
         $this->view('categories/show', ['category' => $category]);

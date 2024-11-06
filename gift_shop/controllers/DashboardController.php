@@ -22,22 +22,38 @@ class DashboardController extends Controller {
     }
 
     public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = $this->data;
         $this->view('admin/dashboard/index', $data);
     }
 
     public function manageProducts() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $data = $this->data;
-        $this->view('admin/dashboard/products/products', $data);
+        $this->view('admin/Categories/show', $data);
     }
 
     // Handle new product creation form
     public function createProduct() {
-        $this->view('admin/dashboard/products/create_product');
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $this->view('admin/Categories/create_product');
     }
 
 
     public function addProduct() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $productData = [
             'product_name' => $_POST['product_name'],
             'description' => $_POST['description'],
@@ -73,12 +89,20 @@ class DashboardController extends Controller {
 
     // Edit a product
     public function editProduct($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $product = $this->productModel->find($id);
         $this->view('admin/dashboard/products/edit_product', ['product' => $product]);
     }
 
     // Update an existing product
     public function updateProduct($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $productData = [
             'product_name' => $_POST['product_name'],
             'description' => $_POST['description'],
@@ -93,6 +117,10 @@ class DashboardController extends Controller {
 
     // Delete a product
     public function deleteProduct($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->productModel->delete($id);
         header('Location: /dashboard/manageProducts');
     }

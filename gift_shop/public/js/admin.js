@@ -1,5 +1,5 @@
 
-// Add 'hovered' class to selected list item
+
 let list = document.querySelectorAll(".navigation li");
 
 function activeLink() {
@@ -18,14 +18,6 @@ toggle.onclick = function () {
     main.classList.toggle("active");
 };
 
-// Show/Hide Add User Form
-document.getElementById("addUserBtn").onclick = function () {
-    document.getElementById("addUserForm").style.display = "block";
-};
-
-function toggleAddUserForm() {
-    document.getElementById("addUserForm").style.display = "none";
-}
 
 function toggleForm(formId) {
     document.getElementById(formId).style.display =

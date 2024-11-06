@@ -6,6 +6,8 @@ class ContactController extends Controller
 public function submitContactForm()
 {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $userId = $_SESSION['user_id'] ?? null;
         $name = htmlspecialchars(trim($_POST['name']));
         $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
         $phone_number = htmlspecialchars(trim($_POST['phone_number'] ?? ''));
@@ -13,6 +15,7 @@ public function submitContactForm()
 
         if ($name && $email && $message) {
             $data = [
+                'user_id' => $userId,
                 'name' => $name,
                 'email' => $email,
                 'phone_number' => $phone_number,
@@ -24,9 +27,9 @@ public function submitContactForm()
             // Check if message was saved successfully
             if ($contactMessageModel->saveMessage($data)) {
                 echo "Message sent successfully!";
+
             } else {
-                // echo "Failed to send message. Please try again.";
-                echo "Message sent successfully!";
+                echo "Failed to send message. Please try again.";
             }
         } else {
             echo "Please fill in all required fields correctly.";

@@ -28,7 +28,7 @@ class Core {
         'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
-
+        'admin/users/show/{id}' => 'UserController@show',
         'admin/category' => 'CategoryController2@index',                 // List categories
         'admin/category/create' => 'CategoryController2@create',           // Create category form
         'admin/category/store' => 'CategoryController2@store',             // Store new category
@@ -37,7 +37,18 @@ class Core {
         'admin/categories/show/{id}' => 'ProductController@show',
 
         'admin' => 'DashboardController@index',
+        'categories/create' => 'CategoryController2@create',
+        'categories/store' => 'CategoryController2@store',
+// Route to show edit form
+      'categories/edit/{id}'=> 'CategoryController2@edit',
 
+// Route to handle update form submission
+    'categories/update/{id}'=> 'CategoryController2@update',
+
+// Route to delete a category
+    'categories/delete/{id}'=> 'CategoryController2@delete',
+
+        'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
         'admin/products' => 'DashboardController@manageProducts',
         'admin/manage_orders' => 'DashboardController@manageOrders',
@@ -47,9 +58,6 @@ class Core {
         'admin/account_settings' => 'DashboardController@accountSettings',
         'admin/logout' => 'DashboardController@logout',
 
-        // Order Management Route
-        'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
-
         // customers Routes
         'customers/about-us' => 'CustomerController@about',
         'customers/contact-us' => 'CustomerController@contact',
@@ -57,8 +65,7 @@ class Core {
         'customers/my-account' => 'CustomerController@account',
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
-        'customers/logout' => 'AuthController@logout',
-        'customers/profile' => 'ProfileController@viewProfile',
+
         'profile/update', 'ProfileController@updateProfile',
         'customers/dashboard' => 'AdminController@dashboard',
        
@@ -72,13 +79,17 @@ class Core {
         //admin routes
         'admin/product/create' => 'ProductController@create',
 
+        'admin/login' => 'AdminController@showSignInForm',
+        'admin/login/submit' => 'AdminController@signIn',
+        'admin/logout' => 'AdminController@logout',
+
         //wishlist routes
         'wishlist' => 'WishlistController@index',
         'wishlist/add/{product_id}' => 'WishlistController@add',
         'wishlist/addProduct/{product_id}' => 'WishlistController@addProduct',
         'wishlist/remove/{product_id}' => 'WishlistController@delete',
         'wishlist/addOrRemove/{product_id}' => 'WishlistController@addOrRemove',
-        'customers/wishlist/count' => 'WishlistController@count',
+        'wishlist/count' => 'WishlistController@count',
         'wishlist/isIn/{product_id}' => 'WishlistController@isInWishlist',
         'wishlist/getWishlistProductIds' => 'WishlistController@getWishlistProductIds',
 
@@ -115,7 +126,7 @@ class Core {
        'reviews/index' => 'ReviewController@index',  
        'reviews/delete/{id}' => 'ReviewController@delete',
         'reviews/edit/{id}' => 'ReviewController@edit',
-        'customers/reem'=>'ReemController@index',
+        
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',

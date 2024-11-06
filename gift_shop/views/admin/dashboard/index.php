@@ -7,47 +7,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 
 ?>
 
-<!-- <div class="cardBox">
-    <div class="card">
-        <div>
-            <div class="numbers"></div>
-            <div class="cardName">Total Users</div>
-        </div>
-        <div class="iconBx">
-            <ion-icon name="people-outline"></ion-icon>
-        </div>
-    </div>
-
-    <div class="card">
-        <div>
-            <div class="numbers"></div>
-            <div class="cardName">Total Products</div>
-        </div>
-        <div class="iconBx">
-            <ion-icon name="cube-outline"></ion-icon>
-        </div>
-    </div>
-
-    <div class="card">
-        <div>
-            <div class="numbers"></div>
-            <div class="cardName">Total Comments</div>
-        </div>
-        <div class="iconBx">
-            <ion-icon name="chatbubbles-outline"></ion-icon>
-        </div>
-    </div>
-
-    <div class="card">
-        <div>
-            <div class="numbers"></div>
-            <div class="cardName">Total Coupons</div>
-        </div>
-        <div class="iconBx">
-            <ion-icon name="pricetags-outline"></ion-icon>
-        </div>
-    </div>
-</div> -->
 
 <div class="container-fluid py-4">
       <div class="row">
@@ -207,7 +166,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 </p>
               </div>
               <div class="w-40 text-end">
-                <a class="btn btn-dark mb-0 text-end" href="/admin/comments">View all reviews</a>
+                <a class="btn btn-dark mb-0 text-end" href="/admin/reviews">View all reviews</a>
               </div>
             </div>
           </div>

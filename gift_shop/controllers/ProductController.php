@@ -23,11 +23,28 @@ class ProductController extends Controller
         $this->view('products/index', ['products' => $products]);
     }
 
-    public function getProductsByCategory($categoryId) 
-    {
+    // public function getProductsByCategory($categoryId) 
+    // {
+    //     $products = $this->productModel->getProductsByCategory($categoryId);
+    //     $this->view('products/index', ['products' => $products]); 
+    // }
+
+    public function getProductsByCategory($categoryId) {
+        // Retrieve products by category ID
         $products = $this->productModel->getProductsByCategory($categoryId);
-        $this->view('products/index', ['products' => $products]); 
+    
+        // Retrieve category name
+        $categoryModel = new Category();
+        $category = $categoryModel->find($categoryId);
+        $categoryName = $category ? $category['category_name'] : 'Products';
+    
+        // Pass both products and category name to the view
+        $this->view('products/index', [
+            'products' => $products,
+            'categoryName' => $categoryName
+        ]);
     }
+    
 
     public function search() 
     {
@@ -83,5 +100,17 @@ class ProductController extends Controller
             exit();
         }
     }
+    public function show($categoryId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        // Retrieve products by category ID
+        $products = $this->productModel->getProductsByCategory($categoryId);
+
+        // Load the view for showing products in a category
+        $this->view('admin/categories/show', ['products' => $products]);
+    }
+
 }
 ?>

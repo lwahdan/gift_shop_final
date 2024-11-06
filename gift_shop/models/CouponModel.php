@@ -23,5 +23,35 @@ class CouponModel extends BaseModel {
         $statement->execute([':code' => $code]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
+    public function getCoupons($filters = []) {
+        $sql = "SELECT * FROM coupons WHERE 1=1";
+
+        // Apply filters to the SQL query
+        if (isset($filters['status'])) {
+            $sql .= " AND is_active = :status";
+        }
+        if (isset($filters['discount'])) {
+            $sql .= " AND discount_value >= :discount";
+        }
+        if (isset($filters['date'])) {
+            $sql .= " AND updated_at >= :date";
+        }
+
+        $stmt = $this->pdo->prepare($sql);
+
+        // Bind parameters to the query
+        if (isset($filters['status'])) {
+            $stmt->bindParam(':status', $filters['status'], PDO::PARAM_INT);
+        }
+        if (isset($filters['discount'])) {
+            $stmt->bindParam(':discount', $filters['discount'], PDO::PARAM_INT);
+        }
+        if (isset($filters['date'])) {
+            $stmt->bindParam(':date', $filters['date'], PDO::PARAM_STR);
+        }
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 

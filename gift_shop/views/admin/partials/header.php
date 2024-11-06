@@ -1,42 +1,4 @@
-<!-- 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="/public/css/admin.css">
-</head>
-
-<body>
-<div class="container">
-    <div class="navigation">
-        <ul>
-
-            <li><a href="#"><span class="icon"><ion-icon name="gift-outline"></ion-icon></span><span class="title">Admin</span></a></li>
-            <li><a href="/admin/dashboard"><span class="icon"><ion-icon name="clipboard-outline"></ion-icon></span><span class="title">Dashboard</span></a></li>
-            <li><a href="/admin/users"><span class="icon"><ion-icon name="people-outline"></ion-icon></span><span class="title">Users</span></a></li>
-            <li><a href="/admin/category"><span class="icon"><ion-icon name="cube-outline"></ion-icon></span><span class="title">Categories</span></a></li>
-            <li><a href="/admin/comments"><span class="icon"><ion-icon name="chatbubble-outline"></ion-icon></span><span class="title">Reviews</span></a></li>
-            <li><a href="/admin/coupons"><span class="icon"><ion-icon name="pricetags-outline"></ion-icon></span><span class="title">Coupons</span></a></li>
-            <li><a href="/admin/orders"><span class="icon"><ion-icon name="cart-outline"></ion-icon></span><span class="title">Order</span></a></li>
-            <li><a href="/admin/Password"><span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span><span class="title">Password</span></a></li>
-            <li><a href="/admin/Signout"><span class="icon"><ion-icon name="log-out-outline"></ion-icon></span><span class="title">Sign Out</span></a></li>
-        </ul>
-    </div>
-
-    <div class="main" >
-        <div class="topbar">
-            <div class="toggle"><ion-icon name="menu-outline"></ion-icon></div>
-            <div class="search">
-                <label><input type="text" placeholder="Search here"><ion-icon name="search-outline"></ion-icon></label>
-            </div>
-            <div class="user"><ion-icon name="person-outline"></ion-icon></div>
-        </div> -->
-
-
-        <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -243,7 +205,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="../pages/sign-in.html">
+          <a class="nav-link  " href="/admin/logout">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>document</title>
@@ -286,11 +248,10 @@
             </div>
           </div>
           <ul class="navbar-nav  justify-content-end">
-         
             <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+              <a href="/admin/logout" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Sign Out</span>
               </a>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">

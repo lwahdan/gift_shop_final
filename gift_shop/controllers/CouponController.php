@@ -13,14 +13,36 @@ class CouponController extends Controller
         $this->model = $this->model('CouponModel');
     }
 
-    public function index()
-    {
-        $coupons = $this->model->all();
-        include 'views/admin/coupons/index.php';
+    public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        // Get filters from the GET request
+        $filters = [];
+        if (isset($_GET['status']) && $_GET['status'] !== '') {
+            $filters['status'] = $_GET['status'];
+        }
+        if (isset($_GET['discount']) && $_GET['discount'] !== '') {
+            $filters['discount'] = $_GET['discount'];
+        }
+        if (isset($_GET['date']) && $_GET['date'] !== '') {
+            $filters['date'] = $_GET['date'];
+        }
+
+        // Fetch coupons with the filters
+        $coupons = $this->model->getCoupons($filters);
+
+        // Include the view and pass the coupons data
+        $this->view('admin/coupons/index', ['coupons' => $coupons]);
     }
 
     public function create()
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'code' => $_POST['code'],
@@ -39,6 +61,10 @@ class CouponController extends Controller
 
     public function edit($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'code' => $_POST['code'],
@@ -58,6 +84,10 @@ class CouponController extends Controller
 
     public function delete($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->model->delete($id);
         header("Location: /admin/coupons");
         exit;
@@ -65,6 +95,10 @@ class CouponController extends Controller
 
     public function toggleStatus($id, $status)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->model->update($id, ['is_active' => $status]);
         header("Location: /admin/coupons");
         exit;
