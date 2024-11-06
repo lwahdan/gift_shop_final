@@ -25,7 +25,7 @@ class Core {
         'admin/coupons/edit/{id}' => 'CouponController@edit',
         'admin/coupons/delete/{id}' => 'CouponController@delete',
         'admin/users/toggleStatus/{id}/{status}' => 'UserController@toggleStatus',
-        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
+        'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController2@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
         'admin/Allproducts' => 'DashboardController@Allproducts',
