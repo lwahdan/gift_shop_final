@@ -1,12 +1,14 @@
+
+
 <?php require 'views/partials/header.php'; ?>
+
 <section class="form-container">
     <form action="" method="post">
         <h3>Register Now</h3>
-        <p class="message <?php echo !empty($data['message']) ? 'error-background' : ''; ?>" 
-           style="<?php echo empty($data['message']) ? 'display:none;' : ''; ?>">
-            <?php echo isset($data['message']) ? htmlspecialchars($data['message']) : ''; ?>
-        </p>
+
+        <!-- Flash message display without helper.php -->
         
+
         <div class="es">
             <input type="text" name="username" placeholder="Enter your username" value="<?php echo htmlspecialchars($data['username']); ?>" required>
             <input type="number" name="phone_number" placeholder="Enter your phone number" value="<?php echo htmlspecialchars($data['phone_number']); ?>" required>
@@ -56,26 +58,5 @@
         <p class="log">Already have an account? <a href="/customers/login">Login now</a></p>
     </form>
 </section>
-
-<?php if ($data['registration_success']): ?>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        Swal.fire({
-            title: "Registration Successful!",
-            text: "You have successfully registered. Click OK to login.",
-            icon: "success",
-            confirmButtonText: "OK",
-            customClass: {
-                confirmButton: 'swal-button-confirm',
-            }
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = '/customers/login';
-            }
-        });
-    </script>
-<?php endif; ?>
-
-
 
 <?php require 'views/partials/footer.php'; ?>

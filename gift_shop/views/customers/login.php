@@ -3,6 +3,15 @@
 <section class="form-container-login">
     <form action="" method="post">
         <h3>Login </h3>
+        <?php if (isset($_SESSION['flash_message'])): ?>
+    <div class="flash-message">
+        <?php 
+            echo htmlspecialchars($_SESSION['flash_message']); 
+            unset($_SESSION['flash_message']); // Clear message after displaying
+        ?>
+    </div>
+<?php endif; ?>
+
         <p class="message" style="<?php echo empty($message) ? 'display:none;' : ''; ?>">
             <?php echo htmlspecialchars($message); ?>
         </p>

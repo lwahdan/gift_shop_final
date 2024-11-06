@@ -40,28 +40,22 @@
             </div>
             <div class="col-xl-7 col-lg-6">
                 <div class="product-details-content-area product-details--golden" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Start Product Details Text Area -->
                     <div class="product-details-text">
                         <h4 class="title"><?php echo htmlspecialchars($product['product_name']); ?></h4>
                         <div class="price">$<?php echo number_format($product['price'], 2); ?></div>
                         <p><?php echo htmlspecialchars($product['description']); ?></p>
                     </div>
-                    <!-- End Product Details Text Area -->
-
-                    <!-- Start Product Variable Area -->
                     <div class="product-details-variable">
                         <div class="variable-single-item">
                             <div class="product-stock"> <span class="product-stock-in"><i class="ion-checkmark-circled"></i></span> <?php echo ($product['stock_quantity']); ?> IN STOCK</div>
                         </div>
                         <div class="d-flex align-items-center">
-                            <!-- Add to Cart Form start-->
                             <form action="/cart/add" method="POST" class="add-to-cart-form">
                                 <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
                                 <div class="product-add-to-cart-btn">
                                     <button type="submit" class="btn btn-block btn-lg btn-black-default-hover">+ Add To Cart</button>
                                 </div>
                             </form>    
-                            <!-- Add to Cart end -->
                         </div>
                         <div class="product-details-meta mb-20">
                             <a href="/wishlist/addProduct/<?= $product['id']; ?>" class="icon-space-right"><i class="icon-heart"></i>Add to wishlist</a>
@@ -114,10 +108,8 @@
                                                 </div>
 
                                                 <?php if (isset($_SESSION['user_id']) && $_SESSION['user_id'] == $review['user_id']): ?>
-                                                    <!-- Edit Review Button -->
-                                                    <!-- <a href="/reviews/edit/<?= $review['id']; ?>" class="btn btn-warning btn-sm">Edit</a> -->
                                                     <!-- Delete Review Button -->
-                                                    <a href="/reviews/delete/<?= $review['id']; ?>" class="btnd btn-danger" onclick="return confirm('Are you sure you want to delete this review?')">Delete</a>
+                                                    <a href="#" data-review-id="<?= $review['id']; ?>" class="btnd btn-danger delete-review">Delete</a>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -169,7 +161,34 @@
 
 <?php require_once 'views/partials/footer.php'; ?>
 
+<!-- Include SweetAlert Script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
+    // SweetAlert for Delete Confirmation
+    document.querySelectorAll('.delete-review').forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            const reviewId = this.getAttribute('data-review-id');
+            const productId = "<?php echo htmlspecialchars($product['id']); ?>";
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to undo this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/reviews/delete/${reviewId}?product_id=${productId}`;
+                }
+            });
+        });
+    });
+
+    // Star Rating Click Event
     document.querySelectorAll('.star').forEach(star => {
         star.addEventListener('click', function() {
             const ratingValue = this.getAttribute('data-value');

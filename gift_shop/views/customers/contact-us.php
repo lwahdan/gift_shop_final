@@ -37,7 +37,7 @@
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <div class="contact-details-content contact-phone">
-                                    <a href="tel:+0777123456">0777123456</a>
+                                    <a href="tel:+0777891011">0777891011</a>
                                 </div>
                             </div> <!-- End Contact Details Single Item -->
                             <!-- Start Contact Details Single Item -->
