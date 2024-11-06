@@ -9,11 +9,19 @@ class ReviewController2 extends Controller {
     }
 
     public function index() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $reviews = $this->reviewModel->all();
         $this->view('admin/reviews/index', ['reviews' => $reviews]);
     }
 
     public function toggleStatus($id, $status) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         try {
             $this->reviewModel->update($id, ['status' => $status]);
             $_SESSION['success'] = 'Review status updated successfully';

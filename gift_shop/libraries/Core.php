@@ -58,9 +58,6 @@ class Core {
         'admin/account_settings' => 'DashboardController@accountSettings',
         'admin/logout' => 'DashboardController@logout',
 
-        // Order Management Route
-        'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
-
         // customers Routes
         'customers/about-us' => 'CustomerController@about',
         'customers/contact-us' => 'CustomerController@contact',

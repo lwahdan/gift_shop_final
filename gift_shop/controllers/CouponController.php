@@ -15,12 +15,20 @@ class CouponController extends Controller
 
     public function index()
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $coupons = $this->model->all();
         include 'views/admin/coupons/index.php';
     }
 
     public function create()
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'code' => $_POST['code'],
@@ -39,6 +47,10 @@ class CouponController extends Controller
 
     public function edit($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $data = [
                 'code' => $_POST['code'],
@@ -58,6 +70,10 @@ class CouponController extends Controller
 
     public function delete($id)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->model->delete($id);
         header("Location: /admin/coupons");
         exit;
@@ -65,6 +81,10 @@ class CouponController extends Controller
 
     public function toggleStatus($id, $status)
     {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
         $this->model->update($id, ['is_active' => $status]);
         header("Location: /admin/coupons");
         exit;
