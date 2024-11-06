@@ -1,8 +1,10 @@
 <?php
+$category_active = "active";
+
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 ?>
 
-<div class="container py-5">
+<div class="container py-5 w-50">
     <h2 class="mb-4">Edit Category</h2>
 
     <form method="post" action="/categories/update/<?php echo $category['id']; ?>" class="bg-white p-4 rounded shadow">

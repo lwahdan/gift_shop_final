@@ -3,7 +3,7 @@ $Product_active = "active";
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 ?>
 
-<div class="container py-5">
+<div class="container py-5 text-center">
     <a href="/Categories/createProduct" class="btn btn-primary mb-4">Add New Product</a>
 
     <h2 class="mb-4 text-center">Products in this Category</h2>
@@ -13,7 +13,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
             <?php foreach ($products as $product): ?>
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="<?= htmlspecialchars($product['image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+                        <img src="/public/images/product/<?= htmlspecialchars($product['image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h5>
                             <p class="card-text">Price: $<?= htmlspecialchars($product['price']); ?></p>

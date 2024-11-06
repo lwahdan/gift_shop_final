@@ -28,6 +28,8 @@ class Core {
         'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
+        'admin/Allproducts' => 'DashboardController@Allproducts',
+
         'admin/users/show/{id}' => 'UserController@show',
         'admin/category' => 'CategoryController2@index',                 // List categories
         'admin/category/create' => 'CategoryController2@create',           // Create category form
@@ -43,10 +45,10 @@ class Core {
       'categories/edit/{id}'=> 'CategoryController2@edit',
 
 // Route to handle update form submission
-          'categories/update/{id}'=> 'CategoryController2@update',
+    'categories/update/{id}'=> 'CategoryController2@update',
 
 // Route to delete a category
-          'categories/delete/{id}'=> 'CategoryController2@delete',
+    'categories/delete/{id}'=> 'CategoryController2@delete',
 
         'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
@@ -81,6 +83,10 @@ class Core {
 
         //admin routes
         'admin/product/create' => 'ProductController@create',
+
+        'admin/login' => 'AdminController@showSignInForm',
+        'admin/login/submit' => 'AdminController@signIn',
+        'admin/logout' => 'AdminController@logout',
 
         //wishlist routes
         'wishlist' => 'WishlistController@index',
