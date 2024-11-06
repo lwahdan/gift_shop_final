@@ -9,25 +9,37 @@ class ProductController extends Controller
 {
     private $productModel;
     private $reviewModel;
+    private $categoryModel;
 
     public function __construct()
     {
         // Load the Product model and Review model
         $this->productModel = $this->model('Product');
         $this->reviewModel = $this->model('Review');
+        $this->categoryModel = $this->model('Category');
     }
 
-    public function index()
-    {
-        $products = $this->productModel->all();
-        $this->view('products/index', ['products' => $products]);
+    public function index() {
+        // Retrieve filter parameters from the GET request
+        $category = isset($_GET['category']) ? $_GET['category'] : null;
+        $price_min = isset($_GET['price_min']) ? $_GET['price_min'] : null;
+        $price_max = isset($_GET['price_max']) ? $_GET['price_max'] : null;
+        $sort = isset($_GET['sort']) ? $_GET['sort'] : null;
+
+        // Fetch products based on the filters using the model
+        $products = $this->productModel->getFilteredProducts($category, $price_min, $price_max, $sort);
+        
+        // Fetch categories for the filter dropdown (assuming a `getCategories` method exists in the model)
+        $categories = $this->categoryModel->all();
+
+        // Pass products and categories to the view
+        $this->view('products/index', [
+            'products' => $products,
+            'categories' => $categories
+        ]);
     }
 
-    // public function getProductsByCategory($categoryId) 
-    // {
-    //     $products = $this->productModel->getProductsByCategory($categoryId);
-    //     $this->view('products/index', ['products' => $products]); 
-    // }
+
 
     public function getProductsByCategory($categoryId) {
         // Retrieve products by category ID
