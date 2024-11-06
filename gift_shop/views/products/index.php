@@ -8,7 +8,7 @@ $dir = '../public/images/product/';?>
                 <div class="col-12">
                     <div class="section-content-gap">
                         <div class="secton-content">
-                            <h3 class="section-title">Products</h3>
+                            <h3 class="section-title"><?php echo htmlspecialchars($categoryName); ?></h3>
                         </div>
                     </div>
                 </div>
