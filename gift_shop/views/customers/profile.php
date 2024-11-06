@@ -94,8 +94,8 @@
                                                 <td><input class="inprofile" type="password" name="confirm_new_password" id="confirm_new_password" required></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><button type="submit">Change Password</button></td>
-                                                <td colspan="2"><button type="button" id="cancelChangeBtn">Cancel</button></td>
+                                                <td colspan="2"><button class="buttonn" type="submit">Change Password</button></td>
+                                                <td colspan="2"><button class="buttonn" type="button" id="cancelChangeBtn">Cancel</button></td>
                                             </tr>
                                         </table>
                                     </form>
@@ -143,8 +143,8 @@
                                                 <td><input class="inprofile" type="text" name="country" id="country" value="<?php echo htmlspecialchars($user['country']); ?>" required></td>
                                             </tr>
                                             <tr>
-                                                <td colspan="2"><button type="submit">Save</button></td>
-                                                <td colspan="2"><button type="button" id="cancelEditBtn">Cancel</button></td>
+                                                <td colspan="2"><button class="buttonn" type="submit">Save</button></td>
+                                                <td colspan="2"><button class="buttonn" type="button" id="cancelEditBtn">Cancel</button></td>
                                             </tr>
                                         </table>
                                     </form>
