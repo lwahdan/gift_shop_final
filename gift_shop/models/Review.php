@@ -26,9 +26,8 @@ class Review extends BaseModel
         }
     }
 
-   
-
-    public function getReviewsByProductId($productId) {
+    public function getReviewsByProductId($productId)
+    {
         $stmt = $this->pdo->prepare("
             SELECT r.*, u.username 
             FROM reviews r 
@@ -40,4 +39,23 @@ class Review extends BaseModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function updateReview($id, $data)
+    {
+        return parent::update($id, $data); 
+    }
+
+    // Delete a review
+    public function deleteReview($id)
+    {
+        return parent::delete($id); 
+    }
+
+    public function getReviewById($id)
+{
+    $stmt = $this->pdo->prepare("SELECT * FROM reviews WHERE id = :id");
+    $stmt->execute(['id' => $id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+    
+}
+?>

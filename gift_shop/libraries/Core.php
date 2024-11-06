@@ -60,9 +60,6 @@ class Core {
         'admin/account_settings' => 'DashboardController@accountSettings',
         'admin/logout' => 'DashboardController@logout',
 
-        // Order Management Route
-        'admin/manage_orders/{user_id}' => 'OrderController@manageOrders',
-
         // customers Routes
         'customers/about-us' => 'CustomerController@about',
         'customers/contact-us' => 'CustomerController@contact',
@@ -126,11 +123,12 @@ class Core {
         'customers/changePassword'=>'ProfileController@changePassword',
         'auth/changePassword' => 'ProfileController@changePassword',
         'reviews/create' => 'ReviewController@create',              
-        'reviews/view' => 'ReviewController@viewReview',            
-        'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
-        'reviews/index' => 'ReviewController@index',  
-
-
+       'reviews/view' => 'ReviewController@viewReview',            
+       'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+       'reviews/index' => 'ReviewController@index',  
+       'reviews/delete/{id}' => 'ReviewController@delete',
+        'reviews/edit/{id}' => 'ReviewController@edit',
+        
 
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
