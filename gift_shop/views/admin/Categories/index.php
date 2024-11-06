@@ -44,6 +44,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($category['category_name']); ?></h5>
                         <p class="text-muted">ID: <?php echo htmlspecialchars($category['id']); ?></p>
+                        <p class="text-muted"> <?php echo htmlspecialchars($category['description']); ?></p>
                     </div>
                     <div class="card-footer">
                         <a href="/categories/edit/<?php echo htmlspecialchars($category['id']); ?>" class="status-badge status-blue w-100">Edit</a>

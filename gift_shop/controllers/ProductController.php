@@ -105,7 +105,7 @@ class ProductController extends Controller
             exit();
         }
         // Retrieve products by category ID
-        $products = $this->productModel->getProductsByCategory($categoryId);
+        $products = $this->productModel->find($categoryId);
 
         // Load the view for showing products in a category
         $this->view('admin/categories/show', ['products' => $products]);

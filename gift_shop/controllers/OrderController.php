@@ -100,7 +100,18 @@ class OrderController extends Controller{
         header("Location: /home");
         exit();
     }
-    
+
+    public function show($orderId) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        // Retrieve products by category ID
+        $orders = $this->orderModel->getOrderDetails($orderId);
+
+        // Load the view for showing products in a category
+        $this->view('admin/orders/show', ['orders' => $orders]);
+    }
 
 }
 ?>
