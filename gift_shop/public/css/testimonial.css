@@ -264,14 +264,14 @@ body {
     margin-left: 300px;
 
 }
-
+/* 
 .success-message {
     margin-top: 5px;
     color: green !important;
     font-size: 14px !important;
     display: none !important; 
     opacity: 0 !important; 
-}
+} */
 
 .btn-delete {
     border: none;
@@ -289,7 +289,27 @@ body {
     }
 }
 
-th {
-    background-color: #fef5ef;
-    color: #000;
+.flash-message {
+    position: fixed;
+    top: 10%;
+    right: 10%;
+    background-color: #4CAF50; /* Green color for success */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
 }
+
+.details_breadcrum{
+    margin-bottom: 100px;
+}
+.about-breadcrum{
+    margin-bottom: 100px;
+}
+.about_txt{
+    font-size: 1.2rem !important;
+}
+

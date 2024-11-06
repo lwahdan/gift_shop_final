@@ -11,7 +11,8 @@ foreach ($cartItems as $item) {
 }
 
 $dir = $dir ?? "../public/images/product/";
-
+// var_dump($categories);
+// exit;
 ?>
 
 <!DOCTYPE html>
@@ -59,9 +60,12 @@ $dir = $dir ?? "../public/images/product/";
 </head>
 
 <body>
+<div id="flash-message" class="flash-message" style="display: none;">Added successfully</div>
+
 <!-- Start Header Area -->
 <header class="header-section d-none d-xl-block">
     <div class="header-wrapper">
+
         <div class="header-bottom header-bottom-color--golden section-fluid sticky-header sticky-color--golden">
             <div class="container-fluid">
                 <div class="row">
@@ -74,7 +78,9 @@ $dir = $dir ?? "../public/images/product/";
                         </div>
                         <!-- End Header Logo -->
 
-                        <!-- Start Header Main Menu -->
+                       
+
+                        <!-- Start Header Main Menu original -->
                         <div class="main-menu menu-color--black menu-hover-color--golden">
                             <nav>
                                 <ul>
@@ -115,7 +121,7 @@ $dir = $dir ?? "../public/images/product/";
                                 </ul>
                             </nav>
                         </div>
-                        <!-- End Header Main Menu Start -->
+                        <!-- End Header Main Menu Start original-->
 
                         <!-- Start Header Action Link -->
                         <ul class="header-action-link action-color--black action-hover-color--golden">
@@ -450,7 +456,7 @@ $dir = $dir ?? "../public/images/product/";
 <div id="search" class="search-modal">
     <button type="button" class="close">×</button>
     <form action="/search" method="get">
-        <input type="search" name="search" placeholder="type keyword(s) here" />
+        <input type="search" name="search" placeholder="type keyword(s) here"/>
         <button type="submit" class="btn btn-lg btn-golden">Search</button>
     </form>
 </div>

@@ -37,8 +37,8 @@ class OrderController extends Controller{
         $couponDiscount = isset($_COOKIE['discount']) ? $_COOKIE['discount'] : 0;
     
         if (empty($cartData)) {
-            echo "Cart is empty.";
-            return;
+            header('Location: /customers/cart');
+            exit();
         }
     
         // Calculate the total price
