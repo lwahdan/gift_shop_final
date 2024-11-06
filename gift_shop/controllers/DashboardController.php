@@ -27,8 +27,8 @@ class DashboardController extends Controller {
     }
 
     public function manageProducts() {
-        $data = $this->data;
-        $this->view('admin/Categories/show', $data);
+        $data =  $this->productModel->all();;
+        $this->view('admin/Categories/show', ['products' => $data]);
     }
 
     // Handle new product creation form

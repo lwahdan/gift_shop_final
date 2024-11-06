@@ -30,7 +30,10 @@ class CouponController extends Controller
 
             ];
             $this->model->create($data);
-            header("Location: /views/admin/coupons");
+
+            $coupons = $this->model->all();
+            include 'views/admin/coupons/index.php';
+
             exit;
         }
 

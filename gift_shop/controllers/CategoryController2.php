@@ -31,9 +31,10 @@ class CategoryController2 extends Controller {
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
     public function edit($id) {
-        $categories = $this->categoryModel->all();
-        $this->view('admin/Categories/index', ['categories' => $categories]);
+        $category = $this->categoryModel->find($id);
+        $this->view('admin/Categories/edit', ['category' => $category]);
     }
+
 
     // Handle update form submission
     public function update($id) {
