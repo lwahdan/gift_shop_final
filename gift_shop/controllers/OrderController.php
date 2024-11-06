@@ -13,6 +13,12 @@ class OrderController extends Controller{
         $this->productModel = new Product('products');
     }
 
+    public function getOrderProducts($orderId){
+        $order = $this->orderModel->getOrderDetails($orderId);
+        echo json_encode(['order' => $order]);
+        // $this->view('customers/order-details', ['order' => $order]);
+
+    }
     // Display orders and handle actions
     public function index() {
         if (!isset($_SESSION["admin_id"])) {

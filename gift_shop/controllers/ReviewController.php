@@ -60,44 +60,28 @@ class ReviewController extends Controller
         if (isset($_SESSION['user_id'])) {
             $reviewModel = new Review();
             $review = $reviewModel->getReviewById($reviewId);
-
+    
             // Ensure the logged-in user is the owner of the review
-            if ($review['user_id'] == $_SESSION['user_id']) {
+            if ($review && $review['user_id'] == $_SESSION['user_id']) {
                 $reviewModel->deleteReview($reviewId);
                 $_SESSION['success_message'] = 'Review deleted successfully.';
             } else {
                 $_SESSION['error_message'] = 'You can only delete your own reviews.';
             }
+    
+            // Redirect back to the product details page with the correct product ID
+            $productId = $review['product_id'];
+            header("Location: /product/details?id=$productId");
+            exit();
+        } else {
+            $_SESSION['error_message'] = 'You must be logged in to delete a review.';
+            header("Location: /login");  // Redirect to login if not logged in
+            exit();
         }
-        header('Location: /product/details?id=$productId' . $_GET['product_id']);
-        exit();
     }
+    
 
-    public function edit($reviewId) {
-        if (isset($_SESSION['user_id'])) {
-            $reviewModel = new Review();
-            $review = $reviewModel->getReviewById($reviewId);
-
-            if ($review['user_id'] == $_SESSION['user_id']) {
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    $updatedReview = $_POST['review_text'];
-                    $rating = $_POST['rating'];
-
-                    $reviewModel->updateReview($reviewId, $updatedReview, $rating);
-                    $_SESSION['success_message'] = 'Review updated successfully.';
-                    header('Location: /product/details?id=$productId' . $_POST['product_id']);
-                    exit();
-                } else {
-                    // Show the edit review form
-                    return ['review' => $review];
-                }
-            } else {
-                $_SESSION['error_message'] = 'You can only edit your own reviews.';
-            }
-        }
-        header('Location: /product/details?id=$productId' . $_GET['product_id']);
-        exit();
-    }
+   
     
 }
 ?>

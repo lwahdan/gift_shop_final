@@ -80,6 +80,9 @@ class Core {
         'customers/login' => 'AuthController@login',
         'customers/register' => 'AuthController@register',
 
+        //order Route
+        'order/details/{id}' => 'OrderController@getOrderProducts',
+
         'profile/update', 'ProfileController@updateProfile',
         'customers/dashboard' => 'AdminController@dashboard',
        
@@ -135,10 +138,10 @@ class Core {
         'customers/changePassword'=>'ProfileController@changePassword',
         'auth/changePassword' => 'ProfileController@changePassword',
         'reviews/create' => 'ReviewController@create',              
-       'reviews/view' => 'ReviewController@viewReview',            
-       'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
-       'reviews/index' => 'ReviewController@index',  
-       'reviews/delete/{id}' => 'ReviewController@delete',
+        'reviews/view' => 'ReviewController@viewReview',            
+        'reviews/toggleStatus' => 'ReviewController@toggleStatus',   
+        'reviews/index' => 'ReviewController@index',  
+        'reviews/delete/{id}' => 'ReviewController@delete',
         'reviews/edit/{id}' => 'ReviewController@edit',
         
 
