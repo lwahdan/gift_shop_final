@@ -95,7 +95,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><button class="buttonn" type="submit">Change Password</button></td>
-                                                <td colspan="2"><button class="buttonn" type="button" id="cancelChangeBtn">Cancel</button></td>
+                                                <td colspan="2"><button class="cancelChangeBtn"  type="button" id="cancelChangeBtn">Cancel</button></td>
                                             </tr>
                                         </table>
                                     </form>
@@ -144,7 +144,7 @@
                                             </tr>
                                             <tr>
                                                 <td colspan="2"><button class="buttonn" type="submit">Save</button></td>
-                                                <td colspan="2"><button class="buttonn" type="button" id="cancelEditBtn">Cancel</button></td>
+                                                <td colspan="2"><button class="cancelChangeBtn"  type="button" id="cancelEditBtn">Cancel</button></td>
                                             </tr>
                                         </table>
                                     </form>

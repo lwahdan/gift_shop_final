@@ -36,10 +36,10 @@
                              data-aos-delay="400">
                             <h5 class="title">CATEGORIES</h5>
                             <ul class="footer-nav">
-                                <li><a href="#">Flowers</a></li>
-                                <li><a href="#">Plants</a></li>
-                                <li><a href="#">Chocolates</a></li>
-                                <li><a href="#">Packages</a></li>
+                                <li><a href="/category/1">Flowers</a></li>
+                                <li><a href="/category/2">Plants</a></li>
+                                <li><a href="/category/3">Chocolates</a></li>
+                                <li><a href="/category/4">Packages</a></li>
                             </ul>
                         </div>
                         <!-- End Footer Single Item -->
