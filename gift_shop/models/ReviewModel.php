@@ -39,5 +39,6 @@ class ReviewModel extends BaseModel {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute($params);
     }
+    
 }
 ?>

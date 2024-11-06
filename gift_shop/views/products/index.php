@@ -56,16 +56,31 @@ $dir = '../public/images/product/';?>
                                         </div>
                                     </div>
                                     <div class="content">
-                                        <div class="content-left">
-                                            <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
-                                        </div>
+                                       <div class="rating-stars">
+    <?php if (isset($averageRating) && $averageRating > 0): ?>
+        <?php 
+            // Render the stars based on the average rating
+            for ($i = 0; $i < round($averageRating); $i++): 
+        ?>
+            <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+        
+        <?php 
+            // Render empty stars for the remaining
+            for ($i = round($averageRating); $i < 5; $i++): 
+        ?>
+            <ion-icon name="star-outline" style="color: gold"></ion-icon>
+        <?php endfor; ?>
+
+       
+        <?php else: ?>
+        <!-- Display empty stars if no rating is available -->
+        <?php for ($i = 0; $i < 5; $i++): ?>
+            <ion-icon name="star-outline" style="color: grey"></ion-icon>
+        <?php endfor; ?>
+    <?php endif; ?>
+</div>
+
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
                                         </div>
