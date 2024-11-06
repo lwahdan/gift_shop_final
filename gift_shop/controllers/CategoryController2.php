@@ -51,6 +51,7 @@ class CategoryController2 extends Controller {
         $this->view('admin/Categories/index', ['categories' => $categories]);
     }
 
+
     // Handle update form submission
     public function update($id) {
         if (!isset($_SESSION["admin_id"])) {

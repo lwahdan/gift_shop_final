@@ -28,6 +28,8 @@ class Core {
         'admin/reviews/toggleStatus/{id}/{status}' => 'ReviewController@toggleStatus',
         'admin/coupons/toggleStatus/{id}/{status}' => 'CouponController@toggleStatus',
         'admin/login' => 'AdminController@login',
+        'admin/Allproducts' => 'DashboardController@Allproducts',
+
         'admin/users/show/{id}' => 'UserController@show',
         'admin/category' => 'CategoryController2@index',                 // List categories
         'admin/category/create' => 'CategoryController2@create',           // Create category form

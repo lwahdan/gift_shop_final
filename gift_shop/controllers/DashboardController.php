@@ -35,8 +35,18 @@ class DashboardController extends Controller {
             header('Location: /admin/login');
             exit();
         }
+
         $data = $this->data;
         $this->view('admin/Categories/show', $data);
+
+    }
+    public function Allproducts() {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+        $products = $this->productModel->all();
+        $this->view('admin/products/index', ['products' => $products]);
     }
 
     // Handle new product creation form
