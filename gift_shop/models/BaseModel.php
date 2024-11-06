@@ -27,20 +27,10 @@ class BaseModel
         }
     }
 
-    public function all($limit = null)
+    public function all()
     {
         $sql = "SELECT * FROM $this->table ORDER BY $this->timestampColumn DESC";
-
-        if ($limit) {
-            $sql .= " LIMIT :limit";
-        }
-
         $statement = $this->pdo->prepare($sql);
-
-        if ($limit) {
-            $statement->bindValue(':limit', (int) $limit, PDO::PARAM_INT);
-        }
-
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
