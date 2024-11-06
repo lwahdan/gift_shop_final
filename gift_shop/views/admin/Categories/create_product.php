@@ -1,4 +1,8 @@
-<?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
+<?php
+$Product_active = "active";
+
+
+require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
 
     <div class="form-container">
         <h2 class="form-title">Add New Product</h2>
