@@ -26,10 +26,18 @@ class Review extends BaseModel
         }
     }
 
-    public function getReviewsByProductId($productId)
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM reviews WHERE product_id = :product_id ORDER BY created_at DESC");
+   
+
+    public function getReviewsByProductId($productId) {
+        $stmt = $this->pdo->prepare("
+            SELECT r.*, u.username 
+            FROM reviews r 
+            LEFT JOIN users u ON r.user_id = u.id 
+            WHERE r.product_id = :product_id AND r.status = 1 
+            ORDER BY r.created_at DESC
+        ");
         $stmt->execute(['product_id' => $productId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 }

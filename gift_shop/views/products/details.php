@@ -103,32 +103,30 @@
                             <?php endif; ?>
 
                             <!-- Start - Displaying Reviews -->
-                            <ul class="comment">
-                                <?php if (isset($reviews) && !empty($reviews)): ?>
-                                    <?php foreach ($reviews as $review): ?>
-                                        <?php if ($review['status'] == 1): ?>
-                                            <div class="card">
-                                                <div>
-                                                    <h5 class="review-header">
-                                                        <?php echo isset($_SESSION['username']) ? "Username: " . htmlspecialchars($_SESSION['username']) : "Username: Guest"; ?>
-                                                        <span style="font-size: 15px; margin-left: 10px;">
-                                                            <?php echo date('Y-m-d', strtotime($review['updated_at'])); ?>
-                                                        </span>
-                                                    </h5>
-                                                    <h4><?php echo htmlspecialchars($review['review_text']); ?></h4>
-                                                    <div class="rating-stars">
-                                                        <?php for ($i = 0; $i < $review['rating']; $i++): ?>
-                                                            <ion-icon name="star-sharp" style="color: gold"></ion-icon>
-                                                        <?php endfor; ?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <?php endif; ?>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
-                                    <p>No reviews found.</p>
-                                <?php endif; ?>
-                            </ul> <!-- End - Displaying Reviews -->
+                           <ul class="comment">
+        <?php if (isset($reviews) && !empty($reviews)): ?>
+            <?php foreach ($reviews as $review): ?>
+                <div class="card">
+                    <div>
+                        <h5 class="review-header">
+                            Username: <?php echo htmlspecialchars($review['username'] ?? 'Guest'); ?>
+                            <span style="font-size: 15px; margin-left: 10px;">
+                                <?php echo date('Y-m-d', strtotime($review['created_at'])); ?>
+                            </span>
+                        </h5>
+                        <h4><?php echo htmlspecialchars($review['review_text']); ?></h4>
+                        <div class="rating-stars">
+                            <?php for ($i = 0; $i < $review['rating']; $i++): ?>
+                                <ion-icon name="star-sharp" style="color: gold"></ion-icon>
+                            <?php endfor; ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>No reviews found.</p>
+        <?php endif; ?>
+    </ul>
 
                             <!-- Review Form: Only display if user is logged in -->
                             <?php if (isset($_SESSION['user_id'])): ?>
