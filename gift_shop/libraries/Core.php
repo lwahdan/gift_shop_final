@@ -38,6 +38,16 @@ class Core {
         'admin/categories/show/{id}' => 'ProductController@show',
 
         'admin' => 'DashboardController@index',
+        'categories/create' => 'CategoryController2@create',
+        'categories/store' => 'CategoryController2@store',
+// Route to show edit form
+      'categories/edit/{id}'=> 'CategoryController2@edit',
+
+// Route to handle update form submission
+          'categories/update/{id}'=> 'CategoryController2@update',
+
+// Route to delete a category
+          'categories/delete/{id}'=> 'CategoryController2@delete',
 
         'Categories/createProduct' => 'DashboardController@createProduct',
         'admin/manage_category' => 'DashboardController@manageCategory',
