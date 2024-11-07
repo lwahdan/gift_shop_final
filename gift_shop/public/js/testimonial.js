@@ -266,7 +266,7 @@ function updateSubtotal() {
         .catch(error => console.error('Error updating subtotal:', error));
 }
 
-//delete event handlers for header and main cart view
+
 function attachDeleteEventHandlers() {
     document.querySelectorAll('.delete-item-form').forEach(form => {
         form.addEventListener('submit', function(event) {
@@ -285,10 +285,13 @@ function attachDeleteEventHandlers() {
             .then(data => {
                 if (data.success) {
                     updateCartView();
+                    document.getElementById('cart-count').textContent = data.cartCount;
 
+                    // Remove the deleted item from the main cart view if present
                     if (mainCartRow) {
                         mainCartRow.remove();
                     }
+                    // Remove the deleted item from the header cart view if present
                     if (headerCartItem) {
                         headerCartItem.remove();
                     }
@@ -337,8 +340,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
-
-    
 
 });
 

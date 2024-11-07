@@ -84,23 +84,26 @@ class CartController extends Controller
     $this->view('customers/cart', ['cartItems' => $cartItems, 'dir' => $dir]);
     }
 
-
     public function remove()
-    {
-        $productId = $_POST['product_id'] ?? null;
-        $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
+{
+    $productId = $_POST['product_id'] ?? null;
+    $cart = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true) : [];
 
-        if (isset($cart[$productId])) {
-            unset($cart[$productId]);
-            setcookie('cart', json_encode($cart), time() + 86400, "/");
-    
-            echo json_encode(['success' => true]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'Item not found in cart']);
-        }
-    
-        exit();
+    if (isset($cart[$productId])) {
+        unset($cart[$productId]);
+        setcookie('cart', json_encode($cart), time() + 86400, "/");
+
+        // Calculate the updated cart count
+        $cartCount = array_sum(array_column($cart, 'quantity'));
+
+        echo json_encode(['success' => true, 'cartCount' => $cartCount]);
+    } else {
+        echo json_encode(['success' => false, 'message' => 'Item not found in cart']);
     }
+
+    exit();
+}
+
 
     public function calculateTotals()
     {
