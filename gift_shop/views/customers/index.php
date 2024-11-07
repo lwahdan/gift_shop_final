@@ -30,7 +30,7 @@ require_once 'controllers/ProductController.php';
                                     <h2 id="unforgettable"> unforgettable </h2>
                                     <!-- <a href="/customers/product-details-default"
                                        class="hero_btn1">shop now </a> -->
-                                       <button class="hero_btn1" onclick="window.location.href='/category/1'" >shop now</button>
+                                       <button class="hero_btn1" onclick="window.location.href='/products'" >shop now</button>
                                 </div>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@ require_once 'controllers/ProductController.php';
                                 <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
 <h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
 <h2 id="unforgettable2">Breathe Life Indoors</h2>
-<a href="/category/2" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
+<a href="/products" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
 
                                 </div>
                                 </div>
@@ -187,6 +187,7 @@ require_once 'controllers/ProductController.php';
                                                 <div class="btn">Out of stock</div>
                                         <?php endif; ?>
                                         </form>
+                                        <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
                                             <div class="action-link-right" onclick="addOrRemoveFromWishlist(<?= $row['id']?>)">
                                                 <a>
@@ -199,17 +200,12 @@ require_once 'controllers/ProductController.php';
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <ul class="review-star">
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="fill"><i class="ion-android-star"></i></li>
-                                                <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul>
+                                            
                                         </div>
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             <?php endforeach; ?>

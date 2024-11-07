@@ -67,4 +67,5 @@ class CategoryController extends Controller
         $categoryModel = new Category();
         return $categoryModel->all();
     }
+    
 }
