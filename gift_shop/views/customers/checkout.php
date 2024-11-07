@@ -70,7 +70,7 @@ $orderTotal = $subtotal - $discount + $shipping;
                 <!-- Shipping Information -->
                 <div class="col-lg-6 col-md-12">
                     <h3>Shipping Information</h3>
-                    <form action="/order/submit" method="GET" onsubmit="handleSubmit()">
+                    <form id="orderForm" action="/order/submit" method="GET" onsubmit="handleSubmit()">
                         <div class="form-group">
                             <label for="shipping_address">Shipping Address:</label>
                             <input type="text" id="shipping_address" name="shipping_address" class="form-control" required>
@@ -88,7 +88,7 @@ $orderTotal = $subtotal - $discount + $shipping;
                             <input type="text" id="country" name="country" class="form-control" required>
                         </div>
                         <div class="order_button pt-3">
-                            <input type="submit" value="Submit Order" id="submitOrder" class="btn btn-md btn-black-default-hover w-100">
+                            <input type="submit" value="Submit Order" id="submitOrderBtn" class="btn btn-md btn-black-default-hover w-100">
                         </div>
                     </form>
                 </div>
