@@ -57,12 +57,13 @@ class ProductController extends Controller
         // Retrieve category name
         $categoryModel = new Category();
         $category = $categoryModel->find($categoryId);
-        $categoryName = $category ? $category['category_name'] : 'Products';
+        $categories = $this->categoryModel->all();
+       
     
         // Pass both products and category name to the view
         $this->view('products/index', [
             'products' => $products,
-            'categoryName' => $categoryName
+            'categories' => $categories
         ]);
     }
     
