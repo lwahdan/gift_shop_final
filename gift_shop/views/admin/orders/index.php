@@ -80,8 +80,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                                         </td>
                                         <td class="ps-4">
                                             <a href="/admin/orders/show/<?= $order['id'] ?>" class="status-badge status-blue">View</a> |
-                                            <a href="/admin/orders/edit/<?= $order['id'] ?>" class="status-badge status-enabled">Edit</a> |
-                                            <a href="/admin/orders/delete/<?= $order['id'] ?>" class="status-badge status-disabled" onclick="return confirm('Are you sure?')">Delete</a>
+                                            <a href="/admin/orders/edit/<?= $order['id'] ?>" class="status-badge status-enabled">Edit</a>
+
                                         </td>
                                     </tr>
                                 <?php endforeach;

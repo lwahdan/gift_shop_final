@@ -49,8 +49,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
                             <p class="card-text">Price: $<?= htmlspecialchars($product['price']); ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="/admin/Categories/edit/<?= htmlspecialchars($product['id']) ?>" class="status-badge status-blue ">Edit</a>
-                            <a href="/admin/orders/delete/<?= $product['id'] ?>" class="status-badge status-disabled" onclick="return confirm('Are you sure?')">Delete</a>
+                            <a href="/admin/products/edit/<?= htmlspecialchars($product['id']) ?>" class=" status-badge status-blue">Edit</a>
+                            <a href="/admin/products/delete/<?= $product['id'] ?>" class="status-badge status-disabled" onclick="return confirm('Are you sure?')">Delete</a>
                         </div>
                     </div>
                 </div>
