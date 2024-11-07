@@ -1,6 +1,7 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';
 require_once 'controllers/ProductController.php';
+
 ?>
 
 <!-- Start Hero Slider Section reem leen -->
@@ -30,7 +31,7 @@ require_once 'controllers/ProductController.php';
                                     <h2 id="unforgettable"> unforgettable </h2>
                                     <!-- <a href="/customers/product-details-default"
                                        class="hero_btn1">shop now </a> -->
-                                       <button class="hero_btn1" onclick="window.location.href='/category/1'" >shop now</button>
+                                       <button class="hero_btn1" onclick="window.location.href='/products'" >shop now</button>
                                 </div>
                                 </div>
                             </div>
@@ -54,7 +55,7 @@ require_once 'controllers/ProductController.php';
                                 <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
 <h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
 <h2 id="unforgettable2">Breathe Life Indoors</h2>
-<a href="/category/2" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
+<a href="/products" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
 
                                 </div>
                                 </div>
@@ -187,6 +188,7 @@ require_once 'controllers/ProductController.php';
                                                 <div class="btn">Out of stock</div>
                                         <?php endif; ?>
                                         </form>
+                                        <!-- <div id="success-message" class="success-message">Added successfully</div> -->
                                         </div>
                                             <div class="action-link-right" onclick="addOrRemoveFromWishlist(<?= $row['id']?>)">
                                                 <a>
@@ -199,29 +201,7 @@ require_once 'controllers/ProductController.php';
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <div class="rating-stars">
-    <?php 
-            // Check if the average rating exists
-            if (isset($row['average_rating']) && $row['average_rating'] > 0): 
-                $averageRating = round($row['average_rating']); // Round the rating to the nearest whole number
-        ?>
-            <!-- Display filled stars based on the rounded average rating -->
-            <?php for ($i = 0; $i < $averageRating; $i++): ?>
-                <ion-icon name="star-sharp" style="color: gold"></ion-icon>
-            <?php endfor; ?>
-            
-            <!-- Display empty stars for the remaining slots -->
-            <?php for ($i = $averageRating; $i < 5; $i++): ?>
-                <ion-icon name="star-outline" style="color: gold"></ion-icon>
-            <?php endfor; ?>
-
-        <?php else: ?>
-            <!-- Display empty stars if no rating is available -->
-            <?php for ($i = 0; $i < 5; $i++): ?>
-                <ion-icon name="star-outline" style="color: grey"></ion-icon>
-            <?php endfor; ?>
-        <?php endif; ?>
-</div>
+                                            
                                         </div>
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
