@@ -51,7 +51,10 @@
                                     <div class="mb-3">
                                         <input type="password" name="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon" required>
                                     </div>
-
+                                    <!-- <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="rememberMe" name="remember_me">
+                                        <label class="form-check-label" for="rememberMe">Remember me</label>
+                                    </div> -->
                                     <div class="text-center">
                                         <button type="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">Sign in</button>
                                     </div>
@@ -61,7 +64,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                        <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('/public/images/banner/flower.jpg')"></div>;p
+                        <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('/public/images/hero-slider/home-1/hero-slider-11.jpg')"></div>;p
                         </div>
                     </div>
                 </div>
