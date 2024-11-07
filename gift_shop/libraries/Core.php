@@ -46,9 +46,9 @@ class Core {
 
     'admin/orders' => 'OrderController2@index',           // Display all orders
     'admin/orders/show/{id}' => 'OrderController2@show',  // Show a specific order
-    'admin/orders/edit/{id}' => 'OrderController@2edit',  // Display edit form
+    'admin/orders/edit/{id}' => 'OrderController2@edit',  // Display edit form
     'admin/orders/update/{id}' => 'OrderController2@update', // Process order update
-    'admin/orders/delete/{id}' => 'OrderController@2delete', // Delete an order
+    'admin/orders/delete/{id}' => 'OrderController2@delete', // Delete an order
 
 
 
