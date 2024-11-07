@@ -1,7 +1,5 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
-
-<?php if (count($products) > 0): ?>
 <div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">
