@@ -266,7 +266,7 @@ function updateSubtotal() {
         .catch(error => console.error('Error updating subtotal:', error));
 }
 
-//delete event handlers for header and main cart view
+
 function attachDeleteEventHandlers() {
     document.querySelectorAll('.delete-item-form').forEach(form => {
         form.addEventListener('submit', function(event) {
@@ -285,10 +285,13 @@ function attachDeleteEventHandlers() {
             .then(data => {
                 if (data.success) {
                     updateCartView();
+                    document.getElementById('cart-count').textContent = data.cartCount;
 
+                    // Remove the deleted item from the main cart view if present
                     if (mainCartRow) {
                         mainCartRow.remove();
                     }
+                    // Remove the deleted item from the header cart view if present
                     if (headerCartItem) {
                         headerCartItem.remove();
                     }
@@ -314,49 +317,25 @@ function showFlashMessage(message) {
     }, 3000);
 }
 
-document.getElementById("submitOrder").addEventListener("click", function(event) {
-    event.preventDefault(); // Prevents form submission
-
-    Swal.fire({
-        title: 'Your order has been submitted successfully!',
-        icon: 'success',
-        showCancelButton: true,
-        confirmButtonText: 'Continue Shopping',
-        cancelButtonText: 'OK'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.href = '/'; // Redirect to homepage or shopping page
-        } else {
-            // Optional: Do something else if "OK" is clicked
-        }
-    });
-});
 
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('cart-count').textContent = getCartCountFromCookie();
     startAutoSlide();
     attachDeleteEventHandlers();
 
-    const submitOrderButton = document.getElementById('submitOrder');
-    if (submitOrderButton) {
-        submitOrderButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevents the form from submitting immediately
+    const submitOrderButton = document.getElementById('submitOrderBtn');
+    const orderForm = document.getElementById('orderForm');
 
-            // Display SweetAlert confirmation
+    if (submitOrderButton && orderForm) {
+        submitOrderButton.addEventListener('click', function(event) {
+            event.preventDefault();
             Swal.fire({
-                title: 'Your order has been submitted successfully!',
+                title: 'Your Order has been submitted successfully!',
                 icon: 'success',
-                showCancelButton: true,
-                confirmButtonText: 'Continue Shopping',
-                cancelButtonText: 'OK',
-                customClass: {
-                    confirmButton: 'continue-shopping-btn'
-                }
+                confirmButtonText: 'OK'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/home'; 
-                } else {
-                    
+                    orderForm.submit();
                 }
             });
         });

@@ -110,6 +110,13 @@ class Product extends BaseModel
     
         return $products;
     }
+    public function getProductAverageRating($product_id) {
+        $query = "SELECT AVG(rating) AS average_rating FROM reviews WHERE product_id = :product_id AND status = 1"; // Only count approved reviews
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute(['product_id' => $product_id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result ? round($result['average_rating'], 1) : 0; // Return rounded average rating or 0 if no reviews
+    }
     
     
     

@@ -6,7 +6,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 <div class="container mt-4">
     <h2 class="form-title text-center mb-4">Edit Coupon</h2>
 
-    <form method="POST" class="coupon-form">
+    <form id="updateCouponForm" method="POST" class="coupon-form">
         <!-- Coupon Code -->
         <div class="mb-3">
             <label for="code" class="form-label">Code:</label>
@@ -35,11 +35,33 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 
         <!-- Submit Button -->
         <div class="text-center">
-            <button type="submit" class="btn btn-primary">Update Coupon</button>
+            <button type="submit" class="btn btn-primary update-coupon-btn">Update Coupon</button>
         </div>
     </form>
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const updateCouponButton = document.querySelector('.update-coupon-btn');
+    const updateCouponForm = document.getElementById('updateCouponForm');
+
+    if (updateCouponButton && updateCouponForm) {
+        updateCouponButton.addEventListener('click', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Coupon updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    updateCouponForm.submit();
+                }
+            });
+        });
+    }
+});
+
+</script>
 <?php
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php";
 ?>
