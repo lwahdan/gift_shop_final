@@ -20,5 +20,19 @@ class CommentModel extends BaseModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function activeReviews()
+    {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) AS total_active FROM reviews WHERE status = 1");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total_active'] ?? 0;
+    }
+    public function totalDisActiveReviews()
+    {
+        $stmt = $this->pdo->prepare("SELECT COUNT(*) AS total_inactive FROM reviews WHERE status = 0");
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total_inactive'] ?? 0;
+    }
 }
 
