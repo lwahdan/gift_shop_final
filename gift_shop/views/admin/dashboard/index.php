@@ -2,6 +2,8 @@
 
 $totalProducts = count($data['totalProducts']);
 $totalUsers = count($data['totalUsers']);
+$totalActiveReviews = $data['totalActiveReviews'];
+$totalDisActiveReviews = $data['totalDisActiveReviews'];
 $dashboard_active = "active";
 require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 
@@ -165,12 +167,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                   <div class="w-100">
                     <div class="d-flex mb-2">
-                      <span class="me-2 text-sm font-weight-bold text-dark">Neutral Reviews</span>
-                      <span class="ms-auto text-sm font-weight-bold">17</span>
+                      <span class="me-2 text-sm font-weight-bold text-dark">Active Reviews</span>
+                      <span class="ms-auto text-sm font-weight-bold"><?php echo $totalActiveReviews ?></span>
                     </div>
                     <div>
                       <div class="progress progress-md">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo (17/$totalComments)*100; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo ($totalActiveReviews/$totalComments)*100; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>
@@ -178,12 +180,12 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                   <div class="w-100">
                     <div class="d-flex mb-2">
-                      <span class="me-2 text-sm font-weight-bold text-dark">Negative Reviews</span>
-                      <span class="ms-auto text-sm font-weight-bold">2</span>
+                      <span class="me-2 text-sm font-weight-bold text-dark">DisActive Reviews</span>
+                      <span class="ms-auto text-sm font-weight-bold"><?php echo $totalDisActiveReviews ?></span>
                     </div>
                     <div>
                       <div class="progress progress-md">
-                      <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo 2/19*100; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: <?php echo ($totalDisActiveReviews/$totalComments)*100; ?>%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                     </div>
                   </div>

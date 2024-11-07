@@ -25,6 +25,7 @@ class ReviewModel extends BaseModel {
         return $stmt->execute($data);
     }
 
+
     public function update($id, $data) {
         $sql = "UPDATE reviews SET ";
         $params = [];

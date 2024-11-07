@@ -35,6 +35,8 @@ class Core {
         'admin/category/create' => 'CategoryController2@create',           // Create category form
         'admin/category/store' => 'CategoryController2@store',             // Store new category
         'admin/category/edit/{id}' => 'CategoryController2@edit',
+        'admin/products/edit/{id}' => 'ProductController@edit',
+        'admin/products/delete/{id}' => 'ProductController@delete',
 
         'admin/categories/show/{id}' => 'ProductController@show',
 
@@ -46,9 +48,9 @@ class Core {
 
     'admin/orders' => 'OrderController2@index',           // Display all orders
     'admin/orders/show/{id}' => 'OrderController2@show',  // Show a specific order
-    'admin/orders/edit/{id}' => 'OrderController@2edit',  // Display edit form
+    'admin/orders/edit/{id}' => 'OrderController2@edit',  // Display edit form
     'admin/orders/update/{id}' => 'OrderController2@update', // Process order update
-    'admin/orders/delete/{id}' => 'OrderController@2delete', // Delete an order
+    'admin/orders/delete/{id}' => 'OrderController2@delete', // Delete an order
 
 
 

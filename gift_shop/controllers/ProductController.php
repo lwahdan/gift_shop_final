@@ -132,7 +132,53 @@ class ProductController extends Controller
         // Load the view for showing products in a category
         $this->view('admin/categories/show', ['products' => $products]);
     }
-    
+    public function edit($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+
+        // Check if form was submitted
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Get data from form submission
+            $updatedData = [
+                'name' => $_POST['name'] ?? '',
+                'price' => $_POST['price'] ?? '',
+                'description' => $_POST['description'] ?? '',
+                'category_id' => $_POST['category_id'] ?? '',
+            ];
+
+            // Update product in database
+            $this->productModel->update($id, $updatedData);
+
+            // Redirect to the products list after updating
+            header("Location: /admin/products");
+            exit();
+        } else {
+            // Fetch the product details and categories for editing
+            $product = $this->productModel->find($id);
+            $categories = $this->categoryModel->all();
+
+            // Pass the product data and categories to the view
+            $this->view('admin/Categories/edit_product', [
+                'product' => $product,
+                'categories' => $categories
+            ]);
+        }
+    }
+    public function delete($id) {
+        if (!isset($_SESSION["admin_id"])) {
+            header('Location: /admin/login');
+            exit();
+        }
+
+        // Delete the product by ID
+        $this->productModel->delete($id);
+
+        // Redirect back to the products list
+        header("Location: /admin/products");
+        exit();
+    }
     public function category($category_id) {
         // Fetch products for the given category
         $products = $this->productModel->getProductsByCategory($category_id); // Adjust to fetch products for category
@@ -145,6 +191,6 @@ class ProductController extends Controller
         // Pass products and category to the view
         $this->view('category/index', ['products' => $products, 'category_id' => $category_id]);
     }
-    
+
 }
 ?>
