@@ -151,6 +151,10 @@ class Core {
     // contact
     'contact/submit' => 'ContactController@submitContactForm',
     'order/submit' => 'OrderController@submitOrder',
+
+    'admin/Categories/edit/{id}' => 'ProductController@edit',
+    'product/update/{id}' => 'ProductController@update',
+    'product/delete/{id}' => 'ProductController@delete',
     ];
     
 

@@ -48,7 +48,52 @@ class ProductController extends Controller
         $this->view('home/index', ['products' => $products]);
     }
 
+    public function edit($id)
+    {
+        $product = $this->productModel->find($id);
+        $this->view('admin/products/edit', ['product' => $product]);
+    }
 
+    public function update($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Handle product data
+            $data = [
+                'product_name' => $_POST['product_name'],
+                'price' => $_POST['price'],
+                'description' => $_POST['description'],
+            ];
+
+            // Handle image upload
+            if (isset($_FILES['image_url']) && $_FILES['image_url']['error'] === UPLOAD_ERR_OK) {
+                $image = $_FILES['image_url'];
+
+                // Generate a unique name for the uploaded image
+                $imageName = uniqid() . '-' . basename($image['name']);
+                $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/public/images/product/' . $imageName;
+
+                // Move the uploaded image to the desired folder
+                if (move_uploaded_file($image['tmp_name'], $imagePath)) {
+                    // Update the image path in the data
+                    $data['image_url'] = $imageName;
+                }
+            } else {
+                // Keep the existing image if no new image is uploaded
+                $product = $this->productModel->find($id);
+                $data['image_url'] = $product['image_url'];
+            }
+
+            // Update the product in the database
+            $this->productModel->update($id, $data);
+
+            // Redirect to the product show page or product list
+            header("Location: /admin/Allproducts"); // Adjust URL as necessary
+            exit();
+        }
+    }
+
+
+    
 
     public function getProductsByCategory($categoryId) {
         // Retrieve products by category ID

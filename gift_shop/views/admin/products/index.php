@@ -49,7 +49,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
                             <p class="card-text">Price: $<?= htmlspecialchars($product['price']); ?></p>
                         </div>
                         <div class="card-footer text-center">
-                            <a href="/admin/Categories/edit/<?= htmlspecialchars($product['id']) ?>" class="status-badge status-blue ">Edit</a>
+                            <a href="/admin/Categories/edit/<?= htmlspecialchars($product['id']) ?>" class="status-badge status-blue">Edit</a>
+                            <a href="/product/delete/<?= htmlspecialchars($product['id']) ?>" class="status-badge status-disabled ">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -59,6 +60,40 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
         <?php endif; ?>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this product? This action cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function confirmDelete(productId) {
+        // Show the modal confirmation dialog
+        var modal = new bootstrap.Modal(document.getElementById('confirmDeleteModal'));
+        modal.show();
+
+        // When the user clicks the confirm button, redirect to delete the product
+        document.getElementById('confirmDeleteButton').onclick = function() {
+            window.location.href = '/product/delete/' + productId;
+        };
+    }
+</script>
+
+
 
 <script>
     function searchProducts() {
