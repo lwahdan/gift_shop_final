@@ -1,6 +1,7 @@
 <?php require_once 'views/partials/header.php';
 $dir = '../public/images/product/';?>
 
+<?php if (count($products) > 0): ?>
 <div class="product-default-slider-section section-top-gap-100">
     <div class="section-title-wrapper" data-aos="fade-up" data-aos-delay="0">
         <div class="container">
@@ -58,13 +59,13 @@ $dir = '../public/images/product/';?>
                                     <div class="content">
                                         <div class="content-left">
                                             <h6 class="title"> <a href="/product/details?id=<?php echo $row['id']; ?>"> <?php echo htmlspecialchars($row['product_name']); ?></a></h6>
-                                            <!-- <ul class="review-star">
+                                            <ul class="review-star">
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="fill"><i class="ion-android-star"></i></li>
                                                 <li class="empty"><i class="ion-android-star"></i></li>
-                                            </ul> -->
+                                            </ul>
                                         </div>
                                         <div class="content-right">
                                             <span class="price">$<?php echo number_format($row['price'], 2); ?></span>
