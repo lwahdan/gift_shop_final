@@ -7,9 +7,16 @@ class ReviewModel extends BaseModel {
     }
 
     public function all() {
-        $stmt = $this->pdo->query("SELECT * FROM reviews");
+        $stmt = $this->pdo->query(
+            "SELECT reviews.*, users.username 
+             FROM reviews 
+             JOIN users ON reviews.user_id = users.id
+             ORDER BY reviews.created_at DESC"
+        );
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    
+    
 
     public function findById($id) {
         $stmt = $this->pdo->prepare("SELECT * FROM reviews WHERE id = $id");
