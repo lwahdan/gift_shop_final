@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
             Swal.fire({
                 title: 'Your Order has been submitted successfully!',
                 icon: 'success',
-                confirmButtonText: 'OK'
+                confirmButtonText: 'Continue Shopping'
             }).then((result) => {
                 if (result.isConfirmed) {
                     orderForm.submit();
