@@ -57,7 +57,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 <div id="addForm" class="card-body pt-0 pb-2" style="display: none;">
                     <div class="p-3 bg-light border-radius-lg">
                         <h6 class="mb-3">Add New User</h6>
-                        <form method="POST" action="/admin/users/create">
+                        <form id="addUserForm" method="POST" action="/admin/users/create">
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <input type="text" class="form-control" name="username" placeholder="Username" required>
@@ -92,7 +92,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                             </div>
                             <div class="d-flex justify-content-end">
                                 <button type="button" class="status-badge status-disabled" onclick="toggleAddUserForm()">Cancel</button>
-                                <button type="submit" class="status-badge status-enabled">Add User</button>
+                                <button type="submit" class="status-badge status-enabled add-user-btn">Add User</button>
                             </div>
                         </form>
                     </div>
@@ -177,6 +177,31 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
         const addForm = document.getElementById("addForm");
         addForm.style.display = addForm.style.display === "none" ? "block" : "none";
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // Select the "Add User" button and form
+    const addUserButton = document.querySelector('.add-user-btn');
+    const addUserForm = document.getElementById('addUserForm');
+
+    if (addUserButton && addUserForm) {
+        addUserButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevents the form from submitting immediately
+
+            // Display SweetAlert success message
+            Swal.fire({
+                title: 'User added successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit the form after the user clicks "OK"
+                    addUserForm.submit();
+                }
+            });
+        });
+    }
+});
+
 </script>
 
 <?php

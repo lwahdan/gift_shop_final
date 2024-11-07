@@ -54,7 +54,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                             <div class="col-md-6 col-lg-4 review-card" data-review-id="' . htmlspecialchars($review['id']) . '" data-review-status="' . ($review['status'] ? 'approved' : 'disapproved') . '">
                                 <div class="card h-100">
                                     <div class="card-body">
-                                        <h3 class="card-title" style="color:#dabd8e">User name: ' . htmlspecialchars($review['id']) . '</h3>
+                                        <h3 class="card-title" style="color:#dabd8e">User: ' . htmlspecialchars($review['username']) . '</h3>
+                                        <h5 class="card-title" style="color:#dabd8e">product ID: ' . htmlspecialchars($review['product_id']) . '</h5>
                                         <p class="card-text">' . htmlspecialchars($review['review_text']) . '</p>
                                         <div class="d-flex align-items-center mb-2">
                                             <div class="rating-stars">';

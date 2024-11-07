@@ -20,7 +20,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                             </div>
                         <?php endif; ?>
 
-                        <form method="POST" action="/admin/orders/update/<?= htmlspecialchars($order['id']) ?>" class="needs-validation" novalidate>
+                        <form id="updateOrderForm" method="POST" action="/admin/orders/update/<?= htmlspecialchars($order['id']) ?>" class="needs-validation" novalidate>
                             <?php if(isset($_SESSION['csrf_token'])): ?>
                                 <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                             <?php endif; ?>
@@ -96,7 +96,7 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                                 <a href="/admin/orders" class="btn btn-secondary">
                                     <i class="fas fa-arrow-left me-2"></i>Back to Orders
                                 </a>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary update-order-btn">
                                     <i class="fas fa-save me-2"></i>Update Order
                                 </button>
                             </div>
@@ -184,6 +184,29 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                 }, false)
             })
         })()
+
+        document.addEventListener('DOMContentLoaded', () => {
+    // Select the "Update Order" button and form
+    const updateOrderButton = document.querySelector('.update-order-btn');
+    const updateOrderForm = document.getElementById('updateOrderForm');
+
+    if (updateOrderButton && updateOrderForm) {
+        updateOrderButton.addEventListener('click', function(event) {
+            event.preventDefault(); 
+
+            Swal.fire({
+                title: 'Order updated successfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    updateOrderForm.submit();
+                }
+            });
+        });
+    }
+});
+
     </script>
 
 <?php

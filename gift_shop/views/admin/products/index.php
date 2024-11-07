@@ -38,27 +38,29 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
     <h2 class="mb-4 text-center">Products in this Category</h2>
 
     <div class="row" id="productsContainer">
-        <?php if (!empty($products)): ?>
-            <?php foreach ($products as $product): ?>
-                <div class="col-md-4 mb-4 product-card">
-                    <div class="card h-100 shadow-sm">
-                        <img src="/public/images/product/<?= htmlspecialchars($product['image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h5>
-                            <p class="text-muted">ID: <?= htmlspecialchars($product['id']); ?></p>
-                            <p class="card-text">Price: $<?= htmlspecialchars($product['price']); ?></p>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a href="/admin/products/edit/<?= htmlspecialchars($product['id']) ?>" class=" status-badge status-blue">Edit</a>
-                            <a href="/admin/products/delete/<?= $product['id'] ?>" class="status-badge status-disabled" onclick="return confirm('Are you sure?')">Delete</a>
-                        </div>
+    <?php if (!empty($products)): ?>
+        <?php foreach ($products as $product): ?>
+            <div class="col-md-4 mb-4 product-card">
+                <div class="card h-100 shadow-sm">
+                    <img src="/public/images/product/<?= htmlspecialchars($product['image_url']); ?>" alt="<?= htmlspecialchars($product['product_name']); ?>" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($product['product_name']); ?></h5>
+                        <p class="text-muted">ID: <?= htmlspecialchars($product['id']); ?></p>
+                        <p class="card-text">Price: $<?= htmlspecialchars($product['price']); ?></p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="/admin/products/edit/<?= htmlspecialchars($product['id']) ?>" class="status-badge status-blue">Edit</a>
+                        <a href="/admin/products/delete/<?= $product['id'] ?>" class="status-badge status-disabled delete-product" data-id="<?= $product['id'] ?>">Delete</a>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p class="text-center">No products found in this category.</p>
-        <?php endif; ?>
-    </div>
+            </div>
+        <?php endforeach; ?>
+    <?php else: ?>
+        <p class="text-center">No products found in this category.</p>
+    <?php endif; ?>
+</div>
+
+
 </div>
 
 <script>
@@ -79,6 +81,38 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php"; ?>
             }
         });
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+    // Select all delete links
+    const deleteLinks = document.querySelectorAll('.delete-product');
+
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Get the URL from the link's href attribute
+            const deleteUrl = link.getAttribute('href');
+
+            // Display SweetAlert confirmation dialog
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'Cancel'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect to the delete URL if confirmed
+                    window.location.href = deleteUrl;
+                }
+            });
+        });
+    });
+});
+
 </script>
 
 <?php require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/footer.php"; ?>
