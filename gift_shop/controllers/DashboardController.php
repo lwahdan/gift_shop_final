@@ -17,7 +17,9 @@ class DashboardController extends Controller {
             'totalUsers' => $this->userModel->getTotalUsers(),
             'totalProducts' => $this->productModel->all(),
             'totalComments' => $this->commentModel->getTotalComments(),
-            'totalCoupons' => $this->couponModel->getTotalCoupons()
+            'totalCoupons' => $this->couponModel->getTotalCoupons(),
+            'totalActiveReviews' => $this->commentModel->activeReviews(),
+            'totalDisActiveReviews' => $this->commentModel->totalDisActiveReviews(),
         ];
     }
 
