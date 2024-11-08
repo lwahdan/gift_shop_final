@@ -19,13 +19,6 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
                     <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                     <input type="text" class="form-control" placeholder="Search by ID, User ID, Total Price, or Status" id="orderSearchInput" onkeyup="searchOrders()">
                 </div>
-                <!-- Status Filter Dropdown -->
-                <select class="form-select ms-2" id="statusFilter" onchange="searchOrders()">
-                    <option value="all">All Status</option>
-                    <option value="Pending">Pending</option>
-                    <option value="Completed">Completed</option>
-                    <option value="Cancelled">Cancelled</option>
-                </select>
             </div>
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item d-flex align-items-center">
@@ -107,10 +100,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
 </div>
 
 <script>
-    // Function to filter and search orders
+    // Function to search orders by input
     function searchOrders() {
         const searchInput = document.getElementById("orderSearchInput").value.toLowerCase();
-        const statusFilter = document.getElementById("statusFilter").value;
         const rows = document.querySelectorAll(".order-row");
 
         rows.forEach(row => {
@@ -119,16 +111,9 @@ require $_SERVER['DOCUMENT_ROOT'] . "/views/admin/partials/header.php";
             const status = row.getAttribute("data-status").toLowerCase();
             const price = row.getAttribute("data-price").toLowerCase();
 
-            // Apply filters
-            const matchesSearch = orderId.includes(searchInput) || userId.includes(searchInput) || price.includes(searchInput);
-            const matchesStatus = (statusFilter === "all" || status === statusFilter);
-
-            // Show or hide order row based on filters
-            if (matchesSearch && matchesStatus) {
-                row.style.display = "table-row";
-            } else {
-                row.style.display = "none";
-            }
+            // Show or hide order row based on search input
+            const matchesSearch = orderId.includes(searchInput) || userId.includes(searchInput) || price.includes(searchInput) || status.includes(searchInput);
+            row.style.display = matchesSearch ? "table-row" : "none";
         });
     }
 </script>

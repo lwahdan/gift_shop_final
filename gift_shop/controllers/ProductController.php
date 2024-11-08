@@ -37,7 +37,7 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories
         ]);
-        $products = $this->productModel->getAllProducts(); // or your specific query to fetch products
+        $products = $this->productModel->all(); // or your specific query to fetch products
 
         // For each product, fetch the average rating
         foreach ($products as &$product) {
@@ -102,12 +102,13 @@ class ProductController extends Controller
         // Retrieve category name
         $categoryModel = new Category();
         $category = $categoryModel->find($categoryId);
-        $categoryName = $category ? $category['category_name'] : 'Products';
+        $categories = $this->categoryModel->all();
+       
     
         // Pass both products and category name to the view
         $this->view('products/index', [
             'products' => $products,
-            'categoryName' => $categoryName
+            'categories' => $categories
         ]);
     }
     

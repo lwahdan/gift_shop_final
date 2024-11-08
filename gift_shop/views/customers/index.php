@@ -31,7 +31,7 @@ require_once 'controllers/ProductController.php';
                                     <h2 id="unforgettable"> unforgettable </h2>
                                     <!-- <a href="/customers/product-details-default"
                                        class="hero_btn1">shop now </a> -->
-                                       <button class="hero_btn1" onclick="window.location.href='/products'" >shop now</button>
+                                       <button class="hero_btn1" onclick="window.location.href='/category/1'" >shop now</button>
                                 </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@ require_once 'controllers/ProductController.php';
                                 <h4 class="subtitle subtitle2">Bring Nature Into Your Home</h4>
 <h2 class="title title2">Lush Greenery<br>to Refresh Your Space</h2>
 <h2 id="unforgettable2">Breathe Life Indoors</h2>
-<a href="/products" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
+<a href="/category/2" class="btn btn-lg btn-outline-golden hero_btn2">Shop Plants</a>
 
                                 </div>
                                 </div>
