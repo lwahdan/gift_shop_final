@@ -37,7 +37,7 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories
         ]);
-        $products = $this->productModel->getAllProducts(); // or your specific query to fetch products
+        $products = $this->productModel->all(); // or your specific query to fetch products
 
         // For each product, fetch the average rating
         foreach ($products as &$product) {
