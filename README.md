@@ -25,6 +25,42 @@ Moments Gift Shop is a user-friendly e-commerce platform designed to help users 
 ### Homepage
 ![Homepage Screenshot](screenshots/1.jpg)
 
-### Product Listing
+### features Listing
 ![Product Listing Screenshot](screenshots/2.jpg)
+
+### Home/All Products
+![Product Listing Screenshot](screenshots/3.jpg)
+
+### Categories
+![Product Listing Screenshot](screenshots/4.jpg)
+
+### Testimonials
+![Product Listing Screenshot](screenshots/5.jpg)
+
+### Footer
+![Product Listing Screenshot](screenshots/6.jpg)
+
+### Shop/Chocolate
+![Product Listing Screenshot](screenshots/7.jpg)
+
+### Shop/Flowers
+![Product Listing Screenshot](screenshots/8.jpg)
+
+### About
+![Product Listing Screenshot](screenshots/9.jpg)
+
+### Contact Us
+![Product Listing Screenshot](screenshots/10.jpg)
+
+### Register
+![Product Listing Screenshot](screenshots/11.jpg)
+
+### Login
+![Product Listing Screenshot](screenshots/12.jpg)
+
+### Cart
+![Product Listing Screenshot](screenshots/13.jpg)
+
+### Checkout
+![Product Listing Screenshot](screenshots/14.jpg)
 
