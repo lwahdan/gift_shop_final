@@ -22,5 +22,5 @@ Moments Gift Shop is a user-friendly e-commerce platform designed to help users 
 
 ## Website Screenshot
 
-<img src="gift_shop/public/screenshots/1.jpg" alt="Homepage of Moments Gift Shop" width="800">
+<img src="../public/screenshots/1.jpg" alt="Homepage of Moments Gift Shop" width="800">
 
